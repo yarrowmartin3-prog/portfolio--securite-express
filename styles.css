@@ -1,1 +1,186 @@
 
+/* ------------------------------------------- */
+/* PALETTE DE COULEURS ET TYPOGRAPHIE */
+/* ------------------------------------------- */
+:root {
+    --color-primary: #0A2E59;    /* Bleu Marine Profond (Confiance) */
+    --color-secondary: #F0F2F5;  /* Gris très clair (Fonds) */
+    --color-accent: #28A745;     /* Vert Sécurité/Succès */
+    --color-cta: #FFC107;        /* Jaune-Orange (Bouton d'Action) */
+    --color-text: #343A40;       /* Gris foncé (Lisibilité) */
+}
+
+body {
+    font-family: 'Arial', sans-serif; 
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+h1, h2, h3 {
+    color: var(--color-primary);
+}
+
+/* ------------------------------------------- */
+/* EN-TÊTE ET NAVIGATION AMÉLIORÉS */
+/* ------------------------------------------- */
+header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.6em;
+}
+
+/* ... (Le reste de la NAV est inchangé pour la simplicité) ... */
+
+/* ------------------------------------------- */
+/* SECTION HÉROÏQUE AVEC FOND VISUEL */
+/* ------------------------------------------- */
+.hero {
+    /* Utilisez une image de fond pertinente pour la sécurité */
+    background-image: url('images/hero-bg.jpg'); /* REMPLACEZ CE CHEMIN */
+    background-color: var(--color-primary);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 10%;
+    /* Couche semi-transparente pour que le texte soit lisible */
+    position: relative; 
+}
+
+.hero::before { /* Ajout d'une surcouche sombre sur l'image de fond */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% d'opacité noire */
+    z-index: 1;
+}
+
+.hero h2, .hero p, .hero a {
+    position: relative; /* Assure que le texte est au-dessus de la surcouche */
+    z-index: 2;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+    background-color: var(--color-cta); /* Bouton d'action accrocheur */
+    color: var(--color-text);
+    padding: 15px 30px;
+    font-size: 1.2em;
+}
+
+.cta-button:hover {
+    background-color: #ffd44d;
+}
+
+/* ------------------------------------------- */
+/* SECTION SERVICES (Amélioration des cartes) */
+/* ------------------------------------------- */
+.services {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.service-card {
+    background-color: white; /* Cartes de service blanches */
+    border: 1px solid var(--color-secondary);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 15px;
+    display: inline-block;
+    width: 30%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Ombre douce et pro */
+    vertical-align: top;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Petit effet de soulèvement au survol */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h4 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent); /* Sous-ligne Verte */
+    padding-bottom: 10px;
+}
+
+/* ------------------------------------------- */
+/* SECTION À PROPOS (Mise en évidence) */
+/* ------------------------------------------- */
+.about {
+    background-color: var(--color-secondary);
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+/* ------------------------------------------- */
+/* SECTION CONTACT ET FORMULAIRE */
+/* ------------------------------------------- */
+.contact form {
+    /* ... (CSS du formulaire inchangé, il est déjà pro) ... */
+}
+
+.contact button[type="submit"] {
+    background-color: var(--color-primary);
+    font-size: 1.2em;
+}
+
+.contact button[type="submit"]:hover {
+    background-color: #004d99;
+}
+
+/* ------------------------------------------- */
+/* PIED DE PAGE */
+/* ------------------------------------------- */
+footer {
+    background-color: var(--color-text); /* Pied de page très sombre */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+/* MEDIA QUERY pour la réactivité */
+@media (max-width: 768px) {
+    .service-card {
+        width: 90%;
+        display: block;
+        margin: 15px auto;
+    }
+    .hero {
+        padding: 60px 5%;
+    }
+    .hero h2 {
+        font-size: 2em;
+    }
+}
