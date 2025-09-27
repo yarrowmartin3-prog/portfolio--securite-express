@@ -82,7 +82,7 @@
       const d = new FormData(e.target);
       const subject = `[DEMANDE] ${d.get('service')||'Service EXPRESS'} — ${d.get('name')}`;
       const body = `Nom: ${d.get('name')}\nEmail: ${d.get('email')}\nService: ${d.get('service')}\n\n${d.get('message')}`;
-      window.location.href = `mailto:tonemail@exemple.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto: yarrowmartin3@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   </script>
 </body>
