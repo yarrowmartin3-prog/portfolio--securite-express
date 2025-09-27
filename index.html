@@ -1,15 +1,80 @@
 <!doctype html>
+
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Services EXPRESS — Sécurité • Site vitrine • Automatisation Python</title>
   <meta name="description" content="Audit de sécurité 48h, site vitrine sécurisé en 3 jours, scripts d'automatisation Python. Rapide, clair, efficace. Idéal PME locales." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f172a;          /* slate-900 */
+      --panel:#111827;       /* gray-900 */
+      --muted:#94a3b8;       /* slate-400 */
+      --text:#e5e7eb;        /* gray-200 */
+      --brand:#22c55e;       /* green-500 */
+      --brand-2:#38bdf8;     /* sky-400 */
+      --danger:#ef4444;      /* red-500 */
+      --ring:rgba(56,189,248,.35);
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(120deg,#0b1225,#0f172a 35%,#0b1225 100%);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{position:sticky;top:0;backdrop-filter:saturate(160%) blur(8px);background:rgba(15,23,42,.7);border-bottom:1px solid rgba(148,163,184,.15);z-index:30}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .badge{background:rgba(56,189,248,.15);color:#e0f2fe;border:1px solid rgba(56,189,248,.35);padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+    .cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--brand),#10b981);border:none;color:#06220f;padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:var(--shadow);cursor:pointer}
+    .cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(148,163,184,.35)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:42px 0}
+    .card{background:linear-gradient(180deg,rgba(17,24,39,.7),rgba(2,6,23,.6));border:1px solid rgba(148,163,184,.18);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card .inner{padding:22px}
+    h1{font-size:clamp(28px,3.2vw,44px);line-height:1.15;margin:0 0 10px}
+    h2{font-size:clamp(22px,2.2vw,30px);margin:24px 0 12px}
+    h3{font-size:18px;margin:10px 0}
+    p.lead{color:#cbd5e1;font-size:18px;margin:10px 0 18px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .kpi{background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.22);padding:14px;border-radius:12px;text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{position:relative;overflow:hidden}
+    .service .tag{position:absolute;top:12px;left:12px}
+    .service ul{margin:10px 0 0 18px}
+    .pill{display:inline-block;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#bbf7d0;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
+    .muted{color:var(--muted)}
+    .stack{display:flex;gap:10px;flex-wrap:wrap}
+    .price{font-weight:800;font-size:22px;color:#86efac}
+    .section{padding:28px 0}
+/* Trust badges */
+.trust{padding:10px 0}
+.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+.badge-card{display:flex;align-items:center;gap:12px;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.22);border-radius:14px;padding:12px}
+.badge-icon{width:32px;height:32px;display:grid;place-items:center;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:10px}
+.badge-title{font-weight:700}
+.badge-sub{font-size:12px;color:var(--muted)}
+@media (max-width:900px){.badges{grid-template-columns:1fr 1fr}}.list{display:grid;gap:10px}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check b{color:#bbf7d0}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+form{display:grid;gap:10px}
+input,textarea{background:rgba(2,6,23,.5);border:1px solid rgba(148,163,184,.28);color:var(--text);padding:12px 14px;border-radius:12px;outline:none}
+input:focus,textarea:focus{border-color:var(--brand-2);box-shadow:0 0 0 4px var(--ring)}
+footer{padding:24px 0;color:#9aa5b1;border-top:1px solid rgba(148,163,184,.15)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.25);background:rgba(148,163,184,.08)}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr;}}
+
+  </style>
 </head>
 <body>
   <header>
-    <div class="nav">
+    <div class="container nav">
       <div class="brand">
         <span class="badge">EXPRESS</span>
         <strong>Audit Sécurité • Site • Python</strong>
@@ -19,71 +84,265 @@
         <a class="cta" href="#contact">Obtenir un devis</a>
       </div>
     </div>
-  </header>
-
-  <main class="container">
+  </header>  <main class="container">
     <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>Livraisons <span class="accent1">rapides</span>, résultats <span class="accent2">concrets</span>.</h1>
+        <h1>Livraisons <span style="color:#7dd3fc">rapides</span>, résultats <span style="color:#86efac">concrets</span>.</h1>
         <p class="lead">Audit de sécurité en 48h, site vitrine sécurisé en 3 jours, automatisations Python sur mesure. Idéal PME locales — simple, clair, efficace.</p>
         <div class="cta-row">
           <a class="cta" href="#contact">Démarrer maintenant</a>
-          <a class="cta secondary" href="#services">Voir les services</a>
+          <a class="cta secondary" href="#process">Voir la méthode</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b>48h</b><div class="muted">Audit EXPRESS</div></div>
+          <div class="kpi"><b>3 jours</b><div class="muted">Site vitrine sécurisé</div></div>
+          <div class="kpi"><b>1 script</b><div class="muted">= heures gagnées / semaine</div></div>
         </div>
       </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section">
-      <h2>Services EXPRESS</h2>
-      <div class="grid">
-        <article class="card">
-          <span class="tag pill">48h</span>
-          <h3>Audit de Sécurité EXPRESS</h3>
-          <p>Vérification des 10 vulnérabilités les plus courantes de votre site, mots de passe et réseau. Rapport clair + correctifs rapides.</p>
-          <p class="price">à partir de 199 $</p>
-        </article>
-        <article class="card">
-          <span class="tag pill">3 jours</span>
-          <h3>Site vitrine SÉCURISÉ</h3>
-          <p>Site professionnel rapide (HTML/CSS), configuré avec les bonnes pratiques sécurité dès le lancement.</p>
-          <p class="price">forfait dès 349 $</p>
-        </article>
-        <article class="card">
-          <span class="tag pill">+ productif</span>
-          <h3>Automatisation Python</h3>
-          <p>Scripts sur mesure pour arrêter les tâches répétitives et gagner des heures chaque semaine.</p>
-          <p class="price">149 – 399 $</p>
-        </article>
+      <div class="card"><div class="inner">
+        <h3>Ce que vous obtenez</h3>
+        <ul class="list">
+          <li class="check"><b>•</b><span>Un livrable simple, sans jargon, avec priorités claires.</span></li>
+          <li class="check"><b>•</b><span>Des correctifs rapides + recommandations concrètes.</span></li>
+          <li class="check"><b>•</b><span>Un contact unique, réactif et local.</span></li>
+        </ul>
+        <div class="chips" style="margin-top:12px">
+          <span class="chip">Cybersécurité</span>
+          <span class="chip">HTML/CSS rapide</span>
+          <span class="chip">Python</span>
+          <span class="chip">Automatisation</span>
+          <span class="chip">PME locales</span>
+        </div>
+      </div></div>
+    </section><!-- TRUST / BADGES -->
+<section class="section trust">
+  <h2>Confiance & Sécurité</h2>
+  <div class="badges">
+    <div class="badge-card">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1l3 5 6 .9-4.2 4.1.9 5.9L12 14.8 6.3 16.9l.9-5.9L3 6.9 9 6z"/></svg>
       </div>
-    </section>
+      <div>
+        <div class="badge-title">TLS/SSL</div>
+        <div class="badge-sub">Site servi en HTTPS par défaut</div>
+      </div>
+    </div>
+    <div class="badge-card">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V7l-8-4-8 4v5c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div>
+        <div class="badge-title">OWASP Top 10</div>
+        <div class="badge-sub">Audit aligné aux bonnes pratiques</div>
+      </div>
+    </div>
+    <div class="badge-card">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fde68a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div>
+        <div class="badge-title">2FA & Mots de passe</div>
+        <div class="badge-sub">Recommandations politiques d’accès</div>
+      </div>
+    </div>
+    <div class="badge-card">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M4 5h16M7 9h10M7 15h6"/></svg>
+      </div>
+      <div>
+        <div class="badge-title">Configuration sécurisée</div>
+        <div class="badge-sub">Headers, DNS/SMTP, HTTPS</div>
+      </div>
+    </div>
+    <div class="badge-card">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fca5a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <div class="badge-title">Confidentialité</div>
+        <div class="badge-sub">Données minimales, rapport clair</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h2>Contact & Devis</h2>
-      <form id="contactForm">
+<!-- SERVICES -->
+<section id="services" class="section">
+  <h2>Services EXPRESS</h2>
+  <div class="grid">
+    <!-- Service 1 -->
+    <article class="card service">
+      <div class="inner">
+        <span class="tag pill">48h</span>
+        <h3>Audit de Sécurité <em>EXPRESS</em></h3>
+        <p class="muted">Votre première ligne de défense. Je vérifie les 10 vulnérabilités les plus courantes de votre site, mots de passe et réseau. Rapport clair + étapes concrètes.</p>
+        <ul>
+          <li>Checklist 10 points (site, SMTP/DNS, admin, mots de passe)</li>
+          <li>Rapport PDF synthèse + priorités</li>
+          <li>Correctifs rapides inclus (1h)</li>
+        </ul>
+        <p class="price">à partir de 199 $</p>
+        <div class="cta-row">
+          <a class="cta" href="#contact" data-msg="Audit EXPRESS">Réserver</a>
+          <a class="cta secondary" href="#process">Détails</a>
+        </div>
+      </div>
+    </article>
+    <!-- Service 2 -->
+    <article class="card service">
+      <div class="inner">
+        <span class="tag pill">3 jours</span>
+        <h3>Site vitrine <em>SÉCURISÉ</em></h3>
+        <p class="muted">Site simple, professionnel et rapide (HTML/CSS), configuré avec les bonnes pratiques sécurité dès le lancement. Idéal pour démarrer proprement.</p>
+        <ul>
+          <li>1 page d’accueil + 2 sections (services, contact)</li>
+          <li>Performance + SEO de base</li>
+          <li>Hébergement GitHub Pages inclus</li>
+        </ul>
+        <p class="price">forfait dès 349 $</p>
+        <div class="cta-row">
+          <a class="cta" href="#contact" data-msg="Site vitrine SÉCURISÉ">Demander un devis</a>
+          <a class="cta secondary" href="#process">Voir le cahier</a>
+        </div>
+      </div>
+    </article>
+    <!-- Service 3 -->
+    <article class="card service">
+      <div class="inner">
+        <span class="tag pill">+ productif</span>
+        <h3>Automatisation <em>Python</em></h3>
+        <p class="muted">Arrêtez les tâches répétitives. Script sur mesure pour gérer fichiers, extraire des données, générer vos rapports récurrents.</p>
+        <ul>
+          <li>Brief simple (problème ➜ résultat)</li>
+          <li>Script livré + mode d’emploi</li>
+          <li>Petites évolutions incluses (7 jours)</li>
+        </ul>
+        <p class="price">mission type 149–399 $</p>
+        <div class="cta-row">
+          <a class="cta" href="#contact" data-msg="Automatisation Python">Parler de mon besoin</a>
+          <a class="cta secondary" href="#process">Exécution</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <h2>Méthode S.E.C. — Sécurité • Express • Clarté</h2>
+  <div class="grid">
+    <div class="card"><div class="inner">
+      <h3>1) Sécurité</h3>
+      <p class="muted">Compétences en cybersécurité utilisées dès le départ : on sécurise d’abord les points critiques.</p>
+      <ul>
+        <li>Checklist 10 vulnérabilités fréquentes</li>
+        <li>Recommandations classées par priorité</li>
+        <li>Correctifs rapides quand c’est possible</li>
+      </ul>
+    </div></div>
+    <div class="card"><div class="inner">
+      <h3>2) Express</h3>
+      <p class="muted">Délais serrés par design : 48h pour l’audit, 3 jours pour un site vitrine propre et rapide.</p>
+      <ul>
+        <li>Blocs HTML réutilisables</li>
+        <li>CSS minimaliste performant</li>
+        <li>Livrables versionnés (Git/GitHub)</li>
+      </ul>
+    </div></div>
+    <div class="card"><div class="inner">
+      <h3>3) Clarté</h3>
+      <p class="muted">Prix affichés dès le départ, périmètre simple, et un seul point de contact.</p>
+      <ul>
+        <li>Devis clair et ferme</li>
+        <li>Rapport en langage non-tech</li>
+        <li>Support post-livraison court</li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
+<!-- PRICING SNAPSHOT -->
+<section class="section">
+  <h2>Tarifs rapides (indicatifs)</h2>
+  <div class="grid">
+    <div class="card"><div class="inner">
+      <h3>Audit EXPRESS</h3>
+      <p class="price">199 $</p>
+      <p class="muted">48h • 10 points • PDF + correctifs rapides (1h).</p>
+    </div></div>
+    <div class="card"><div class="inner">
+      <h3>Site vitrine sécurisé</h3>
+      <p class="price">349 $</p>
+      <p class="muted">Landing + services + contact • GitHub Pages • SEO de base.</p>
+    </div></div>
+    <div class="card"><div class="inner">
+      <h3>Automatisation Python</h3>
+      <p class="price">149–399 $</p>
+      <p class="muted">Script sur mesure + mode d’emploi • petites évolutions 7j.</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact & Devis</h2>
+  <div class="card"><div class="inner">
+    <form id="contactForm">
+      <div class="stack">
         <input required name="name" placeholder="Votre nom" />
         <input required name="email" type="email" placeholder="Votre courriel" />
-        <input name="service" placeholder="Service (Audit, Site, Python)" />
-        <textarea required name="message" rows="5" placeholder="Décrivez votre besoin"></textarea>
-        <button class="cta" type="submit">Envoyer</button>
-      </form>
-    </section>
-  </main>
+      </div>
+      <input name="service" id="serviceField" placeholder="Service (Audit, Site, Python)" />
+      <textarea required name="message" rows="5" placeholder="Décrivez votre besoin en 2–3 phrases."></textarea>
+      <div class="cta-row">
+        <button class="cta" type="submit">Envoyer la demande</button>
+        <button class="cta secondary" type="button" id="copyPitch">Copier mon pitch</button>
+      </div>
+      <p class="muted">Réponse généralement sous 24h. FR/EN.</p>
+    </form>
+  </div></div>
+</section>
 
-  <footer>
-    <p>© 2025 • Services EXPRESS — Sécurité • Web • Python</p>
-  </footer>
+  </main>  <footer>
+    <div class="container">
+      <div class="chips">
+        <span class="chip">FR/EN</span>
+        <span class="chip">Livraison rapide</span>
+        <span class="chip">GitHub Pages</span>
+        <span class="chip">PME locales</span>
+      </div>
+      <p style="margin-top:10px">© 2025 • Services EXPRESS — Sécurité • Web • Python. Tous droits réservés.</p>
+    </div>
+  </footer>  <script>
+    // Remplit le champ service selon le bouton cliqué
+    document.querySelectorAll('a.cta[data-msg]').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        const v = e.currentTarget.getAttribute('data-msg');
+        const field = document.getElementById('serviceField');
+        if(field) field.value = v;
+      });
+    });
 
-  <script>
+    // Soumission par mailto (simple et direct pour démarrer)
     document.getElementById('contactForm').addEventListener('submit', function(e){
       e.preventDefault();
-      const d = new FormData(e.target);
-      const subject = `[DEMANDE] ${d.get('service')||'Service EXPRESS'} — ${d.get('name')}`;
-      const body = `Nom: ${d.get('name')}\nEmail: ${d.get('email')}\nService: ${d.get('service')}\n\n${d.get('message')}`;
-      window.location.href = `mailto: yarrowmartin3@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const data = new FormData(e.target);
+      const name = encodeURIComponent(data.get('name')||'');
+      const email = encodeURIComponent(data.get('email')||'');
+      const service = encodeURIComponent(data.get('service')||'');
+      const msg = encodeURIComponent(data.get('message')||'');
+      const subject = `[DEMANDE] ${service||'Service EXPRESS'} — ${name}`;
+      const body = `Nom: ${name}%0D%0AEmail: ${email}%0D%0AService: ${service}%0D%0A%0D%0A${msg}`;
+      window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
     });
-  </script>
-</body>
+
+    // Copier un pitch de candidature (Upwork/Fiverr/FB)
+    document.getElementById('copyPitch').addEventListener('click', ()=>{
+      const pitch = `Bonjour!\n\nJe propose des Services EXPRESS :\n• Audit de sécurité en 48h (rapport simple + correctifs rapides)\n• Site vitrine sécurisé en 3 jours (HTML/CSS, GitHub Pages)\n• Automatisations Python (gagnez des heures/semaine)\n\nTarifs clairs, livraison rapide, FR/EN. Intéressé?`; 
+      navigator.clipboard.writeText(pitch).then(()=>{
+        alert('Pitch copié.');
+      });
+    });
+  </script></body>
 </html>
