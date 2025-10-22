@@ -158,21 +158,13 @@
 </style>
     <section id="contact" class="section">
       <h2>Contact & Devis</h2>
-      <form id="contactForm" action="https://formspree.io/f/xldpgnyz" method="POST">
-        <div class="stack">
-          <input required name="name" placeholder="Votre nom" />
-          <input required name="email" type="email" placeholder="Votre courriel" />
-        </div>
-        <input name="service" placeholder="Service (Audit, Site, Python)" />
-        <textarea required name="message" rows="5" placeholder="Décrivez votre besoin"></textarea>
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-        <input type="hidden" name="_subject" value="Nouvelle demande — Services EXPRESS" />
-        <div class="cta-row">
-          <button class="cta" type="submit">Envoyer</button>
-          <button class="cta secondary" type="button" id="copyPitch">Copier mon pitch</button>
-        </div>
-        <p class="muted" id="formStatus">Réponse généralement sous 24h. FR/EN.</p>
-      </form>
+<form id="contactForm" action="https://formspree.io/f/xldpgnyz" method="POST" data-endpoint="https://formspree.io/f/xldpgnyz">
+  <input required name="name" placeholder="Votre nom" />
+  <input required type="email" name="email" placeholder="Votre courriel" />
+  <textarea required name="message" rows="5" placeholder="Décrivez votre besoin"></textarea>
+  <button type="submit">Envoyer</button>
+  <p id="formStatus" class="muted">Réponse généralement sous 24h.</p>
+</form>
     </section>
   </main>
 
@@ -180,50 +172,7 @@
     <p>© 2025 • Services EXPRESS — Sécurité • Web • Python</p>
   </footer>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const endpoint = form.getAttribute('data-endpoint');
-      const status = document.getElementById('formStatus');
-      const data = Object.fromEntries(new FormData(form).entries());
 
-      try {
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (res.ok) {
-          status.textContent = 'Merci! Votre message a été envoyé. Je vous réponds sous 24h.';
-          form.reset();
-        } else {
-          status.textContent = 'Oups, une erreur est survenue. Réessayez ou contactez-moi via LinkedIn.';
-        }
-      } catch (err) {
-        status.textContent = 'Connexion impossible. Vérifiez votre réseau et réessayez.';
-      }
-    });
-  </script>
-  <script>
-  // ✨ Ton pitch prêt-à-coller
-  const pitch = `Bonjour! Je m'appelle Yarrow. Besoin: audit sécurité express + optimisation poste.
-- Délai: 24–48h
-- Budget: flexible (pack express)
-- Coordonnées: (à compléter)
-Merci!`;
-
-  // Bouton "Copier mon pitch"
-  document.getElementById('copyPitch').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(pitch);
-      alert('✅ Pitch copié dans le presse-papiers');
-    } catch (e) {
-      console.error(e);
-      alert('❌ Impossible de copier. (Navigateur bloqué?)');
-    }
-  });
-</script>
   <script src="./script.js" defer></script>
 </body>
 </html>
