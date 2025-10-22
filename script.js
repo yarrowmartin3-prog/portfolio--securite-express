@@ -1,29 +1,43 @@
-console.log("Script chargé ✅");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-  if (!form || !statusEl) {
-    console.warn("Formulaire ou formStatus introuvable");
+  if (!form) {
+    console.log('Form not found, skipping JS submit.');
     return;
   }
 
-  form.addEventListener("submit", async (e) => {
+  function setStatus(msg, ok=false){
+    if (statusEl) {
+      statusEl.textContent = msg;
+      statusEl.style.color = ok ? '#27ae60' : '#e74c3c';
+    } else {
+      console.log(msg);
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    statusEl.textContent = "Envoi…";
+    setStatus('Envoi…');
+
     try {
-      const endpoint = form.dataset.endpoint;
       const data = new FormData(form);
-      const res = await fetch(endpoint, { method: "POST", body: data });
-      if (res.ok) {
-        statusEl.textContent = "Message envoyé avec succès ✅";
+      const endpoint = form.dataset.endpoint || form.action; // fallback action
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (resp.ok) {
         form.reset();
+        setStatus('Message envoyé ✅', true);
       } else {
-        statusEl.textContent = "Erreur d’envoi 😕";
+        setStatus("Erreur d'envoi. Réessayez.");
       }
     } catch (err) {
       console.error(err);
-      statusEl.textContent = "Erreur réseau ⚠️";
+      setStatus("Erreur réseau. Réessayez.");
     }
   });
 });
