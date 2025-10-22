@@ -28,3 +28,16 @@ form{display:grid;gap:10px}
 input,textarea{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:var(--text)}
 input:focus,textarea:focus{outline:2px solid var(--accent1)}
 footer{padding:20px;text-align:center;color:#9aa5b1}
+/* --- Ajustement du chat Nova --- */
+#novaChat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-height: 80vh;
+  z-index: 9999;
+}
+
+/* --- Ajoute un espace en bas pour éviter que le chat cache le contenu --- */
+body {
+  padding-bottom: 120px;
+}
