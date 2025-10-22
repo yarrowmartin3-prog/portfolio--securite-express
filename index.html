@@ -140,6 +140,21 @@
     </section>
 
     <!-- CONTACT -->
+  <section id="contact">
+  <h2>Contact & Devis</h2>
+  <form action="https://formspree.io/f/XXXXABCD" method="POST" class="contact">
+    <input type="text" name="name" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="url" name="site" placeholder="URL du site (optionnel)">
+    <textarea name="message" placeholder="Votre besoin en 2 lignes" required></textarea>
+    <button type="submit" class="btn">Envoyer</button>
+  </form>
+</section>
+<style>
+.contact{display:grid;gap:.6rem;max-width:520px}
+.contact input,.contact textarea{background:#0b1220;border:1px solid #1b2335;border-radius:10px;padding:10px;color:#e7faff}
+.contact button{cursor:pointer}
+</style>
     <section id="contact" class="section">
       <h2>Contact & Devis</h2>
       <form id="contactForm" data-endpoint="https://formspree.io/f/xldpgnyz" method="POST">
