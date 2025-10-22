@@ -157,7 +157,7 @@
 </style>
     <section id="contact" class="section">
       <h2>Contact & Devis</h2>
-      <form id="contactForm" data-endpoint="https://formspree.io/f/xldpgnyz" method="POST">
+      <form id="contactForm" action="https://formspree.io/f/xldpgnyz" method="POST">
         <div class="stack">
           <input required name="name" placeholder="Votre nom" />
           <input required name="email" type="email" placeholder="Votre courriel" />
@@ -204,5 +204,24 @@
       }
     });
   </script>
+  <script>
+  // ✨ Ton pitch prêt-à-coller
+  const pitch = `Bonjour! Je m'appelle Yarrow. Besoin: audit sécurité express + optimisation poste.
+- Délai: 24–48h
+- Budget: flexible (pack express)
+- Coordonnées: (à compléter)
+Merci!`;
+
+  // Bouton "Copier mon pitch"
+  document.getElementById('copyPitch').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(pitch);
+      alert('✅ Pitch copié dans le presse-papiers');
+    } catch (e) {
+      console.error(e);
+      alert('❌ Impossible de copier. (Navigateur bloqué?)');
+    }
+  });
+</script>
 </body>
 </html>
