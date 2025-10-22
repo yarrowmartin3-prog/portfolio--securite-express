@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova Sandbox Test</title>
+  <style>body{font-family:system-ui,Segoe UI,Arial;background:#0b0f14;color:#e5e7eb;padding:24px}</style>
+</head>
+<body>
+  <h1>Test · Nova Chat (Sandbox)</h1>
+  <p>Cette page isole la chatbox. Utile pour tester sans toucher à la page principale.</p>
+  <div id="nova-chat" style="position:relative;margin-top:12px;width:520px;max-width:96%;background:#0b0f14;border:1px solid #1e293b;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-family:system-ui,Segoe UI,Arial;color:#e5e7eb;overflow:hidden">
+    <div style="padding:10px 12px;background:#111827;border-bottom:1px solid #1f2937;font-weight:600">Nova · Assistant local</div>
+    <div id="nova-log" style="height:300px;overflow:auto;padding:12px"></div>
+    <form id="nova-form" style="display:flex;gap:8px;padding:10px;background:#0b0f14;border-top:1px solid #1f2937">
+      <input id="nova-input" placeholder="Parlez à Nova" style="flex:1;padding:10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e5e7eb" />
+      <button id="nova-send" style="padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#1f2937;color:#e5e7eb">Envoyer</button>
+    </form>
+  </div>
+  <script src="./guard.js?v=1" defer></script>
+  <script src="./script.js?v=1" defer></script>
+</body>
+</html>
