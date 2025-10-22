@@ -124,6 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('nova-form');
   if (form) form.addEventListener('submit', handleChatSubmit);
 });
+
 // --- Bouton d’ouverture / fermeture du chat ---
 const chatBox = document.getElementById("novaChat");
 const toggleBtn = document.createElement("button");
@@ -145,3 +146,4 @@ toggleBtn.addEventListener("click", () => {
   chatBox.style.display =
     chatBox.style.display === "none" ? "block" : "none";
 });
+
