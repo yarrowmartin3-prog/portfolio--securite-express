@@ -41,3 +41,16 @@ footer{padding:20px;text-align:center;color:#9aa5b1}
 body {
   padding-bottom: 120px;
 }
+/* Chat NovaSuite - Position fixe et propre */
+#chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 350px;
+  max-height: 500px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  background: white;
+  overflow: hidden;
+}
