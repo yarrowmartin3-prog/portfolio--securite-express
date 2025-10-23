@@ -54,3 +54,19 @@ body {
   background: white;
   overflow: hidden;
 }
+/* === Chat widgets: force layout & layering === */
+header, main, footer { position: relative; z-index: 50; } /* ton contenu au-dessus */
+.crisp-client, #tidio-chat, .intercom-lightweight-app,
+[id*="tawk"], [class*="tawk"] {
+  position: fixed !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  width: 360px !important; /* taille raisonnable */
+  max-width: 92vw !important;
+  height: 520px !important;
+  max-height: 70vh !important;
+  z-index: 30 !important; /* en-dessous de ton contenu (50) */
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.35) !important;
+}
