@@ -70,13 +70,11 @@
     <section class="card">
       <h2>Démo instantanée</h2>
       <p>Parlez avec <strong>Nova (locale)</strong>. Si Nova locale est éteinte, un message clair s'affichera. Le basculement <em>fallback</em> vers GPT peut être activé plus tard.</p>
-      <p><a class="btn" href="#nova-chat">Aller au chat Nova</a></p>
     </section>
 
     <section class="card">
       <h2>Statut</h2>
       <ul>
-        <li>Chatbox intégrée : <strong>OK</strong></li>
         <li>Appels LM Studio (port 1234) : <strong>prêt</strong> (lancer le Local Server)</li>
         <li>Fallback GPT : <strong>désactivé par défaut</strong> (clé à ajouter côté client si voulu)</li>
         <li>CI GitHub (lint rapide) : <strong>activée</strong></li>
@@ -167,5 +165,10 @@ document.addEventListener('click', function(e){
     log.scrollTop = log.scrollHeight;
   });
 </script>
+  <!-- NOVA CHAT START (reset unique) -->
+<button id="nova2-fab" aria-expanded="false" class="nova2-fab">💬 Nova</button>
+
+<div id="nova2-box" hidden>
+  <div class="nova2-head">
 </body>
 </html>
