@@ -78,5 +78,14 @@ header, main, footer { position: relative; z-index: 50; } /* ton contenu au-dess
 }
 <div class="cta-row">
   <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
-  <a href="https://www.buymeacoffee.com/TONLIEN" target="_blank" class="btn-secondary">☕ Offrir un café à NovaSuite</a>
+  <a href="https://www.buymeacoffee.com/yarrowmartin9" target="_blank" rel="noopener noreferrer" class="btn-secondary">☕ Offrir un café à NovaSuite</a>
 </div>
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.btn-primary,.btn-secondary{
+  display:inline-block;padding:10px 16px;border-radius:10px;
+  text-decoration:none;font-weight:700
+}
+.btn-primary{background:#1e90ff;color:#fff}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-secondary{background:#f2f4f7;color:#0b0f13;border:1px solid #dbe2ea}
+.btn-secondary:hover{background:#e9eef4}
