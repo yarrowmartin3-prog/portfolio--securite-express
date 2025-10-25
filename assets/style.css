@@ -72,3 +72,14 @@ iframe[src*="tawk"], iframe[src*="crisp"] { z-index: 54 !important; }
   .hero{min-height:180px}
   .hero h1{font-size:1.6rem}
 }
+/* HOTFIX Nova – garder un seul chat & au-dessus de la page */
+#nova-fab{position:fixed;right:16px;bottom:16px;z-index:2147483647}
+#nova-box{position:fixed;right:16px;bottom:72px;z-index:2147483647}
+
+/* masquer tout ancien chat ou bouton hérité */
+#nova-chat, .old-nova, [data-nova="old"], .nova-legacy, .chatbox, .nova { 
+  display:none !important; 
+}
+
+/* éviter tout effet de contexte qui mettrait le chat “en dessous” */
+header, main, .container { transform:none !important; filter:none !important; }
