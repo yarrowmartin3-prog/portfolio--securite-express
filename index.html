@@ -141,5 +141,31 @@ document.addEventListener('click', function(e){
     <button id="nova-send" type="submit">Envoyer</button>
   </form>
 </div>
+  <script>
+  const fab = document.getElementById('nova-toggle');
+  const box = document.getElementById('nova-chat');
+  const form = document.getElementById('nova-form');
+  const log = document.getElementById('nova-log');
+  const input= document.getElementById('nova-input');
+
+  function toggleChat(){
+    const open = box.hasAttribute('hidden');
+    if(open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+    else{ box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
+  }
+  fab.addEventListener('click', toggleChat);
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const text = (input.value || '').trim();
+    if(!text) return;
+    const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+    input.value = '';
+    // TODO: brancher Nova locale ou OpenAI plus tard.
+    const bot = document.createElement('div'); bot.textContent = "Nova: (module non connecté pour l’instant)";
+    log.appendChild(bot);
+    log.scrollTop = log.scrollHeight;
+  });
+</script>
 </body>
 </html>
