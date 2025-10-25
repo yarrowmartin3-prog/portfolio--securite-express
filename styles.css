@@ -118,3 +118,8 @@ header, main, footer { position: relative; z-index: 50; } /* ton contenu au-dess
 .btn-primary:hover{filter:brightness(1.05)}
 .btn-secondary{background:#f2f4f7;color:#0b0f13;border:1px solid #dbe2ea}
 .btn-secondary:hover{background:#e9eef4}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
