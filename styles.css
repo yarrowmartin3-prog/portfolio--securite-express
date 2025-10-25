@@ -76,3 +76,7 @@ header, main, footer { position: relative; z-index: 50; } /* ton contenu au-dess
   overflow: hidden !important;
   box-shadow: 0 12px 40px rgba(0,0,0,.35) !important;
 }
+<div class="cta-row">
+  <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
+  <a href="https://www.buymeacoffee.com/TONLIEN" target="_blank" class="btn-secondary">☕ Offrir un café à NovaSuite</a>
+</div>
