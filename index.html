@@ -131,5 +131,15 @@ document.addEventListener('click', function(e){
   }
 });
 </script>
+  <button id="nova-toggle" aria-expanded="false" class="nova-fab">💬 Nova</button>
+
+<div id="nova-chat" hidden>
+  <div class="nova-head">Nova • Assistant local</div>
+  <div id="nova-log" class="nova-log"></div>
+  <form id="nova-form" class="nova-input">
+    <input id="nova-input" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+    <button id="nova-send" type="submit">Envoyer</button>
+  </form>
+</div>
 </body>
 </html>
