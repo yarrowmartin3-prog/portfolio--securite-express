@@ -128,3 +128,26 @@ html {
 .logo { height:32px; width:auto; display:block; }
 .brand-text { color:#fff; font-weight:800; }
 }
+/* --- Nova Chat --- */
+.nova-fab{
+  position:fixed; right:16px; bottom:16px; z-index:9998;
+  padding:10px 14px; border-radius:999px; border:1px solid #1e2a39;
+  background:#0bdff4; color:#00131b; font-weight:700; cursor:pointer;
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+}
+#nova-chat{
+  position:fixed; right:16px; bottom:72px; width:340px; max-width:92vw;
+  background:#0b0f14; border:1px solid #1e2a39; border-radius:12px;
+  box-shadow:0 10px 40px rgba(0,0,0,.45); z-index:9999; overflow:hidden;
+}
+.nova-head{ padding:10px 12px; background:#111827; border-bottom:1px solid #1e2a39; font-weight:700; color:#e5f6ff}
+.nova-log{ height:280px; overflow:auto; padding:12px; color:#cfe9f5 }
+.nova-input{ display:flex; gap:8px; padding:10px; background:#0b0f14; border-top:1px solid #1e2a39 }
+.nova-input input{ flex:1; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0e1520; color:#e6f3fb }
+.nova-input button{ padding:10px 12px; border-radius:8px; border:1px solid #1e2a39; background:#0bdff4; color:#00131b; font-weight:700; cursor:pointer }
+
+@media (max-width:600px){
+  #nova-chat{ left:8px; right:8px; width:auto; bottom:84px; }
+}
+
+/* (option debug) .brand{outline:1px solid red} */
