@@ -6,13 +6,18 @@
   --brand: #58e0ff;
   --radius: 16px;
 }
+
+/* Base */
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
+html { scroll-behavior: smooth; }
 body {
   font: 16px/1.5 system-ui, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
   color: var(--text);
   background: linear-gradient(180deg, #0b0f13, #0c1016 60%, #0b0f13);
 }
+
+/* Header / Brand */
 .site-header {
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
@@ -20,15 +25,22 @@ body {
   background: rgba(12,16,22,.7); backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
+header .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
 .logo { width: 36px; height: 36px; border-radius: 50%; object-fit: contain; }
+.brand-text { color:#e5e7eb; font-weight:800; }
+
+/* Nav */
 .nav a { color: var(--muted); text-decoration: none; margin-left: 14px; }
 .nav a:hover { color: var(--text); }
+
+/* Hero */
 .hero {
   position: relative; overflow: hidden;
   min-height: 220px;
   border-radius: var(--radius);
-  background: #0e141b url("/assets/banner-novasuite.jpg") center/cover no-repeat;
+  /* IMPORTANT: chemin relatif (pas de slash initial) */
+  background: #0e141b url("assets/banner-novasuite.jpg") center/cover no-repeat;
   border: 1px solid rgba(255,255,255,.08);
   box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
@@ -39,6 +51,8 @@ body {
 .hero-inner { position: relative; z-index: 1; padding: 28px 24px; }
 .hero h1 { margin: 0 0 8px; font-size: 2rem; text-shadow: 0 2px 16px rgba(0,0,0,.45); }
 .hero p { margin: 0; color: #d3e6f7; }
+
+/* Layout */
 main { max-width: 920px; margin: 0 auto; padding: 32px 20px; }
 .content {
   margin-top: 28px; padding: 20px; border-radius: var(--radius);
@@ -48,38 +62,62 @@ main { max-width: 920px; margin: 0 auto; padding: 32px 20px; }
   text-align: center; padding: 40px 16px; color: var(--muted);
   border-top: 1px solid rgba(255,255,255,.06); margin-top: 40px;
 }
-#chat-toggle {
-  position: fixed; right: 16px; bottom: 16px; z-index: 60;
-  padding: 12px 16px; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: linear-gradient(180deg,#18222c,#121a22);
-  color: var(--text); cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+
+/* Cards, badges, utilities (compat) */
+.card { background:#0d1320; border:1px solid #1e293b; border-radius:16px; padding:18px; margin:14px 0; }
+.badge { display:inline-block; padding:3px 8px; background:#111827; border:1px solid #1f2937; border-radius:999px; font-size:12px; opacity:.85; }
+a.btn { display:inline-block; padding:10px 14px; background:#1f2937; border:1px solid #334155; border-radius:10px; color:#e5e7eb; text-decoration:none; }
+
+/* CTA row + boutons primaires */
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.btn-primary,.btn-secondary{
+  display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700
 }
-#chat-panel {
-  position: fixed; right: 16px; bottom: 80px; z-index: 55;
-  width: min(420px, 92vw); height: min(70vh, 560px);
-  background: #0e141a; border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px; overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0,0,0,.5);
-}
-#chat-panel iframe { width: 100%; height: 100%; border: 0; }
+.btn-primary{background:#1e90ff;color:#fff}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-secondary{background:#f2f4f7;color:#0b0f13;border:1px solid #dbe2ea}
+.btn-secondary:hover{background:#e9eef4}
+
+/* Section Audit */
+.audit-section{background:#0a0f14;padding:40px 20px;margin-top:40px;border-radius:16px;color:#fff}
+.audit-section h2{color:#1ec6ff;margin-bottom:10px}
+.audit-form{display:flex;flex-direction:column;gap:12px;max-width:420px}
+.audit-form input{padding:10px;border:1px solid #334155;border-radius:8px;background:#0e1520;color:#e6f3fb}
+.audit-form button{align-self:flex-start}
+
+/* Chat “autres services” (si jamais présents) */
 main, header, footer { position: relative; z-index: 1; }
 .crisp-client, #tidio-chat, .intercom-lightweight-app,
 iframe[src*="tawk"], iframe[src*="crisp"] { z-index: 54 !important; }
+
+/* --- Nova Chat (unique & au-dessus) --- */
+.nova-fab{
+  position:fixed; right:16px; bottom:16px; z-index:2147483647;
+  padding:10px 14px; border-radius:999px; border:1px solid #1e2a39;
+  background:#0bdff4; color:#00131b; font-weight:800; cursor:pointer;
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+}
+#nova-box{
+  position:fixed; right:16px; bottom:72px; width:340px; max-width:92vw;
+  background:#0b0f14; border:1px solid #1e2a39; border-radius:12px;
+  box-shadow:0 10px 40px rgba(0,0,0,.45); z-index:2147483647; overflow:hidden;
+}
+.nova-head{ padding:10px 12px; background:#111827; border-bottom:1px solid #1e2a39; font-weight:700; color:#e5f6ff}
+.nova-log{ height:280px; overflow:auto; padding:12px; color:#cfe9f5 }
+.nova-bar{ display:flex; gap:8px; padding:10px; background:#0b0f14; border-top:1px solid #1e2a39 }
+.nova-bar input{ flex:1; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0e1520; color:#e6f3fb }
+.nova-bar button{ padding:10px 12px; border-radius:8px; border:1px solid #1e2a39; background:#0bdff4; color:#00131b; font-weight:800; cursor:pointer }
+
+/* Masquer anciens blocs legacy s'il en reste dans le HTML */
+#nova-chat, .old-nova, [data-nova="old"], .nova-legacy, .chatbox, .nova { display:none !important; }
+
+/* Mobile */
 @media (max-width: 600px){
   .nav{display:none}
   .hero{min-height:180px}
   .hero h1{font-size:1.6rem}
-}
-/* HOTFIX Nova – garder un seul chat & au-dessus de la page */
-#nova-fab{position:fixed;right:16px;bottom:16px;z-index:2147483647}
-#nova-box{position:fixed;right:16px;bottom:72px;z-index:2147483647}
-
-/* masquer tout ancien chat ou bouton hérité */
-#nova-chat, .old-nova, [data-nova="old"], .nova-legacy, .chatbox, .nova { 
-  display:none !important; 
+  #nova-box{ left:8px; right:8px; width:auto; bottom:84px; }
 }
 
-/* éviter tout effet de contexte qui mettrait le chat “en dessous” */
+/* Contexte (éviter que des transforms parent créent un nouveau stacking context) */
 header, main, .container { transform:none !important; filter:none !important; }
