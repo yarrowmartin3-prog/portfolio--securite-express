@@ -108,5 +108,15 @@
 
   <script src="./guard.js?v=7" defer></script>
   <script src="./script.js?v=7" defer></script>
+  <script>
+document.addEventListener('click', function(e){
+  const link = e.target.closest('a[href="#audit"]');
+  if (link) {
+    e.preventDefault();
+    const sec = document.getElementById('audit');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
+</script>
 </body>
 </html>
