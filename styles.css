@@ -123,3 +123,9 @@ header, main, footer { position: relative; z-index: 50; } /* ton contenu au-dess
 html {
   scroll-behavior: smooth;
 }
+.logo {
+  height: 32px;
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
