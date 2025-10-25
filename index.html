@@ -1,51 +1,30 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<a class="brand" href="/">
-  <img src="assets/logo-novasuite.png?t=1" alt="NovaSuite" class="logo">
-  <span class="brand-text">NovaSuite</span>
-</a>
-<!-- NovaSuite Pro Head Setup -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NovaSuite — Sécurité Express et automatisation IA pour sites modernes.">
-<meta name="theme-color" content="#1e90ff">
-<meta property="og:title" content="NovaSuite — Sécurité Express">
-<meta property="og:description" content="Protégez et optimisez vos projets web avec la suite Nova IA.">
-<meta property="og:image" content="/assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta name="robots" content="index, follow">
-
-  <div class="cta-row">
-  <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
-  <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" class="btn-secondary">☕ Offrir un café à NovaSuite</a>
-</div>
-
-<!-- Favicon (racine) -->
-<link rel="icon" href="favicon.ico?v=4">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=4">
-<meta name="theme-color" content="#0e19ff">
-
-<title>NovaSuite | Sécurité Express</title>
+  <!-- Meta de base -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NovaSuite · CyberSécurité Express</title>
-  <meta name="description" content="Audit rapide, mini-sites IA, intégration Nova locale ou GPT fallback." />
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" />
-  <link rel="stylesheet" href="assets/style.css?v=4">
+  <meta name="description" content="NovaSuite — Sécurité Express et automatisation IA pour sites modernes. Audit rapide, mini-sites IA, intégration Nova locale ou GPT fallback." />
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NovaSuite — Sécurité Express">
+  <meta property="og:description" content="Protégez et optimisez vos projets web avec la suite Nova IA.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#0e19ff">
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico?v=4">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=4">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/style.css?v=5">
   <style>
     :root { color-scheme: dark; }
     body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0f14; color:#e5e7eb; }
-    <header>
-  <div class="nav">
-    <a class="brand" href="/">
-      <img src="assets/logo-novasuite.png?v=2" alt="NovaSuite" class="logo">
-      <span class="brand-text">NovaSuite</span>
-    </a>
-  </div>
-</header>
-    <img src="/assets/logo-novasuite.png?v=2" alt="NovaSuite" class="logo" style="width:36px;height:36px;border-radius:50%;object-fit:contain;">
     .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
     h1 { font-size: clamp(22px, 3vw, 34px); margin:0 0 8px; }
     p.lead { opacity:.9; margin: 4px 0 0; }
@@ -55,17 +34,53 @@
     a.btn { display:inline-block; padding:10px 14px; background:#1f2937; border:1px solid #334155; border-radius:10px; color:#e5e7eb; text-decoration:none; }
     footer { border-top:1px solid #1f2937; padding:20px 0; opacity:.8; }
     code { background:#0b1220; padding:2px 6px; border-radius:6px; border:1px solid #1e293b; }
+    /* header brand */
+    header .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .logo { height:32px; width:auto; display:block; border-radius:6px; }
+    .brand-text { color:#e5e7eb; font-weight:800; }
+    /* CTA row (si pas déjà dans ton CSS) */
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn-primary,.btn-secondary{
+      display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700
+    }
+    .btn-primary{background:#1e90ff;color:#fff}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-secondary{background:#f2f4f7;color:#0b0f13;border:1px solid #dbe2ea}
+    .btn-secondary:hover{background:#e9eef4}
+    /* audit section (si besoin) */
+    .audit-section{background:#0a0f14;padding:40px 20px;margin-top:40px;border-radius:16px;color:#fff}
+    .audit-section h2{color:#1ec6ff;margin-bottom:10px}
+    .audit-form{display:flex;flex-direction:column;gap:12px;max-width:420px}
+    .audit-form input{padding:10px;border:1px solid #334155;border-radius:8px;background:#0e1520;color:#e6f3fb}
+    .audit-form button{align-self:flex-start}
+    /* smooth scroll */
+    html{scroll-behavior:smooth}
   </style>
 </head>
+
 <body>
+  <!-- HEADER -->
   <header>
     <div class="wrap">
-      <div class="badge">NovaSuite</div>
+      <div class="nav">
+        <a class="brand" href="/">
+          <img src="assets/logo-novasuite.png?v=3" alt="NovaSuite" class="logo">
+          <span class="brand-text">NovaSuite</span>
+        </a>
+
+        <div class="cta-row">
+          <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
+          <a href="https://www.buymeacoffee.com/yarrowmartin9" target="_blank" rel="noopener noreferrer" class="btn-secondary">☕ Offrir un café à NovaSuite</a>
+        </div>
+      </div>
+      <div class="badge">Version v1 stable</div>
       <h1>CyberSécurité Express — IA locale prête, GPT en secours</h1>
-      <p class="lead">Mini-sites IA, audit sécurité, intégration de Nova (LM Studio/Ollama). Version v1 stable.</p>
+      <p class="lead">Mini-sites IA, audit sécurité, intégration de Nova (LM Studio/Ollama).</p>
     </div>
   </header>
 
+  <!-- MAIN -->
   <main class="wrap">
     <section class="card">
       <h2>Démo instantanée</h2>
@@ -76,99 +91,93 @@
       <h2>Statut</h2>
       <ul>
         <li>Appels LM Studio (port 1234) : <strong>prêt</strong> (lancer le Local Server)</li>
-        <li>Fallback GPT : <strong>désactivé par défaut</strong> (clé à ajouter côté client si voulu)</li>
-        <li>CI GitHub (lint rapide) : <strong>activée</strong></li>
+        <li>Fallback GPT : <strong>désactivé par défaut</strong></li>
+        <li>CI GitHub KeepAlive : <strong>activée</strong></li>
       </ul>
-      <p>Astuce : modifiez <code>FLAGS</code> dans <code>script.js</code> pour activer/désactiver Nova locale ou GPT fallback.</p>
     </section>
 
-<section id="audit" class="audit-section">
-  <h2>Audit IA Express 🔍</h2>
-  <p>Obtenez un rapport clair sur la sécurité et la performance de votre site, généré par notre IA NovaSuite.</p>
+    <!-- AUDIT -->
+    <section id="audit" class="audit-section">
+      <h2>Audit IA Express 🔍</h2>
+      <p>Obtenez un rapport clair sur la sécurité et la performance de votre site, généré par notre IA NovaSuite.</p>
 
-  <a href="mailto:contact@novasuite.ca?subject=Demande%20d'audit%20IA%20Express&body=Bonjour%20NovaSuite,%0AJe%20souhaite%20obtenir%20un%20audit%20IA%20pour%20le%20site%20suivant%20:%0A" 
-     class="btn-primary">
-    ✉️ Demander un audit IA Express
-  </a>
-  <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form">
-  <label for="website">Votre site web :</label>
-  <input type="url" id="website" name="website" placeholder="https://votresite.ca" required>
+      <!-- Bouton mailto simple -->
+      <a href="mailto:contact@novasuite.ca?subject=Demande%20d%27audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20obtenir%20un%20audit%20IA%20pour%20le%20site%20suivant%20:%0Ahttps://"
+         class="btn-primary">✉️ Demander un audit IA Express</a>
 
-  <label for="email">Votre courriel :</label>
-  <input type="email" id="email" name="_replyto" placeholder="votremail@example.com" required>
+      <!-- Formulaire Formspree -->
+      <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" style="margin-top:14px">
+        <label for="website">Votre site web :</label>
+        <input type="url" id="website" name="website" placeholder="https://votresite.ca" required>
 
-  <input type="hidden" name="_subject" value="Demande d'audit IA Express">
-  <button type="submit" class="btn-primary">Envoyer ma demande</button>
-<input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
-<input type="hidden" name="_subject" value="Demande d'audit IA Express">
-</form>
+        <label for="email">Votre courriel :</label>
+        <input type="email" id="email" name="_replyto" placeholder="votremail@example.com" required>
 
-  </p>
-</section>
+        <input type="hidden" name="_subject" value="Demande d'audit IA Express">
+        <input type="hidden" name="source" value="novasuite.ca">
+        <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
+
+        <button type="submit" class="btn-primary">Envoyer ma demande</button>
+      </form>
+    </section>
   </main>
 
-  <!-- Chatbox Nova -->
-  <div id="nova-chat" style="position:fixed;right:16px;bottom:16px;width:340px;max-width:92vw;background:#0b0f14;border:1px solid #1e293b;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-family:system-ui,Segoe UI,Arial;color:#e5e7eb;overflow:hidden">
-    <div style="padding:10px 12px;background:#111827;border-bottom:1px solid #1f2937;font-weight:600">Nova · Assistant local</div>
-    <div id="nova-log" style="height:280px;overflow:auto;padding:12px"></div>
-    <form id="nova-form" style="display:flex;gap:8px;padding:10px;background:#0b0f14;border-top:1px solid #1f2937">
-      <input id="nova-input" placeholder="Parlez à Nova" style="flex:1;padding:10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e5e7eb" />
-      <button id="nova-send" style="padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#1f2937;color:#e5e7eb">Envoyer</button>
-    </form>
-  </div>
+  <!-- FOOTER -->
+  <footer class="wrap">
+    <p>© NovaSuite — Sécurité Express • <a href="https://www.buymeacoffee.com/yarrowmartin9" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a></p>
+  </footer>
 
+  <!-- Scripts utiles -->
   <script src="./guard.js?v=7" defer></script>
   <script src="./script.js?v=7" defer></script>
   <script>
-document.addEventListener('click', function(e){
-  const link = e.target.closest('a[href="#audit"]');
-  if (link) {
-    e.preventDefault();
-    const sec = document.getElementById('audit');
-    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-});
-</script>
-  <button id="nova-toggle" aria-expanded="false" class="nova-fab">💬 Nova</button>
+    // scroll doux vers la section audit si on clique le CTA du header
+    document.addEventListener('click', function(e){
+      const link = e.target.closest('a[href="#audit"]');
+      if (link) {
+        e.preventDefault();
+        const sec = document.getElementById('audit');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  </script>
 
-<div id="nova-chat" hidden>
-  <div class="nova-head">Nova • Assistant local</div>
-  <div id="nova-log" class="nova-log"></div>
-  <form id="nova-form" class="nova-input">
-    <input id="nova-input" name="q" placeholder="Parlez à Nova" autocomplete="off" />
-    <button id="nova-send" type="submit">Envoyer</button>
-  </form>
-</div>
+  <!-- NOVA CHAT (unique) -->
+  <button id="nova-fab" aria-expanded="false" class="nova-fab">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
   <script>
-  const fab = document.getElementById('nova-toggle');
-  const box = document.getElementById('nova-chat');
-  const form = document.getElementById('nova-form');
-  const log = document.getElementById('nova-log');
-  const input= document.getElementById('nova-input');
+    // Chat minimal
+    const fab = document.getElementById('nova-fab');
+    const box = document.getElementById('nova-box');
+    const form = document.getElementById('nova-form');
+    const log = document.getElementById('nova-log');
+    const field= document.getElementById('nova-field');
 
-  function toggleChat(){
-    const open = box.hasAttribute('hidden');
-    if(open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-    else{ box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
-  }
-  fab.addEventListener('click', toggleChat);
+    function toggleChat(){
+      const willOpen = box.hasAttribute('hidden');
+      if(willOpen){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else{ box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
+    }
+    fab.addEventListener('click', toggleChat);
 
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const text = (input.value || '').trim();
-    if(!text) return;
-    const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
-    input.value = '';
-    // TODO: brancher Nova locale ou OpenAI plus tard.
-    const bot = document.createElement('div'); bot.textContent = "Nova: (module non connecté pour l’instant)";
-    log.appendChild(bot);
-    log.scrollTop = log.scrollHeight;
-  });
-</script>
-  <!-- NOVA CHAT START (reset unique) -->
-<button id="nova2-fab" aria-expanded="false" class="nova2-fab">💬 Nova</button>
-
-<div id="nova2-box" hidden>
-  <div class="nova2-head">
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const text = (field.value || '').trim();
+      if(!text) return;
+      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      field.value = '';
+      const bot = document.createElement('div'); bot.textContent = "Nova: (module non connecté pour l’instant)";
+      log.appendChild(bot);
+      log.scrollTop = log.scrollHeight;
+    });
+  </script>
 </body>
 </html>
