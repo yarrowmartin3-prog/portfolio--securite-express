@@ -123,9 +123,8 @@ header, main, footer { position: relative; z-index: 50; } /* ton contenu au-dess
 html {
   scroll-behavior: smooth;
 }
-.logo {
-  height: 32px;
-  width: auto;
-  margin-right: 8px;
-  vertical-align: middle;
+.nav, header .nav { display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+.logo { height:32px; width:auto; display:block; }
+.brand-text { color:#fff; font-weight:800; }
 }
