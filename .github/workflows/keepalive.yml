@@ -1,0 +1,21 @@
+name: KeepAlive
+on:
+  schedule:
+    - cron: "0 8 */14 * *"
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Touch keepalive log and commit
+        run: |
+          mkdir -p .github
+          echo "keepalive $(date -u)" >> .github/keepalive.log
+          git config --global user.name "NovaBot"
+          git config --global user.email "contact@novasuite.ca"
+          git add .github/keepalive.log
+          git commit -m "KeepAlive: $(date -u)" || echo "No changes to commit"
+          git push
