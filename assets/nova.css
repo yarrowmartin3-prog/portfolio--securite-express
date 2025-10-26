@@ -121,3 +121,35 @@ input[type="url"],input[type="email"]{
   margin: 6px auto 0;
   line-height: 1.7;
 }
+/* --- HERO contraste + glow CTA --- */
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+  pointer-events:none;
+}
+.hero .btn-primary,
+.hero .btn-secondary{
+  position: relative; z-index: 1;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 18px rgba(0, 225, 255, 0.45);
+}
+.hero .btn-primary:hover,
+.hero .btn-secondary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(0, 255, 255, 0.6);
+}
+
+/* Sous-titre sous le H1 plus lisible */
+.lead{ max-width:720px; margin:6px auto 0; line-height:1.7; }
+
+/* Bouton mailto harmonisé */
+.card a[href^="mailto:"],
+.card a[href^="mailto:"]:visited{
+  display:inline-block; padding:12px 22px; border-radius:12px; font-weight:600;
+  background:rgba(255,255,255,.06); color:#ffc107;
+  border:1px solid rgba(255,255,255,.12); box-shadow:0 0 10px rgba(255,193,7,.25);
+  transition:all .25s ease;
+}
+.card a[href^="mailto:"]:hover{
+  background:rgba(255,255,255,.1); color:#ffe58f; transform:translateY(-2px);
+}
