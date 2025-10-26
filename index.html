@@ -22,23 +22,44 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/nova.css?v=23">
-    const field = document.getElementById('nova-field');
+  <!-- IMPORTANT : aucune autre <style> ou texte parasite ici -->
+      <p>
+        <a class="btn-secondary"
+           href="mailto:contact@novasuite.ca?subject=Demande%20d%27audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AVoici%20mon%20site%20:%20https://votresite.ca%0AMon%20courriel%20:%20votre@email.tld">
+          ✉️ Demander par email
+        </a>
+      </p>
 
-    fab.addEventListener('click', () => {
-      const open = box.hasAttribute('hidden');
-      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
-    });
+      <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" novalidate>
+        <label for="website">Votre site web</label>
+        <input id="website" name="website" type="url" placeholder="https://votresite.ca" required>
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = (field.value || '').trim();
-      if (!text) return;
-      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
-      field.value = '';
-      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
-      log.scrollTop = log.scrollHeight;
-    });
-  </script>
+        <label for="email">Votre courriel</label>
+        <input id="email" name="_replyto" type="email" placeholder="vous@example.com" required>
+
+        <input type="hidden" name="_subject" value="Demande d'audit IA Express">
+        <input type="hidden" name="source" value="novasuite.ca">
+        <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
+
+        <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
+      </form>
+
+      <p><a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-secondary">☕ Offrir un café à NovaSuite</a></p>
+    </section>
+  </main>
+
+  <!-- Chat Nova -->
+  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <!-- JS externe, pour éviter tout affichage en clair -->
+  <script src="assets/nova.js?v=24" defer></script>
 </body>
 </html>
