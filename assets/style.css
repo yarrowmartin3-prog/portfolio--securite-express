@@ -143,19 +143,22 @@ header, main, .container { transform:none !important; filter:none !important; }
 .cta-row {
   display: flex;
   justify-content: center;
-  padding: 12px 16px;
-  position: relative;
-  z-index: 100;
+  padding: 16px;
+  background: transparent;
 }
 
 .btn-secondary {
   background: linear-gradient(90deg, #1e90ff, #3bb4ff);
-  color: #fff;
+  color: white;
   padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  pointer-events: auto;
-  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
