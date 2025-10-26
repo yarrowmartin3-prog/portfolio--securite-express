@@ -153,3 +153,45 @@ input[type="url"],input[type="email"]{
 .card a[href^="mailto:"]:hover{
   background:rgba(255,255,255,.1); color:#ffe58f; transform:translateY(-2px);
 }
+/* === HERO FIX + STYLE FINAL === */
+.hero{
+  position:relative;
+  background:
+    linear-gradient(180deg, rgba(8,12,18,.25), rgba(8,12,18,.65)),
+    url("assets/banner-novasuite.jpg") center/cover no-repeat;
+  min-height:260px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 34px rgba(0,0,0,.35);
+}
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(60% 50% at 50% 40%, rgba(0,255,255,.18), transparent 60%);
+}
+.hero .btn-primary, .hero .btn-secondary{
+  position:relative;
+  z-index:1;
+  box-shadow:0 0 22px rgba(0,255,255,.45);
+  backdrop-filter:blur(6px);
+}
+.hero .btn-primary:hover, .hero .btn-secondary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 28px rgba(0,255,255,.65);
+}
+header h1{ color:#86f0ff; }
+.lead{ max-width:720px; margin:6px auto 0; line-height:1.7; }
+
+/* Bouton email harmonisé */
+.card a[href^="mailto:"],
+.card a[href^="mailto:"]:visited{
+  display:inline-block; padding:12px 22px; border-radius:12px;
+  font-weight:600; background:rgba(255,255,255,.06); color:#ffc107;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 10px rgba(255,193,7,.25);
+  transition:all .25s ease;
+}
+.card a[href^="mailto:"]:hover{
+  background:rgba(255,255,255,.1);
+  color:#ffe58f;
+  transform:translateY(-2px);
+}
