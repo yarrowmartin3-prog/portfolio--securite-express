@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <!-- Meta de base -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NovaSuite · CyberSécurité Express</title>
-  <meta name="description" content="NovaSuite — Sécurité Express et automatisation IA pour sites modernes. Audit rapide, mini-sites IA, intégration Nova locale ou GPT fallback." />
+  <meta name="description" content="Audit de sécurité express, mini-sites IA, intégration Nova locale (LM Studio/Ollama) ou GPT fallback." />
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
@@ -16,140 +15,84 @@
   <meta name="theme-color" content="#0e19ff">
 
   <!-- Favicons -->
-  <link rel="icon" href="favicon.ico?v=4">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=4">
+  <link rel="icon" href="favicon.ico?v=5">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=5">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=5">
 
-  <!-- Styles -->
-<!-- CSS unique -->
-<link rel="stylesheet" href="assets/style.css?v=9">
-  <style>
-    :root { color-scheme: dark; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0f14; color:#e5e7eb; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
-    h1 { font-size: clamp(22px, 3vw, 34px); margin:0 0 8px; }
-    p.lead { opacity:.9; margin: 4px 0 0; }
-    main { padding: 28px 0 120px; }
-    .card { background:#0d1320; border:1px solid #1e293b; border-radius:16px; padding:18px; margin:14px 0; }
-    .badge { display:inline-block; padding:3px 8px; background:#111827; border:1px solid #1f2937; border-radius:999px; font-size:12px; opacity:.85; }
-    a.btn { display:inline-block; padding:10px 14px; background:#1f2937; border:1px solid #334155; border-radius:10px; color:#e5e7eb; text-decoration:none; }
-    footer { border-top:1px solid #1f2937; padding:20px 0; opacity:.8; }
-    code { background:#0b1220; padding:2px 6px; border-radius:6px; border:1px solid #1e293b; }
-    /* header brand */
-    header .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
-    .brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
-    .logo { height:32px; width:auto; display:block; border-radius:6px; }
-    .brand-text { color:#e5e7eb; font-weight:800; }
-    /* CTA row (si pas déjà dans ton CSS) */
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    .btn-primary,.btn-secondary{
-      display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700
-    }
-    .btn-primary{background:#1e90ff;color:#fff}
-    .btn-primary:hover{filter:brightness(1.05)}
-    .btn-secondary{background:#f2f4f7;color:#0b0f13;border:1px solid #dbe2ea}
-    .btn-secondary:hover{background:#e9eef4}
-    /* audit section (si besoin) */
-    .audit-section{background:#0a0f14;padding:40px 20px;margin-top:40px;border-radius:16px;color:#fff}
-    .audit-section h2{color:#1ec6ff;margin-bottom:10px}
-    .audit-form{display:flex;flex-direction:column;gap:12px;max-width:420px}
-    .audit-form input{padding:10px;border:1px solid #334155;border-radius:8px;background:#0e1520;color:#e6f3fb}
-    .audit-form button{align-self:flex-start}
-    /* smooth scroll */
-    html{scroll-behavior:smooth}
-  </style>
+  <!-- CSS unique -->
+  <link rel="stylesheet" href="assets/style.css?v=11">
 </head>
-
 <body>
   <!-- HEADER -->
   <header>
     <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="/">
-          <img src="assets/logo-novasuite.png?v=3" alt="NovaSuite" class="logo">
-          <span class="brand-text">NovaSuite</span>
-        </a>
-      </div>
-      
+      <a class="brand" href="/">
+        <img src="assets/logo-novasuite.png?v=3" alt="NovaSuite" class="logo">
+        <span class="brand-text">NovaSuite</span>
+      </a>
+
       <div class="badge">Version v1 stable</div>
       <h1>CyberSécurité Express — IA locale prête, GPT en secours</h1>
-      <p class="lead">Mini-sites IA, audit sécurité, intégration de Nova (LM Studio/Ollama).</p>
+      <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
+
+      <div class="cta-row">
+        <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
+        <a href="https://www.buymeacoffee.com/yarrowmart9" class="btn-secondary" target="_blank" rel="noopener noreferrer nofollow">☕ Offrir un café à NovaSuite</a>
+      </div>
     </div>
   </header>
-          <div class="cta-row">
-          <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
-          <a
-  href="https://www.buymeacoffee.com/yarrowmart9"
-  class="btn-secondary"
-  target="_blank"
-  rel="noopener noreferrer nofollow"
->☕ Offrir un café à NovaSuite</a>
-        </div>
 
   <!-- MAIN -->
   <main class="wrap">
     <section class="card">
       <h2>Démo instantanée</h2>
-      <p>Parlez avec <strong>Nova (locale)</strong>. Si Nova locale est éteinte, un message clair s'affichera. Le basculement <em>fallback</em> vers GPT peut être activé plus tard.</p>
+      <p>Parlez avec <strong>Nova (locale)</strong>. Si Nova locale est éteinte, un message clair s’affichera. Le basculement <em>fallback</em> vers GPT peut être activé plus tard.</p>
     </section>
 
     <section class="card">
       <h2>Statut</h2>
       <ul>
-        <li>Appels LM Studio (port 1234) : <strong>prêt</strong> (lancer le Local Server)</li>
+        <li>LM Studio (port 1234) : <strong>prêt</strong> (lancer le Local Server)</li>
         <li>Fallback GPT : <strong>désactivé par défaut</strong></li>
         <li>CI GitHub KeepAlive : <strong>activée</strong></li>
       </ul>
     </section>
 
     <!-- AUDIT -->
-    <section id="audit" class="audit-section">
+    <section id="audit" class="card">
       <h2>Audit IA Express 🔍</h2>
       <p>Obtenez un rapport clair sur la sécurité et la performance de votre site, généré par notre IA NovaSuite.</p>
 
-<!-- Bouton mailto simple -->
-<a href="mailto:contact@novasuite.ca?subject=Demande%20d'audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20recevoir%20un%20audit%20rapide%20de%20mon%20site.%0AVoici%20mes%20infos%20:%0A"
-   class="btn-primary">
-   ✉️ Demander un audit IA Express (email)
-</a>
+      <!-- Bouton mailto -->
+      <a href="mailto:contact@novasuite.ca?subject=Demande%20d'audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20recevoir%20un%20audit%20rapide%20de%20mon%20site.%0AVoici%20mes%20infos%20:%0A"
+         class="btn-primary">✉️ Demander un audit (email)</a>
 
-<!-- Formulaire Formspree -->
-<form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" style="margin-top: 14px;">
-  <label for="website">Votre site web :</label>
-  <input type="url" id="website" name="website" placeholder="https://votresite.ca" required>
+      <!-- Formspree -->
+      <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" style="margin-top:14px">
+        <label for="website">Votre site web :</label>
+        <input type="url" id="website" name="website" placeholder="https://votresite.ca" required>
 
-  <label for="email">Votre courriel :</label>
-  <input type="email" id="email" name="_replyto" placeholder="vous@example.com" required>
+        <label for="email">Votre courriel :</label>
+        <input type="email" id="email" name="_replyto" placeholder="vous@example.com" required>
 
-  <input type="hidden" name="_subject" value="Demande d'audit IA Express">
-  <input type="hidden" name="source" value="novasuite.ca">
-  <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
+        <input type="hidden" name="_subject" value="Demande d'audit IA Express">
+        <input type="hidden" name="source" value="novasuite.ca">
+        <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
 
-  <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
-</form>
+        <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
+      </form>
 
-<!-- Bouton Buy Me a Coffee -->
-<a href="https://www.buymeacoffee.com/yarrowmart9"
-   class="btn-secondary"
-   target="_blank"
-   rel="noopener noreferrer nofollow">
-   ☕ Offrir un café à NovaSuite
-</a>
-</div>
-    
+      <a href="https://www.buymeacoffee.com/yarrowmart9" class="btn-secondary" target="_blank" rel="noopener noreferrer nofollow">☕ Offrir un café à NovaSuite</a>
+    </section>
   </main>
-  <!-- Scripts utiles -->
-  <script src="./guard.js?v=7" defer></script>
-  <script src="./script.js?v=7" defer></script>
+
+  <!-- Smooth scroll vers #audit -->
   <script>
-    // scroll doux vers la section audit si on clique le CTA du header
-    document.addEventListener('click', function(e){
+    document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href="#audit"]');
-      if (link) {
-        e.preventDefault();
-        const sec = document.getElementById('audit');
-        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById('audit')?.scrollIntoView({behavior:'smooth', block:'start'});
     });
   </script>
 
@@ -172,21 +115,19 @@
     const log = document.getElementById('nova-log');
     const field= document.getElementById('nova-field');
 
-    function toggleChat(){
-      const willOpen = box.hasAttribute('hidden');
-      if(willOpen){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else{ box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
-    }
-    fab.addEventListener('click', toggleChat);
+    fab.addEventListener('click', () => {
+      const open = box.hasAttribute('hidden');
+      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+    });
 
-    form.addEventListener('submit', (e)=>{
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const text = (field.value || '').trim();
-      if(!text) return;
+      const text = (field.value||'').trim();
+      if (!text) return;
       const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
       field.value = '';
-      const bot = document.createElement('div'); bot.textContent = "Nova: (module non connecté pour l’instant)";
-      log.appendChild(bot);
+      const bot = document.createElement('div'); bot.textContent = "Nova: (module non connecté pour l’instant)"; log.appendChild(bot);
       log.scrollTop = log.scrollHeight;
     });
   </script>
