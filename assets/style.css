@@ -1,218 +1,149 @@
+/* === Thème global NovaSuite === */
 :root {
-  --bg: #0b0f13;
-  --card: #11161c;
-  --text: #e7edf3;
-  --muted: #9fb2c5;
-  --brand: #58e0ff;
-  --radius: 16px;
+  --nova-bg-start: #0d1117;
+  --nova-bg-end: #141a25;
+  --nova-accent: #00aaff;
+  --nova-accent-2: #7df9ff;
+  --nova-text: #e6edf3;
+  --nova-text-dim: #9ba7b4;
+  --nova-btn-gradient: linear-gradient(135deg, #0077ff, #00c2ff);
+  --nova-btn-hover: linear-gradient(135deg, #00c2ff, #0077ff);
 }
 
-/* Base */
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-html { scroll-behavior: smooth; }
+/* Arrière-plan global */
 body {
-  font: 16px/1.5 system-ui, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
-  color: var(--text);
-  background: linear-gradient(180deg, #0b0f13, #0c1016 60%, #0b0f13);
+  background: linear-gradient(180deg, var(--nova-bg-start), var(--nova-bg-end));
+  color: var(--nova-text);
+  font-family: "Inter", "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Header / Brand */
-.site-header {
-  position: sticky; top: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 14px 20px;
-  background: rgba(12,16,22,.7); backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-header .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
-.logo { width: 36px; height: 36px; border-radius: 50%; object-fit: contain; }
-.brand-text { color:#e5e7eb; font-weight:800; }
-
-/* Nav */
-.nav a { color: var(--muted); text-decoration: none; margin-left: 14px; }
-.nav a:hover { color: var(--text); }
-
-/* Hero */
-.hero {
-  position: relative; overflow: hidden;
-  min-height: 220px;
-  border-radius: var(--radius);
-  /* IMPORTANT: chemin relatif (pas de slash initial) */
-  background: #0e141b url("assets/banner-novasuite.jpg") center/cover no-repeat;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
-.hero::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(11,15,19,.2), rgba(11,15,19,.7));
-}
-.hero-inner { position: relative; z-index: 1; padding: 28px 24px; }
-.hero h1 { margin: 0 0 8px; font-size: 2rem; text-shadow: 0 2px 16px rgba(0,0,0,.45); }
-.hero p { margin: 0; color: #d3e6f7; }
-
-/* Layout */
-main { max-width: 920px; margin: 0 auto; padding: 32px 20px; }
-.content {
-  margin-top: 28px; padding: 20px; border-radius: var(--radius);
-  background: var(--card); border: 1px solid rgba(255,255,255,.06);
-}
-.site-footer {
-  text-align: center; padding: 40px 16px; color: var(--muted);
-  border-top: 1px solid rgba(255,255,255,.06); margin-top: 40px;
+/* En-tête et pied de page */
+header, footer {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 18px 0;
+  backdrop-filter: blur(10px);
 }
 
-/* Cards, badges, utilities (compat) */
-.card { background:#0d1320; border:1px solid #1e293b; border-radius:16px; padding:18px; margin:14px 0; }
-.badge { display:inline-block; padding:3px 8px; background:#111827; border:1px solid #1f2937; border-radius:999px; font-size:12px; opacity:.85; }
-a.btn { display:inline-block; padding:10px 14px; background:#1f2937; border:1px solid #334155; border-radius:10px; color:#e5e7eb; text-decoration:none; }
-
-/* CTA row + boutons primaires */
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-.btn-primary,.btn-secondary{
-  display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700
-}
-.btn-primary{background:#1e90ff;color:#fff}
-.btn-primary:hover{filter:brightness(1.05)}
-.btn-secondary{background:#f2f4f7;color:#0b0f13;border:1px solid #dbe2ea}
-.btn-secondary:hover{background:#e9eef4}
-
-/* Section Audit */
-.audit-section{background:#0a0f14;padding:40px 20px;margin-top:40px;border-radius:16px;color:#fff}
-.audit-section h2{color:#1ec6ff;margin-bottom:10px}
-.audit-form{display:flex;flex-direction:column;gap:12px;max-width:420px}
-.audit-form input{padding:10px;border:1px solid #334155;border-radius:8px;background:#0e1520;color:#e6f3fb}
-.audit-form button{align-self:flex-start}
-
-/* Chat “autres services” (si jamais présents) */
-main, header, footer { position: relative; z-index: 1; }
-.crisp-client, #tidio-chat, .intercom-lightweight-app,
-iframe[src*="tawk"], iframe[src*="crisp"] { z-index: 54 !important; }
-
-/* --- Nova Chat (unique & au-dessus) --- */
-.nova-fab{
-  position:fixed; right:16px; bottom:16px; z-index:2147483647;
-  padding:10px 14px; border-radius:999px; border:1px solid #1e2a39;
-  background:#0bdff4; color:#00131b; font-weight:800; cursor:pointer;
-  box-shadow:0 6px 24px rgba(0,0,0,.35);
-}
-#nova-box{
-  position:fixed; right:16px; bottom:72px; width:340px; max-width:92vw;
-  background:#0b0f14; border:1px solid #1e2a39; border-radius:12px;
-  box-shadow:0 10px 40px rgba(0,0,0,.45); z-index:2147483647; overflow:hidden;
-}
-.nova-head{ padding:10px 12px; background:#111827; border-bottom:1px solid #1e2a39; font-weight:700; color:#e5f6ff}
-.nova-log{ height:280px; overflow:auto; padding:12px; color:#cfe9f5 }
-.nova-bar{ display:flex; gap:8px; padding:10px; background:#0b0f14; border-top:1px solid #1e2a39 }
-.nova-bar input{ flex:1; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0e1520; color:#e6f3fb }
-.nova-bar button{ padding:10px 12px; border-radius:8px; border:1px solid #1e2a39; background:#0bdff4; color:#00131b; font-weight:800; cursor:pointer }
-
-/* Masquer anciens blocs legacy s'il en reste dans le HTML */
-#nova-chat, .old-nova, [data-nova="old"], .nova-legacy, .chatbox, .nova { display:none !important; }
-
-/* Mobile */
-@media (max-width: 600px){
-  .nav{display:none}
-  .hero{min-height:180px}
-  .hero h1{font-size:1.6rem}
-  #nova-box{ left:8px; right:8px; width:auto; bottom:84px; }
-}
-.cta-row {
-  display: flex;
-  justify-content: center;
-  padding: 12px 16px;
-  position: relative;
-  z-index: 100;
+header h1 {
+  color: var(--nova-accent-2);
+  font-size: 1.9em;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
-.btn-secondary {
-  background: linear-gradient(90deg, #1e90ff, #3bb4ff);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
+/* Liens généraux */
+a {
+  color: var(--nova-accent);
   text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  pointer-events: auto;
-  cursor: pointer;
-}
-/* Contexte (éviter que des transforms parent créent un nouveau stacking context) */
-header, main, .container { transform:none !important; filter:none !important; }
-
-.cta-row {
-  display: flex;
-  justify-content: center;
-  padding: 16px;
-  background: transparent;
+  transition: all 0.2s ease;
 }
 
-.btn-secondary {
-  background: linear-gradient(90deg, #1e90ff, #3bb4ff);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+a:hover {
+  color: var(--nova-accent-2);
+  text-shadow: 0 0 8px rgba(0, 194, 255, 0.5);
 }
 
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-/* === Boutons NovaSuite – Section Audit & Café === */
+/* Boutons */
 .btn-primary,
 .btn-secondary {
   display: inline-block;
-  padding: 12px 20px;
-  border-radius: 10px;
+  padding: 12px 22px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
   text-align: center;
   margin: 10px 6px;
+  cursor: pointer;
 }
 
+/* Bouton principal (bleu lumineux) */
 .btn-primary {
-  background: linear-gradient(135deg, #1e90ff, #0077ff);
-  color: #fff;
+  background: var(--nova-btn-gradient);
+  color: white;
   border: none;
-  box-shadow: 0 0 10px rgba(30, 144, 255, 0.4);
+  box-shadow: 0 0 12px rgba(0, 150, 255, 0.4);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #0077ff, #1e90ff);
+  background: var(--nova-btn-hover);
+  box-shadow: 0 0 20px rgba(0, 194, 255, 0.6);
   transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
 }
 
+/* Bouton secondaire (contraste doré sur fond sombre) */
 .btn-secondary {
-  background: #0b0f14;
+  background: rgba(255, 255, 255, 0.05);
   color: #ffc107;
-  border: 1px solid #2d3640;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 6px rgba(255, 193, 7, 0.25);
 }
 
 .btn-secondary:hover {
-  background: #111821;
+  background: rgba(255, 255, 255, 0.1);
   color: #ffe58f;
   transform: translateY(-2px);
 }
 
-/* Responsive centrage et alignement */
+/* Section formulaire */
 .audit-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.05);
   max-width: 480px;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .audit-form input,
 .audit-form button {
   width: 100%;
   box-sizing: border-box;
+  font-size: 1em;
+}
+
+input[type="url"],
+input[type="email"] {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--nova-text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--nova-accent);
+  box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+}
+
+/* Texte et titrage */
+h2, h3 {
+  color: var(--nova-accent);
+}
+
+p {
+  color: var(--nova-text-dim);
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .audit-form {
+    padding: 16px;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    margin: 8px 0;
+  }
 }
