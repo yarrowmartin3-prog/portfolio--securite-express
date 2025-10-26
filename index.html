@@ -8,6 +8,52 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <!-- 1 SEULE feuille CSS -->
   <link rel="stylesheet" href="assets/nova.css?v=7">
+  <style id="hotfix-nova">
+/* === PROBE VISUELLE (preuve que ce style est bien chargé) === */
+html::after{
+  content:"DEBUG v9"; position:fixed; right:8px; top:8px; z-index:999999;
+  background:#ff2aa1; color:#000; font:700 12px/1 system-ui; padding:6px 8px; border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+/* HERO : si l’image est introuvable, on force un fond & on augmente le contraste */
+.hero{
+  position:relative !important;
+  background:
+    linear-gradient(180deg, rgba(8,12,18,.25), rgba(8,12,18,.65)) ,
+    url("assets/banner-novasuite.jpg") center/cover no-repeat !important;
+  min-height:260px !important; border-radius:18px !important; 
+  border:1px solid rgba(255,255,255,.08) !important; 
+  box-shadow:0 12px 34px rgba(0,0,0,.35) !important;
+}
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(60% 50% at 50% 40%, rgba(0,255,255,.18), transparent 60%) !important;
+}
+.hero .btn-primary, .hero .btn-secondary{
+  position:relative !important; z-index:1 !important;
+  box-shadow:0 0 22px rgba(0,255,255,.45) !important; backdrop-filter:blur(6px) !important;
+}
+.hero .btn-primary:hover, .hero .btn-secondary:hover{
+  transform:translateY(-2px) !important; box-shadow:0 0 28px rgba(0,255,255,.65) !important;
+}
+
+/* Titre & sous-titre légèrement plus lisibles */
+header h1{ color:#86f0ff !important; }
+.lead{ max-width:720px !important; margin:6px auto 0 !important; line-height:1.7 !important; }
+
+/* Mailto harmonisé (style secondaire jaune/gris) */
+.card a[href^="mailto:"],
+.card a[href^="mailto:"]:visited{
+  display:inline-block !important; padding:12px 22px !important; border-radius:12px !important;
+  font-weight:600 !important; background:rgba(255,255,255,.06) !important; color:#ffc107 !important;
+  border:1px solid rgba(255,255,255,.12) !important; box-shadow:0 0 10px rgba(255,193,7,.25) !important;
+  transition:all .25s ease !important;
+}
+.card a[href^="mailto:"]:hover{
+  background:rgba(255,255,255,.1) !important; color:#ffe58f !important; transform:translateY(-2px) !important;
+}
+</style>
 </head>
 <body>
   <!-- Header -->
