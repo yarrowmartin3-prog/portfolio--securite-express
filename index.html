@@ -5,36 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>NovaSuite – Audit IA Express & Sécurité Web</title>
-  <meta name="description" content="Audit IA express, cybersécurité locale et intégration Nova (LM Studio/Ollama).">
-  <meta name="robots" content="index,follow">
+  <meta name="description" content="Audit IA express, cybersécurité locale et intégration Nova (LM Studio/Ollama). NovaSuite, la solution IA prête à déployer.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="NovaSuite – Audit IA Express & Sécurité Web">
-  <meta property="og:description" content="Cybersécurité et IA locale prêtes à déployer.">
+  <meta property="og:description" content="Découvrez NovaSuite : audit IA express, sécurité web et intégration locale Nova.">
   <meta property="og:image" content="https://novasuite.ca/assets/banner-novasuite.jpg">
   <meta property="og:url" content="https://novasuite.ca/">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NovaSuite – Audit IA Express & Sécurité Web">
+  <meta name="twitter:description" content="Cybersécurité et IA locale prêtes à déployer.">
+  <meta name="twitter:image" content="https://novasuite.ca/assets/banner-novasuite.jpg">
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/nova.css?v=100">
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="wrap">
-      <a class="brand" href="/">
-        <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
-        <span class="brand-text">NovaSuite</span>
-      </a>
-      <div class="badge">Version v1 stable</div>
-      <h1>CyberSécurité Express — IA locale prête, GPT en secours</h1>
-      <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
-    </div>
+
+  <!-- Filet de sécurité minimal : garde un fond sombre si la CSS externe plante -->
+  <style>
+    :root{--bg-start:#0f1420;--bg-end:#1a2230;--text:#e6edf3}
+    html,body{margin:0}
+    body{background:linear-gradient(180deg,var(--bg-start),var(--bg-end));color:var(--text);font-family:Inter,Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+  </style>
+
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="assets/nova.css?v=25">
   <script>
-    // Smooth scroll vers #audit
+    // Scroll doux vers #audit
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href="#audit"]');
       if (!link) return;
       e.preventDefault();
-      document.getElementById('audit')?.scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
     });
 
     // Chat minimal
@@ -42,12 +45,12 @@
     const box = document.getElementById('nova-box');
     const form = document.getElementById('nova-form');
     const log = document.getElementById('nova-log');
-    const field= document.getElementById('nova-field');
+    const field = document.getElementById('nova-field');
 
     fab.addEventListener('click', () => {
-      const closed = box.hasAttribute('hidden');
-      if (closed) { box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+      const isClosed = box.hasAttribute('hidden');
+      if (isClosed) { box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
     });
 
     form.addEventListener('submit', (e) => {
