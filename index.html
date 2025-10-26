@@ -32,36 +32,51 @@
   <!-- Feuille de style principale -->
   <link rel="stylesheet" href="assets/nova.css?v=25">
   <script>
-    // Scroll doux vers #audit
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#audit"]');
-      if (!link) return;
-      e.preventDefault();
-      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
-    });
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Chat minimal
-    const fab = document.getElementById('nova-fab');
-    const box = document.getElementById('nova-box');
-    const form = document.getElementById('nova-form');
-    const log = document.getElementById('nova-log');
-    const field = document.getElementById('nova-field');
+  // Scroll doux vers #audit
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href="#audit"]');
+    if (!link) return;
+    e.preventDefault();
+    document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+  });
 
+  // Chat minimal (corrigé)
+  const fab = document.getElementById('nova-fab');
+  const box = document.getElementById('nova-box');
+  const form = document.getElementById('nova-form');
+  const log = document.getElementById('nova-log');
+  const field = document.getElementById('nova-field');
+
+  if (fab && box && form && log && field) {
     fab.addEventListener('click', () => {
       const isClosed = box.hasAttribute('hidden');
-      if (isClosed) { box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
+      if (isClosed) { 
+        box.removeAttribute('hidden'); 
+        fab.setAttribute('aria-expanded','true'); 
+      } else { 
+        box.setAttribute('hidden',''); 
+        fab.setAttribute('aria-expanded','false'); 
+      }
     });
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const text = (field.value || '').trim();
       if (!text) return;
-      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      const me = document.createElement('div'); 
+      me.textContent = "Vous: " + text; 
+      log.appendChild(me);
       field.value = '';
-      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+      const bot = document.createElement('div'); 
+      bot.textContent = "Nova: (module local non connecté pour l’instant)";
+      log.appendChild(bot);
       log.scrollTop = log.scrollHeight;
     });
-  </script>
+  }
+
+});
+</script>
 </body>
 </html>
