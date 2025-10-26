@@ -29,7 +29,7 @@ h1{color:var(--accent2)}
   display:inline-block;padding:12px 22px;border-radius:12px;text-decoration:none;
   font-weight:600;transition:.25s;text-align:center;cursor:pointer
 }
-.btn-primary{background:var(--btn);color:#fff}
+.btn-primary{background:var(--btn);color:#00b7ff}
 .btn-primary:hover{background:var(--btnH)}
 .btn-secondary{background:rgba(255,255,255,.06);color:#ffc107;border:1px solid rgba(255,255,255,.12)}
 .btn-secondary:hover{background:rgba(255,255,255,.1);color:#ffe58f}
