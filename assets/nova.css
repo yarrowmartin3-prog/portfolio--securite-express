@@ -54,3 +54,25 @@ input[type="url"],input[type="email"]{
 #nova-box{position:fixed;right:16px;bottom:76px;width:min(420px,92vw);height:min(70vh,560px);
   background:#0f1420;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;
   box-shadow:0 12px 40px rgba(0,0,0,.5)}
+
+/* === Ajustement boutons HERO & CTA === */
+.hero-cta a, .cta-row a {
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.35);
+  transition: all 0.25s ease-in-out;
+}
+
+.hero-cta a:hover, .cta-row a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.55);
+}
+/* === Lisibilité section cartes === */
+.card p {
+  padding: 0 8px;
+  line-height: 1.7;
+}
+/* === Animation du logo Nova === */
+.logo:hover {
+  transform: scale(1.05) rotate(2deg);
+  transition: transform 0.3s ease;
+}
