@@ -1,149 +1,71 @@
-/* === Thème global NovaSuite === */
-:root {
-  --nova-bg-start: #0d1117;
-  --nova-bg-end: #141a25;
-  --nova-accent: #00aaff;
-  --nova-accent-2: #7df9ff;
-  --nova-text: #e6edf3;
-  --nova-text-dim: #9ba7b4;
-  --nova-btn-gradient: linear-gradient(135deg, #0077ff, #00c2ff);
-  --nova-btn-hover: linear-gradient(135deg, #00c2ff, #0077ff);
+/* === Thème global NovaSuite (clair-sombre doux) === */
+:root{
+  --nova-bg-start:#0f1420;
+  --nova-bg-end:#1a2230;
+  --nova-accent:#07a4ff;
+  --nova-accent-2:#86f0ff;
+  --nova-text:#e6edf3;
+  --nova-text-dim:#9fb0c2;
+  --btn-grad:linear-gradient(135deg,#0c8bff,#00c4ff);
+  --btn-grad-hover:linear-gradient(135deg,#00c4ff,#0c8bff);
 }
 
-/* Arrière-plan global */
-body {
-  background: linear-gradient(180deg, var(--nova-bg-start), var(--nova-bg-end));
-  color: var(--nova-text);
-  font-family: "Inter", "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  overflow-x: hidden;
+html,body{margin:0;padding:0}
+body{
+  background:linear-gradient(180deg,var(--nova-bg-start),var(--nova-bg-end));
+  color:var(--nova-text);
+  font-family:Inter,Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
 }
 
-/* En-tête et pied de page */
-header, footer {
-  background: rgba(255, 255, 255, 0.02);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  padding: 18px 0;
-  backdrop-filter: blur(10px);
-}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:18px;margin:14px 0}
+header{background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;backdrop-filter:blur(10px)}
+header h1{color:var(--nova-accent-2);margin:6px 0 0;font-size:1.9em}
+.lead{color:var(--nova-text-dim)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--nova-text)}
+.logo{width:36px;height:36px;border-radius:50%;object-fit:contain}
+.badge{display:inline-block;margin-top:6px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85em;color:var(--nova-text-dim)}
 
-header h1 {
-  color: var(--nova-accent-2);
-  font-size: 1.9em;
-  letter-spacing: 1px;
-  margin: 0;
-}
-
-/* Liens généraux */
-a {
-  color: var(--nova-accent);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-a:hover {
-  color: var(--nova-accent-2);
-  text-shadow: 0 0 8px rgba(0, 194, 255, 0.5);
-}
+.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 
 /* Boutons */
-.btn-primary,
-.btn-secondary {
-  display: inline-block;
-  padding: 12px 22px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.25s ease-in-out;
-  text-align: center;
-  margin: 10px 6px;
-  cursor: pointer;
+.btn-primary,.btn-secondary{
+  display:inline-block;padding:12px 22px;border-radius:12px;text-decoration:none;
+  font-weight:600;transition:all .25s ease;text-align:center;margin:10px 6px;cursor:pointer
 }
+.btn-primary{background:var(--btn-grad);color:#fff;border:none;box-shadow:0 0 12px rgba(12,155,255,.35)}
+.btn-primary:hover{background:var(--btn-grad-hover);box-shadow:0 0 18px rgba(0,196,255,.55);transform:translateY(-2px)}
+.btn-secondary{background:rgba(255,255,255,.06);color:#ffc107;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 6px rgba(255,193,7,.25)}
+.btn-secondary:hover{background:rgba(255,255,255,.1);color:#ffe58f;transform:translateY(-2px)}
 
-/* Bouton principal (bleu lumineux) */
-.btn-primary {
-  background: var(--nova-btn-gradient);
-  color: white;
-  border: none;
-  box-shadow: 0 0 12px rgba(0, 150, 255, 0.4);
-}
+.audit-form{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.02);
+  padding:20px;border-radius:15px;box-shadow:0 0 20px rgba(0,150,255,.05);max-width:480px;margin:30px auto}
+.audit-form input,.audit-form button{width:100%;box-sizing:border-box;font-size:1em}
+input[type="url"],input[type="email"]{
+  background:rgba(255,255,255,.08);color:var(--nova-text);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:10px}
+input:focus{outline:none;border-color:var(--nova-accent);box-shadow:0 0 6px rgba(7,164,255,.5)}
+h2,h3{color:var(--nova-accent)}
 
-.btn-primary:hover {
-  background: var(--nova-btn-hover);
-  box-shadow: 0 0 20px rgba(0, 194, 255, 0.6);
-  transform: translateY(-2px);
-}
+/* Chat Nova */
+#nova-fab{position:fixed;right:16px;bottom:16px;z-index:2147483647}
+#nova-box{position:fixed;right:16px;bottom:76px;width:min(420px,92vw);height:min(70vh,560px);
+  background:#0f1420;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:2147483647}
+.nova-head{padding:10px 12px;background:#0c111b;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
+.nova-log{height:calc(100% - 100px);overflow:auto;padding:12px}
+.nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420}
+#nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3}
+#nova-send{padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#162335;color:#e6edf3}
 
-/* Bouton secondaire (contraste doré sur fond sombre) */
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffc107;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 6px rgba(255, 193, 7, 0.25);
-}
+/* Masquer d’anciens widgets/boutons éventuels */
+.old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn{display:none !important}
 
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffe58f;
-  transform: translateY(-2px);
-}
-
-/* Section formulaire */
-.audit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.02);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 150, 255, 0.05);
-  max-width: 480px;
-  margin: 30px auto;
-}
-
-.audit-form input,
-.audit-form button {
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 1em;
-}
-
-input[type="url"],
-input[type="email"] {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--nova-text);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 10px;
-}
-
-input:focus {
-  outline: none;
-  border-color: var(--nova-accent);
-  box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
-}
-
-/* Texte et titrage */
-h2, h3 {
-  color: var(--nova-accent);
-}
-
-p {
-  color: var(--nova-text-dim);
-}
-
-/* Responsive mobile */
-@media (max-width: 768px) {
-  .audit-form {
-    padding: 16px;
-  }
-
-  .btn-primary, .btn-secondary {
-    width: 100%;
-    margin: 8px 0;
-  }
+/* Responsive */
+@media (max-width:768px){
+  .btn-primary,.btn-secondary{width:100%;margin:8px 0}
+  header h1{font-size:1.6em}
 }
