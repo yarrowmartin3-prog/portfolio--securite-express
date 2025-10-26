@@ -69,13 +69,6 @@ h2,h3{color:var(--nova-accent)}
   .btn-primary,.btn-secondary{width:100%;margin:8px 0}
   header h1{font-size:1.6em}
 }
-/* === FORCE BACKGROUND LIGHTER (override) === */
-html, body {
-  background: linear-gradient(180deg, #162a46, #2e496e) !important;
-}
-header {
-  background: rgba(255,255,255,0.06) !important;
-}
 /* === Fond clair NovaSuite (override final) === */
 html, body {
   background: linear-gradient(180deg, #162a46, #2e496e) !important;
