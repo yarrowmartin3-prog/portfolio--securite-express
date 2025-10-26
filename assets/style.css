@@ -118,6 +118,24 @@ iframe[src*="tawk"], iframe[src*="crisp"] { z-index: 54 !important; }
   .hero h1{font-size:1.6rem}
   #nova-box{ left:8px; right:8px; width:auto; bottom:84px; }
 }
+.cta-row {
+  display: flex;
+  justify-content: center;
+  padding: 12px 16px;
+  position: relative;
+  z-index: 100;
+}
 
+.btn-secondary {
+  background: linear-gradient(90deg, #1e90ff, #3bb4ff);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  pointer-events: auto;
+  cursor: pointer;
+}
 /* Contexte (éviter que des transforms parent créent un nouveau stacking context) */
 header, main, .container { transform:none !important; filter:none !important; }
