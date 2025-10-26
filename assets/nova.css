@@ -86,6 +86,3 @@ input[type="email"]{background-image:url('data:image/svg+xml;utf8,<svg xmlns="ht
 .nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420}
 #nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3}
 #nova-send{padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#162335;color:#e6edf3}
-
-/* Nettoyage anciens widgets */
-.old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn,#nova-chat{display:none!important}
