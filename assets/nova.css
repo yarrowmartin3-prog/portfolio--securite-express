@@ -74,19 +74,19 @@ input:focus{outline:none;border-color:var(--nova-accent);box-shadow:0 0 6px rgba
 h2,h3{color:var(--nova-accent)}
 
 /* --- HERO (bannière) --- */
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <h1>CyberSécurité Express</h1>
-    <p>Audit IA, mini-sites, intégration Nova (LM Studio/Ollama).</p>
-    <div class="hero-cta">
-      <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
-      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-secondary">
-        ☕ Offrir un café à NovaSuite
-      </a>
-    </div>
-  </div>
-</div>
+.hero{
+  position:relative;overflow:hidden;min-height:260px;border-radius:18px;
+  margin:18px auto;max-width:1100px;
+  background:
+    linear-gradient(180deg, rgba(8,12,18,.2), rgba(8,12,18,.7)),
+    url("assets/banner-novasuite.jpg?t=2") center/cover no-repeat; /* chemin relatif */
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 34px rgba(0,0,0,.35);
+}
+.hero-inner{padding:28px 22px}
+.hero h1{margin:0 0 8px;font-size:clamp(22px,3.2vw,36px);color:var(--nova-accent-2)}
+.hero p{margin:0 0 14px;color:var(--nova-text-dim)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 
 /* Chat Nova (unique) */
 #nova-fab{position:fixed;right:16px;bottom:16px;z-index:2147483647}
@@ -101,7 +101,7 @@ h2,h3{color:var(--nova-accent)}
 #nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3}
 #nova-send{padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#162335;color:#e6edf3}
 
-/* Masquer tout ancien widget/bouton */
+/* Masquer d’anciens widgets/boutons éventuels */
 .old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn,#nova-chat{display:none !important}
 
 /* Responsive */
