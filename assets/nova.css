@@ -1,22 +1,20 @@
-/* NovaSuite – Reset minimal fiable */
+/* NovaSuite • theme v25 — propre & stable */
 :root{
   --bg-start:#0f1420; --bg-end:#1a2230;
   --accent:#07a4ff; --accent2:#86f0ff;
   --text:#e6edf3; --text-dim:#9fb0c2;
-  --cta-start:#0c8bff; --cta-end:#00c4ff;
+  --primary:#00b7ff;
 }
 
+/* Layout de base */
 html,body{margin:0;padding:0}
 body{
-  min-height:100vh; /* évite la page "3 pouces" */
   background:linear-gradient(180deg,var(--bg-start),var(--bg-end));
   color:var(--text);
   font-family:Inter,Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
   line-height:1.6; overflow-x:hidden;
 }
-section,header,main,.card,.hero{display:block}
 .wrap{max-width:980px;margin:0 auto;padding:0 16px}
-
 .card{
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.08);
@@ -32,85 +30,15 @@ header{
 .brand{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
 .logo{width:36px;height:36px;border-radius:50%;object-fit:contain}
 .badge{
-  display:inline-block;padding:4px 10px;border-radius:999px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  font-size:.85em;color:var(--text-dim);margin:6px 0;
+  display:inline-block; padding:4px 10px; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+  font-size:.85em; color:var(--text-dim); margin:6px 0;
 }
-h1{color:var(--accent2); margin:8px 0 0}
+h1{color:var(--accent2)}
 .lead{color:var(--text-dim); max-width:720px; margin:6px auto 0}
 
-/* HERO – image dans /assets/banner-novasuite.jpg */
-.hero{
-  position:relative; overflow:hidden;
-  min-height:260px; max-width:1100px;
-  margin:18px auto 12px; border-radius:18px;
-  background:
-    linear-gradient(180deg, rgba(8,12,18,.30), rgba(8,12,18,.78)),
-    url("banner-novasuite.jpg") center/cover no-repeat;
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 12px 34px rgba(0,0,0,.35);
-}
-.hero::before{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background: radial-gradient(60% 50% at 50% 40%, rgba(0,255,255,.18), transparent 60%);
-}
-.hero-inner{ padding:28px 22px; text-align:center }
-.hero-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
-@media (max-width:640px){
-  .hero{ min-height:220px; border-radius:14px }
-  .hero-cta a{ width:100% }
-}
-
-/* Boutons */
-.btn-primary,.btn-secondary,.btn-gold{
-  display:inline-block; padding:12px 22px; border-radius:12px;
-  text-decoration:none; font-weight:600; transition:all .25s ease;
-  text-align:center; cursor:pointer; margin:8px 6px;
-}
-.btn-primary{
-  background:linear-gradient(135deg,var(--cta-start),var(--cta-end));
-  color:#fff; border:none; box-shadow:0 8px 20px rgba(12,139,255,.35);
-}
-.btn-primary:hover{
-  background:linear-gradient(135deg,var(--cta-end),var(--cta-start));
-  transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(0,183,255,.55);
-}
-.btn-secondary{
-  background:rgba(255,255,255,.06);
-  color:#ffc107; border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 0 10px rgba(255,193,7,.25);
-}
-.btn-secondary:hover{ background:rgba(255,255,255,.1); color:#ffe58f; transform:translateY(-2px) }
-.btn-gold{
-  background:linear-gradient(135deg,#ffd24d,#ffae00);
-  color:#121823 !important; border:none;
-  box-shadow:0 8px 22px rgba(255,176,0,.35);
-}
-.btn-gold:hover{ transform:translateY(-2px); filter:brightness(1.06) }
-
-/* Formulaire */
-.audit-form{
-  display:flex; flex-direction:column; gap:10px;
-  background:rgba(255,255,255,.02);
-  padding:20px; border-radius:15px; max-width:480px; margin:30px auto;
-}
-input[type="url"], input[type="email"]{
-  background:rgba(255,255,255,.08); color:var(--text);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:8px; padding:10px;
-  width:100%; box-sizing:border-box;
-}
-input[type="url"]{
-  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" opacity="0.65" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m8-7a7 7 0 0 1 6.468 4H9.75c-.285-1.094-.68-2.02-1.154-2.73C8.277 1.64 8.13 1 8 1M4.75 5H1.532A7.001 7.001 0 0 1 8 1c-.13 0-.277.64-.596 1.27C6.93 3.48 6.535 4.406 6.25 5zM1.05 6h3.56c-.11.64-.17 1.31-.17 2s.06 1.36.17 2H1.05A6.97 6.97 0 0 1 1 8c0-.68.018-1.34.05-2m.482 5H4.75c.285 1.094.68 2.02 1.154 2.73.319.63.466 1.27.596 1.27a7 7 0 0 1-6.468-4M8 15c.13 0 .277-.64.596-1.27.474-.71.869-1.636 1.154-2.73h4.218A7 7 0 0 1 8 15m3.39-4c.11-.64.17-1.31.17-2s-.06-1.36-.17-2h3.56C14.982 6.66 15 7.32 15 8s-.018 1.34-.05 2z"/></svg>');
-  background-repeat:no-repeat; background-position:12px 50%; padding-left:40px;
-}
-input[type="email"]{
-  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" opacity="0.65" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217L8 9 0 4.217z"/><path d="M0 5.383v6.634A2 2 0 0 0 2 14h12a2 2 0 0 0 2-2V5.383l-7.555 4.72a1 1 0 0 1-1.09 0z"/></svg>');
-  background-repeat:no-repeat; background-position:12px 50%; padding-left:40px;
-}
-
-/* Chat Nova (uniquement nos nouveaux IDs) */
+/* HERO (bannière) — chemin RELATIF depuis /assets/ */
+/* Chat Nova */
 .nova-fab{ position:fixed; right:16px; bottom:16px; z-index:2147483647 }
 #nova-box{
   position:fixed; right:16px; bottom:76px; width:min(420px,92vw); height:min(70vh,560px);
@@ -123,4 +51,5 @@ input[type="email"]{
 #nova-field{ flex:1; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,.2); background:#101a28; color:#e6edf3 }
 #nova-send{ padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,.2); background:#162335; color:#e6edf3 }
 
-/* IMPORTANT : ne PAS masquer .nova (ça pourrait cacher la page) */
+/* Masquer d’anciens widgets */
+.old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn,#nova-chat{display:none !important}
