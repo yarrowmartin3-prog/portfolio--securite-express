@@ -20,15 +20,33 @@ body{
 }
 
 .wrap{max-width:980px;margin:0 auto;padding:0 16px}
-.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;padding:18px;margin:14px 0}
-header{background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;backdrop-filter:blur(10px)}
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:18px;
+  margin:14px 0;
+}
+
+/* Header */
+header{
+  background:rgba(255,255,255,.02);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding:18px 0;
+  text-align:center;
+  backdrop-filter:blur(10px);
+}
 header h1{color:var(--nova-accent-2);margin:6px 0 0;font-size:1.9em}
 .lead{color:var(--nova-text-dim)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--nova-text)}
+.brand{display:flex;align-items:center;gap:10px;justify-content:center;text-decoration:none;color:var(--nova-text)}
 .logo{width:36px;height:36px;border-radius:50%;object-fit:contain}
-.badge{display:inline-block;margin-top:6px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85em;color:var(--nova-text-dim)}
+.badge{
+  display:inline-block;margin-top:6px;padding:4px 10px;border-radius:999px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  font-size:.85em;color:var(--nova-text-dim)
+}
 
+/* CTA */
 .cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 
 /* Boutons */
@@ -41,58 +59,55 @@ header h1{color:var(--nova-accent-2);margin:6px 0 0;font-size:1.9em}
 .btn-secondary{background:rgba(255,255,255,.06);color:#ffc107;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 6px rgba(255,193,7,.25)}
 .btn-secondary:hover{background:rgba(255,255,255,.1);color:#ffe58f;transform:translateY(-2px)}
 
-.audit-form{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.02);
-  padding:20px;border-radius:15px;box-shadow:0 0 20px rgba(0,150,255,.05);max-width:480px;margin:30px auto}
+/* Formulaire Audit */
+.audit-form{
+  display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.02);
+  padding:20px;border-radius:15px;box-shadow:0 0 20px rgba(0,150,255,.05);
+  max-width:480px;margin:30px auto
+}
 .audit-form input,.audit-form button{width:100%;box-sizing:border-box;font-size:1em}
 input[type="url"],input[type="email"]{
-  background:rgba(255,255,255,.08);color:var(--nova-text);border:1px solid rgba(255,255,255,.12);
-  border-radius:8px;padding:10px}
+  background:rgba(255,255,255,.08);color:var(--nova-text);
+  border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px
+}
 input:focus{outline:none;border-color:var(--nova-accent);box-shadow:0 0 6px rgba(7,164,255,.5)}
 h2,h3{color:var(--nova-accent)}
 
-/* Chat Nova */
+/* --- HERO (bannière) --- */
+.hero{
+  position:relative;overflow:hidden;min-height:260px;border-radius:18px;
+  margin:18px auto;max-width:1100px;
+  background:
+    linear-gradient(180deg, rgba(8,12,18,.2), rgba(8,12,18,.7)),
+    url("assets/banner-novasuite.jpg?t=2") center/cover no-repeat; /* RELATIF */
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 34px rgba(0,0,0,.35);
+}
+.hero-inner{padding:28px 22px}
+.hero h1{margin:0 0 8px;font-size:clamp(22px,3.2vw,36px);color:var(--nova-accent-2)}
+.hero p{margin:0 0 14px;color:var(--nova-text-dim)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Chat Nova (unique) */
 #nova-fab{position:fixed;right:16px;bottom:16px;z-index:2147483647}
-#nova-box{position:fixed;right:16px;bottom:76px;width:min(420px,92vw);height:min(70vh,560px);
+#nova-box{
+  position:fixed;right:16px;bottom:76px;width:min(420px,92vw);height:min(70vh,560px);
   background:#0f1420;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;
-  box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:2147483647}
+  box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:2147483647
+}
 .nova-head{padding:10px 12px;background:#0c111b;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
 .nova-log{height:calc(100% - 100px);overflow:auto;padding:12px}
 .nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420}
 #nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3}
 #nova-send{padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#162335;color:#e6edf3}
 
-/* Masquer d’anciens widgets/boutons éventuels */
-.old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn{display:none !important}
+/* Masquer tout ancien widget/bouton */
+.old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn,#nova-chat{display:none !important}
 
 /* Responsive */
 @media (max-width:768px){
   .btn-primary,.btn-secondary{width:100%;margin:8px 0}
   header h1{font-size:1.6em}
-}
-/* === Fond clair NovaSuite (override final) === */
-html, body {
-  background: linear-gradient(180deg, #162a46, #2e496e) !important;
-  color: #e6edf3;
-}
-/* --- HERO (bannière) --- */
-.hero{
-  position: relative;
-  overflow: hidden;
-  min-height: 260px;
-  border-radius: 18px;
-  margin: 18px auto;
-  max-width: 1100px;
-  background:
-    linear-gradient(180deg, rgba(8,12,18,.2), rgba(8,12,18,.7)),
-    url("/assets/banner-novasuite.png?t=2") center/cover no-repeat;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 12px 34px rgba(0,0,0,.35);
-}
-.hero-inner{ padding: 28px 22px; }
-.hero h1{ margin: 0 0 8px; font-size: clamp(22px, 3.2vw, 36px); color: var(--nova-accent-2); }
-.hero p{ margin: 0 0 14px; color: var(--nova-text-dim); }
-.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
-@media (max-width: 640px){
-  .hero{ min-height: 200px; border-radius: 14px; }
-  .hero-cta .btn-primary, .hero-cta .btn-secondary{ width:100%; }
+  .hero{min-height:200px;border-radius:14px}
+  .hero-cta .btn-primary,.hero-cta .btn-secondary{width:100%}
 }
