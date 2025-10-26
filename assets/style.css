@@ -162,3 +162,57 @@ header, main, .container { transform:none !important; filter:none !important; }
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
+/* === Boutons NovaSuite – Section Audit & Café === */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  margin: 10px 6px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1e90ff, #0077ff);
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 10px rgba(30, 144, 255, 0.4);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0077ff, #1e90ff);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+.btn-secondary {
+  background: #0b0f14;
+  color: #ffc107;
+  border: 1px solid #2d3640;
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.25);
+}
+
+.btn-secondary:hover {
+  background: #111821;
+  color: #ffe58f;
+  transform: translateY(-2px);
+}
+
+/* Responsive centrage et alignement */
+.audit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.audit-form input,
+.audit-form button {
+  width: 100%;
+  box-sizing: border-box;
+}
