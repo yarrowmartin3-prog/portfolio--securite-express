@@ -74,3 +74,25 @@ html, body {
   background: linear-gradient(180deg, #162a46, #2e496e) !important;
   color: #e6edf3;
 }
+/* --- HERO (bannière) --- */
+.hero{
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  border-radius: 18px;
+  margin: 18px auto;
+  max-width: 1100px;
+  background:
+    linear-gradient(180deg, rgba(8,12,18,.2), rgba(8,12,18,.7)),
+    url("/assets/banner-novasuite.jpg?t=2") center/cover no-repeat;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 12px 34px rgba(0,0,0,.35);
+}
+.hero-inner{ padding: 28px 22px; }
+.hero h1{ margin: 0 0 8px; font-size: clamp(22px, 3.2vw, 36px); color: var(--nova-accent-2); }
+.hero p{ margin: 0 0 14px; color: var(--nova-text-dim); }
+.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+@media (max-width: 640px){
+  .hero{ min-height: 200px; border-radius: 14px; }
+  .hero-cta .btn-primary, .hero-cta .btn-secondary{ width:100%; }
+}
