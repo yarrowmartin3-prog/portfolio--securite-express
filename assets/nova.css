@@ -39,6 +39,23 @@ input[type="url"],input[type="email"]{
   background:rgba(255,255,255,.08);color:var(--text);
   border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px
 }
+/* Espacement sous le header */
+header{ margin-bottom: 8px; }
+
+/* Section HERO principale (bannière) */
+/* Bouton doré visible pour "Soutenir" */
+.btn-gold{
+  background: linear-gradient(135deg,#ffd24d,#ffae00);
+  color:#121823 !important;
+  border:none;
+  box-shadow:0 6px 18px rgba(255,176,0,.35);
+}
+.btn-gold:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
+}
+header{ margin-bottom: 8px; }
+
 .hero{
   position:relative;
   overflow:hidden;
