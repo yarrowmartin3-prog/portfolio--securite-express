@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NovaSuite · CyberSécurité Express</title>
+
   <meta name="description" content="Audit de sécurité express, mini-sites IA, intégration Nova locale (LM Studio/Ollama) ou GPT fallback." />
   <meta name="robots" content="index, follow">
 
@@ -20,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=5">
 
   <!-- CSS unique -->
-  <link rel="stylesheet" href="assets/nova.css?v=4">
+  <link rel="stylesheet" href="assets/nova.css?v=5">
 </head>
 <body>
   <!-- HEADER -->
@@ -34,32 +35,28 @@
       <div class="badge">Version v1 stable</div>
       <h1>CyberSécurité Express — IA locale prête, GPT en secours</h1>
       <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
-
-      <div class="cta-row">
-        <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
-        <a href="https://www.buymeacoffee.com/yarrowmart9" class="btn-secondary" target="_blank" rel="noopener noreferrer nofollow">☕ Offrir un café à NovaSuite</a>
-      </div>
+      <!-- ⚠️ PAS DE CTA ICI (on garde ceux du HERO) -->
     </div>
   </header>
-  
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <h1>CyberSécurité Express</h1>
-    <p>Audit IA, mini-sites, intégration Nova (LM Studio/Ollama).</p>
-    <div class="hero-cta">
-      <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
-      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-secondary">
-        ☕ Offrir un café à NovaSuite
-      </a>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>CyberSécurité Express</h1>
+      <p>Audit IA, mini-sites, intégration Nova (LM Studio/Ollama).</p>
+      <div class="hero-cta">
+        <a href="#audit" class="btn-primary">🚀 Demande ton audit IA express</a>
+        <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener noreferrer nofollow" class="btn-secondary">
+          ☕ Offrir un café à NovaSuite
+        </a>
+      </div>
     </div>
   </div>
-</div>
-  
+
   <!-- MAIN -->
   <main class="wrap">
     <section class="card">
-      <h2>Démo instantanée</h2>
+      <h2>Démonstration</h2>
       <p>Parlez avec <strong>Nova (locale)</strong>. Si Nova locale est éteinte, un message clair s’affichera. Le basculement <em>fallback</em> vers GPT peut être activé plus tard.</p>
     </section>
 
@@ -77,73 +74,5 @@
       <h2>Audit IA Express 🔍</h2>
       <p>Obtenez un rapport clair sur la sécurité et la performance de votre site, généré par notre IA NovaSuite.</p>
 
-      <!-- Bouton mailto -->
-      <a href="mailto:contact@novasuite.ca?subject=Demande%20d'audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20recevoir%20un%20audit%20rapide%20de%20mon%20site.%0AVoici%20mes%20infos%20:%0A"
-         class="btn-primary">✉️ Demander un audit (email)</a>
-
-      <!-- Formspree -->
-      <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" style="margin-top:14px">
-        <label for="website">Votre site web :</label>
-        <input type="url" id="website" name="website" placeholder="https://votresite.ca" required>
-
-        <label for="email">Votre courriel :</label>
-        <input type="email" id="email" name="_replyto" placeholder="vous@example.com" required>
-
-        <input type="hidden" name="_subject" value="Demande d'audit IA Express">
-        <input type="hidden" name="source" value="novasuite.ca">
-        <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
-
-        <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
-      </form>
-
-      <a href="https://www.buymeacoffee.com/yarrowmart9" class="btn-secondary" target="_blank" rel="noopener noreferrer nofollow">☕ Offrir un café à NovaSuite</a>
-    </section>
-  </main>
-
-  <!-- Smooth scroll vers #audit -->
-  <script>
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#audit"]');
-      if (!link) return;
-      e.preventDefault();
-      document.getElementById('audit')?.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  </script>
-
-  <!-- NOVA CHAT (unique) -->
-  <button id="nova-fab" aria-expanded="false" class="nova-fab">💬 Nova</button>
-  <div id="nova-box" hidden>
-    <div class="nova-head">Nova • Assistant local</div>
-    <div id="nova-log" class="nova-log"></div>
-    <form id="nova-form" class="nova-bar">
-      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
-      <button id="nova-send" type="submit">Envoyer</button>
-    </form>
-  </div>
-
-  <script>
-    // Chat minimal
-    const fab = document.getElementById('nova-fab');
-    const box = document.getElementById('nova-box');
-    const form = document.getElementById('nova-form');
-    const log = document.getElementById('nova-log');
-    const field= document.getElementById('nova-field');
-
-    fab.addEventListener('click', () => {
-      const open = box.hasAttribute('hidden');
-      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = (field.value||'').trim();
-      if (!text) return;
-      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
-      field.value = '';
-      const bot = document.createElement('div'); bot.textContent = "Nova: (module non connecté pour l’instant)"; log.appendChild(bot);
-      log.scrollTop = log.scrollHeight;
-    });
-  </script>
-</body>
-</html>
+      <!-- Bouton mailto (apostrophe encodée) -->
+      <a href="mailto:contact@novasuite.ca?subject=Demande%20d%27audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20recevoir%20un%20audit%20rapide%20de%20mon%20site.%0AVoici%20mes%20infos%20:%0A"
