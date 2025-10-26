@@ -53,3 +53,26 @@ h1{color:var(--accent2)}
 
 /* Masquer d’anciens widgets */
 .old-nova,.nova-legacy,.chatbox,.nova,#nova-toggle,.nova-left-btn,#nova-chat{display:none !important}
+/* === Ajustements visuels finaux v1-stable === */
+
+/* Aération sous la bannière */
+.hero { margin-bottom: 26px; }
+
+/* Bouton mailto doré */
+.card a[href^="mailto:"],
+.card a[href^="mailto:"]:visited {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  background: rgba(255,255,255,.06);
+  color: #ffc107;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 0 10px rgba(255,193,7,.25);
+  transition: all .25s ease;
+}
+.card a[href^="mailto:"]:hover {
+  background: rgba(255,255,255,.1);
+  color: #ffe58f;
+  transform: translateY(-2px);
+}
