@@ -4,6 +4,8 @@
   --text:#e6edf3; --text-dim:#9fb0c2;
   --btn:linear-gradient(135deg,#0c8bff,#00c4ff);
   --btnH:linear-gradient(135deg,#00c4ff,#0c8bff);
+  --primary: #00b7ff;
+}
 }
 html,body{margin:0;padding:0}
 body{
@@ -25,12 +27,21 @@ header{text-align:center;padding:18px 0;background:rgba(255,255,255,.02);
 h1{color:var(--accent2)}
 .lead{color:var(--text-dim)}
 .cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
-.btn-primary,.btn-secondary{
-  display:inline-block;padding:12px 22px;border-radius:12px;text-decoration:none;
-  font-weight:600;transition:.25s;text-align:center;cursor:pointer
+.btn-primary {
+  background: var(--primary, #00b7ff);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 183, 255, .35);
+  transition: all .25s ease;
+  font-weight: 600;
 }
-.btn-primary{background:var(--btn);color:#00b7ff}
-.btn-primary:hover{background:var(--btnH)}
+
+.btn-primary:hover {
+  background: #00c4ff;
+  box-shadow: 0 8px 25px rgba(0, 183, 255, .55);
+  transform: translateY(-2px);
+}
 .btn-secondary{background:rgba(255,255,255,.06);color:#ffc107;border:1px solid rgba(255,255,255,.12)}
 .btn-secondary:hover{background:rgba(255,255,255,.1);color:#ffe58f}
 .audit-form{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.02);
