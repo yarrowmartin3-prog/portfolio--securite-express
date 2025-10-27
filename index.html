@@ -1,1 +1,105 @@
-<!doctype html><html><head><meta charset='utf-8'><title>NovaSuite Labs</title></head><body><a href='/tarifs.html'>Nos tarifs</a></body></html>
+<!-- index.html -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>NovaSuite – Audit IA Express & Sécurité Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Audit IA express, cybersécurité locale et intégration Nova (LM Studio/Ollama). NovaSuite, la solution IA prête à déployer.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/nova.css">
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
+      <span>NovaSuite</span>
+    </a>
+    <div class="badge">Version v1 stable</div>
+    <h1>CyberSécurité Express — IA locale prête, GPT en secours</h1>
+    <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <h2>Audit IA + intégration rapide</h2>
+      <p>Diagnostic clair, recommandations concrètes, mise en place assistée.</p>
+      <div class="hero-cta">
+        <a href="#audit" class="btn-primary">Commencer</a>
+        <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">Soutenir NovaSuite</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="card">
+      <h3>Démo instantanée</h3>
+      <p>Parlez avec <strong>Nova (locale)</strong>. Si Nova est éteinte, un message s’affiche.</p>
+    </section>
+
+    <section class="card">
+      <h3>Statut</h3>
+      <ul>
+        <li>LM Studio (port 1234) : <strong>prêt</strong> (lancer le Local Server)</li>
+        <li>Fallback GPT : <strong>désactivé par défaut</strong></li>
+        <li>CI GitHub KeepAlive : <strong>activée</strong></li>
+      </ul>
+    </section>
+
+    <section id="audit" class="card">
+      <h3>Audit IA Express 🔍</h3>
+      <p>Recevez un rapport clair sur la sécurité et la performance de votre site.</p>
+      <p><a class="btn-secondary" href="mailto:contact@novasuite.ca?subject=Demande%20d'audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AVoici%20mon%20site%20:%20https://votresite.ca%0AMon%20courriel%20:%20votre@email.tld">✉️ Demander par email</a></p>
+      <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" novalidate>
+        <label for="website">Votre site web</label>
+        <input id="website" name="website" type="url" placeholder="https://votresite.ca" required>
+        <label for="email">Votre courriel</label>
+        <input id="email" name="_replyto" type="email" placeholder="vous@example.com" required>
+        <input type="hidden" name="_subject" value="Demande d'audit IA Express">
+        <input type="hidden" name="source" value="novasuite.ca">
+        <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
+        <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
+      </form>
+      <p><a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-secondary">☕ Offrir un café à NovaSuite</a></p>
+    </section>
+  </main>
+
+  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#audit"]');
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    const fab = document.getElementById('nova-fab');
+    const box = document.getElementById('nova-box');
+    const form = document.getElementById('nova-form');
+    const log = document.getElementById('nova-log');
+    const field= document.getElementById('nova-field');
+    fab.addEventListener('click', () => {
+      const open = box.hasAttribute('hidden');
+      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = (field.value||'').trim();
+      if (!text) return;
+      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      field.value = '';
+      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+      log.scrollTop = log.scrollHeight;
+    });
+  </script>
+</body>
+</html>
