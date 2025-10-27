@@ -180,3 +180,17 @@ input[type="email"]{
 .nova-log{height:calc(100% - 100px);overflow:auto;padding:12px;}
 .nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420;}
 #nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3;}
+
+/* Harmoniser le bouton "Demander par email" avec le style de soutien */
+.btn-secondary[href^="mailto:"] {
+  background: linear-gradient(135deg,#ffd24d,#ffae00);
+  color:#121823 !important;
+  border:none;
+  box-shadow:0 8px 22px rgba(255,176,0,.35);
+  transition:all .25s ease;
+}
+
+.btn-secondary[href^="mailto:"]:hover {
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+}
