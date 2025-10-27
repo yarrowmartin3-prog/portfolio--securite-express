@@ -33,12 +33,18 @@ body{
 header{
   text-align:center;
   padding:18px 0;
-  background:rgba(255,255,255,.02);
+  background:rgba(255,255,255,.02); color: #ffc107;)
   border-bottom:1px solid rgba(255,255,255,.1);
   margin-bottom:8px;
 }
 .brand{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;}
 .logo{width:36px;height:36px;border-radius:50%;object-fit:contain;}
+.logo {
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05) rotate(2deg);
+}
 .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85em;color:var(--text-dim);margin:6px 0;}
 h1{color:var(--accent2);}
 .lead{color:var(--text-dim);max-width:720px;margin:6px auto 0;line-height:1.7;}
