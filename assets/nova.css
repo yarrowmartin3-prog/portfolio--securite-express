@@ -283,3 +283,28 @@ input[type="email"]{
 .nova-bar{ display:flex; gap:8px; padding:10px; border-top:1px solid rgba(255,255,255,.12); background:#0f1420 }
 #nova-field{ flex:1; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,.2); background:#101a28; color:#e6edf3 }
 #nova-send{ padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,.2); background:#162335; color:#e6edf3 }
+
+/* ——— Tarifs : mise en avant de la carte recommandée ——— */
+.price-card.reco {
+  position: relative;
+  transform: scale(1.02);
+  box-shadow: 0 18px 50px rgba(0, 200, 255, .18);
+  border: 1px solid rgba(134, 240, 255, .25);
+}
+
+.price-card.reco::after{
+  content:"Recommandé";
+  position:absolute; top:12px; right:14px;
+  font-size:12px; font-weight:700; letter-spacing:.2px;
+  color:#05131f; background:linear-gradient(135deg,#7ee8ff,#00c4ff);
+  padding:6px 10px; border-radius:999px;
+  box-shadow:0 8px 22px rgba(0, 200, 255, .35);
+}
+
+.price-card.reco:hover{
+  transform: scale(1.03);
+}
+
+/* Centrage des boutons dans les cartes tarifs */
+.price-card { text-align:center; }
+.price-card .btn-primary { display:inline-block; width:auto; margin-top:8px; }
