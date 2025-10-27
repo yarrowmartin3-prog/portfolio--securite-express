@@ -6,10 +6,12 @@
   --accent2:#86f0ff;
   --text:#e6edf3;
   --text-dim:#9fb0c2;
-  --cta-start:#0c8bff;
-  --cta-end:#00c4ff;
-  --cta-hover-start:#00c4ff;
-  --cta-hover-end:#0c8bff;
+:root {
+  --cta-start: #0c8bff;
+  --cta-end: #00c4ff;
+  --cta-hover-start: #00c4ff;
+  --cta-hover-end: #0c8bff;
+  /* other variables… */
 }
 
 html,body{margin:0;padding:0;}
