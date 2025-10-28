@@ -469,3 +469,50 @@ select:focus {
     transform: none;
   }
 }
+/* === Ajustement final des boutons Hero (NovaSuite v2.1) === */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Bouton bleu (devis) */
+.hero-cta .btn-primary {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 260px;
+  padding: 12px 28px;
+  text-align: center;
+}
+
+/* Bouton café (jaune) */
+.hero-cta .btn-gold {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 160px;
+  padding: 10px 20px;
+  margin-top: -4px;
+  text-align: center;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .hero-cta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-cta .btn-primary {
+    max-width: 80%;
+  }
+
+  .hero-cta .btn-gold {
+    max-width: 60%;
+    margin-top: 2px;
+    transform: none;
+  }
