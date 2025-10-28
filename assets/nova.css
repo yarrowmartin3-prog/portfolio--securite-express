@@ -22,12 +22,18 @@ body{
   overflow-x:hidden;
 }
 .wrap{max-width:980px;margin:0 auto;padding:0 16px;}
+/* NOUVEAU CODE POUR .card dans assets/nova.css */
 .card{
-  background:rgba(255,255,255,.03);
+  /* Utilisation d'un fond sombre et légèrement contrasté */
+  /* J'ai pris un fond similaire à celui que vous utilisez sur la page Tarifs pour un meilleur fini */
+  background: #101620; 
+  /* Si vous préférez un dégradé, utilisez : linear-gradient(180deg, #121826, #0f1420); */
+
   border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
   padding:18px;
   margin:14px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ajoute un peu de profondeur */
 }
 
 header{
