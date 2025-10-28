@@ -194,3 +194,21 @@ input[type="email"]{
   transform:translateY(-2px);
   filter:brightness(1.06);
 }
+.card--recommended {
+  position: relative;
+  border: 1px solid rgba(12, 139, 255, 0.35);
+  box-shadow: 0 0 22px rgba(0, 183, 255, 0.35);
+}
+
+.badge-rec {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 183, 255, 0.3);
+}
