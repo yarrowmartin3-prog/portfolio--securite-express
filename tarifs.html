@@ -1,229 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Nos tarifs — NovaSuite</title>
-<style>
-  /* ===== Thème (identique à ta capture) ===== */
-  :root{
-    --bg:#0b0f14; /* fond uni du site */
-    --panel:#121826; /* cartes */
-    --panel-2:#0f1420; /* dégradé cartes */
-    --text:#e9f2ff;
-    --muted:#a2b0c6;
-    --blue:#1ea7ff; /* boutons principaux */
-    --blue-2:#1293ee;
-    --amber:#ffc233; /* bouton email */
-    --ring:0 0 0 3px rgba(30,167,255,.25);
-    --radius:22px;
-    --shadow: 0 10px 40px rgba(0,0,0,.45);
-    --maxw: 980px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(18px,3.5vw,28px)}
+  <title>NovaSuite – Tarifs (Audit IA &amp; Intégration)</title>
+  <meta name="description" content="Tarifs NovaSuite : Audit IA express, intégration Nova (LM Studio/Ollama), mini-sites IA et offre Premium clé en main.">
+  <meta name="robots" content="index, follow">
 
-  /* ===== Titre + intro ===== */
-  .title{ text-align:center; margin:10px 0 14px }
-  .title h1{ color:#66e1ea; font-size:clamp(26px,5vw,40px); margin:.2em 0 }
-  .title p{ color:var(--muted); margin:.4em auto 0; max-width:700px }
+  <!-- Open Graph -->
+  <meta property="og:title" content="NovaSuite – Tarifs">
+  <meta property="og:description" content="Choisissez la formule qui convient à vos besoins en cybersécurité et intégration IA.">
+  <meta property="og:image" content="https://novasuite.ca/assets/banner-novasuite.jpg">
+  <meta property="og:url" content="https://novasuite.ca/tarifs.html">
 
-  /* ===== Carte bannière ===== */
-  .hero-card{
-    margin:26px auto 22px; padding:22px; border-radius:var(--radius);
-    background:
-      radial-gradient(600px 200px at 20% -40%, rgba(30,167,255,.25), transparent 60%),
-      radial-gradient(600px 200px at 80% -60%, rgba(102,225,234,.18), transparent 60%),
-      linear-gradient(180deg, #192233, #0f1625 70%);
-    border:1px solid rgba(255,255,255,.06);
-    box-shadow:var(--shadow);
-    display:grid; gap:16px; place-items:center; text-align:center;
-  }
-  .hero-badge{
-    background:rgba(255,194,51,.12); color:#ffd76a; border:1px solid rgba(255,194,51,.35);
-    padding:6px 12px; border-radius:999px; font-weight:800; font-size:.9rem
-  }
-  .hero-title{ font-weight:900; font-size:clamp(18px,3.6vw,24px); color:#ffd76a }
-  .hero-sub{ color:#b6c3d8; max-width:640px }
-  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center }
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:.6ch;
-    padding:12px 16px;border-radius:14px;font-weight:800;border:1px solid rgba(255,255,255,.14);
-    background:rgba(255,255,255,.02);color:var(--text);cursor:pointer;transition:.2s
-  }
-  .btn:hover{ border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.06) }
-  .btn:focus-visible{ outline:none; box-shadow:var(--ring) }
-  .btn.blue{ background:linear-gradient(180deg,var(--blue),var(--blue-2)); color:#031425; border-color:transparent }
-  .btn.blue:hover{ filter:brightness(1.05) }
-  .btn.amber{ background:linear-gradient(180deg,#ffd76a,var(--amber)); color:#3f2a00; border-color:transparent }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NovaSuite – Tarifs">
+  <meta name="twitter:description" content="Audit IA express, intégration Nova locale et offre Premium.">
+  <meta name="twitter:image" content="https://novasuite.ca/assets/banner-novasuite.jpg">
 
-  /* ===== Grille tarifs ===== */
-  .grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px }
-  @media (max-width:940px){ .grid{ grid-template-columns:1fr } }
-  .card{
-    background:linear-gradient(180deg,var(--panel),var(--panel-2));
-    border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:22px; display:flex; flex-direction:column; gap:14px
-  }
-  .card h3{ margin:0; font-size:1.2rem }
-  .price{ font-weight:900; font-size:1.6rem }
-  .per{ color:var(--muted); font-weight:600; margin-left:6px; font-size:.95rem }
-  .list{ color:#c4d0e6; padding-left:16px; margin:0 0 6px }
-  .list li{ margin:.5em 0 }
-  .actions{ display:flex; justify-content:center; margin-top:6px }
-  .badge-rec{
-    align-self:flex-end; margin-top:-6px;
-    background:linear-gradient(180deg,#5de1ff,#1ea7ff); color:#04263c; font-weight:900;
-    padding:6px 10px; border-radius:999px; font-size:.78rem; box-shadow:var(--shadow)
-  }
-
-  /* ===== Modale Formspree ===== */
-  dialog{
-    border:none; border-radius:18px; padding:0; width:min(720px,94vw);
-    background:linear-gradient(180deg,var(--panel),var(--panel-2)); color:var(--text); box-shadow:var(--shadow)
-  }
-  dialog::backdrop{ background:rgba(2,6,23,.6) }
-  .modal-head{ padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.06); display:flex; justify-content:space-between; align-items:center }
-  .modal-body{ padding:18px; display:grid; gap:12px }
-  label{ font-size:.92rem; color:var(--muted) }
-  input,textarea{
-    width:100%; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.14);
-    background:#0b1220; color:var(--text)
-  }
-  textarea{ min-height:120px; resize:vertical }
-  .modal-actions{ display:flex; justify-content:flex-end; gap:10px; padding:0 18px 18px }
-  .footer-note{ margin-top:18px; display:flex; justify-content:center }
-  .coffee{ display:inline-flex; align-items:center; gap:.6ch; padding:12px 16px; border-radius:14px;
-           background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.12) }
-</style>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/nova.css?v=22">
 </head>
 <body>
 
-  <header class="wrap title">
-    <div style="display:flex;justify-content:center;align-items:center;gap:10px;">
-      <img src="/assets/logo-novasuite-64.png" alt="NovaSuite" width="28" height="28" style="border-radius:50%;opacity:.95">
-      <span style="color:#9bb3ca;background:#0f1726;border:1px solid rgba(255,255,255,.08);padding:4px 8px;border-radius:999px;font-size:.78rem">Version v1 stable</span>
-    </div>
+  <!-- Header -->
+  <header class="wrap">
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
+      <span>NovaSuite</span>
+    </a>
+    <div class="badge">Version v1 stable</div>
     <h1>Nos tarifs</h1>
-    <p>Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA.</p>
+    <p class="lead">Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA.</p>
+  <!-- Bannière Tarifs -->
+<section class="hero hero-tarifs">
+  <div class="hero-inner wrap">
+    <h2>Audit IA &amp; intégration — tarifs simples</h2>
+    <p class="lead">Choisissez la formule qui convient à vos besoins en cybersécurité et intégration Nova (LM Studio/Ollama).</p>
+    <div class="hero-cta">
+      <a href="#plans" class="btn-primary">Voir les formules</a>
+      <a href="mailto:contact@novasuite.ca?subject=Question%20tarifs" class="btn-secondary">✉️ Demander par email</a>
+    </div>
+  </div>
+</section>
   </header>
 
-  <!-- ===== Carte bannière ===== -->
-  <section class="wrap">
-    <div class="hero-card">
-      <div class="hero-badge">Audit IA & intégration — tarifs simples</div>
-      <div class="hero-title">Choisissez la formule la plus adaptée</div>
-      <p class="hero-sub">Cybersécurité, optimisation de performance et intégration Nova (LM Studio / Ollama).</p>
-      <div class="hero-actions">
-        <a class="btn blue" href="#formules">Voir les formules</a>
-        <a class="btn amber" href="mailto:contact@novasuite.ca?subject=Demande%20d'information%20—%20Tarifs%20NovaSuite">Demander par email</a>
-      </div>
-    </div>
-  </section>
+  <!-- Pricing grid -->
+  <main class="wrap">
+    <section class="pricing-grid">
 
-  <!-- ===== Formules ===== -->
-  <main id="formules" class="wrap">
-    <div class="grid">
-      <!-- Audit IA Express -->
-      <article class="card">
+      <!-- Audit Express -->
+      <article class="price-card">
         <h3>Audit IA Express</h3>
-        <div><span class="price">249&nbsp;$</span><span class="per">/ audit</span></div>
-        <ul class="list">
-          <li>Diagnostic sécurité & performance (rapide)</li>
+        <p class="price"><span class="amount">249&nbsp;$</span> <span class="per">/ audit</span></p>
+        <ul class="features">
+          <li>Diagnostic sécurité &amp; performance (rapide)</li>
           <li>Rapport clair, priorités d’actions</li>
           <li>Recommandations IA locale (LM Studio/Ollama)</li>
         </ul>
-        <div class="actions">
-          <button class="btn blue" data-open-devis data-plan="Audit IA Express">Demander un audit</button>
-        </div>
+        <!-- Lien mis à jour vers ton formulaire -->
+        <a class="btn-primary" href="formulaire.html?offre=express">Demander un audit</a>
       </article>
 
-      <!-- Intégration Standard (recommandé) -->
-      <article class="card">
-        <div class="badge-rec">Recommandé</div>
+      <!-- Standard (Recommandé) -->
+      <article class="price-card price-card--recommended">
+        <div class="ribbon">Recommandé</div>
         <h3>Intégration Standard</h3>
-        <div><span class="price">499&nbsp;$</span><span class="per">/ projet</span></div>
-        <ul class="list">
+        <p class="price"><span class="amount">499&nbsp;$</span> <span class="per">/ projet</span></p>
+        <ul class="features">
           <li>Audit complet + plan d’actions</li>
           <li>Mini-site IA / Chat Nova intégré</li>
-          <li>Mise en place guidée & sécurité de base</li>
+          <li>Mise en place guidée &amp; sécurité de base</li>
         </ul>
-        <div class="actions">
-          <button class="btn blue" data-open-devis data-plan="Intégration Standard">Demander un devis</button>
-        </div>
+        <!-- Lien mis à jour vers ton formulaire -->
+        <a class="btn-primary" href="formulaire.html?offre=standard">Demander un devis</a>
       </article>
 
-      <!-- Offre Premium -->
-      <article class="card">
+      <!-- Premium -->
+      <article class="price-card">
         <h3>Offre Premium</h3>
-        <div><span class="price">999&nbsp;$</span><span class="per">/ projet</span></div>
-        <ul class="list">
-          <li>Audit avancé & durcissement</li>
-          <li>Intégration IA complète & personnalisation</li>
-          <li>Support prioritaire & suivi</li>
+        <p class="price"><span class="amount">999&nbsp;$</span> <span class="per">/ projet</span></p>
+        <ul class="features">
+          <li>Audit avancé &amp; durcissement</li>
+          <li>Intégration IA complète &amp; personnalisation</li>
+          <li>Support prioritaire &amp; suivi</li>
         </ul>
-        <div class="actions">
-          <button class="btn blue" data-open-devis data-plan="Offre Premium">Discuter de Premium</button>
-        </div>
+        <!-- Lien mis à jour vers ton formulaire -->
+        <a class="btn-primary" href="formulaire.html?offre=premium">Discuter de Premium</a>
       </article>
-    </div>
 
-    <div class="footer-note" style="margin-top:22px">
-      <a class="coffee" href="https://www.buymeacoffee.com/novasuite" target="_blank" rel="noopener">
-        ☕ Offrir un café à NovaSuite
-      </a>
-    </div>
+    </section>
+
+    <p style="text-align:center;margin:22px 0 8px;">
+      <a class="btn-secondary" href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener">☕ Offrir un café à NovaSuite</a>
+    </p>
   </main>
 
-  <!-- ===== Modale Formspree ===== -->
-  <dialog id="devisModal" aria-label="Demande de devis">
-    <div class="modal-head">
-      <strong>Demande — <span id="planTag">Plan</span></strong>
-      <form method="dialog"><button class="btn">Fermer</button></form>
-    </div>
-    <form class="modal-body" id="devisForm" action="https://formspree.io/f/xldpgnyz" method="POST">
-      <!-- Remplace l’URL ci-dessus par ton endpoint Formspree si différent -->
-      <div>
-        <label for="plan">Plan</label>
-        <input id="plan" name="plan" value="Intégration Standard" readonly>
-      </div>
-      <div>
-        <label for="name">Ton nom</label>
-        <input id="name" name="name" required placeholder="Jean Dupont">
-      </div>
-      <div>
-        <label for="email">Ton e-mail</label>
-        <input id="email" name="email" type="email" required placeholder="toi@example.com">
-      </div>
-      <div>
-        <label for="message">Détails de ton projet</label>
-        <textarea id="message" name="message" placeholder="Décris ton besoin en quelques lignes…"></textarea>
-      </div>
-      <div class="modal-actions">
-        <button type="submit" class="btn blue">Envoyer</button>
-        <form method="dialog"><button class="btn">Annuler</button></form>
-      </div>
+  <!-- Chat Nova (persistant) -->
+  <button id="nova-fab" class="nova-fab" aria-expanded="false" aria-controls="nova-box">💬 Nova</button>
+  <div id="nova-box" hidden="">
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log" aria-live="polite"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off">
+      <button id="nova-send" type="submit">Envoyer</button>
     </form>
-  </dialog>
+  </div>
 
   <script>
-    // Ouvrir la modale avec le bon plan
-    const modal = document.getElementById('devisModal');
-    const planInput = document.getElementById('plan');
-    const planTag = document.getElementById('planTag');
-    document.querySelectorAll('[data-open-devis]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const plan = btn.getAttribute('data-plan') || 'Intégration Standard';
-        planInput.value = plan;
-        planTag.textContent = plan;
-        modal.showModal();
-      });
-    });
+    // Chat minimal – même logique que la home
+    (function(){
+      const fab = document.getElementById('nova-fab');
+      const box = document.getElementById('nova-box');
+      const form = document.getElementById('nova-form');
+      const log = document.getElementById('nova-log');
+      const field = document.getElementById('nova-field');
+
+      if (fab && box) {
+        fab.addEventListener('click', () => {
+          const closed = box.hasAttribute('hidden');
+          if (closed) { box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+          else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
+        });
+      }
+
+      if (form && log && field) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const text = (field.value || '').trim();
+          if (!text) return;
+          const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+          field.value = '';
+          const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+          log.scrollTop = log.scrollHeight;
+        });
+      }
+    })();
   </script>
+
 </body>
 </html>
