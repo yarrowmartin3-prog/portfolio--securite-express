@@ -1,18 +1,16 @@
 :root {
-  --panel:#121826;
-  --panel-2:#0f1420;
-  --bg-start: #0f1420;
-  --bg-end: #1a2230;
-  --accent: #07a4ff;
-  --accent2: #86f0ff;
-  --text: #e6edf3;
-  --text-dim: #9fb0c2;
-
-  /* CTA unified colours */
-  --cta-start: #0c8bff;
-  --cta-end: #00c4ff;
-  --cta-hover-start: #00c4ff;
-  --cta-hover-end: #0c8bff;
+  --bg: #080c10; /* Fond du site légèrement plus sombre pour renforcer le contraste */
+  --panel: #141c2c; /* Cartes légèrement plus claires pour ressortir sur le fond */
+  --panel-2: #101622; /* Dégradé des cartes légèrement éclairci */
+  --text: #e9f2ff;
+  --muted: #a2b0c6;
+  --blue: #1ea7ff; /* Boutons principaux */
+  --blue-2: #1293ee;
+  --amber: #ffc233; /* Bouton email */
+  --ring: 0 0 0 3px rgba(30, 167, 255, 0.25);
+  --radius: 22px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  --maxw: 980px;
 }
 
 html,body{margin:0;padding:0;}
