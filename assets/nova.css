@@ -1,16 +1,16 @@
 :root {
-  --bg: #080c10; /* Fond du site légèrement plus sombre pour renforcer le contraste */
-  --panel: #141c2c; /* Cartes légèrement plus claires pour ressortir sur le fond */
-  --panel-2: #101622; /* Dégradé des cartes légèrement éclairci */
-  --text: #e9f2ff;
-  --muted: #a2b0c6;
-  --blue: #1ea7ff; /* Boutons principaux */
-  --blue-2: #1293ee;
-  --amber: #ffc233; /* Bouton email */
-  --ring: 0 0 0 3px rgba(30, 167, 255, 0.25);
-  --radius: 22px;
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
-  --maxw: 980px;
+  --bg-start: #0f1420;
+  --bg-end: #1a2230;
+  --accent: #07a4ff;
+  --accent2: #86f0ff;
+  --text: #e6edf3;
+  --text-dim: #9fb0c2;
+
+  /* CTA unified colours */
+  --cta-start: #0c8bff;
+  --cta-end: #00c4ff;
+  --cta-hover-start: #00c4ff;
+  --cta-hover-end: #0c8bff;
 }
 
 html,body{margin:0;padding:0;}
@@ -22,18 +22,12 @@ body{
   overflow-x:hidden;
 }
 .wrap{max-width:980px;margin:0 auto;padding:0 16px;}
-/* NOUVEAU CODE POUR .card dans assets/nova.css */
 .card{
-  /* Utilisation d'un fond sombre et légèrement contrasté */
-  /* J'ai pris un fond similaire à celui que vous utilisez sur la page Tarifs pour un meilleur fini */
-  background: #101620; 
-  /* Si vous préférez un dégradé, utilisez : linear-gradient(180deg, #121826, #0f1420); */
-
+  background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
   padding:18px;
   margin:14px 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ajoute un peu de profondeur */
 }
 
 header{
