@@ -1,144 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nos tarifs — NovaSuite</title>
 
-  <title>NovaSuite – Tarifs (Audit IA &amp; Intégration)</title>
-  <meta name="description" content="Tarifs NovaSuite : Audit IA express, intégration Nova (LM Studio/Ollama), mini-sites IA et offre Premium clé en main.">
-  <meta name="robots" content="index, follow">
+  <!-- Ta feuille globale : garde exactement le même fond/couleurs que le reste -->
+  <link rel="stylesheet" href="/assets/nova.css">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="NovaSuite – Tarifs">
-  <meta property="og:description" content="Choisissez la formule qui convient à vos besoins en cybersécurité et intégration IA.">
-  <meta property="og:image" content="https://novasuite.ca/assets/banner-novasuite.jpg">
-  <meta property="og:url" content="https://novasuite.ca/tarifs.html">
+  <!-- Tarifs : styles MINIMAUX, pas de couleurs (tout hérite de nova.css) -->
+  <style>
+    .wrap{max-width:980px;margin:0 auto;padding:clamp(18px,3.5vw,28px)}
+    .title{text-align:center}
+    .title h1{margin:.2em 0}
+    .title p{max-width:700px;margin:.4em auto 0}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NovaSuite – Tarifs">
-  <meta name="twitter:description" content="Audit IA express, intégration Nova locale et offre Premium.">
-  <meta name="twitter:image" content="https://novasuite.ca/assets/banner-novasuite.jpg">
+    /* grille des cartes */
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    @media (max-width:940px){.grid{grid-template-columns:1fr}}
 
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/nova.css?v=22">
+    /* centrage des CTA sous chaque carte (sans toucher aux couleurs) */
+    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+
+    /* badge “Recommandé” discret ; couleurs héritées via btn/outline de ton thème */
+    .badge-rec{
+      align-self:flex-end;margin:-6px 0 0 auto;padding:6px 10px;border-radius:999px;
+      font-weight:800;font-size:.78rem;border:1px solid currentColor;opacity:.9
+    }
+
+    /* boutons : on suppose que .btn/.btn-primary existent dans nova.css
+       Si ce n'est pas le cas, décommente le petit style ci-dessous */
+    /*
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;
+         border-radius:12px;font-weight:800;border:1px solid rgba(255,255,255,.14);
+         background:rgba(255,255,255,.02);color:inherit;text-decoration:none}
+    .btn-primary{background:linear-gradient(180deg,#1ea7ff,#1293ee);color:#031425;border-color:transparent}
+    */
+  </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="wrap">
-    <a class="brand" href="/">
-      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
-      <span>NovaSuite</span>
-    </a>
-    <div class="badge">Version v1 stable</div>
+  <!-- En-tête / intro -->
+  <header class="wrap title">
     <h1>Nos tarifs</h1>
-    <p class="lead">Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA.</p>
-  <!-- Bannière Tarifs -->
-<section class="hero hero-tarifs">
-  <div class="hero-inner wrap">
-    <h2>Audit IA &amp; intégration — tarifs simples</h2>
-    <p class="lead">Choisissez la formule qui convient à vos besoins en cybersécurité et intégration Nova (LM Studio/Ollama).</p>
-    <div class="hero-cta">
-      <a href="#plans" class="btn-primary">Voir les formules</a>
-      <a href="mailto:contact@novasuite.ca?subject=Question%20tarifs" class="btn-secondary">✉️ Demander par email</a>
-    </div>
-  </div>
-</section>
+    <p>Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA.</p>
   </header>
 
-  <!-- Pricing grid -->
-  <main class="wrap">
-    <section class="pricing-grid">
+  <!-- Carte bannière (utilise .card de nova.css — donc même fond) -->
+  <section class="wrap">
+    <article class="card" style="text-align:center;display:grid;gap:12px;place-items:center">
+      <div style="font-weight:900">Audit IA & intégration — tarifs simples</div>
+      <p style="max-width:640px;margin:0">Cybersécurité, optimisation de performance et intégration Nova (LM Studio / Ollama).</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#formules">Voir les formules</a>
+        <a class="btn" href="mailto:contact@novasuite.ca?subject=Demande%20d'information%20—%20Tarifs%20NovaSuite">Demander par email</a>
+      </div>
+    </article>
+  </section>
 
-      <!-- Audit Express -->
-      <article class="price-card">
+  <!-- Cartes tarifs (les panneaux héritent 100% de .card dans nova.css) -->
+  <main id="formules" class="wrap">
+    <div class="grid">
+
+      <!-- Audit IA Express -->
+      <article class="card">
         <h3>Audit IA Express</h3>
-        <p class="price"><span class="amount">249&nbsp;$</span> <span class="per">/ audit</span></p>
-        <ul class="features">
-          <li>Diagnostic sécurité &amp; performance (rapide)</li>
+        <div><strong>249&nbsp;$</strong> <span>/ audit</span></div>
+        <ul>
+          <li>Diagnostic sécurité & performance (rapide)</li>
           <li>Rapport clair, priorités d’actions</li>
           <li>Recommandations IA locale (LM Studio/Ollama)</li>
         </ul>
-        <!-- Lien mis à jour vers ton formulaire -->
-        <a class="btn-primary" href="formulaire.html?offre=express">Demander un audit</a>
+        <div class="actions">
+          <a class="btn btn-primary" href="#" data-open data-plan="Audit IA Express">Demander un audit</a>
+        </div>
       </article>
 
-      <!-- Standard (Recommandé) -->
-      <article class="price-card price-card--recommended">
-        <div class="ribbon">Recommandé</div>
+      <!-- Intégration Standard (recommandé) -->
+      <article class="card" style="position:relative">
+        <div class="badge-rec">Recommandé</div>
         <h3>Intégration Standard</h3>
-        <p class="price"><span class="amount">499&nbsp;$</span> <span class="per">/ projet</span></p>
-        <ul class="features">
+        <div><strong>499&nbsp;$</strong> <span>/ projet</span></div>
+        <ul>
           <li>Audit complet + plan d’actions</li>
           <li>Mini-site IA / Chat Nova intégré</li>
-          <li>Mise en place guidée &amp; sécurité de base</li>
+          <li>Mise en place guidée & sécurité de base</li>
         </ul>
-        <!-- Lien mis à jour vers ton formulaire -->
-        <a class="btn-primary" href="formulaire.html?offre=standard">Demander un devis</a>
+        <div class="actions">
+          <a class="btn btn-primary" href="#" data-open data-plan="Intégration Standard">Demander un devis</a>
+        </div>
       </article>
 
-      <!-- Premium -->
-      <article class="price-card">
+      <!-- Offre Premium -->
+      <article class="card">
         <h3>Offre Premium</h3>
-        <p class="price"><span class="amount">999&nbsp;$</span> <span class="per">/ projet</span></p>
-        <ul class="features">
-          <li>Audit avancé &amp; durcissement</li>
-          <li>Intégration IA complète &amp; personnalisation</li>
-          <li>Support prioritaire &amp; suivi</li>
+        <div><strong>999&nbsp;$</strong> <span>/ projet</span></div>
+        <ul>
+          <li>Audit avancé & durcissement</li>
+          <li>Intégration IA complète & personnalisation</li>
+          <li>Support prioritaire & suivi</li>
         </ul>
-        <!-- Lien mis à jour vers ton formulaire -->
-        <a class="btn-primary" href="formulaire.html?offre=premium">Discuter de Premium</a>
+        <div class="actions">
+          <a class="btn btn-primary" href="#" data-open data-plan="Offre Premium">Discuter de Premium</a>
+        </div>
       </article>
+    </div>
 
-    </section>
-
-    <p style="text-align:center;margin:22px 0 8px;">
-      <a class="btn-secondary" href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener">☕ Offrir un café à NovaSuite</a>
-    </p>
+    <div class="actions" style="margin-top:22px">
+      <a class="btn" href="https://www.buymeacoffee.com/novasuite" target="_blank" rel="noopener">☕ Offrir un café à NovaSuite</a>
+    </div>
   </main>
 
-  <!-- Chat Nova (persistant) -->
-  <button id="nova-fab" class="nova-fab" aria-expanded="false" aria-controls="nova-box">💬 Nova</button>
-  <div id="nova-box" hidden="">
-    <div class="nova-head">Nova • Assistant local</div>
-    <div id="nova-log" class="nova-log" aria-live="polite"></div>
-    <form id="nova-form" class="nova-bar">
-      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off">
-      <button id="nova-send" type="submit">Envoyer</button>
+  <!-- Modale simple (utilise tes couleurs via .card si tu préfères; ici minimal et neutre) -->
+  <div id="overlay" hidden style="position:fixed;inset:0;background:rgba(0,0,0,.6);display:grid;place-items:center;padding:16px;z-index:50">
+    <form action="https://formspree.io/f/xldpgnyz" method="POST"
+          style="width:min(720px,94vw)" class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <strong>Demande — <span id="planTag">Plan</span></strong>
+        <button type="button" class="btn" id="closeBtn">Fermer</button>
+      </div>
+      <label>Plan
+        <input id="plan" name="plan" value="Intégration Standard" />
+      </label>
+      <label>Ton nom
+        <input name="name" required placeholder="Jean Dupont" />
+      </label>
+      <label>Ton e-mail
+        <input type="email" name="email" required placeholder="toi@example.com" />
+      </label>
+      <label>Détails de ton projet
+        <textarea name="message" placeholder="Décris ton besoin…"></textarea>
+      </label>
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <button type="button" class="btn" id="cancelBtn">Annuler</button>
+      </div>
     </form>
   </div>
 
   <script>
-    // Chat minimal – même logique que la home
-    (function(){
-      const fab = document.getElementById('nova-fab');
-      const box = document.getElementById('nova-box');
-      const form = document.getElementById('nova-form');
-      const log = document.getElementById('nova-log');
-      const field = document.getElementById('nova-field');
-
-      if (fab && box) {
-        fab.addEventListener('click', () => {
-          const closed = box.hasAttribute('hidden');
-          if (closed) { box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-          else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
-        });
-      }
-
-      if (form && log && field) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const text = (field.value || '').trim();
-          if (!text) return;
-          const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
-          field.value = '';
-          const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
-          log.scrollTop = log.scrollHeight;
-        });
-      }
-    })();
+    // Ouvre/ferme la modale sans dépendance
+    const ov = document.getElementById('overlay');
+    const planInput = document.getElementById('plan');
+    const planTag = document.getElementById('planTag');
+    document.querySelectorAll('[data-open]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const plan = a.getAttribute('data-plan') || 'Intégration Standard';
+        planInput.value = plan; planTag.textContent = plan;
+        ov.hidden = false;
+        setTimeout(()=>document.querySelector('#overlay input[name="name"]').focus(), 50);
+      });
+    });
+    document.getElementById('closeBtn').onclick = ()=> ov.hidden = true;
+    document.getElementById('cancelBtn').onclick = ()=> ov.hidden = true;
+    ov.addEventListener('click', (e)=>{ if(e.target === ov) ov.hidden = true; });
   </script>
-
 </body>
 </html>
