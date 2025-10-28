@@ -5,92 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Demander un devis — NovaSuite</title>
   <meta name="description" content="Formulaire de contact et demande de devis NovaSuite Labs.">
-  <link rel="stylesheet" href="assets/nova.css?v=22">
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/nova.css">
+
   <style>
-    .form-wrap{max-width:760px;margin:24px auto;padding:20px;background:#121a2b;border:1px solid rgba(255,255,255,.08);border-radius:16px}
-    .grid{display:grid;gap:12px}
-    label{font-weight:600}
-    input,select,textarea{width:100%;background:#0f1727;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#e7ecf6;padding:12px}
-    .two{grid-template-columns:1fr 1fr}
-    @media(max-width:720px){.two{grid-template-columns:1fr}}
-    .hint{color:#9fb0d1;font-size:.9rem}
+    /* Bannière harmonisée avec les autres pages */
+    .hero.hero-form {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      background:
+        linear-gradient(180deg, rgba(8,12,18,0.25), rgba(8,12,18,0.9)),
+        url("assets/banner-novasuite.jpg") center/cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 30px 20px;
+    }
+    .hero.hero-form h1 {
+      color: var(--accent2);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .hero.hero-form p {
+      color: var(--text-dim);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Formulaire */
+    .form-wrap {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 30px;
+      background: var(--panel);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .form-wrap h2 {
+      color: var(--accent2);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .grid.two {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media(max-width: 700px){
+      .grid.two { grid-template-columns: 1fr; }
+    }
+    label {
+      font-weight: 600;
+      color: var(--text);
+    }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 12px 14px;
+      font-size: 1rem;
+    }
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    /* Bouton principal */
+    .btn-primary {
+      display: block;
+      margin: 24px auto 10px;
+      width: fit-content;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--cta-start), var(--cta-end));
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(12, 139, 255, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,183,255,0.55);
+    }
+
+    /* Pied de page */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: var(--text-dim);
+      font-size: 0.85em;
+    }
   </style>
 </head>
+
 <body>
   <header class="wrap">
-    <a class="brand" href="/"><img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"><span>NovaSuite</span></a>
-    <div class="badge">Version v1 stable</div>
-    <h1>Demander un devis</h1>
-    <p class="lead">Nous répondons sous 24–48h pour confirmer le périmètre et, si besoin, planifier un court appel.</p>
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
+      <span>NovaSuite</span>
+    </a>
+    <div class="badge">Version v2 moderne</div>
   </header>
 
-  <main class="wrap">
-    <!-- ⚠️ Remplace l’URL Formspree par la tienne -->
-    <form class="form-wrap grid" action="https://formspree.io/f/xyzbgnoq" method="POST">
-      <!-- Offres -->
-      <div>
+  <section class="hero hero-form">
+    <h1>Demander un devis</h1>
+    <p>Nous répondons sous 24–48h pour confirmer le périmètre et, si besoin, planifier un court appel.</p>
+  </section>
+
+  <main>
+    <form class="form-wrap" action="https://formspree.io/f/xyzbgnoq" method="POST">
+      <div class="grid">
         <label for="offer">Offre souhaitée</label>
         <select id="offer" name="offre" required>
-          <option value="express">Audit IA Express (249 $)</option>
-          <option value="standard">Intégration Standard (499 $)</option>
-          <option value="premium">Offre Premium (999 $)</option>
+          <option value="Audit IA Express">Audit IA Express (249 $)</option>
+          <option value="Intégration Standard">Intégration Standard (499 $)</option>
+          <option value="Offre Premium">Offre Premium (999 $)</option>
         </select>
-        <div class="hint">Pré-rempli via l’URL : <code>?offre=express|standard|premium</code></div>
       </div>
 
       <div class="grid two">
         <div>
           <label for="name">Nom complet</label>
-          <input id="name" name="nom" type="text" placeholder="Jane Dupont" required>
+          <input id="name" name="nom" type="text" placeholder="jane dupont" required>
         </div>
         <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="vous@domaine.com" required>
+          <label for="email">Courriel</label>
+          <input id="email" name="email" type="email" placeholder="vous@example.com" required>
         </div>
       </div>
 
       <div class="grid two">
         <div>
-          <label for="company">Organisation (optionnel)</label>
+          <label for="company">Organisation (facultatif)</label>
           <input id="company" name="organisation" type="text" placeholder="Entreprise / équipe">
         </div>
         <div>
-          <label for="site">Site / Projet (optionnel)</label>
-          <input id="site" name="site" type="url" placeholder="https://exemple.com">
+          <label for="site">Site / Projet</label>
+          <input id="site" name="site" type="url" placeholder="https://votresite.ca">
         </div>
       </div>
 
       <div>
         <label for="message">Votre besoin (détails)</label>
-        <textarea id="message" name="message" rows="6" placeholder="Décrivez votre contexte, objectifs et contraintes…" required></textarea>
+        <textarea id="message" name="message" placeholder="Décrivez votre contexte, objectifs et contraintes…" required></textarea>
       </div>
 
-      <!-- Champs cachés utiles -->
-      <input type="hidden" name="_subject" id="subject" value="[Devis] Nouvelle demande">
-      <input type="hidden" name="_language" value="fr">
-      <!-- Redirection après envoi -->
-      <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
-      <!-- Honeypot anti-spam -->
-      <input type="text" name="_gotcha" style="display:none">
-
-      <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Envoyer la demande</button>
-      <p class="hint">En soumettant, vous acceptez notre <a href="/politique-confidentialite.html">politique de confidentialité</a>.</p>
+      <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
     </form>
   </main>
 
-  <script>
-    // Pré-remplir l’offre & l’objet depuis ?offre=...
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const m = { express:'Audit IA Express', standard:'Intégration Standard', premium:'Offre Premium' };
-      const offre = (params.get('offre')||'').toLowerCase();
-      const sel = document.getElementById('offer');
-      if (offre && ['express','standard','premium'].includes(offre)) {
-        sel.value = offre;
-        const subj = document.getElementById('subject');
-        if (subj) subj.value = `[Devis] ${m[offre]} — NovaSuite`;
-      }
-    })();
-  </script>
+  <footer>
+    © 2025 NovaSuite • Tous droits réservés
+  </footer>
 </body>
 </html>
