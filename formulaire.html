@@ -1,1 +1,96 @@
-<!doctype html><html><head><meta charset='utf-8'><title>Formulaire — NovaSuite Labs</title></head><body><form action='https://formspree.io/f/XXXXX' method='POST'><input name='name'><button>Envoyer</button></form></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demander un devis — NovaSuite</title>
+  <meta name="description" content="Formulaire de contact et demande de devis NovaSuite Labs.">
+  <link rel="stylesheet" href="assets/nova.css?v=22">
+  <style>
+    .form-wrap{max-width:760px;margin:24px auto;padding:20px;background:#121a2b;border:1px solid rgba(255,255,255,.08);border-radius:16px}
+    .grid{display:grid;gap:12px}
+    label{font-weight:600}
+    input,select,textarea{width:100%;background:#0f1727;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#e7ecf6;padding:12px}
+    .two{grid-template-columns:1fr 1fr}
+    @media(max-width:720px){.two{grid-template-columns:1fr}}
+    .hint{color:#9fb0d1;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="/"><img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"><span>NovaSuite</span></a>
+    <div class="badge">Version v1 stable</div>
+    <h1>Demander un devis</h1>
+    <p class="lead">Nous répondons sous 24–48h pour confirmer le périmètre et, si besoin, planifier un court appel.</p>
+  </header>
+
+  <main class="wrap">
+    <!-- ⚠️ Remplace l’URL Formspree par la tienne -->
+    <form class="form-wrap grid" action="https://formspree.io/f/XXXXX" method="POST">
+      <!-- Offres -->
+      <div>
+        <label for="offer">Offre souhaitée</label>
+        <select id="offer" name="offre" required>
+          <option value="express">Audit IA Express (249 $)</option>
+          <option value="standard">Intégration Standard (499 $)</option>
+          <option value="premium">Offre Premium (999 $)</option>
+        </select>
+        <div class="hint">Pré-rempli via l’URL : <code>?offre=express|standard|premium</code></div>
+      </div>
+
+      <div class="grid two">
+        <div>
+          <label for="name">Nom complet</label>
+          <input id="name" name="nom" type="text" placeholder="Jane Dupont" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="vous@domaine.com" required>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div>
+          <label for="company">Organisation (optionnel)</label>
+          <input id="company" name="organisation" type="text" placeholder="Entreprise / équipe">
+        </div>
+        <div>
+          <label for="site">Site / Projet (optionnel)</label>
+          <input id="site" name="site" type="url" placeholder="https://exemple.com">
+        </div>
+      </div>
+
+      <div>
+        <label for="message">Votre besoin (détails)</label>
+        <textarea id="message" name="message" rows="6" placeholder="Décrivez votre contexte, objectifs et contraintes…" required></textarea>
+      </div>
+
+      <!-- Champs cachés utiles -->
+      <input type="hidden" name="_subject" id="subject" value="[Devis] Nouvelle demande">
+      <input type="hidden" name="_language" value="fr">
+      <!-- Redirection après envoi -->
+      <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
+      <!-- Honeypot anti-spam -->
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Envoyer la demande</button>
+      <p class="hint">En soumettant, vous acceptez notre <a href="/politique-confidentialite.html">politique de confidentialité</a>.</p>
+    </form>
+  </main>
+
+  <script>
+    // Pré-remplir l’offre & l’objet depuis ?offre=...
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const m = { express:'Audit IA Express', standard:'Intégration Standard', premium:'Offre Premium' };
+      const offre = (params.get('offre')||'').toLowerCase();
+      const sel = document.getElementById('offer');
+      if (offre && ['express','standard','premium'].includes(offre)) {
+        sel.value = offre;
+        const subj = document.getElementById('subject');
+        if (subj) subj.value = `[Devis] ${m[offre]} — NovaSuite`;
+      }
+    })();
+  </script>
+</body>
+</html>
