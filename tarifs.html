@@ -1,326 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaSuite Labs • Nos tarifs</title>
-  <meta name="description" content="Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA locale (LM Studio / Ollama).">
-  <style>
-    /* root variables for couleurs et tailles */
-    :root {
-      --bg: #0b1220;
-      --card-bg: #121A2B;
-      --highlight: #28A0FF;
-      --highlight-2: #FFD246;
-      --text: #E5EAFB;
-      --muted: #8DA2C0;
-      --radius: 1.25rem;
-      --shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-      background:
-        radial-gradient(800px at 70% -30%, rgba(40,160,255,.3), transparent 70%),
-        radial-gradient(600px at -10% 30%, rgba(0,209,178,.25), transparent 70%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    a { color: var(--highlight); text-decoration: none; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    header {
-      padding: 1rem 0.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px) saturate(150%);
-      background-color: rgba(11,18,32,0.85);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .container {
-      width: min(96%, 1180px);
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .brand img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-    }
-    .version {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.65rem;
-      border-radius: 999px;
-      background-color: #0e1a30;
-      color: #A8C5E5;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .nav a {
-      padding: 0.5rem 1rem;
-      border: 1px solid transparent;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .nav a.btn-primary {
-      background: linear-gradient(180deg, #28a0ff, #1a7ed6);
-      color: #fff;
-      box-shadow: 0 4px 10px rgba(40,160,255,0.4);
-    }
+  <title>NovaSuite – Tarifs (Audit IA & Intégration)</title>
+  <meta name="description" content="Tarifs NovaSuite : Audit IA express, intégration Nova (LM Studio/Ollama), mini-sites IA et offre Premium clé en main." />
+  <meta name="robots" content="index, follow">
 
-    main {
-      padding-top: 2rem;
-      padding-bottom: 4rem;
-    }
+  <!-- Open Graph -->
+  <meta property="og:title" content="NovaSuite – Tarifs" />
+  <meta property="og:description" content="Choisissez la formule qui convient à vos besoins en cybersécurité et intégration IA." />
+  <meta property="og:image" content="https://novasuite.ca/assets/banner-novasuite.jpg" />
+  <meta property="og:url" content="https://novasuite.ca/tarifs.html" />
 
-    /* Hero section */
-    .hero {
-      text-align: center;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .hero p {
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NovaSuite – Tarifs" />
+  <meta name="twitter:description" content="Audit IA express, intégration Nova locale et offre Premium." />
+  <meta name="twitter:image" content="https://novasuite.ca/assets/banner-novasuite.jpg" />
 
-    /* Carte d’intro */
-    .intro-card {
-      background: linear-gradient(120deg, rgba(255, 215, 0, 0.15), rgba(255, 255, 255, 0.05));
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 1.5rem 1rem;
-      margin-top: 2rem;
-      text-align: center;
-    }
-    .intro-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #ffc857; /* accent doré pour le sous-titre */
-    }
-    .intro-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-    .intro-card .cta {
-      margin-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-    .btn {
-      padding: 0.75rem 1rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid transparent;
-    }
-    .btn-primary {
-      background: linear-gradient(180deg, #28a0ff, #1a7ed6);
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(40,160,255,0.4);
-    }
-    .btn-email {
-      background: linear-gradient(180deg, #ffd56b, #fabe32);
-      color: #1f1500;
-      box-shadow: 0 4px 12px rgba(255,209,107,0.45);
-    }
-
-    /* Grille des prix */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      margin-top: 2.5rem;
-    }
-    @media (min-width: 860px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 1.5rem 1rem;
-      box-shadow: var(--shadow);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    .card h4 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-      color: #D8E2FF;
-    }
-    .price {
-      margin: 0.5rem 0 1rem;
-      font-size: 1.7rem;
-      font-weight: 700;
-      display: flex;
-      align-items: flex-end;
-      gap: 0.25rem;
-    }
-    .price span.period {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .features {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-    .features li {
-      margin-bottom: 0.6rem;
-      color: #C4D2EC;
-    }
-    .recommended {
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
-      background: linear-gradient(180deg, #b9ffe8, #4ef3c1);
-      color: #073b29;
-      padding: 0.3rem 0.6rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 12px rgba(0,209,178,0.25);
-    }
-    .card .cta-col {
-      text-align: center;
-      margin-top: auto;
-    }
-    footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-    .coffee {
-      margin-top: 1rem;
-    }
-    .btn-coffee {
-      background: linear-gradient(180deg, #ffd56b, #fabe32);
-      color: #1f1500;
-      padding: 0.75rem 1.25rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      display: inline-block;
-    }
-  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/nova.css?v=22">
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="logo_novasuite.png" alt="Logo NovaSuite">
-        <span>NovaSuite Labs</span>
-        <span class="version">Version v1 stable</span>
-      </div>
+
+  <!-- Header -->
+  <header class="wrap">
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
+      <span>NovaSuite</span>
+    </a>
+    <div class="badge">Version v1 stable</div>
+    <h1>Nos tarifs</h1>
+    <p class="lead">Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA.</p>
+  <!-- Bannière Tarifs -->
+<section class="hero hero-tarifs">
+  <div class="hero-inner wrap">
+    <h2>Audit IA & intégration — tarifs simples</h2>
+    <p class="lead">Choisissez la formule qui convient à vos besoins en cybersécurité et intégration Nova (LM Studio/Ollama).</p>
+    <div class="hero-cta">
+      <a href="#plans" class="btn-primary">Voir les formules</a>
+      <a href="mailto:contact@novasuite.ca?subject=Question%20tarifs" class="btn-secondary">✉️ Demander par email</a>
     </div>
+  </div>
+</section>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>Nos tarifs</h1>
-      <p>Choisissez la formule qui convient le mieux à vos besoins en cybersécurité et intégration IA.</p>
-    </section>
+  <!-- Pricing grid -->
+  <main class="wrap">
+    <section class="pricing-grid">
 
-    <section class="intro-card">
-      <h3>Audit IA &amp; intégration — tarifs simples</h3>
-      <p>Choisissez la formule qui convient à vos besoins en cybersécurité et intégration Nova (LM Studio/Ollama).</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#tarifs">Voir les formules</a>
-        <a class="btn btn-email" href="mailto:contact@novasuite.ca">Demander par email</a>
-      </div>
-    </section>
-
-    <section id="tarifs" class="grid">
-      <article class="card">
-        <h4>Audit IA Express</h4>
-        <div class="price">
-          <span>249&nbsp;$</span>
-          <span class="period">/ audit</span>
-        </div>
+      <!-- Audit Express -->
+      <article class="price-card">
+        <h3>Audit IA Express</h3>
+        <p class="price"><span class="amount">249&nbsp;$</span> <span class="per">/ audit</span></p>
         <ul class="features">
-          <li>Diagnostic sécurité &amp; performance (rapide)</li>
+          <li>Diagnostic sécurité & performance (rapide)</li>
           <li>Rapport clair, priorités d’actions</li>
-          <li>Recommandations IA locale (LM Studio / Ollama)</li>
+          <li>Recommandations IA locale (LM Studio/Ollama)</li>
         </ul>
-        <div class="cta-col">
-          <a class="btn btn-primary" href="formulaire.html?offre=express">Demander un audit</a>
-        </div>
+        <a class="btn-primary"
+           href="mailto:contact@novasuite.ca?subject=Demande%20Audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20un%20audit%20express.%0AMon%20site%20:%20https://...">Demander un audit</a>
       </article>
 
-      <article class="card">
-        <div class="recommended">Recommandé</div>
-        <h4>Intégration Standard</h4>
-        <div class="price">
-          <span>499&nbsp;$</span>
-          <span class="period">/ projet</span>
-        </div>
+      <!-- Standard (Recommandé) -->
+      <article class="price-card price-card--recommended">
+        <div class="ribbon">Recommandé</div>
+        <h3>Intégration Standard</h3>
+        <p class="price"><span class="amount">499&nbsp;$</span> <span class="per">/ projet</span></p>
         <ul class="features">
           <li>Audit complet + plan d’actions</li>
           <li>Mini-site IA / Chat Nova intégré</li>
-          <li>Mise en place guidée &amp; sécurité de base</li>
+          <li>Mise en place guidée & sécurité de base</li>
         </ul>
-        <div class="cta-col">
-          <a class="btn btn-primary" href="formulaire.html?offre=standard">Demander un devis</a>
-        </div>
+        <a class="btn-primary"
+           href="mailto:contact@novasuite.ca?subject=Devis%20Int%C3%A9gration%20Standard&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20l%27offre%20Standard.%0AMon%20site%20:%20https://...">Demander un devis</a>
       </article>
 
-      <article class="card">
-        <h4>Offre Premium</h4>
-        <div class="price">
-          <span>999&nbsp;$</span>
-          <span class="period">/ projet</span>
-        </div>
+      <!-- Premium -->
+      <article class="price-card">
+        <h3>Offre Premium</h3>
+        <p class="price"><span class="amount">999&nbsp;$</span> <span class="per">/ projet</span></p>
         <ul class="features">
-          <li>Audit avancé &amp; durcissement</li>
-          <li>Intégration IA complète &amp; personnalisation</li>
-          <li>Support prioritaire &amp; suivi</li>
+          <li>Audit avancé & durcissement</li>
+          <li>Intégration IA complète & personnalisation</li>
+          <li>Support prioritaire & suivi</li>
         </ul>
-        <div class="cta-col">
-          <a class="btn btn-primary" href="formulaire.html?offre=premium">Discuter de Premium</a>
-        </div>
+        <a class="btn-primary"
+           href="mailto:contact@novasuite.ca?subject=Projet%20Premium&body=Bonjour%20NovaSuite%2C%0AJe%20souhaite%20d%C3%A9marrer%20un%20projet%20Premium.%0AMon%20site%20:%20https://...">Discuter de Premium</a>
       </article>
+
     </section>
 
-    <footer>
-      <div>© <span id="year"></span> NovaSuite Labs — Cybersécurité &amp; Intégration IA locale.</div>
-      <div class="coffee">
-        <a class="btn-coffee" href="#">☕ Offrir un café à NovaSuite</a>
-      </div>
-    </footer>
+    <p style="text-align:center;margin:22px 0 8px;">
+      <a class="btn-secondary" href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener">☕ Offrir un café à NovaSuite</a>
+    </p>
   </main>
 
+  <!-- Chat Nova (persistant) -->
+  <button id="nova-fab" class="nova-fab" aria-expanded="false" aria-controls="nova-box">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log" aria-live="polite"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Chat minimal – même logique que la home
+    (function(){
+      const fab = document.getElementById('nova-fab');
+      const box = document.getElementById('nova-box');
+      const form = document.getElementById('nova-form');
+      const log = document.getElementById('nova-log');
+      const field = document.getElementById('nova-field');
+
+      if (fab && box) {
+        fab.addEventListener('click', () => {
+          const closed = box.hasAttribute('hidden');
+          if (closed) { box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+          else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false'); }
+        });
+      }
+
+      if (form && log && field) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const text = (field.value || '').trim();
+          if (!text) return;
+          const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+          field.value = '';
+          const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+          log.scrollTop = log.scrollHeight;
+        });
+      }
+    })();
   </script>
 </body>
 </html>
