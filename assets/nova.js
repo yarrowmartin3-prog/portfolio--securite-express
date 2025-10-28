@@ -46,3 +46,23 @@ if (form && log && field) {
     log.scrollTop = log.scrollHeight;
   });
 }
+/* ====== Ajustement de largeur et centrage des boutons ====== */
+
+/* Bouton principal (Envoyer ma demande) */
+.btn-primary {
+  display: block;
+  margin: 30px auto 15px;
+  width: 100%;
+  max-width: 400px; /* limite la largeur du bouton */
+  text-align: center;
+}
+
+/* Bouton secondaire (Offrir un café à NovaSuite) */
+.btn-coffee,
+.btn-secondary {
+  display: block;
+  margin: 20px auto 30px;
+  width: 100%;
+  max-width: 320px; /* plus petit que le bouton principal */
+  text-align: center;
+}
