@@ -212,3 +212,120 @@ input[type="email"]{
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(0, 183, 255, 0.3);
 }
+/* ====== Finition Formulaire NovaSuite v2 ====== */
+
+/* Champs généraux */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+select,
+textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  padding: 10px 14px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Icônes dans les champs (alignement vertical) */
+input[type="email"],
+input[type="url"] {
+  display: flex;
+  align-items: center;
+  padding-left: 38px;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  background-size: 18px;
+}
+input[type="email"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 5 8-5v10H4z'/%3E%3C/svg%3E");
+}
+input[type="url"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H7.41l9.3 9.29-1.42 1.42L6 8.41V11H4V4h1z'/%3E%3C/svg%3E");
+}
+
+/* Zone de texte (améliorée) */
+textarea {
+  min-height: 180px;
+  line-height: 1.5;
+  font-size: 1.05rem;
+  padding: 14px 16px;
+  resize: vertical;
+}
+
+/* Focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent2);
+  box-shadow: 0 0 0 2px rgba(0, 183, 255, 0.35);
+  outline: none;
+}
+
+/* Bouton principal (Envoyer ma demande) */
+.btn-primary {
+  display: block;
+  margin: 30px auto 15px;
+  width: 100%;
+  max-width: 400px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 28px;
+  box-shadow: 0 6px 18px rgba(0, 183, 255, 0.35);
+  transition: all 0.25s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 183, 255, 0.55);
+}
+
+/* Bannière du formulaire (Hero améliorée) */
+.hero-form {
+  background: radial-gradient(
+      circle at 50% 30%,
+      rgba(0, 183, 255, 0.18) 0%,
+      rgba(0, 183, 255, 0.08) 25%,
+      rgba(8, 12, 18, 1) 80%
+    ),
+    linear-gradient(180deg, #05070c 0%, #0a0f18 100%);
+  text-align: center;
+  color: var(--text);
+  padding: 60px 20px 50px;
+}
+.hero-form h1 {
+  font-size: 1.8rem;
+  color: var(--accent2);
+  margin-bottom: 12px;
+}
+.hero-form p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Bouton Offrir un café */
+.btn-coffee {
+  display: block;
+  margin: 20px auto 10px;
+  width: fit-content;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ffb800, #ff9500);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(255, 185, 0, 0.35);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.btn-coffee:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(255, 185, 0, 0.55);
+}
