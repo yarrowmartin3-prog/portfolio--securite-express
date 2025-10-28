@@ -381,3 +381,43 @@ select:focus {
     margin-top: 8px;
   }
 }
+/* === Correctif final du positionnement et largeur du bouton "Offrir un café" === */
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Bouton principal */
+.hero-cta .btn-primary {
+  flex: 0 0 auto;
+  max-width: 260px;
+  width: auto;
+}
+
+/* Bouton café ajusté */
+.hero-cta .btn-gold {
+  flex: 0 0 auto;
+  max-width: 160px; /* largeur réduite */
+  padding: 10px 18px;
+  margin-top: -4px; /* le remonte légèrement */
+  transform: translateY(-2px); /* effet visuel d’élévation */
+}
+
+/* Mobile : meilleure proportion */
+@media (max-width: 700px) {
+  .hero-cta {
+    flex-direction: column;
+  }
+  .hero-cta .btn-primary {
+    max-width: 90%;
+  }
+  .hero-cta .btn-gold {
+    max-width: 60%; /* plus compact sur mobile */
+    margin-top: 6px;
+    transform: none;
+  }
+}
