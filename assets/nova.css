@@ -329,3 +329,39 @@ select:focus {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(255, 185, 0, 0.55);
 }
+/* === Harmonisation du centrage et de la largeur des boutons dans la bannière === */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Styles par défaut (desktop) */
+.hero-cta .btn-primary {
+  max-width: 260px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero-cta .btn-gold {
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Ajustement mobile */
+@media (max-width: 700px) {
+  .hero-cta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-cta .btn-primary,
+  .hero-cta .btn-gold {
+    max-width: 90%; /* réduit légèrement la largeur sur mobile */
+    width: auto; /* évite le stretch complet */
+    margin: 0 auto; /* les centre parfaitement */
+  }
+}
