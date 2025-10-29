@@ -247,3 +247,15 @@ input[type="email"]{
     padding: 10px 14px; /* Un peu moins de padding sur mobile */
   }
 }
+/* Correction hauteur mobile bannière */
+.banner {
+  min-height: 300px;
+}
+@media (max-width: 700px) {
+  .banner {
+    min-height: 420px; /* augmente la hauteur pour laisser respirer le texte et les boutons */
+  }
+  .banner img {
+    max-height: none; /* évite le recadrage trop serré */
+  }
+}
