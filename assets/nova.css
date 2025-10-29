@@ -91,6 +91,14 @@ h1{color:var(--accent2);}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background: radial-gradient(60% 50% at 50% 40%, rgba(0,255,255,.18), transparent 60%);
+  /* === Effet lumineux Nova (voile bleu) === */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(0,200,255,.25) 0%, rgba(0,140,255,.05) 60%, transparent 100%);
+  mix-blend-mode:screen;
+  pointer-events:none;
 }
 .hero-inner{padding:28px 22px;text-align:center;}
 .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
