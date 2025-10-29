@@ -259,3 +259,37 @@ input[type="email"]{
     max-height: none; /* évite le recadrage trop serré */
   }
 }
+/* --- Visibilité mobile pour le contenu de la bannière --- */
+.banner {
+  position: relative;
+  min-height: 420px;
+  overflow: visible;
+}
+.banner img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+}
+.banner div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.banner a.btn-primary,
+.banner a.btn-gold {
+  min-width: 160px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .banner { min-height: 480px; }
+  .banner a.btn-primary,
+  .banner a.btn-gold {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+}
