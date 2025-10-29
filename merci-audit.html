@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Merci — Audit IA Express</title>
+  <meta name="description" content="Merci pour votre paiement. Dites-nous sur quel site réaliser l'audit IA & sécurité, et vos priorités.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="assets/nova.css?v=1"/>
+</head>
+<body>
+  <header class="wrap" style="text-align:center">
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"/>
+      <span>NovaSuite</span>
+    </a>
+    <div class="badge">Audit IA Express confirmé</div>
+    <h1>Merci pour votre paiement 🙌</h1>
+    <p class="lead">Dernière étape : indiquez votre site et vos priorités. Nous lançons le <strong>Nova Scan</strong> tout de suite.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card" style="max-width:720px;margin:0 auto">
+      <!-- Formulaire intake => Formspree -->
+      <form action="https://formspree.io/f/xyzbgnoq" method="POST" style="display:grid;gap:12px">
+        <input type="hidden" name="subject" value="[NOVA SCAN] Audit IA Express — infos client">
+        <input type="hidden" name="service" value="Audit IA Express (Stripe)">
+        <label>Votre site (URL)*
+          <input name="site_url" required placeholder="https://votre-site.com"/>
+        </label>
+        <label>Votre e-mail*
+          <input type="email" name="email" required placeholder="vous@exemple.com"/>
+        </label>
+        <label>Priorités (facultatif)
+          <textarea name="priorites" placeholder="Sécurité, performance, SEO, accessibilité…"></textarea>
+        </label>
+        <button type="submit" class="btn-primary">Envoyer et lancer l’audit</button>
+      </form>
+      <p style="color:var(--text-dim);margin-top:10px">Délai habituel : <strong>24–48 h</strong>. Vous recevez un rapport clair + recommandations.</p>
+    </section>
+  </main>
+
+  <!-- Chat Nova (même que la home) : colle ici le même bloc que dans index.html si besoin -->
+  <!-- ... -->
+
+  <footer class="wrap" style="text-align:center;margin-top:28px">
+    <p style="color:var(--text-dim);font-size:.9em">© 2025 NovaSuite • Merci de votre confiance</p>
+  </footer>
+</body>
+</html>
