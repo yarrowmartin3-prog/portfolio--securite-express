@@ -91,21 +91,7 @@ h1{color:var(--accent2);}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background: radial-gradient(60% 50% at 50% 40%, rgba(0,255,255,.18), transparent 60%);
-/* Effet lumineux Nova (voile bleu) — pour la bannière Tarifs */
-.ns-hero{ position:relative }
-.ns-hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(circle at center,
-               rgba(0,200,255,.25) 0%,
-               rgba(0,140,255,.05) 60%,
-               transparent 100%);
-  mix-blend-mode: screen;
-  pointer-events: none;
-  z-index: 1; /* au-dessus de l'image */
 }
-.ns-hero__inner{ position:relative; z-index: 2; } /* le texte par-dessus le voile */
 .hero-inner{padding:28px 22px;text-align:center;}
 .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 @media (max-width:640px){
@@ -307,12 +293,3 @@ input[type="email"]{
     padding: 10px 14px;
   }
 }
-/* Fallback boutons — garantit l'apparence si un style est manquant/écrasé */
-.btn, .btn-primary, .btn-gold{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:12px 16px; border-radius:12px; font-weight:800; text-decoration:none;
-  border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.02); color:inherit;
-}
-.btn-primary{ border:0; background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; }
-.btn-gold{ border:0; background:linear-gradient(180deg,#ffe08a,#ffc233); color:#3b2a00; }
-.card a.btn-primary, .card a.btn, .card a.btn-gold{ margin-top:8px }
