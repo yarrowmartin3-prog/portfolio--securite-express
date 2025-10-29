@@ -223,3 +223,27 @@ input[type="email"]{
   transform:translateY(-2px);
   filter:brightness(1.06);
 }
+
+/* --- Correction visibilité mobile pour les boutons dans la bannière --- */
+.banner div {
+  flex-wrap: wrap; /* Permet aux boutons de passer à la ligne */
+}
+
+.banner a.btn-primary,
+.banner a.btn-gold {
+  flex: 1 1 auto; /* Chaque bouton peut s’adapter */
+  min-width: 180px; /* Largeur minimale pour garder leur forme */
+  text-align: center; /* Centrage du texte */
+}
+
+@media (max-width: 700px) {
+  .banner div {
+    gap: 10px; /* Réduit l’espace entre les boutons */
+    padding: 0 10px;
+  }
+  .banner a.btn-primary,
+  .banner a.btn-gold {
+    font-size: 0.95rem;
+    padding: 10px 14px; /* Un peu moins de padding sur mobile */
+  }
+}
