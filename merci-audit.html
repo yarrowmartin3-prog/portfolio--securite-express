@@ -46,110 +46,42 @@
   <footer class="wrap" style="text-align:center;margin-top:28px">
     <p style="color:var(--text-dim);font-size:.9em">© 2025 NovaSuite • Merci de votre confiance</p>
   </footer>
-  <!-- === Chat Nova Assistant === -->
-<button id="nova-fab" aria-label="Ouvrir le chat Nova">💬</button>
-
-<div id="nova-box">
-  <header>
-    <strong>Nova Assistant</strong>
-    <button id="nova-close" aria-label="Fermer">×</button>
-  </header>
-  <div id="nova-messages">
-    <p><em>Bienvenue 👋</em><br/>Comment puis-je vous aider aujourd’hui&nbsp;?</p>
+    <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
   </div>
-  <form id="nova-form">
-    <input type="text" id="nova-input" placeholder="Écrivez votre message..." required />
-    <button type="submit">Envoyer</button>
-  </form>
-</div>
 
-<style>
-  #nova-fab {
-    position: fixed;
-    right: 18px; bottom: 18px;
-    z-index: 9999;
-    background: linear-gradient(180deg,#1ea7ff,#1293ee);
-    color: #031425;
-    font-size: 22px;
-    border: none; border-radius: 50%;
-    width: 56px; height: 56px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    cursor: pointer;
-  }
-  #nova-box {
-    display: none;
-    position: fixed;
-    bottom: 90px; right: 18px;
-    width: 320px; max-height: 460px;
-    background: var(--panel, #0d1117);
-    color: var(--text, #fff);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-    z-index: 9998;
-    overflow: hidden;
-  }
-  #nova-box header {
-    background: linear-gradient(90deg,#1ea7ff,#1293ee);
-    color: #031425;
-    padding: 10px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  #nova-messages {
-    padding: 12px;
-    font-size: .9em;
-    line-height: 1.5;
-    overflow-y: auto;
-    height: 320px;
-  }
-  #nova-form {
-    display: flex;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  #nova-input {
-    flex: 1; padding: 10px; background: transparent; border: none;
-    color: inherit; outline: none;
-  }
-  #nova-form button {
-    background: var(--accent,#1ea7ff);
-    border: none; padding: 10px 16px;
-    color: #031425; font-weight: 700;
-    cursor: pointer;
-  }
-  #nova-close {
-    background: transparent; border: none;
-    font-size: 20px; color: #031425; cursor: pointer;
-  }
-  @media (max-width: 600px) {
-    #nova-box { right: 10px; width: calc(100% - 20px); bottom: 80px; }
-  }
-</style>
-
-<script>
-  const fab = document.getElementById('nova-fab');
-  const box = document.getElementById('nova-box');
-  const closeBtn = document.getElementById('nova-close');
-  const form = document.getElementById('nova-form');
-  const input = document.getElementById('nova-input');
-  const messages = document.getElementById('nova-messages');
-
-  fab.addEventListener('click', () => {
-    box.style.display = box.style.display === 'block' ? 'none' : 'block';
-  });
-
-  closeBtn.addEventListener('click', () => box.style.display = 'none');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-    const p = document.createElement('p');
-    p.innerHTML = "<strong>Vous:</strong> " + text;
-    messages.appendChild(p);
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight;
-  });
-</script>
-<!-- === Fin Chat Nova === -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#audit"]');
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    const fab = document.getElementById('nova-fab');
+    const box = document.getElementById('nova-box');
+    const form = document.getElementById('nova-form');
+    const log = document.getElementById('nova-log');
+    const field= document.getElementById('nova-field');
+    fab.addEventListener('click', () => {
+      const open = box.hasAttribute('hidden');
+      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = (field.value||'').trim();
+      if (!text) return;
+      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      field.value = '';
+      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+      log.scrollTop = log.scrollHeight;
+    });
+  </script>
 </body>
 </html>
