@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; img-src * data:; connect-src *; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;
