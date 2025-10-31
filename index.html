@@ -1,16 +1,7 @@
 <!-- index.html -->
 <!doctype html>
 <html lang="fr">
-<!-- NovaSuite: Sécurité, Performance, Security & Performance -->
-<meta name="description" content="Audit cybersécurité express et optimisation de performance web. NovaSuite – support humain rapide, IA locale sécurisée, prévention des fuites de données. / Express cybersecurity audit and web performance optimization. NovaSuite – fast human support, secure local AI, and data leak prevention.">
-
-<meta name="keywords" content="cybersécurité,Rivière-du-Loup,protection réseau,protection appareil,vitesse wifi,lenteur pc,analyse sécurité,optimisation performance,vulnérabilité,scan système,protection données,antivirus local,pare-feu,Durcissement Windows,vérification 2FA,protection compte en ligne,audit site web,protection site web,DMARC,SPF,DKIM,Zoho Mail sécurisé,optimisation DNS,Cloudflare,protection contre piratage,protection contre espionnage,VPN,protection vie privée,bureau à la maison,soutien local,urgence sécurité,assistance immédiate,RGPD,forensic léger,réduction surface d’attaque,Nettoyage malware,IA locale,IA éthique,Confiance clients,Support NovaSuite,cybersecurity,network protection,device security,WiFi speed optimization,system scan,data protection,firewall,two-factor authentication,account protection,website audit,secure mail,AI integration,performance,privacy,VPN,local support,Canada tech,ethical AI,NovaSuite Labs">
-
-<meta name="author" content="NovaSuite – Yarrow Martin">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<meta name="rating" content="general">
-<meta name="revisit-after" content="3 days">
+<head>
   <meta charset="utf-8" />
   <title>NovaSuite – Audit IA Express & Sécurité Web</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,183 +20,16 @@
     <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
   </header>
 
-<section class="hero">
-  <div class="hero-inner wrap">
-
-   .hero {
-  background: radial-gradient(ellipse at 50% 20%, rgba(0,255,200,0.08) 0%, rgba(0,0,0,0.95) 70%);
-  padding: 2rem 1rem 4rem;
-  color: #fff;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  background: url("logo-novasuite.jpg") center/cover no-repeat;
-  position: absolute;
-  inset: 0;
-  opacity: 0.22;
-  filter: saturate(1.2) drop-shadow(0 0 20px #00ffc8);
-}
-
-.hero-inner {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  z-index: 2;
-}
-
-.hero-topline {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: .5rem;
-  background: #001a1a;
-  box-shadow: 0 0 20px rgba(0,255,200,.6);
-  object-fit: cover;
-}
-
-.badge-version {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
-  font-size: .8rem;
-  line-height: 1;
-  padding: .4rem .6rem;
-  border-radius: .5rem;
-  backdrop-filter: blur(6px);
-}
-
-.lang-toggle {
-  margin-left: auto;
-  display: flex;
-  gap: .5rem;
-}
-
-.lang-btn {
-  background: rgba(0,0,0,.6);
-  border: 1px solid rgba(0,255,200,.4);
-  color: #fff;
-  font-size: .75rem;
-  line-height: 1;
-  border-radius: .4rem;
-  padding: .4rem .6rem;
-  cursor: pointer;
-}
-.lang-btn.active {
-  background: #00ffc8;
-  color: #001515;
-  font-weight: 600;
-  border-color: #00ffc8;
-}
-
-.hero-title {
-  color: #00ffc8;
-  font-size: clamp(1.4rem, 1vw + 1rem, 2rem);
-  font-weight: 600;
-  text-shadow: 0 0 12px rgba(0,255,200,.5);
-  margin-bottom: .5rem;
-}
-
-.hero-sub {
-  font-size: .95rem;
-  color: #fff;
-  opacity: .8;
-  margin-bottom: 2rem;
-}
-
-.hero-card {
-  background: rgba(0,10,10,.6);
-  border: 1px solid rgba(0,255,200,.2);
-  box-shadow: 0 30px 80px rgba(0,0,0,.9),
-              0 0 32px rgba(0,255,200,.15);
-  border-radius: .75rem;
-  padding: 1.5rem;
-  max-width: 480px;
-  margin: 0 auto;
-  backdrop-filter: blur(10px);
-}
-
-.hero-offer {
-  color: #00ffc8;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: .75rem;
-  text-shadow: 0 0 10px rgba(0,255,200,.4);
-}
-
-.hero-desc {
-  color: #fff;
-  font-size: .95rem;
-  line-height: 1.4;
-  opacity: .9;
-  margin: 0 auto 1.25rem;
-  max-width: 40ch;
-}
-
-.hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .75rem;
-}
-
-.btn-primary {
-  background: #003b1f;
-  color: #fff;
-  border: 2px solid #00ff70;
-  border-radius: .5rem;
-  font-weight: 600;
-  font-size: .9rem;
-  padding: .75rem 1rem;
-  min-width: 150px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0,255,112,.3);
-}
-
-.btn-primary:hover {
-  background: #00ff70;
-  color: #001a0d;
-  box-shadow: 0 0 30px rgba(0,255,112,.6);
-}
-
-.btn-gold {
-  background: #ffdf99;
-  color: #3a2500;
-  border-radius: .5rem;
-  font-weight: 600;
-  font-size: .9rem;
-  padding: .75rem 1rem;
-  min-width: 150px;
-  text-align: center;
-  border: 2px solid #ffdf99;
-  box-shadow: 0 0 20px rgba(255,223,153,.4);
-}
-
-.btn-gold:hover {
-  background: #fff3d1;
-  box-shadow: 0 0 30px rgba(255,223,153,.7);
-  color: #3a2500;
-}
-
-/* mobile tweak */
-@media (max-width: 480px) {
-  .lang-toggle {
-    width: 100%;
-    justify-content: center;
-    margin-left: 0;
-  }
-}
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <h2>Audit IA + intégration rapide</h2>
+      <p>Diagnostic clair, recommandations concrètes, mise en place assistée.</p>
+      <div class="hero-cta">
+        <a href="#audit" class="btn-primary">Commencer</a>
+        <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">Soutenir NovaSuite</a>
+      </div>
+    </div>
+  </section>
 
   <main class="wrap">
     <section class="card">
@@ -279,36 +103,3 @@
   </script>
 </body>
 </html>
-<footer>
-  <footer style="
-  border-top:1px solid #124736;
-  background-color:#0a0f0d;
-  padding:1.5rem 1rem;
-  text-align:center;
-  color:#9deacb;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size:0.8rem;
-  line-height:1.5;
-">
-  <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
-    © NovaSuite Technologies 2025 — Tous droits réservés
-  </div>
-
-  <div style="margin-top:0.5rem;color:#9deacb;">
-    <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Mentions légales
-    </a>
-    •
-    <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Politique de confidentialité
-    </a>
-    •
-    <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      contact@novasuite.ca
-    </a>
-  </div>
-
-  <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
-    Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
-  </div>
-</footer>
