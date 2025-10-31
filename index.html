@@ -29,53 +29,47 @@
     <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
   </header>
 
-  <!-- === HERO NOVASUITE – VERSION TARIFS + MONÉTISATION === -->
-<section class="hero" style="
-  background: radial-gradient(circle at 25% 20%, rgba(18,71,54,0.5) 0%, rgba(10,15,13,0.95) 80%);
-  padding: 3rem 1.5rem 4rem 1.5rem;
-  text-align: center;
-  border-bottom: 1px solid #124736;
-  color: #cde6dc;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-">
-  <div class="hero-inner wrap" style="max-width: 900px; margin: 0 auto;">
+<section class="hero">
+  <div class="hero-inner wrap">
 
-    <!-- LOGO -->
-    <div style="display:flex; align-items:center; justify-content:center; gap:.6rem; margin-bottom:1rem;">
-      <img src="assets/banner-novasuite.jpg" alt="NovaSuite" style="height:42px; width:auto; border-radius:6px; background:#0a0f0d; padding:4px; border:1px solid #124736; box-shadow:0 0 15px rgba(114,255,203,0.4);" />
-      <span style="color:#72ffcb; font-weight:700; font-size:1.1rem;">NovaSuite</span>
+    <!-- Ligne du haut: logo + badge version + switch langue -->
+    <div class="hero-brandline">
+      <img
+        src="assets/banner-novasuite.png"
+        alt="NovaSuite"
+        class="hero-logo"
+      />
+      <span class="hero-badge" data-i18n="badge_version">
+        Version v1 stable
+      </span>
+
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
 
-    <!-- TITRE -->
-    <h2 style="color: #72ffcb; font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
-      Audit IA + intégration rapide
+    <h2 class="hero-title" data-i18n="hero_title">
+      CyberSécurité Express — IA locale prête, GPT en secours
     </h2>
 
-    <!-- SOUS-TEXTE -->
-    <p style="max-width: 640px; margin: 0 auto 2rem auto; color: #9deacb; font-size: 1.1rem; line-height: 1.6;">
-      Diagnostic clair, recommandations concrètes, mise en place assistée.<br>
+    <p class="hero-sub" data-i18n="hero_sub">
+      Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).  
       Votre cybersécurité et vos performances IA, prêtes à fonctionner.
     </p>
 
-    <!-- CTA -->
-    <div class="hero-cta" style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
-      <!-- Voir les tarifs -->
-      <a href="tarifs.html" class="btn-primary" style="
-        background: #00b894; color: #000; text-decoration: none;
-        padding: 14px 28px; border-radius: 10px; font-weight: 700;
-        box-shadow: 0 8px 28px rgba(0,184,148,0.4);
-        transition: all 0.2s ease;">
-        💼 Voir les tarifs
+    <div class="hero-cta">
+      <a href="tarifs.html" class="btn-primary" data-i18n="cta_tarifs">
+        Voir les tarifs →
       </a>
-
-      <!-- Soutenir NovaSuite -->
-      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold" style="
-        background: linear-gradient(135deg, #b8860b, #ffd700);
-        color: #000; text-decoration: none;
-        padding: 14px 28px; border-radius: 10px;
-        font-weight: 700; box-shadow: 0 8px 28px rgba(255,215,0,0.35);
-        transition: all 0.2s ease;">
-        ☕ Soutenir NovaSuite
+      <a
+        href="https://www.buymeacoffee.com/yarrowmart9"
+        target="_blank"
+        rel="noopener"
+        class="btn-gold"
+        data-i18n="cta_support"
+      >
+        Soutenir NovaSuite
       </a>
     </div>
   </div>
