@@ -143,16 +143,46 @@
     Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
   </div>
   </footer>
+ <!-- Chat Nova (même que la home) : colle ici le même bloc que dans index.html si besoin -->
+  <!-- ... -->
 
-  <!-- Script de chat NovaSuite (même que sur ton index) -->
-  <script src="https://cdn.jsdelivr.net/npm/chat-widget-novasuite@latest"></script>
+  <footer class="wrap" style="text-align:center;margin-top:28px">
+    <p style="color:var(--text-dim);font-size:.9em">© 2025 NovaSuite • Merci de votre confiance</p>
+  </footer>
+    <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
   <script>
-    NovaChatWidget.init({
-      theme: "dark",
-      accent: "#72ffcb",
-      welcomeMessage: "Bienvenue 👋 Posez vos questions à NovaSuite !",
-      supportEmail: "contact@novasuite.ca"
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#audit"]');
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    const fab = document.getElementById('nova-fab');
+    const box = document.getElementById('nova-box');
+    const form = document.getElementById('nova-form');
+    const log = document.getElementById('nova-log');
+    const field= document.getElementById('nova-field');
+    fab.addEventListener('click', () => {
+      const open = box.hasAttribute('hidden');
+      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = (field.value||'').trim();
+      if (!text) return;
+      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      field.value = '';
+      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+      log.scrollTop = log.scrollHeight;
     });
   </script>
-</body>
-</html>
