@@ -29,119 +29,56 @@
     <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
   </header>
 
-<!-- === HERO NOVASUITE / INDEX AVEC LOGO + BILINGUE AUTO === -->
-<section id="hero-novasuite" style="
-  background: radial-gradient(circle at 25% 20%, rgba(18,71,54,0.4) 0%, rgba(10,15,13,0.95) 80%);
-  padding: 2rem 1rem 3.5rem 1rem;
+  <!-- === HERO NOVASUITE – VERSION TARIFS + MONÉTISATION === -->
+<section class="hero" style="
+  background: radial-gradient(circle at 25% 20%, rgba(18,71,54,0.5) 0%, rgba(10,15,13,0.95) 80%);
+  padding: 3rem 1.5rem 4rem 1.5rem;
+  text-align: center;
   border-bottom: 1px solid #124736;
   color: #cde6dc;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 ">
-  <div style="max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:1.5rem;">
+  <div class="hero-inner wrap" style="max-width: 900px; margin: 0 auto;">
 
-    <!-- ROW TOP: LOGO + TAGLINE -->
-    <header style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; row-gap:1rem;">
-      <!-- Logo NovaSuite -->
-      <a href="index.html" style="display:flex; align-items:center; text-decoration:none; gap:.6rem;">
-        <img src="assets/logo-novasuite.png"
-             alt="NovaSuite logo"
-             style="height:40px; width:auto; border-radius:6px; background:#0a0f0d; padding:4px; border:1px solid #124736; box-shadow:0 8px 30px rgba(0,184,148,.3);" />
-        <span style="color:#72ffcb; font-weight:600; font-size:1rem; line-height:1.2;">NovaSuite</span>
+    <!-- LOGO -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:.6rem; margin-bottom:1rem;">
+      <img src="assets/logo-novasuite.png" alt="NovaSuite" style="height:42px; width:auto; border-radius:6px; background:#0a0f0d; padding:4px; border:1px solid #124736; box-shadow:0 0 15px rgba(114,255,203,0.4);" />
+      <span style="color:#72ffcb; font-weight:700; font-size:1.1rem;">NovaSuite</span>
+    </div>
+
+    <!-- TITRE -->
+    <h2 style="color: #72ffcb; font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
+      Audit IA + intégration rapide
+    </h2>
+
+    <!-- SOUS-TEXTE -->
+    <p style="max-width: 640px; margin: 0 auto 2rem auto; color: #9deacb; font-size: 1.1rem; line-height: 1.6;">
+      Diagnostic clair, recommandations concrètes, mise en place assistée.<br>
+      Votre cybersécurité et vos performances IA, prêtes à fonctionner.
+    </p>
+
+    <!-- CTA -->
+    <div class="hero-cta" style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
+      <!-- Voir les tarifs -->
+      <a href="tarifs.html" class="btn-primary" style="
+        background: #00b894; color: #000; text-decoration: none;
+        padding: 14px 28px; border-radius: 10px; font-weight: 700;
+        box-shadow: 0 8px 28px rgba(0,184,148,0.4);
+        transition: all 0.2s ease;">
+        💼 Voir les tarifs
       </a>
 
-      <!-- tagline courte (FR par défaut, remplacée en EN si besoin) -->
-      <div style="text-align:right; flex:1; min-width:220px; color:#9deacb; font-size:.9rem; line-height:1.4;">
-        <div id="tag-topline">
-          CyberSécurité Express — IA locale prête, GPT en secours
-        </div>
-        <div id="tag-subline" style="font-size:.8rem; color:#77d9b1;">
-          Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).
-        </div>
-      </div>
-    </header>
-
-    <!-- HERO CORE TEXT -->
-    <div style="text-align:center; max-width:900px; margin:0 auto;">
-      <h1 id="hero-title" style="
-        color:#72ffcb;
-        font-size:2rem;
-        font-weight:700;
-        line-height:1.25;
-        margin-bottom:1rem;
-      ">
-        Audit IA + intégration rapide
-      </h1>
-
-      <p id="hero-desc" style="
-        max-width:620px;
-        margin:0 auto 2rem auto;
-        color:#9deacb;
-        font-size:1.05rem;
-        line-height:1.55;
-      ">
-        Diagnostic clair, recommandations concrètes, mise en place assistée.<br>
-        Votre cybersécurité et vos performances IA, prêtes à fonctionner.
-      </p>
-
-      <!-- CTA BUTTONS -->
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
-        <!-- CTA principal -->
-        <a id="cta-prices"
-           href="tarifs.html"
-           style="background:#00b894; color:#000; text-decoration:none;
-                  padding:14px 26px; border-radius:10px; font-weight:700;
-                  box-shadow:0 10px 30px rgba(0,184,148,0.4);
-                  transition:transform .2s ease, box-shadow .2s ease;">
-          Voir les tarifs →
-        </a>
-
-        <!-- CTA soutien -->
-        <a id="cta-support"
-           href="https://www.buymeacoffee.com/yarrowmart9"
-           target="_blank" rel="noopener"
-           style="background:linear-gradient(135deg,#b8860b,#ffd700); color:#000;
-                  text-decoration:none; padding:14px 26px; border-radius:10px;
-                  font-weight:700; box-shadow:0 10px 30px rgba(255,215,0,0.35);
-                  transition:transform .2s ease, box-shadow .2s ease;">
-          ☕ Soutenir NovaSuite
-        </a>
-      </div>
+      <!-- Soutenir NovaSuite -->
+      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold" style="
+        background: linear-gradient(135deg, #b8860b, #ffd700);
+        color: #000; text-decoration: none;
+        padding: 14px 28px; border-radius: 10px;
+        font-weight: 700; box-shadow: 0 8px 28px rgba(255,215,0,0.35);
+        transition: all 0.2s ease;">
+        ☕ Soutenir NovaSuite
+      </a>
     </div>
   </div>
-
-  <!-- petit script pour auto-langue -->
-  <script>
-    (function () {
-      const lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
-      const isEN = lang.startsWith('en');
-
-      if (!isEN) return; // si pas EN, on garde FR tel quel
-
-      // éléments
-      const top1 = document.getElementById('tag-topline');
-      const top2 = document.getElementById('tag-subline');
-      const title = document.getElementById('hero-title');
-      const desc = document.getElementById('hero-desc');
-      const cta1 = document.getElementById('cta-prices');
-      const cta2 = document.getElementById('cta-support');
-
-      if (top1) top1.textContent =
-        "CyberSecurity Express — Local AI ready, GPT as backup";
-
-      if (top2) top2.textContent =
-        "AI microsites, security audit, Nova integration (LM Studio/Ollama).";
-
-      if (title) title.textContent =
-        "Rapid AI audit + deployment";
-
-      if (desc) desc.innerHTML =
-        "Clear diagnostics, concrete recommendations, assisted setup.<br>Your cybersecurity and AI stack, ready to run.";
-
-      if (cta1) cta1.textContent = "See pricing →";
-
-      if (cta2) cta2.innerHTML = "☕ Support NovaSuite";
-    })();
-  </script>
 </section>
 
   <main class="wrap">
