@@ -202,10 +202,47 @@
       contact@novasuite.ca
     </a>
   </div>
+</footer>
 
   <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
     Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
+     <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
   </div>
-  </footer>
+  
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#audit"]');
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    const fab = document.getElementById('nova-fab');
+    const box = document.getElementById('nova-box');
+    const form = document.getElementById('nova-form');
+    const log = document.getElementById('nova-log');
+    const field= document.getElementById('nova-field');
+    fab.addEventListener('click', () => {
+      const open = box.hasAttribute('hidden');
+      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
+      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = (field.value||'').trim();
+      if (!text) return;
+      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      field.value = '';
+      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+      log.scrollTop = log.scrollHeight;
+    });
+  </script>
 </body>
 </html>
