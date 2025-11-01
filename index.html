@@ -68,38 +68,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 </header>
-  <main class="wrap">
-    <section class="card">
-      <h3>Démo instantanée</h3>
-      <p>Parlez avec <strong>Nova (locale)</strong>. Si Nova est éteinte, un message s’affiche.</p>
-    </section>
+  <!-- SECTION TARIFS -->
+<main id="formules" class="wrap">
+  <!-- 🔹 Formule Audit Express -->
+  <section class="card">
+    <h2>Formule Audit Express</h2>
+    <p><strong>249 $</strong> par audit<br/>Analyse rapide de votre site, rapport clair et recommandations concrètes.</p>
+    <ul>
+      <li>Audit de sécurité et performance</li>
+      <li>Rapport détaillé avec recommandations</li>
+      <li>Support par e-mail</li>
+    </ul>
 
-    <section class="card">
-      <h3>Statut</h3>
-      <ul>
-        <li>LM Studio (port 1234) : <strong>prêt</strong> (lancer le Local Server)</li>
-        <li>Fallback GPT : <strong>désactivé par défaut</strong></li>
-        <li>CI GitHub KeepAlive : <strong>activée</strong></li>
-      </ul>
-    </section>
+    <!-- Bouton Stripe Audit Express -->
+    <div class="btn-primary" style="padding:12px; border-radius:12px;">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1Soj3TE26Hyplpmcw23dEmCh"
+        publishable-key="pk_live_51SNPtHE26HyplmTEQOFVzvsy5v17U3hj55pZPewvCUR9CnLxqiipU5WnmBsYZCEABQfsDT3RgWNFcUFIekVHuJ0809pMveIvY"
+      >
+      </stripe-buy-button>
+    </div>
+  </section>
 
-    <section id="audit" class="card">
-      <h3>Audit IA Express 🔍</h3>
-      <p>Recevez un rapport clair sur la sécurité et la performance de votre site.</p>
-      <p><a class="btn-secondary" href="mailto:contact@novasuite.ca?subject=Demande%20d'audit%20IA%20Express&body=Bonjour%20NovaSuite%2C%0AVoici%20mon%20site%20:%20https://votresite.ca%0AMon%20courriel%20:%20votre@email.tld">✉️ Demander par email</a></p>
-      <form action="https://formspree.io/f/xyzbgnoq" method="POST" class="audit-form" novalidate>
-        <label for="website">Votre site web</label>
-        <input id="website" name="website" type="url" placeholder="https://votresite.ca" required>
-        <label for="email">Votre courriel</label>
-        <input id="email" name="_replyto" type="email" placeholder="vous@example.com" required>
-        <input type="hidden" name="_subject" value="Demande d'audit IA Express">
-        <input type="hidden" name="source" value="novasuite.ca">
-        <input type="hidden" name="_next" value="https://novasuite.ca/merci.html">
-        <button type="submit" class="btn-primary">🚀 Envoyer ma demande</button>
-      </form>
-      <p><a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-secondary">☕ Offrir un café à NovaSuite</a></p>
-    </section>
-  </main>
+  <!-- 🔸 Formule Intégration Standard -->
+  <section class="card recommended">
+    <h2>Formule Intégration Standard</h2>
+    <div class="badge badge-blue">⭐ Recommandé</div>
+    <p><strong>499 $</strong> par projet<br/>Audit complet plus intégration assistée de nos outils IA.</p>
+    <ul>
+      <li>Audit complet de sécurité et performance</li>
+      <li>Intégration de mini-site IA/Chat Nova</li>
+      <li>Recommandations d’optimisation UX/UI</li>
+      <li>Support par e-mail et chat</li>
+    </ul>
+
+    <!-- Bouton Stripe Standard -->
+    <div class="btn-primary" style="padding:12px; border-radius:12px;">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1Soj29E26Hyplmptck6KanFV"
+        publishable-key="pk_live_51SNPtHE26HyplmTEQOFVzvsy5v17U3hj55pZPewvCUR9CnLxqiipU5WnmBsYZCEABQfsDT3RgWNFcUFIekVHuJ0809pMveIvY"
+      >
+      </stripe-buy-button>
+    </div>
+  </section>
+
+  <!-- 🔹 Formule Premium -->
+  <section class="card">
+    <h2>Formule Premium</h2>
+    <p><strong>999 $</strong> par projet<br/>Solution clé en main avec intégration complète et suivi.</p>
+    <ul>
+      <li>Audit avancé et intégration IA</li>
+      <li>Personnalisation du mini-site (branding)</li>
+      <li>Mises à jour et optimisations mensuelles</li>
+      <li>Support premium (e-mail et chat prioritaire)</li>
+    </ul>
+
+    <!-- Bouton Stripe Premium -->
+    <div class="btn-primary" style="padding:12px; border-radius:12px;">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1Soj6mE26HyplpmcQ4EqgN6v"
+        publishable-key="pk_live_51SNPtHE26HyplmTEQOFVzvsy5v17U3hj55pZPewvCUR9CnLxqiipU5WnmBsYZCEABQfsDT3RgWNFcUFIekVHuJ0809pMveIvY"
+      >
+      </stripe-buy-button>
+    </div>
+  </section>
+</main>
 
 <footer style="
   border-top:1px solid #124736;
