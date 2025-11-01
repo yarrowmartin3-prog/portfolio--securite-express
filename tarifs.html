@@ -200,35 +200,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
     Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
   </div>
-  <script>
+<script>
   document.addEventListener('DOMContentLoaded', function () {
+    // --- Audit Express ---
     const boutonExpress = document.getElementById('btn-express');
-    const boutonStandard = document.getElementById('btn-standard');
-    const boutonPremium = document.getElementById('btn-premium');
-
     if (boutonExpress) {
       boutonExpress.addEventListener('click', function () {
         gtag('event', 'clic_audit_express', {
           'event_category': 'Conversion',
-          'event_label': 'Bouton Audit Express'
+          'event_label': 'Bouton Audit Express',
+          'value': 249,
+          'currency': 'CAD'
         });
       });
     }
 
+    // --- Audit Standard ---
+    const boutonStandard = document.getElementById('btn-standard');
     if (boutonStandard) {
       boutonStandard.addEventListener('click', function () {
         gtag('event', 'clic_audit_standard', {
           'event_category': 'Conversion',
-          'event_label': 'Bouton Audit Standard'
+          'event_label': 'Bouton Audit Standard',
+          'value': 499,
+          'currency': 'CAD'
         });
       });
     }
 
+    // --- Audit Premium ---
+    const boutonPremium = document.getElementById('btn-premium');
     if (boutonPremium) {
       boutonPremium.addEventListener('click', function () {
         gtag('event', 'clic_audit_premium', {
           'event_category': 'Conversion',
-          'event_label': 'Bouton Audit Premium'
+          'event_label': 'Bouton Audit Premium',
+          'value': 999,
+          'currency': 'CAD'
         });
       });
     }
