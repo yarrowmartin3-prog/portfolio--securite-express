@@ -98,6 +98,38 @@ frame-src https://www.googletagmanager.com;">
   gtag('config', 'G-LWHM1MVESP');
 </script>
 <body>
+  <!-- TEST STRIPE MOBILE -->
+<button
+  id="test-stripe-mobile"
+  style="
+    position:fixed;
+    top:10px;
+    left:10px;
+    right:10px;
+    z-index:999999;
+    background:#00c3ff;
+    color:#000;
+    font-weight:600;
+    font-size:16px;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.4);
+  ">
+  🔒 Payer Premium (999$)
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('test-stripe-mobile');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        window.location.href = "https://buy.stripe.com/4gM5kDbTQ8CmpbdakW2VG02";
+      });
+    }
+  });
+</script>
+<!-- /TEST STRIPE MOBILE -->
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
