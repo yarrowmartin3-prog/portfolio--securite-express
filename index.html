@@ -1,117 +1,131 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
-<meta name="description" content="Audit cybersécurité express et optimisation de performance web. NovaSuite – support humain rapide, IA locale sécurisée, prévention des fuites de données. / Express cybersecurity audit and web performance optimization. NovaSuite – fast human support, secure local AI, and data leak prevention.">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NovaSuite • Accueil</title>
+  <meta name="description" content="Découvrez NovaSuite : Audit IA Express, Cybersécurité, et Intégration Nova (LM Studio/Ollama) pour votre projet web.">
+  <meta property="og:title" content="NovaSuite • Accueil"/>
+  <meta property="og:description" content="La solution clé en main pour l'IA et la sécurité web."/>
+  <meta property="og:image" content="assets/banner-novasuite.jpg"/>
+  <meta property="og:url" content="https://novasuite.ca/index.html"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="assets/nova.css?v=9999"/>
+  <style>
+    /* ===== Hero NovaSuite (isolé, sans conflit) ===== */
+    .ns-hero{position:relative;border-radius:12px;overflow:hidden;margin-top:10px;
+             box-shadow:0 6px 25px rgba(0,0,0,.4)}
+    .ns-hero::before{
+      content:"";position:absolute;inset:0;
+      background-image:url('assets/banner-novasuite.jpg');
+      background-size:cover;background-position:center;
+      filter:brightness(.65)
+    }
+    .ns-hero__inner{
+      position:relative;min-height:380px;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding:20px
+    }
+    .ns-hero h2{margin:0 0 10px;font-size:clamp(1.8rem,3vw,2.4rem);color:#fff;
+                text-shadow:0 2px 8px rgba(0,0,0,.5)}
+    .ns-hero p{max-width:640px;margin:0 0 18px;color:#e2e8f0;
+               text-shadow:0 2px 6px rgba(0,0,0,.6)}
+    .ns-hero__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .ns-btn{display:inline-flex;align-items:center;justify-content:center;
+            padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none}
+    .ns-btn--primary{background:linear-gradient(180deg,#1ea7ff,#1293ee);color:#031425;border:0}
+    .ns-btn--gold{background:linear-gradient(180deg,#ffe08a,#ffc233);color:#3b2a00;border:0}
+    .ns-btn:hover{filter:brightness(1.05)}
+    @media (max-width:700px){
+      .ns-hero__inner{min-height:460px;padding:16px}
+      .ns-btn{min-width:180px;padding:10px 14px}
+    }
+  </style>
 
-<meta name="keywords" content="cybersécurité,Rivière-du-Loup,protection réseau,protection appareil,vitesse wifi,lenteur pc,analyse sécurité,optimisation performance,vulnérabilité,scan système,protection données,antivirus local,pare-feu,Durcissement Windows,vérification 2FA,protection compte en ligne,audit site web,protection site web,DMARC,SPF,DKIM,Zoho Mail sécurisé,optimisation DNS,Cloudflare,protection contre piratage,protection contre espionnage,VPN,protection vie privée,bureau à la maison,soutien local,urgence sécurité,assistance immédiate,RGPD,forensic léger,réduction surface d’attaque,Nettoyage malware,IA locale,IA éthique,Confiance clients,Support NovaSuite,cybersecurity,network protection,device security,WiFi speed optimization,system scan,data protection,firewall,two-factor authentication,account protection,website audit,secure mail,AI integration,performance,privacy,VPN,local support,Canada tech,ethical AI,NovaSuite Labs">
-
-<meta name="author" content="NovaSuite – Yarrow Martin">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Security-Policy" content="
-default-src 'self';
-script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://buy.stripe.com 'unsafe-inline';
-img-src 'self' https://www.google-analytics.com data:;
-connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
-style-src 'self' 'unsafe-inline';
-frame-src https://www.googletagmanager.com https://buy.stripe.com;">
-<meta name="rating" content="general">
-<meta name="revisit-after" content="3 days">
-  <meta charset="utf-8" />
-  <title>NovaSuite – Audit IA Express & Sécurité Web</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Audit IA express, cybersécurité locale et intégration Nova (LM Studio/Ollama). NovaSuite, la solution IA prête à déployer.">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/nova.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWHM1MVESP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LWHM1MVESP');
-</script>
 </head>
+
+<style>
+  /* Style spécifique du bouton flottant (FAB) et de la boîte de discussion */
+  .nova-fab{
+    position:fixed; right:16px; bottom:16px; z-index:9999;
+    padding:12px 16px; border-radius:999px; font-weight:800; text-decoration:none;
+    background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; border:none;
+    box-shadow:0 10px 28px rgba(0,0,0,.35);
+    -webkit-tap-highlight-color: transparent;
+    cursor:pointer;
+  }
+  .nova-fab[aria-expanded="true"]{
+    /* Si vous voulez un style différent quand le chat est ouvert */
+  }
+  .nova-box{
+    position:fixed; right:16px; bottom:65px; z-index:9998;
+    width:300px; height:400px; background-color:#1e293b; border-radius:12px;
+    box-shadow:0 10px 28px rgba(0,0,0,.5);
+    display:flex; flex-direction:column;
+  }
+  .nova-head{
+    padding:10px 15px; background-color:#0f172a; color:#fff;
+    border-top-left-radius:12px; border-top-right-radius:12px; font-weight:bold;
+  }
+  .nova-log{
+    flex-grow:1; padding:15px; overflow-y:auto; color:#fff; font-size:0.9em;
+  }
+  .nova-bar{
+    display:flex; padding:10px; background-color:#0f172a;
+    border-bottom-left-radius:12px; border-bottom-right-radius:12px;
+  }
+  .nova-bar input{
+    flex-grow:1; padding:8px; border:none; border-radius:6px; margin-right:8px;
+    background-color:#334155; color:#fff;
+  }
+  .nova-bar button{
+    padding:8px 12px; border:none; border-radius:6px; cursor:pointer;
+    background-color:#1ea7ff; color:#031425; font-weight:bold;
+  }
+
+  @media (max-width:600px){
+    .nova-fab{ padding:11px 15px; right:14px; bottom:14px; }
+    .nova-box{
+      width:90%; height:70%; right:5%; bottom:60px;
+    }
+  }
+  /* évite chevauchement avec le bouton BuyMeACoffee bas de page */
+  .wrap + .wrap:last-child{ margin-bottom:76px; }
+</style>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<header class="wrap">
-    <a class="brand" href="/">
-      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite">
-      <span>NovaSuite</span>
-    </a>
-    <div class="badge">Version v1 stable</div>
-    <h1>CyberSécurité Express — IA locale prête, GPT en secours</h1>
-    <p class="lead">Mini-sites IA, audit sécurité, intégration Nova (LM Studio/Ollama).</p>
-
-  <section class="hero">
-    <div class="hero-inner wrap">
-      <h2>Audit IA + intégration rapide</h2>
-      <p>Diagnostic clair, recommandations concrètes, mise en place assistée.</p>
-      <div class="hero-cta">
-        <a href="tarifs.html" class="btn-primary" data-i18n="ctaPricing">
-          Voir les tarifs
-        </a>
-        <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">Soutenir NovaSuite</a>
-      </div>
-    </div>
-  </section>
+  <header class="wrap">
+  <a class="brand" href="/">
+    <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"/>
+    <span>NovaSuite</span>
+  </a>
+  <div class="badge">Version v1 stable</div>
+  <h1>NovaSuite : Votre partenaire IA et Sécurité Web</h1>
 </header>
+<section class="ns-hero">
+  <div class="ns-hero__inner">
+    <h2>Audit IA & Cybersécurité pour votre site web</h2>
+    <p>Ne vous laissez pas surprendre. Obtenez un diagnostic clair et intégrez la puissance de l'IA (LM Studio / Ollama) rapidement et en toute sécurité.</p>
+    <div class="ns-hero__actions">
+      <a href="#formules" class="ns-btn ns-btn--primary">Voir les formules</a> 
+      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener"
+         class="ns-btn ns-btn--gold">☕ Offrir un café à NovaSuite</a>
+    </div>
+  </div>
+</section>
+  <div id="formules" style="scroll-margin-top:100px;"></div>
 
-<main>
-  <section id="valeur" class="wrap" style="
-    padding: 3rem 1rem;
-    background-color: #0b1a13;
-    margin-top: -1px;
-    border-bottom: 2px solid #1a3a2d;
-  ">
-      <h2>Pourquoi choisir NovaSuite ?</h2>
-      <p class="lead" style="text-align:center; max-width: 800px; margin: 0 auto 2rem;">Nous garantissons une intégration sécurisée, locale, et une performance accrue pour votre activité en ligne.</p>
-
-      <div style="
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        text-align: center;
-      ">
-        <div class="feature-box">
-          <span style="font-size: 2.5rem;">🤖</span>
-          <h3>IA Locale Sécurisée</h3>
-          <p>Intégration de modèles Nova (LM Studio/Ollama) directement sur vos serveurs ou PC. Vos données restent CHEZ VOUS.</p>
-        </div>
-        <div class="feature-box">
-          <span style="font-size: 2.5rem;">🔒</span>
-          <h3>Audit Cybersécurité Express</h3>
-          <p>Analyse rapide de vos vulnérabilités web et de réseau. Rapport clair pour sécuriser votre environnement en 24h.</p>
-        </div>
-        <div class="feature-box">
-          <span style="font-size: 2.5rem;">⚡</span>
-          <h3>Optimisation Performance</h3>
-          <p>Amélioration de la vitesse de votre site et de votre réseau (DNS, CDN Cloudflare). Moins de lenteur, plus de clients.</p>
-        </div>
-      </div>
-  </section>
-  <section id="formules" class="wrap" style="padding-top: 2rem;">
+  <main id="formules" class="wrap">
+    <h2>Nos Formules Détaillées</h2>
+    
     <section class="card">
       <h2>Formule Audit Express</h2>
       <p><strong>249 $</strong> par audit<br/>Analyse rapide de votre site, rapport clair et recommandations concrètes.</p>
       <ul>
         <li>Audit de sécurité et performance</li>
         <li>Rapport détaillé avec recommandations</li>
-        <li>Support par e-mail</li>
+        <li>Support par e‑mail</li>
       </ul>
-
-      <div class="btn-primary" style="padding:12px; border-radius:12px;"> 
-        <script async src="https://buy.stripe.com/9B6dR9aPM98SeBp8CO2VG00"></script>
-        <stripe-buy-button
-          buy-button-id="buy_btn_1Soj3TE26Hyplpmcw23dEmCh"
-          publishable-key="pk_live_51SNPtHE26HyplmTEQOFVzvsy5v17U3hj55pZPewvCUR9CnLxqiipU5WnmBsYZCEABQfsDT3RgWNFcUFIekVHuJ0809pMveIvY"
-        >
-        </stripe-buy-button>
-      </div>
+      <a href="https://buy.stripe.com/9B6dR9aPM98SeBp8CO2VG00" class="btn-primary" target="_blank" rel="noopener">Demander un audit</a>
     </section>
 
     <section class="card recommended">
@@ -120,19 +134,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><strong>499 $</strong> par projet<br/>Audit complet plus intégration assistée de nos outils IA.</p>
       <ul>
         <li>Audit complet de sécurité et performance</li>
-        <li>Intégration de mini-site IA/Chat Nova</li>
+        <li>Intégration de mini‑site IA/Chat Nova</li>
         <li>Recommandations d’optimisation UX/UI</li>
-        <li>Support par e-mail et chat</li>
+        <li>Support par e‑mail et chat</li>
       </ul>
-
-      <div class="btn-primary" style="padding:12px; border-radius:12px;"> 
-        <script async src="https://buy.stripe.com/eVqfZh5vsetcdxl7yK2VG01"></script>
-        <stripe-buy-button
-          buy-button-id="buy_btn_1Soj29E26Hyplmptck6KanFV"
-          publishable-key="pk_live_51SNPtHE26HyplmTEQOFVzvsy5v17U3hj55pZPewvCUR9CnLxqiipU5WnmBsYZCEABQfsDT3RgWNFcUFIekVHuJ0809pMveIvY"
-        >
-        </stripe-buy-button>
-      </div>
+      <a href="https://buy.stripe.com/eVqfZh5vsetcdxl7yK2VG01" class="btn-primary" target="_blank" rel="noopener">Commander maintenant</a>
     </section>
 
     <section class="card">
@@ -140,58 +146,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><strong>999 $</strong> par projet<br/>Solution clé en main avec intégration complète et suivi.</p>
       <ul>
         <li>Audit avancé et intégration IA</li>
-        <li>Personnalisation du mini-site (branding)</li>
+        <li>Personnalisation du mini‑site (branding)</li>
         <li>Mises à jour et optimisations mensuelles</li>
-        <li>Support premium (e-mail et chat prioritaire)</li>
+        <li>Support premium (e‑mail et chat prioritaire)</li>
       </ul>
-
-      <div class="btn-primary" style="padding:12px; border-radius:12px;"> 
-        <script async src="https://buy.stripe.com/4gM5kDbTQ0CmbpdaKW2VG02"></script>
-        <stripe-buy-button
-          buy-button-id="buy_btn_1Soj6mE26HyplpmcQ4EqgN6v"
-          publishable-key="pk_live_51SNPtHE26HyplmTEQOFVzvsy5v17U3hj55pZPewvCUR9CnLxqiipU5WnmBsYZCEABQfsDT3RgWNFcUFIekVHuJ0809pMveIvY"
-        >
-        </stripe-buy-button>
-      </div>
+<a href="https://buy.stripe.com/4gM5kDbTQ0CmbpdaKW2VG02" class="btn-primary" target="_blank" rel="noopener">Commander maintenant</a>
     </section>
-  </section>
+  </main>
 
-<footer style="
-  border-top:1px solid #124736;
-  background-color:#0a0f0d;
-  padding:1.5rem 1rem;
-  text-align:center;
-  color:#9deacb;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size:0.8rem;
-  line-height:1.5;
-">
-  <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
-    © NovaSuite Technologies 2025 — Tous droits réservés
+  <div class="wrap" style="text-align:center; margin-top:30px;">
+    <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">☕ Offrir un café à NovaSuite</a>
   </div>
 
-  <div style="margin-top:0.5rem;color:#9deacb;">
-    <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Mentions légales
-    </a>
-    •
-    <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Politique de confidentialité
-    </a>
-    •
-    <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      contact@novasuite.ca
-    </a>
-  </div>
-
-  <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
-    Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
-  </div>
-</footer>
-</main>
- 
-  <button id="nova-fab" class="nova-fab" aria-expanded="false" style="position:fixed; bottom: 20px; right: 20px;">💬 Nova</button>
-  <div id="nova-box" hidden style="position:fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <footer class="wrap" style="margin-top:40px; text-align:center;">
+    <p style="color:var(--text-dim); font-size:0.85em;">© 2025 NovaSuite • Tous droits réservés</p>
+  </footer>
+  
+  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" class="nova-box" hidden>
     <div class="nova-head">Nova • Assistant local</div>
     <div id="nova-log" class="nova-log"></div>
     <form id="nova-form" class="nova-bar">
@@ -201,31 +173,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <script>
+    // Le script de gestion du chat FAB (Floating Action Button)
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#audit"]');
+      const link = e.target.closest('a[href="#formules"]'); // J'ai corrigé l'ancre vers #formules
       if (!link) return;
       e.preventDefault();
-      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('formules')?.scrollIntoView({ behavior: 'smooth' });
     });
+    
     const fab = document.getElementById('nova-fab');
     const box = document.getElementById('nova-box');
     const form = document.getElementById('nova-form');
     const log = document.getElementById('nova-log');
     const field= document.getElementById('nova-field');
+    
     fab.addEventListener('click', () => {
       const open = box.hasAttribute('hidden');
       if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
       else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
     });
+    
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const text = (field.value||'').trim();
       if (!text) return;
-      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
+      
+      const me = document.createElement('div'); 
+      me.textContent = "Vous: " + text; 
+      log.appendChild(me);
       field.value = '';
-      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
+      
+      const bot = document.createElement('div'); 
+      bot.textContent = "Nova: (module local non connecté pour l’instant)"; // Votre message de non-connexion
+      log.appendChild(bot);
+      
       log.scrollTop = log.scrollHeight;
     });
   </script>
-</body>
 </html>
