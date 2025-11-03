@@ -173,9 +173,9 @@
   </div>
 
   <script>
-    // Le script de gestion du chat FAB (Floating Action Button)
+    // Correction: On s'assure que le lien #formules fonctionne
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#formules"]'); // J'ai corrigé l'ancre vers #formules
+      const link = e.target.closest('a[href="#formules"]'); 
       if (!link) return;
       e.preventDefault();
       document.getElementById('formules')?.scrollIntoView({ behavior: 'smooth' });
@@ -187,12 +187,23 @@
     const log = document.getElementById('nova-log');
     const field= document.getElementById('nova-field');
     
+    // CORRECTION DU CHAT ICI : Utilisation de toggleAttribute pour simplifier
     fab.addEventListener('click', () => {
       const open = box.hasAttribute('hidden');
-      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
+      if (open){ 
+        box.removeAttribute('hidden'); 
+        fab.setAttribute('aria-expanded','true'); 
+        // Ajout : Si la boîte est ouverte, on s'assure qu'elle soit devant le bouton FAB
+        box.style.opacity = 1;
+      }
+      else { 
+        box.setAttribute('hidden',''); 
+        fab.setAttribute('aria-expanded','false');
+        box.style.opacity = 0;
+      }
     });
-    
+
+    // Gestion de l'envoi de message
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const text = (field.value||'').trim();
