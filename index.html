@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>NovaSuite • Accueil</title>
-  <meta name="description" content="Découvrez NovaSuite : Audit IA Express, Cybersécurité, et Intégration Nova (LM Studio/Ollama) pour votre projet web.">
+  <meta name="description" content="Découvrez NovaSuite : Audit IA Express, Cybersécurité, et Intégration Nova (LM Studio/Ollama) pour votre projet web."/>
   <meta property="og:title" content="NovaSuite • Accueil"/>
   <meta property="og:description" content="La solution clé en main pour l'IA et la sécurité web."/>
   <meta property="og:image" content="assets/banner-novasuite.jpg"/>
@@ -54,9 +54,6 @@
     -webkit-tap-highlight-color: transparent;
     cursor:pointer;
   }
-  .nova-fab[aria-expanded="true"]{
-    /* Si vous voulez un style différent quand le chat est ouvert */
-  }
   .nova-box{
     position:fixed; right:16px; bottom:65px; z-index:9998;
     width:300px; height:400px; background-color:#1e293b; border-radius:12px;
@@ -99,14 +96,16 @@
     <span>NovaSuite</span>
   </a>
   <div class="badge">Version v1 stable</div>
-  <h1>NovaSuite : Votre partenaire IA et Sécurité Web</h1>
+  <h1>NovaSuite : Votre succès web avec l'IA 🤖 et la Cybersécurité 🛡️.</h1>
 </header>
 <section class="ns-hero">
   <div class="ns-hero__inner">
-    <h2>Audit IA & Cybersécurité pour votre site web</h2>
-    <p>Ne vous laissez pas surprendre. Obtenez un diagnostic clair et intégrez la puissance de l'IA (LM Studio / Ollama) rapidement et en toute sécurité.</p>
+    <h2>Audit IA Express & Intégration Nova (LM Studio / Ollama) 🚀</h2>
+    <p>
+      NovaSuite vous fournit des diagnostics de sécurité et de performance clairs, des recommandations concrètes, et l'**intégration assistée** de nos outils d'intelligence artificielle (LM Studio / Ollama) pour donner un avantage compétitif à votre projet web. Choisissez la solution clé en main.
+    </p>
     <div class="ns-hero__actions">
-      <a href="#formules" class="ns-btn ns-btn--primary">Voir les formules</a> 
+      <a href="#formules" class="ns-btn ns-btn--primary">Voir les formules</a>
       <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener"
          class="ns-btn ns-btn--gold">☕ Offrir un café à NovaSuite</a>
     </div>
@@ -173,7 +172,7 @@
   </div>
 
   <script>
-    // Correction: On s'assure que le lien #formules fonctionne
+    // 1. Gestion du défilement vers les formules de tarifs
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href="#formules"]'); 
       if (!link) return;
@@ -181,29 +180,30 @@
       document.getElementById('formules')?.scrollIntoView({ behavior: 'smooth' });
     });
     
-    const fab = document.getElementById('nova-fab');
-    const box = document.getElementById('nova-box');
+    // 2. Récupération des éléments du chat
+    const fab = document.getElementById('nova-fab'); // Le bouton flottant
+    const box = document.getElementById('nova-box'); // La fenêtre de discussion
     const form = document.getElementById('nova-form');
     const log = document.getElementById('nova-log');
     const field= document.getElementById('nova-field');
     
-    // CORRECTION DU CHAT ICI : Utilisation de toggleAttribute pour simplifier
+    // 3. LOGIQUE D'OUVERTURE/FERMETURE (TOGGLE) DU CHAT
     fab.addEventListener('click', () => {
-      const open = box.hasAttribute('hidden');
+      const open = box.hasAttribute('hidden'); // Vérifie si la boîte est actuellement cachée
+
       if (open){ 
+        // Si elle est cachée, on l'affiche
         box.removeAttribute('hidden'); 
         fab.setAttribute('aria-expanded','true'); 
-        // Ajout : Si la boîte est ouverte, on s'assure qu'elle soit devant le bouton FAB
-        box.style.opacity = 1;
       }
       else { 
+        // Si elle est visible, on la cache
         box.setAttribute('hidden',''); 
         fab.setAttribute('aria-expanded','false');
-        box.style.opacity = 0;
       }
     });
 
-    // Gestion de l'envoi de message
+    // 4. Gestion de l'envoi de message (Affichage du texte de l'utilisateur et de la réponse automatique)
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const text = (field.value||'').trim();
@@ -215,7 +215,7 @@
       field.value = '';
       
       const bot = document.createElement('div'); 
-      bot.textContent = "Nova: (module local non connecté pour l’instant)"; // Votre message de non-connexion
+      bot.textContent = "Nova: (module local non connecté pour l’instant)";
       log.appendChild(bot);
       
       log.scrollTop = log.scrollHeight;
