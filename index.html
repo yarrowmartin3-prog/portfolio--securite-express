@@ -58,7 +58,7 @@
     position:fixed; right:16px; bottom:65px; z-index:9998;
     width:300px; height:400px; background-color:#1e293b; border-radius:12px;
     box-shadow:0 10px 28px rgba(0,0,0,.5);
-    display:flex; flex-direction:column;
+    display:none; /* NOUVEAU: Cacher la boite au départ *é flex-direction:column;
   }
   .nova-head{
     padding:10px 15px; background-color:#0f172a; color:#fff;
@@ -171,12 +171,45 @@
     </form>
   </div>
 
-  <script>
-    // 4. Gestion de l'envoi de message (Connexion à l'API locale)
+   <script>
+    // 1. Gestion du défilement vers les formules de tarifs
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#formules"]'); 
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById('formules')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // 2. Récupération des éléments du chat
+    const fab = document.getElementById('nova-fab'); // Le bouton flottant
+    const box = document.getElementById('nova-box'); // La fenêtre de discussion
+    const form = document.getElementById('nova-form');
+    const log = document.getElementById('nova-log');
+    const field= document.getElementById('nova-field');
+    
+    // 3. LOGIQUE D'OUVERTURE/FERMETURE (TOGGLE) DU CHAT
+    fab.addEventListener('click', () => {
+      // Si le style.display est 'none' (caché), on affiche
+      const isHidden = box.style.display === 'none' || box.style.display === '';
+
+      if (isHidden){ 
+        // Afficher
+        box.style.display = 'flex'; 
+        fab.setAttribute('aria-expanded','true'); 
+      }
+      else { 
+        // Cacher
+        box.style.display = 'none'; 
+        fab.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // ***************************************************************
+    // 4. CONNEXION À L'API LOCALE ET GESTION DE L'HISTORIQUE
     const API_ENDPOINT = 'http://127.0.0.1:8000/chat';
     let history = []; // Stockage de l'historique de la conversation
 
-    form.addEventListener('submit', async (e) => { // NOTEZ l'ajout de 'async'
+    form.addEventListener('submit', async (e) => { // 'async' est OBLIGATOIRE ici
         e.preventDefault();
         const text = (field.value || '').trim();
         if (!text) return;
@@ -199,12 +232,10 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Note: x-site-key est vide pour le test local si SITE_ACCESS_KEY est vide dans main.py
-                    // 'X-Site-Key': 'votre_site_key_secrete_si_necessaire' 
                 },
                 body: JSON.stringify({ 
                     message: text,
-                    history: history // Envoi de l'historique
+                    history: history 
                 })
             });
 
