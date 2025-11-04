@@ -172,53 +172,63 @@
   </div>
 
   <script>
-    // 1. Gestion du défilement vers les formules de tarifs
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#formules"]'); 
-      if (!link) return;
-      e.preventDefault();
-      document.getElementById('formules')?.scrollIntoView({ behavior: 'smooth' });
-    });
-    
-    // 2. Récupération des éléments du chat
-    const fab = document.getElementById('nova-fab'); // Le bouton flottant
-    const box = document.getElementById('nova-box'); // La fenêtre de discussion
-    const form = document.getElementById('nova-form');
-    const log = document.getElementById('nova-log');
-    const field= document.getElementById('nova-field');
-    
-    // 3. LOGIQUE D'OUVERTURE/FERMETURE (TOGGLE) DU CHAT
-    fab.addEventListener('click', () => {
-      const open = box.hasAttribute('hidden'); // Vérifie si la boîte est actuellement cachée
+    // 4. Gestion de l'envoi de message (Connexion à l'API locale)
+    const API_ENDPOINT = 'http://127.0.0.1:8000/chat';
+    let history = []; // Stockage de l'historique de la conversation
 
-      if (open){ 
-        // Si elle est cachée, on l'affiche
-        box.removeAttribute('hidden'); 
-        fab.setAttribute('aria-expanded','true'); 
-      }
-      else { 
-        // Si elle est visible, on la cache
-        box.setAttribute('hidden',''); 
-        fab.setAttribute('aria-expanded','false');
-      }
-    });
+    form.addEventListener('submit', async (e) => { // NOTEZ l'ajout de 'async'
+        e.preventDefault();
+        const text = (field.value || '').trim();
+        if (!text) return;
 
-    // 4. Gestion de l'envoi de message (Affichage du texte de l'utilisateur et de la réponse automatique)
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = (field.value||'').trim();
-      if (!text) return;
-      
-      const me = document.createElement('div'); 
-      me.textContent = "Vous: " + text; 
-      log.appendChild(me);
-      field.value = '';
-      
-      const bot = document.createElement('div'); 
-      bot.textContent = "Nova: (module local non connecté pour l’instant)";
-      log.appendChild(bot);
-      
-      log.scrollTop = log.scrollHeight;
+        // 1. Afficher le message de l'utilisateur
+        const me = document.createElement('div');
+        me.textContent = "Vous: " + text;
+        log.appendChild(me);
+        field.value = '';
+        
+        // 2. Afficher le message de chargement de Nova
+        const bot = document.createElement('div');
+        bot.textContent = "Nova: (Réponse en cours...)";
+        log.appendChild(bot);
+        log.scrollTop = log.scrollHeight;
+
+        try {
+            // 3. Appel à l'API FastAPI locale
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Note: x-site-key est vide pour le test local si SITE_ACCESS_KEY est vide dans main.py
+                    // 'X-Site-Key': 'votre_site_key_secrete_si_necessaire' 
+                },
+                body: JSON.stringify({ 
+                    message: text,
+                    history: history // Envoi de l'historique
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.detail || `Erreur HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const reply = data.reply || "Erreur: Pas de réponse de l'IA.";
+
+            // 4. Mettre à jour l'historique et la réponse
+            history.push({ role: "user", content: text });
+            history.push({ role: "assistant", content: reply });
+            
+            // 5. Remplacer le message de chargement par la réponse réelle
+            bot.textContent = "Nova: " + reply;
+
+        } catch (error) {
+            console.error('Erreur API NovaSuite:', error);
+            bot.textContent = `Nova: Erreur de connexion au module local : ${error.message}`;
+        }
+        
+        log.scrollTop = log.scrollHeight;
     });
   </script>
 </html>
