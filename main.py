@@ -1,22 +1,24 @@
 from fastapi import FastAPI, Header, HTTPException
 from pydantic import BaseModel
-from typing import List, Dict, Any
+from typing import List, Dict
 from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
 # ***************************************************************
-# 1. CONFIGURATION DES CLÉS (CRITIQUE : LA CLÉ DOIT ÊTRE ENTRE GUILLEMETS)
+# 1. CONFIGURATION DES CLÉS (CRITIQUE : UTILISER os.getenv)
 # ***************************************************************
 
-# Votre clé API réelle est insérée ici, entre guillemets.
-# Si vous changez la clé, assurez-vous de garder les guillemets!
-OPENAI_API_KEY = "sk-proj-CRPZCZILBEDS-nwr17uzRb3D_ErvmZyiGfl0HKH35jFTolbtrRgzFVOUiVwzIqLCHuAlQKf8T3B1BkF7NCsPPANgHMeyMogxhallQIxMazl2s3uQ223gZDc6c664413yhnn5jsKTAL55vUYDdBbPSHeZd-gA"
-SITE_ACCESS_KEY = os.getenv("SITE_ACCESS_KEY", "") # Utilisé si tu veux une sécurité supplémentaire
+# 🛡️ LIRE LA CLÉ D'OPENAI DE L'ENVIRONNEMENT RENDER (OBLIGATOIRE POUR LA SÉCURITÉ)
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
-# Vérification de la clé API
+# 🛡️ LIRE LA CLÉ D'ACCÈS DU SITE DE L'ENVIRONNEMENT RENDER (POUR L'AUTH DE novasuite.ca)
+SITE_ACCESS_KEY = os.getenv("SITE_ACCESS_KEY", "") 
+
+# Vérification des clés
 if not OPENAI_API_KEY:
-    raise RuntimeError("OPENAI_API_KEY manquante. Vérifiez la Ligne 17 de main.py.")
+    raise RuntimeError("OPENAI_API_KEY manquante. Définissez la variable d'environnement sur Render.")
+# NOTE: Nous permettons à SITE_ACCESS_KEY d'être vide pour le développement, mais la vérification ci-dessous la rend obligatoire.
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -26,17 +28,17 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 app = FastAPI()
 
-# Configuration CORS (nécessaire pour la communication entre novasuite.ca et ton local)
+# Configuration CORS (Autorise novasuite.ca à appeler l'API)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Autorise novasuite.ca et le local à appeler l'API
+    allow_origins=["*"], # Autorise toute origine pour la flexibilité (idéalement, listez seulement novasuite.ca)
     allow_credentials=True,
     allow_methods=["POST", "GET", "OPTIONS"],
     allow_headers=["*"],
 )
 
 # ***************************************************************
-# 3. SCHÉMAS DE DONNÉES (POUR LA REQUÊTE ET LA RÉPONSE)
+# 3. SCHÉMAS DE DONNÉES
 # ***************************************************************
 
 class ChatIn(BaseModel):
@@ -50,6 +52,12 @@ class ChatOut(BaseModel):
 # 4. ENDPOINTS DE L'API
 # ***************************************************************
 
+# 🐛 CORRECTION DU BUG 500 : Route de base pour éviter l'erreur.
+@app.get("/")
+def read_root():
+    """Route simple pour vérifier l'état du service."""
+    return {"status": "ok", "msg": "NovaSuite API est en ligne !"}
+
 @app.get("/api/test")
 async def test():
     """Un simple endpoint pour vérifier que l'API est en cours d'exécution."""
@@ -59,13 +67,13 @@ async def test():
 def chat(body: ChatIn, x_site_key: str = Header(default="")):
     """Endpoint principal pour la conversation avec l'IA."""
    
-    # 🚨 DÉSACTIVATION TEMPORAIRE DE LA VÉRIFICATION DE LA CLÉ D'ACCÈS POUR LE TEST FINAL
-    # if SITE_ACCESS_KEY and x_site_key != SITE_ACCESS_KEY:
-    # raise HTTPException(status_code=401, detail="Unauthorized")
-    
+    # 🛡️ VÉRIFICATION DE LA CLÉ D'ACCÈS DU SITE (X-Site-Key)
+    if SITE_ACCESS_KEY and x_site_key != SITE_ACCESS_KEY:
+        raise HTTPException(status_code=401, detail="Unauthorized: Clé d'accès du site invalide.")
+   
     messages = [{"role": "system", "content": "Tu es Nova, un assistant IA local et sécurisé qui fournit des audits de sécurité web. Réponds de manière brève, professionnelle et encourage le client à passer à l'Audit Express."}]
    
-    # Ajouter l'historique de la conversation
+    # Intégrer l'historique de la conversation
     for item in body.history:
         if item.get("role") in ["user", "assistant"] and item.get("content"):
             messages.append(item)
@@ -85,6 +93,5 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
    
     except Exception as e:
         print(f"Erreur OpenAI: {e}")
-        raise HTTPException(status_code=500, detail="Erreur interne de l'IA (vérifiez votre clé API ou les logs)")
-
-# Fin du fichier main.py
+        # L'erreur 500 indique souvent une erreur côté OpenAI (ex: clé facturation expirée)
+        raise HTTPException(status_code=500, detail="Erreur interne de l'IA (vérifiez les logs de Render et l'état de votre compte OpenAI).")
