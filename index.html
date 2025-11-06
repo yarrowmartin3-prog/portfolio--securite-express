@@ -70,7 +70,7 @@ frame-src https://www.googletagmanager.com;">
     position:fixed; right:16px; bottom:65px; z-index:9998;
     width:300px; height:400px; background-color:#1e293b; border-radius:12px;
     box-shadow:0 10px 28px rgba(0,0,0,.5);
-    display:none; /* NOUVEAU: Cacher la boite au départ */ 
+    display:none; 
     flex-direction:column;
   }
   .nova-head{
@@ -112,5 +112,110 @@ frame-src https://www.googletagmanager.com;">
     <span>NovaSuite</span>
   </a>
   <div class="badge">Version v1 stable</div>
-  <h1>NovaSuite : Votre succès web
+  <h1>NovaSuite : Votre succès web avec l'IA 🤖 et la Cybersécurité 🛡️.</h1>
+</header>
+<section class="ns-hero">
+  <div class="ns-hero__inner">
+    <h2>Audit IA Express & Intégration Nova (LM Studio / Ollama) 🚀</h2>
+    <p>
+      NovaSuite vous fournit des diagnostics de sécurité et de performance clairs, des recommandations concrètes, et l'**intégration assistée** de nos outils d'intelligence artificielle (LM Studio / Ollama) pour donner un avantage compétitif à votre projet web. Choisissez la solution clé en main.
+    </p>
+    <div class="ns-hero__actions">
+      <a href="#formules" class="ns-btn ns-btn--primary">Voir les formules</a>
+      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener"
+         class="ns-btn ns-btn--gold">☕ Offrir un café à NovaSuite</a>
+    </div>
+  </div>
+</section>
+  <div id="formules" style="scroll-margin-top:100px;"></div>
+
+  <main id="formules" class="wrap">
+    <h2>Nos Formules Détaillées</h2>
     
+    <section class="card">
+      <h2>Formule Audit Express</h2>
+      <p><strong>249 $</strong> par audit<br/>Analyse rapide de votre site, rapport clair et recommandations concrètes.</p>
+      <ul>
+        <li>Audit de sécurité et performance</li>
+        <li>Rapport détaillé avec recommandations</li>
+        <li>Support par e‑mail</li>
+      </ul>
+      <a href="https://buy.stripe.com/9B6dR9aPM98SeBp8CO2VG00" class="btn-primary" target="_blank" rel="noopener">Demander un audit</a>
+    </section>
+
+    <section class="card recommended">
+      <h2>Formule Intégration Standard</h2>
+      <div class="badge badge-blue">⭐ Recommandé</div>
+      <p><strong>499 $</strong> par projet<br/>Audit complet plus intégration assistée de nos outils IA.</p>
+      <ul>
+        <li>Audit complet de sécurité et performance</li>
+        <li>Intégration de mini‑site IA/Chat Nova</li>
+        <li>Recommandations d’optimisation UX/UI</li>
+        <li>Support par e‑mail et chat</li>
+      </ul>
+      <a href="https://buy.stripe.com/eVqfZh5vsetcdxl7yK2VG01" class="btn-primary" target="_blank" rel="noopener">Commander maintenant</a>
+    </section>
+
+    <section class="card">
+      <h2>Formule Premium</h2>
+      <p><strong>999 $</strong> par projet<br/>Solution clé en main avec intégration complète et suivi.</p>
+      <ul>
+        <li>Audit avancé et intégration IA</li>
+        <li>Personnalisation du mini‑site (branding)</li>
+        <li>Mises à jour et optimisations mensuelles</li>
+        <li>Support premium (e‑mail et chat prioritaire)</li>
+      </ul>
+<a href="https://buy.stripe.com/4gM5kDbTQ0CmbpdaKW2VG02" class="btn-primary" target="_blank" rel="noopener">Commander maintenant</a>
+    </section>
+  </main>
+
+  <div class="wrap" style="text-align:center; margin-top:30px;">
+    <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">☕ Offrir un café à NovaSuite</a>
+  </div>
+
+<footer style="
+  border-top:1px solid #124736;
+  background-color:#0a0f0d;
+  padding:1.5rem 1rem;
+  text-align:center;
+  color:#9deacb;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:0.8rem;
+  line-height:1.5;
+">
+  <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
+    © NovaSuite Technologies 2025 — Tous droits réservés
+  </div>
+
+  <div style="margin-top:0.5rem;color:#9deacb;">
+    <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+      Mentions légales
+    </a>
+    •
+    <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+      Politique de confidentialité
+    </a>
+    •
+    <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+      contact@novasuite.ca
+    </a>
+  </div>
+
+  <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
+    Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
+  </div>
+</footer>
+  
+  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" class="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
+   <script src="nova.js"></script>
+</body>
+</html>
