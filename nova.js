@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Définir l'URL de votre futur serveur d'API.
-    // REMPLACER cette URL par l'adresse réelle de votre serveur (ex: 'https://api.novasuite.ca/chat')
-    const API_URL = 'VOTRE_URL_API_ICI'; 
+    
+    // ***************************************************************
+    // 1. CONFIGURATION (CORRIGÉE)
+    // ***************************************************************
+    
+    // L'URL corrigée de votre API Nova sur Render
+    const API_URL = 'https://novasuite.onrender.com/chat'; 
+
+    // Variable pour stocker l'historique des messages (pour le contexte de l'IA)
+    // Elle doit être initialisée même si elle est vide au début
+    let conversationHistory = []; 
 
     const chatFab = document.getElementById('nova-fab'); // Le bouton flottant
     const chatBox = document.getElementById('nova-box'); // La fenêtre de chat
@@ -12,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- A. Gérer l'affichage et la fermeture du chat ---
     if (chatFab && chatBox) {
         chatFab.addEventListener('click', () => {
-            // Basculer l'état 'hidden' de la boîte de chat
             chatBox.hidden = !chatBox.hidden;
             if (!chatBox.hidden) {
                 chatInput.focus();
@@ -24,16 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendMessage = async () => {
         const message = chatInput.value.trim();
         if (!message) return;
-        
-        // 1. Vider le champ et désactiver l'envoi
+       
+        // 1. Désactiver l'envoi et afficher le message utilisateur
         chatInput.value = '';
         chatInput.disabled = true;
         chatSendBtn.disabled = true;
 
-        // 2. Afficher le message de l'utilisateur
+        // 2. Ajouter le message de l'utilisateur à l'historique et l'afficher
+        conversationHistory.push({ "role": "user", "content": message });
         appendMessage('user', message);
-        
-        // 3. Afficher le message de chargement de Nova
+       
+        // 3. Afficher le message de chargement
         const thinkingIndicator = appendMessage('nova', '... Nova écrit ...', true);
 
         try {
@@ -42,18 +50,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    // **NOTE : 'X-Site-Key' est omis ici car votre SITE_ACCESS_KEY est vide sur Render**
                 },
-                body: JSON.stringify({ message: message }),
+                body: JSON.stringify({ 
+                    // ENVOI DU BON FORMAT REQUI PAR VOTRE API PYTHON
+                    message: message, 
+                    history: conversationHistory 
+                }),
             });
 
             if (!response.ok) {
-                throw new Error(`Erreur API: ${response.statusText}`);
+                // Cette erreur pourrait être le 401 si vous ajoutez SITE_ACCESS_KEY plus tard
+                throw new Error(`Erreur API: ${response.statusText || response.status}. Vérifiez les logs Render.`);
             }
 
             const data = await response.json();
-            
-            // 5. Mettre à jour le message de Nova avec la réponse finale
-            updateMessage(thinkingIndicator, data.response || "Désolé, une erreur est survenue.");
+            // L'API renvoie la réponse sous la clé 'reply'
+            const novaReply = data.reply || "Désolé, une erreur est survenue dans la réponse de l'IA.";
+           
+            // 5. Mettre à jour et ajouter la réponse de l'assistant à l'historique
+            updateMessage(thinkingIndicator, novaReply);
+            conversationHistory.push({ "role": "assistant", "content": novaReply });
 
         } catch (error) {
             console.error('Erreur lors de la communication avec Nova:', error);
@@ -65,34 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
             chatInput.focus();
         }
     };
-    
-    // Écouteur pour le bouton d'envoi
+   
+    // Écouteurs pour le bouton d'envoi et la touche Entrée
     if (chatSendBtn) {
         chatSendBtn.addEventListener('click', sendMessage);
     }
-    
-    // Écouteur pour la touche Entrée dans le champ de texte
     if (chatInput) {
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                e.preventDefault(); // Empêche le saut de ligne par défaut
+                e.preventDefault(); 
                 sendMessage();
             }
         });
     }
-    
-    // Fonctions utilitaires
+   
+    // Fonctions utilitaires (non modifiées)
     function appendMessage(sender, text, isThinking = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `chat-message ${sender}`;
         messageDiv.textContent = text;
-        
+       
         if (isThinking) {
             messageDiv.id = 'nova-thinking-indicator';
         }
-        
+       
         chatMessages.appendChild(messageDiv);
-        // Défiler vers le bas
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return messageDiv;
     }
@@ -100,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateMessage(element, newText) {
         if (element) {
             element.textContent = newText;
-            element.removeAttribute('id'); // Retirer l'ID de l'indicateur
+            element.removeAttribute('id');
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     }
