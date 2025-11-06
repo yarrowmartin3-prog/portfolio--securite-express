@@ -397,3 +397,66 @@ input[type="email"]{
     padding: 10px;
     border-top: 1px solid #444;
 }
+/* ================================================= */
+/* 1. STYLES GÉNÉRAUX DU CHATBOT (À MODIFIER/VÉRIFIER) */
+/* ================================================= */
+
+/* Le bouton flottant (Nova) */
+#nova-fab {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px;
+    z-index: 2147483647; /* Très haut pour être toujours visible */
+    /* Assurez-vous d'avoir les styles pour le rendre rond et bleu/couleur */
+}
+
+/* La fenêtre de Chat Principale (#nova-box) */
+#nova-box {
+    /* Propriétés pour le positionnement fixe */
+    position: fixed; 
+    right: 16px; 
+    bottom: 76px; /* Doit être au-dessus du bouton FAB */
+    z-index: 2147483647; /* Même z-index ou un peu moins que le bouton */
+
+    /* Propriétés pour l'apparence et la taille */
+    width: 350px; 
+    height: 500px; 
+    display: none; /* TRÈS IMPORTANT: Cache la boîte par défaut */
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* Utilisez display: flex pour empiler les éléments internes (header, log, input) */
+    display: none; 
+    flex-direction: column;
+}
+
+/* Le conteneur des messages (pour le défilement) */
+#chat-messages {
+    flex-grow: 1; /* Prend l'espace restant */
+    overflow-y: auto; /* CRITIQUE : Permet le défilement */
+    padding: 15px;
+}
+
+/* La zone de saisie (input + bouton Envoyer) */
+#chat-input-container {
+    padding: 10px;
+    border-top: 1px solid #444;
+}
+
+/* ================================================= */
+/* 2. CORRECTION D'ESPACEMENT DU FORMULAIRE */
+/* ================================================= */
+
+/* S'applique à l'élément conteneur de votre formulaire sur formulaire.html */
+.form-container-nova { 
+    display: flex; 
+    flex-direction: column; /* Empile les éléments verticalement */
+    gap: 15px; /* Ajoute un espace clair entre les éléments */
+    /* ... autres propriétés ... */
+}
+
+.form-container-nova input,
+.form-container-nova textarea,
+.form-container-nova button {
+    width: 100%;
+    box-sizing: border-box; 
+}
