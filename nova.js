@@ -1,34 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
+Document.addEventListener('DOMContentLoaded', () => {
     
     // ***************************************************************
-    // 1. CONFIGURATION (CORRIGÉE)
+    // 1. CONFIGURATION ET SÉLECTION DES ÉLÉMENTS (CORRIGÉ)
     // ***************************************************************
     
     // L'URL corrigée de votre API Nova sur Render
     const API_URL = 'https://novasuite.onrender.com/chat'; 
 
     // Variable pour stocker l'historique des messages (pour le contexte de l'IA)
-    // Elle doit être initialisée même si elle est vide au début
     let conversationHistory = []; 
 
-    const chatFab = document.getElementById('nova-fab'); // Le bouton flottant
-    const chatBox = document.getElementById('nova-box'); // La fenêtre de chat
-    const chatInput = document.getElementById('chat-input'); // Le champ de texte
-    const chatSendBtn = document.getElementById('chat-send-btn'); // Le bouton d'envoi
-    const chatMessages = document.getElementById('chat-messages'); // Le conteneur des messages
+    // ATTENTION : Les IDs ci-dessous DOIVENT correspondre aux IDs de votre HTML (div, form, input)
+    const chatFab = document.getElementById('nova-fab');     // Le bouton flottant
+    const chatBox = document.getElementById('nova-box');     // La fenêtre de chat
+    const chatInput = document.getElementById('nova-field'); // Le champ de texte (ID corrigé)
+    const chatSendBtn = document.getElementById('nova-send');  // Le bouton d'envoi (ID corrigé)
+    const chatMessages = document.getElementById('nova-log');  // Le conteneur des messages (ID corrigé)
 
-    // --- A. Gérer l'affichage et la fermeture du chat ---
-    if (chatFab && chatBox) {
+    // ***************************************************************
+    // 2. GESTION DE L'AFFICHAGE ET FERMETURE DU CHAT (LOGIQUE AJOUTÉE)
+    // ***************************************************************
+    
+    if (chatFab && chatBox && chatInput && chatMessages) {
         chatFab.addEventListener('click', () => {
-            chatBox.hidden = !chatBox.hidden;
-            if (!chatBox.hidden) {
+            
+            const isHidden = chatBox.hasAttribute('hidden');
+
+            if (isHidden) {
+                // Ouvre le chat
+                chatBox.removeAttribute('hidden');
+                chatBox.style.display = 'flex'; // Affiche la boîte de chat
+                chatFab.setAttribute('aria-expanded', 'true');
                 chatInput.focus();
+            } else {
+                // Ferme le chat
+                chatBox.setAttribute('hidden', '');
+                chatBox.style.display = 'none'; // Cache la boîte de chat
+                chatFab.setAttribute('aria-expanded', 'false');
             }
+            
+            // Fait défiler le log au bas, quelle que soit l'action
+            chatMessages.scrollTop = chatMessages.scrollHeight; 
         });
     }
 
-    // --- B. Gérer l'envoi de message ---
+
+    // ***************************************************************
+    // 3. GESTION DE L'ENVOI DE MESSAGE
+    // ***************************************************************
+    
     const sendMessage = async () => {
+        // La validation du champ se fait sur l'ID corrigé (nova-field)
         const message = chatInput.value.trim();
         if (!message) return;
        
@@ -50,22 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // **NOTE : 'X-Site-Key' est omis ici car votre SITE_ACCESS_KEY est vide sur Render**
                 },
                 body: JSON.stringify({ 
-                    // ENVOI DU BON FORMAT REQUI PAR VOTRE API PYTHON
                     message: message, 
                     history: conversationHistory 
                 }),
             });
 
             if (!response.ok) {
-                // Cette erreur pourrait être le 401 si vous ajoutez SITE_ACCESS_KEY plus tard
                 throw new Error(`Erreur API: ${response.statusText || response.status}. Vérifiez les logs Render.`);
             }
 
             const data = await response.json();
-            // L'API renvoie la réponse sous la clé 'reply'
             const novaReply = data.reply || "Désolé, une erreur est survenue dans la réponse de l'IA.";
            
             // 5. Mettre à jour et ajouter la réponse de l'assistant à l'historique
@@ -83,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
    
-    // Écouteurs pour le bouton d'envoi et la touche Entrée
+    // Écouteurs pour le bouton d'envoi et la touche Entrée (ID corrigés)
     if (chatSendBtn) {
         chatSendBtn.addEventListener('click', sendMessage);
     }
@@ -96,7 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
    
-    // Fonctions utilitaires (non modifiées)
+    // ***************************************************************
+    // 4. FONCTIONS UTILITAIRES
+    // ***************************************************************
+
     function appendMessage(sender, text, isThinking = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `chat-message ${sender}`;
@@ -106,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDiv.id = 'nova-thinking-indicator';
         }
        
+        // Utilise l'ID corrigé (nova-log)
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return messageDiv;
