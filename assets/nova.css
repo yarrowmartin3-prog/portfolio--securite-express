@@ -460,3 +460,24 @@ input[type="email"]{
     width: 100%;
     box-sizing: border-box; 
 }
+/* ================================================= */
+/* CORRECTION D'ESPACEMENT DU FORMULAIRE (formulaire.html) */
+/* Cibler le conteneur principal: .form-wrap */
+/* ================================================= */
+
+.form-wrap { 
+    display: flex; 
+    flex-direction: column; /* Empile les éléments verticalement (de haut en bas) */
+    gap: 15px; /* Ajoute un espace clair de 15px entre chaque élément (les divs grid, etc.) */
+    padding: 20px;
+    max-width: 800px; /* On augmente un peu la largeur */
+    margin: 0 auto; 
+}
+
+/* Assure que les éléments internes remplissent la largeur */
+.form-wrap input,
+.form-wrap textarea,
+.form-wrap button {
+    width: 100%;
+    box-sizing: border-box; 
+}
