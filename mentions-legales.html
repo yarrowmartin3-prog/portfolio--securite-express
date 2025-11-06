@@ -17,7 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 default-src 'self';
 script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
 img-src 'self' https://www.google-analytics.com data:;
-connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://novasuite.onrender.com;
+connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://novasuite.onrender.com;
 style-src 'self' 'unsafe-inline';
 frame-src https://www.googletagmanager.com;">
 
@@ -31,8 +31,6 @@ frame-src https://www.googletagmanager.com;">
   <meta name="keywords" content="mentions légales,nova suite,confidentialité,protection données,cybersécurité,conditions d’utilisation,site web canada,loi 25,RGPD,privacy policy,legal notice,canada,quebec,yarrow martin,novasuite technologies">
   <meta name="author" content="NovaSuite – Yarrow Martin">
   <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/nova.css">
     <header class="wrap">
@@ -96,7 +94,7 @@ frame-src https://www.googletagmanager.com;">
 <body>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+j.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
 <header>
@@ -168,19 +166,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
     Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
   </div>
-
-<div id="nova-chat-container">
-    <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
-    <div id="nova-box" hidden>
-        <div class="nova-head">Nova • Assistant local</div>
-        <div id="nova-log" class="nova-log"></div>
-        <form id="nova-form" class="nova-bar">
-            <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
-            <button id="nova-send" type="submit">Envoyer</button>
-        </form>
-    </div>
-</div>
 </footer>
+
+<button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+
+<div id="nova-box" class="nova-box" hidden>
+    <div id="nova-head" class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+        <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+        <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+</div>
 
 <script src="nova.js"></script>
 
