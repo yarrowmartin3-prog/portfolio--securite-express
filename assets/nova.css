@@ -354,3 +354,46 @@ input[type="email"]{
     border-top: 1px solid #ccc;
     /* Assurez-vous que l'input et le bouton sont bien alignés dans ce conteneur */
 }
+/* ================================================= */
+/* CORRECTION DU CHATBOT FLOTTANT (POSITIONNEMENT) */
+/* ================================================= */
+
+/* 1. Bouton Flottant (Nova) - Le cercle bleu */
+#nova-fab {
+    /* Maintient le bouton visible même lorsque l'utilisateur défile */
+    position: fixed; 
+    bottom: 20px; /* Distance du bas de l'écran */
+    right: 20px;  /* Distance du côté droit de l'écran */
+    z-index: 1000; /* Assure qu'il est au-dessus des autres éléments */
+    /* Assurez-vous d'avoir aussi la hauteur, la largeur, le radius, etc. */
+}
+
+/* 2. Fenêtre de Chat Principale (#nova-box) */
+#nova-box {
+    /* Ancre la fenêtre par rapport à l'écran */
+    position: fixed; 
+    bottom: 80px; /* Laisser de la place pour le bouton FAB */
+    right: 20px;  /* Alignée avec le bouton */
+    width: 350px; /* Largeur pour un look professionnel */
+    height: 500px; /* Hauteur pour afficher l'historique */
+    z-index: 999; 
+    /* Le reste du style de boîte: fond, bordure, ombre */
+    background-color: #333; /* Fond sombre de l'image que vous avez fournie */
+    border: 1px solid #444;
+    border-radius: 10px;
+    display: flex; /* Permet d'aligner le header, les messages et l'input */
+    flex-direction: column;
+}
+
+/* 3. Conteneur des Messages (#chat-messages) */
+#chat-messages {
+    flex-grow: 1; /* Permet de prendre tout l'espace restant */
+    overflow-y: auto; /* CRITIQUE : Permet le défilement des messages */
+    padding: 15px;
+}
+
+/* 4. Zone de Saisie (pour l'input et le bouton "Envoyer") */
+#chat-input-container {
+    padding: 10px;
+    border-top: 1px solid #444;
+}
