@@ -62,7 +62,7 @@ body{
 header{
   text-align:center;
   padding:18px 0;
-  background:rgba(255,255,255,.02); color: #ffc107;)
+  background:rgba(255,255,255,.02);
   border-bottom:1px solid rgba(255,255,255,.1);
   margin-bottom:8px;
 }
@@ -185,17 +185,43 @@ input[type="email"]{
   padding-left:40px;
 }
 
-/* Chat */
-.nova-fab{
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  z-index:2147483647;
+/* ================================================= */
+/* CHATBOT & BOUTON FLOTTANT (CORRIGÉ) */
+/* ================================================= */
+
+/* 1. Style du Bouton Flottant (Rond et Bleu) */
+#nova-fab { /* Cible l'ID HTML pour appliquer le style */
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2147483647;
+    
+    /* Propriétés pour le style rond et bleu/CTA */
+    width: 60px; /* Taille pour le rendre rond */
+    height: 60px;
+    line-height: 1; /* Aligne le texte */
+    border-radius: 50%; /* Le rend rond */
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em; /* Taille du texte "Nova" */
+    font-weight: 600;
+    text-align: center;
+    
+    background: linear-gradient(135deg, var(--cta-start), var(--cta-end)); /* BLEU (Utilisation de votre variable --cta) */
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
 }
-#nova-box{
+
+#nova-fab:hover {
+    transform: scale(1.05);
+}
+
+/* 2. Style de la Fenêtre de Chat (#nova-box) */
+#nova-box {
   position:fixed;
   right:16px;
-  bottom:76px;
+  bottom:76px; /* Doit être au-dessus du bouton */
   width:min(420px,92vw);
   height:min(70vh,560px);
   background:#0f1420;
@@ -204,11 +230,52 @@ input[type="email"]{
   overflow:hidden;
   box-shadow:0 12px 40px rgba(0,0,0,.5);
   z-index:2147483647;
+  
+  /* CRITIQUE : Cache la boîte au chargement, et utilise Flex pour l'empilement interne */
+  display: none; 
+  flex-direction: column;
 }
 .nova-head{padding:10px 12px;background:#0c111b;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;}
-.nova-log{height:calc(100% - 100px);overflow:auto;padding:12px;}
+.nova-log{flex-grow: 1; overflow:auto;padding:12px;} /* Ajout de flex-grow: 1 */
 .nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420;}
 #nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3;}
+
+/* Messages de chat */
+.chat-message {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+}
+
+.chat-message.user {
+    background-color: var(--accent);
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-message.nova {
+    background-color: #333d4a;
+    color: var(--text);
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+
+/* ================================================= */
+/* CORRECTION D'ESPACEMENT DU FORMULAIRE (form-wrap) */
+/* ================================================= */
+
+.form-wrap {
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+/* Votre code de formulaire ci-dessus assure déjà que les inputs remplissent 100% */
+
 
 /* Harmoniser le bouton "Demander par email" avec le style de soutien */
 .btn-secondary[href^="mailto:"] {
