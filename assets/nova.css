@@ -481,3 +481,38 @@ input[type="email"]{
     width: 100%;
     box-sizing: border-box; 
 }
+/* ================================================= */
+/* MISE À JOUR : STYLE DU BOUTON FLOTTANT */
+/* ================================================= */
+
+#nova-fab {
+    /* Styles de position (pour qu'il flotte) */
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2147483647;
+
+    /* Styles pour l'apparence (ROND et BLEU/CTA) */
+    width: 60px; /* Taille pour former un cercle */
+    height: 60px;
+    line-height: 1;
+    border-radius: 50%; /* CRITIQUE : Rend le bouton rond */
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+
+    /* Utilisation de vos variables de couleur (Bleu/CTA) */
+    background: linear-gradient(135deg, var(--cta-start), var(--cta-end));
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+}
+
+#nova-fab:hover {
+    transform: scale(1.05);
+}
+
+/* Assurez-vous que la boîte est bien positionnée au-dessus */
+#nova-box {
+    bottom: 76px;
+}
