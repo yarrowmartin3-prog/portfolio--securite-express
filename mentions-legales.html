@@ -31,6 +31,8 @@ frame-src https://www.googletagmanager.com;">
   <meta name="keywords" content="mentions légales,nova suite,confidentialité,protection données,cybersécurité,conditions d’utilisation,site web canada,loi 25,RGPD,privacy policy,legal notice,canada,quebec,yarrow martin,novasuite technologies">
   <meta name="author" content="NovaSuite – Yarrow Martin">
   <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/nova.css">
     <header class="wrap">
@@ -65,7 +67,8 @@ frame-src https://www.googletagmanager.com;">
       padding: 2rem 1rem;
     }
 
-    strong { color: #9deacb; }
+    /* CORRECTION DE LA COULEUR ORANGE/VERTE POUR LE TEXTE FORT */
+    strong { color: #cde6dc; } 
     a { color: #72ffcb; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
