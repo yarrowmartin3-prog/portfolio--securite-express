@@ -15,13 +15,10 @@ logger = logging.getLogger(__name__)
 # ***************************************************************
 
 # 🛡️ LIRE LA CLÉ D'OPENAI DE L'ENVIRONNEMENT RENDER
-# Retrait du RuntimeError pour ne pas faire planter l'application au démarrage sur Render
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # 🛡️ LIRE LA CLÉ D'ACCÈS DU SITE DE L'ENVIRONNEMENT RENDER
 SITE_ACCESS_KEY = os.getenv("SITE_ACCESS_KEY", "") 
-
-# *Note : La vérification de la clé sera faite plus bas.*
 
 # Initialisation du client OpenAI
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -35,7 +32,7 @@ app = FastAPI(title="NovaSuite AI API")
 # Configuration CORS (Autorise l'accès depuis novasuite.ca)
 app.add_middleware(
     CORSMiddleware,
-    # Utilisez ["*"] tant que novasuite.ca n'est pas votre domaine final
+    # Laissez ["*"] pour l'instant pour la compatibilité maximale pendant les tests
     allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["POST", "GET", "OPTIONS"],
@@ -43,21 +40,26 @@ app.add_middleware(
 )
 
 # ***************************************************************
-# 3. SCHÉMAS DE DONNÉES
+# 3. SCHÉMAS DE DONNÉES (CORRIGÉ)
 # ***************************************************************
 
 class ChatIn(BaseModel):
-    message: str
+    # CORRECTION CRITIQUE : Renommer 'message' en 'question' 
+    # pour correspondre au corps JSON envoyé par nova.js
+    question: str
     history: List[Dict[str, str]] = []
 
 class ChatOut(BaseModel):
+    # Reste 'reply' pour minimiser les changements côté JS, mais 'response' était aussi possible
     reply: str
+    # AJOUT : Renvoyer l'historique pour que le JS puisse le mettre à jour
+    history: List[Dict[str, str]]
+
 
 # ***************************************************************
 # 4. ENDPOINTS DE L'API
 # ***************************************************************
 
-# ✅ Route de base pour éviter le plantage interne et vérifier l'état
 @app.get("/")
 def read_root():
     """Route simple pour vérifier l'état du service."""
@@ -72,7 +74,6 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
         logger.warning(f"Tentative d'accès non autorisé avec clé: {x_site_key}")
         raise HTTPException(status_code=401, detail="Unauthorized: Clé d'accès du site invalide.")
     
-    # Vérification que la clé OpenAI est présente avant l'appel
     if not OPENAI_API_KEY:
         logger.error("OPENAI_API_KEY est manquante ou vide sur Render.")
         raise HTTPException(status_code=500, detail="Erreur de configuration du serveur (Clé OpenAI manquante).")
@@ -86,7 +87,7 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
             messages.append(item)
 
     # Ajouter le message actuel de l'utilisateur
-    messages.append({"role": "user", "content": body.message})
+    messages.append({"role": "user", "content": body.question}) # UTILISER body.question (CORRIGÉ)
 
     try:
         # Appel à l'API OpenAI
@@ -96,9 +97,14 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
         )
        
         reply = completion.choices[0].message.content.strip()
-        return ChatOut(reply=reply)
+        
+        # Mettre à jour l'historique AVEC la nouvelle question et la nouvelle réponse
+        body.history.append({"role": "user", "content": body.question})
+        body.history.append({"role": "assistant", "content": reply})
+        
+        # Renvoyer la réponse et l'historique mis à jour
+        return ChatOut(reply=reply, history=body.history)
    
     except Exception as e:
         logger.exception(f"Erreur fatale lors de l'appel OpenAI: {e}")
-        # L'erreur 500 est renvoyée si la clé est invalide ou le compte facturé
         raise HTTPException(status_code=500, detail="Erreur interne de l'IA. Vérifiez l'état de votre clé OpenAI sur Render.")
