@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Vérification de sécurité: si un élément manque, arrête l'exécution
     if (!chatFab || !chatBox || !chatForm || !chatField || !chatLog) {
-        console.error("Nova Chatbot: Un ou plusieurs éléments HTML (ID) sont manquants.");
+        console.error("Nova Chatbot: Un ou plusieurs éléments HTML (ID) sont manquants (nova-fab, nova-box, nova-form, nova-field, nova-log).");
         return; 
     }
 
@@ -20,15 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatFab.addEventListener('click', () => {
         const isHidden = chatBox.style.display === 'none';
-        chatBox.style.display = isHidden ? 'flex' : 'none'; // Affiche en 'flex' si caché, cache si affiché
+        // Utiliser 'flex' pour le conteneur principal
+        chatBox.style.display = isHidden ? 'flex' : 'none'; 
         chatFab.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        if (isHidden) {
+            chatField.focus(); // Met le focus sur le champ de texte
+        }
     });
 
     // ************************************************
     // 4. CONNEXION À L'API et GESTION DE L'HISTORIQUE
     // ************************************************
     
-    // IMPORTANT: Remplacez l'IP local par l'URL Render public pour les tests:
+    // CRITIQUE : URL Render correcte (basée sur vos logs)
     const API_ENDPOINT = 'https://novasuite.onrender.com/chat/'; 
     let history = []; 
 
@@ -51,30 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
+                    // Laissez X-Site-Key de côté pour ce test, si ce n'est pas nécessaire
                 },
                 body: JSON.stringify({
-                    question: text,
+                    // CRITIQUE : ENVOIE 'question' pour correspondre au main.py corrigé
+                    question: text, 
                     history: history 
                 })
             });
 
             if (!response.ok) {
-                throw new Error(`Erreur HTTP: ${response.status}`);
+                // Si l'API retourne une erreur HTTP (401, 422, 500)
+                throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
             
+            // CRITIQUE : Récupère la réponse avec la clé 'reply' (comme défini dans ChatOut)
+            const replyText = data.reply; 
+            
             // Mise à jour de l'historique
-            history = data.history || [];
+            history = data.history || []; // Récupère l'historique mis à jour par le Python
 
             // Retire le message de chargement et affiche la réponse
             loadingMessage.remove(); 
-            appendMessage('nova', data.response);
+            appendMessage('nova', replyText);
 
         } catch (error) {
-            console.error('Erreur API Nova:', error);
+            console.error('Erreur fatale de l\'API Nova:', error);
             loadingMessage.remove();
-            appendMessage('nova', 'Désolé, une erreur est survenue lors de la connexion à l\'IA. Veuillez vérifier l\'API (voir la console).');
+            appendMessage('nova', `Désolé, connexion impossible. Vérifiez l'état de l'API Render (voir console). Erreur: ${error.message}`);
         }
     });
 
@@ -84,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.classList.add('chat-message', sender);
         
         if (isLoading) {
+             // Affichage des points de chargement
              messageDiv.innerHTML = '<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span>';
         } else {
              messageDiv.textContent = text;
