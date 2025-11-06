@@ -1,26 +1,23 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+j=document.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
-<!-- End Google Tag Manager -->
-
-  <!-- NovaSuite: Sécurité, Performance, Security & Performance -->
 <meta name="description" content="Audit cybersécurité express et optimisation de performance web. NovaSuite – support humain rapide, IA locale sécurisée, prévention des fuites de données. / Express cybersecurity audit and web performance optimization. NovaSuite – fast human support, secure local AI, and data leak prevention.">
 
 <meta name="keywords" content="cybersécurité,Rivière-du-Loup,protection réseau,protection appareil,vitesse wifi,lenteur pc,analyse sécurité,optimisation performance,vulnérabilité,scan système,protection données,antivirus local,pare-feu,Durcissement Windows,vérification 2FA,protection compte en ligne,audit site web,protection site web,DMARC,SPF,DKIM,Zoho Mail sécurisé,optimisation DNS,Cloudflare,protection contre piratage,protection contre espionnage,VPN,protection vie privée,bureau à la maison,soutien local,urgence sécurité,assistance immédiate,RGPD,forensic léger,réduction surface d’attaque,Nettoyage malware,IA locale,IA éthique,Confiance clients,Support NovaSuite,cybersecurity,network protection,device security,WiFi speed optimization,system scan,data protection,firewall,two-factor authentication,account protection,website audit,secure mail,AI integration,performance,privacy,VPN,local support,Canada tech,ethical AI,NovaSuite Labs">
 
 <meta name="author" content="NovaSuite – Yarrow Martin">
 <meta name="robots" content="index, follow">
+
 <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
 script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
 img-src 'self' https://www.google-analytics.com data:;
-connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
+connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://novasuite.onrender.com;
 style-src 'self' 'unsafe-inline';
 frame-src https://www.googletagmanager.com;">
 <meta name="rating" content="general">
@@ -115,8 +112,7 @@ frame-src https://www.googletagmanager.com;">
       a.btn { font-size: 0.9rem; padding: 10px 18px; }
     }
   </style>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWHM1MVESP"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWHM1MVESP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -124,14 +120,10 @@ frame-src https://www.googletagmanager.com;">
   gtag('config', 'G-LWHM1MVESP');
 </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWHM1MVESP"></script>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <main>
+<main>
     <img src="assets/logo-novasuite.png" alt="NovaSuite" style="width:100px;margin-bottom:20px;">
     <h1>Merci 🎉</h1>
     <p>
@@ -172,60 +164,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
     Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
   </div>
-    <footer>
-        <div>
- <!-- Chat Nova (même que la home) : colle ici le même bloc que dans index.html si besoin -->
-  <!-- ... -->
+</footer>
 
+<button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
 
-    <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
-  <div id="nova-box" hidden>
-    <div class="nova-head">Nova • Assistant local</div>
+<div id="nova-box" class="nova-box" hidden>
+    <div id="nova-head" class="nova-head">Nova • Assistant local</div>
     <div id="nova-log" class="nova-log"></div>
     <form id="nova-form" class="nova-bar">
-      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
-      <button id="nova-send" type="submit">Envoyer</button>
-    </form>
-  </div>
-
-  <script>
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#audit"]');
-      if (!link) return;
-      e.preventDefault();
-      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
-    });
-    const fab = document.getElementById('nova-fab');
-    const box = document.getElementById('nova-box');
-    const form = document.getElementById('nova-form');
-    const log = document.getElementById('nova-log');
-    const field= document.getElementById('nova-field');
-    fab.addEventListener('click', () => {
-      const open = box.hasAttribute('hidden');
-      if (open){ box.removeAttribute('hidden'); fab.setAttribute('aria-expanded','true'); }
-      else { box.setAttribute('hidden',''); fab.setAttribute('aria-expanded','false');}
-    });
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = (field.value||'').trim();
-      if (!text) return;
-      const me = document.createElement('div'); me.textContent = "Vous: " + text; log.appendChild(me);
-      field.value = '';
-      const bot = document.createElement('div'); bot.textContent = "Nova: (module local non connecté pour l’instant)"; log.appendChild(bot);
-      log.scrollTop = log.scrollHeight;
-    });
-  </script>
-    </footer>
-    <div id="nova-box" class="chat-window">
-    <div id="chat-messages"></div>
-    <form id="chat-form">
-        <input type="text" id="chat-input" placeholder="Parlez à Nova">
-        <button id="chat-send-btn">Envoyer</button>
+        <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+        <button id="nova-send" type="submit">Envoyer</button>
     </form>
 </div>
 
-<button id="nova-fab">Nova</button>
-
 <script src="nova.js"></script>
+
 </body>
 </html>
