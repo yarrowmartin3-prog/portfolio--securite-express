@@ -172,7 +172,76 @@ frame-src https://www.googletagmanager.com;">
   <div class="wrap" style="text-align:center; margin-top:30px;">
     <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">☕ Offrir un café à NovaSuite</a>
   </div>
+  
+<div id="cookie-settings-modal" style="
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.75); 
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+">
+    <div style="
+        background-color: #0a0f0d; 
+        border: 1px solid #124736;
+        border-radius: 12px; 
+        padding: 25px; 
+        max-width: 450px; 
+        width: 90%; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    ">
+        <h2 style="color: #72ffcb; margin-top: 0; border-bottom: 1px solid rgba(114, 255, 203, 0.2); padding-bottom: 10px; font-size: 1.4rem;">
+            Gestion des Cookies
+        </h2>
+        
+        <p style="color: #cde6dc; font-size: 0.95rem;">
+            Nous utilisons des cookies pour assurer le bon fonctionnement du site et analyser son trafic (Google Analytics). Conformément à la Loi 25, vous pouvez choisir d'accepter ou de refuser les cookies d'analyse.
+        </p>
 
+        <div style="margin-top: 20px;">
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
+                    1. Cookies Essentiels (Obligatoires)
+                </h3>
+                <p style="color: #4da786; font-size: 0.85rem; margin: 0;">
+                    Nécessaires au fonctionnement de base du site et à la sécurité. Ne peuvent être désactivés.
+                </p>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
+                    2. Cookies d'Analyse (Optionnels)
+                </h3>
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="analytics-consent" checked style="margin-right: 10px; accent-color: #72ffcb;">
+                    <span style="color: #cde6dc; font-size: 0.9rem;">
+                        Activer Google Analytics (Mesure d'audience)
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div style="margin-top: 25px; text-align: right;">
+            <button onclick="saveCookiePreferences();" style="
+                padding: 10px 18px; 
+                background-color: #72ffcb; 
+                color: #0a0f0d; 
+                border: none; 
+                border-radius: 8px; 
+                cursor: pointer; 
+                font-weight: 700;
+                font-size: 0.9rem;
+            ">
+                Sauvegarder et Fermer
+            </button>
+        </div>
+    </div>
+</div>
 <footer style="
   border-top:1px solid #124736;
   background-color:#0a0f0d;
@@ -196,7 +265,7 @@ frame-src https://www.googletagmanager.com;">
       Politique de confidentialité
     </a>
     •
-    <a href="parametres-cookies.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+    <a href="#" onclick="showCookieSettings(event);" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
       Paramètres des cookies
     </a>
     •
@@ -221,5 +290,88 @@ frame-src https://www.googletagmanager.com;">
   </div>
 
    <script src="nova.js"></script>
+
+<script>
+// --- FONCTIONS DE GESTION DES COOKIES ---
+
+// Fonction pour afficher la modale
+function showCookieSettings(event) {
+    if (event) event.preventDefault(); // Empêche le lien de naviguer
+    const modal = document.getElementById('cookie-settings-modal');
+    if (modal) {
+        modal.style.display = 'flex'; // Affiche la modale
+        // Charger la préférence actuelle (par défaut: acceptée)
+        const consent = localStorage.getItem('analytics_consent');
+        const checkbox = document.getElementById('analytics-consent');
+        if (checkbox) {
+             // Si le consentement est 'false', décochez la case
+            checkbox.checked = (consent !== 'false');
+        }
+    }
+}
+
+// Fonction pour sauvegarder les préférences et masquer la modale
+function saveCookiePreferences() {
+    const checkbox = document.getElementById('analytics-consent');
+    const modal = document.getElementById('cookie-settings-modal');
+    
+    // Enregistrer le choix dans le stockage local
+    const consentValue = checkbox.checked ? 'true' : 'false';
+    localStorage.setItem('analytics_consent', consentValue);
+
+    // Recharger la page pour appliquer la modification immédiatement
+    location.reload(); 
+    
+    if (modal) {
+        modal.style.display = 'none'; // Masque la modale
+    }
+}
+
+
+// --- GESTION DU CONSENTEMENT GOOGLE ANALYTICS/GTM ---
+
+// Vérifie le consentement au chargement de la page et gère GTM
+function checkAnalyticsConsent() {
+    // Par défaut, nous considérons que le consentement est donné si aucune info n'est trouvée
+    let consent = localStorage.getItem('analytics_consent');
+    
+    // Si la préférence n'a jamais été définie, affichons la modale pour le choix initial
+    if (consent === null) {
+        // Laissez GTM actif par défaut jusqu'à ce que l'utilisateur clique.
+        consent = 'true'; 
+    }
+
+    if (consent === 'false') {
+        // Si l'utilisateur a refusé, désactivez les tags d'analyse
+        window['gtag_config_GTM-TH9TZKR4'] = { 'groups': 'analytics_storage' };
+        window.dataLayer.push({
+            'event': 'cookie_consent_update',
+            'analytics_storage': 'denied'
+        });
+        
+        // Ceci désactive Google Analytics (G-LWHM1MVESP) si vous l'utilisez directement (gtag)
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied'
+        });
+
+    } else {
+        // Si l'utilisateur a accepté, autorisez les tags d'analyse
+        window['gtag_config_GTM-TH9TZKR4'] = { 'groups': 'analytics_storage' };
+        window.dataLayer.push({
+            'event': 'cookie_consent_update',
+            'analytics_storage': 'granted'
+        });
+        
+        // Autorisez Google Analytics si vous l'utilisez directement (gtag)
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+    }
+}
+
+// Assurez-vous d'appeler cette fonction au chargement de la page
+document.addEventListener('DOMContentLoaded', checkAnalyticsConsent);
+</script>
+
 </body>
 </html>
