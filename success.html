@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l+'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
+  
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Confirmation de Paiement • NovaSuite</title>
+  
+  <meta name="description" content="Confirmation de paiement pour votre commande NovaSuite. Votre service est en cours de traitement et le rapport vous sera envoyé par e-mail."/>
+  <meta name="robots" content="noindex, nofollow"/> <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="assets/nova.css?v=9999"/>
+
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+  img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data:;
+  connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://novasuite.onrender.com https://region1.google-analytics.com;
+  style-src 'self' 'unsafe-inline';
+  frame-src https://www.googletagmanager.com;">
+
+  <style>
+    .nova-fab{
+      position:fixed; right:16px; bottom:16px; z-index:9999;
+      padding:12px 16px; border-radius:999px; font-weight:800; text-decoration:none;
+      background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; border:none;
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+      -webkit-tap-highlight-color: transparent;
+      cursor:pointer;
+    }
+    .nova-box{
+      position:fixed; right:16px; bottom:65px; z-index:9998;
+      width:300px; height:400px; background-color:#1e293b; border-radius:12px;
+      box-shadow:0 10px 28px rgba(0,0,0,.5);
+      display:none; 
+      flex-direction:column;
+    }
+    .nova-head{
+      padding:10px 15px; background-color:#0f172a; color:#fff;
+      border-top-left-radius:12px; border-top-right-radius:12px; font-weight:bold;
+    }
+    .nova-log{
+      flex-grow:1; padding:15px; overflow-y:auto; color:#fff; font-size:0.9em;
+    }
+    .nova-bar{
+      display:flex; padding:10px; background-color:#0f172a;
+      border-bottom-left-radius:12px; border-bottom-right-radius:12px;
+    }
+    .nova-bar input{
+      flex-grow:1; padding:8px; border:none; border-radius:6px; margin-right:8px;
+      background-color:#334155; color:#fff;
+    }
+    .nova-bar button{
+      padding:8px 12px; border:none; border-radius:6px; cursor:pointer;
+      background-color:#1ea7ff; color:#031425; font-weight:bold;
+    }
+
+    @media (max-width:600px){
+      .nova-fab{ padding:11px 15px; right:14px; bottom:14px; }
+      .nova-box{
+        width:90%; height:70%; right:5%; bottom:60px;
+      }
+    }
+    .wrap + .wrap:last-child{ margin-bottom:76px; }
+
+    /* Styles spécifiques à la page de confirmation */
+    .confirmation-box {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 40px;
+      text-align: center;
+      background-color: rgba(18,71,54,0.1);
+      border: 1px solid #124736;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      min-height: 40vh; /* Assure que la boîte soit visible */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .confirmation-box h2 {
+      color: #72ffcb;
+      font-size: 2.2rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+      border: none;
+      padding: 0;
+    }
+    .confirmation-box p {
+      font-size: 1.1rem;
+      color: #cde6dc;
+      margin-bottom: 1.5rem;
+    }
+    .confirmation-box strong {
+      color: #9deacb;
+    }
+    .ns-btn--primary {
+      display: inline-block;
+      padding: 12px 25px;
+      background:linear-gradient(180deg,#1ea7ff,#1293ee); 
+      color:#031425 !important;
+      border-radius: 8px;
+      font-weight: 800;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+  </style>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LWHM1MVESP');
+  </script>
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header class="wrap">
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"/>
+      <span>NovaSuite</span>
+    </a>
+    <div class="badge">Version v1 stable</div>
+    <h1>Confirmation de Commande</h1>
+  </header>
+
+  <main class="wrap">
+    <div class="confirmation-box">
+      <h2>Paiement Réussi ! ✅</h2>
+      <p>
+          Votre commande est bien enregistrée chez NovaSuite. Nous vous remercions pour votre confiance.
+      </p>
+      <p>
+          L'exécution du service est en cours. **Le rapport ou les étapes suivantes vous seront communiqués par e-mail (via Make/Webhook)** dans les prochaines minutes.
+      </p>
+      <p style="font-size: 0.9rem; color: #4da786;">
+          Veuillez vérifier votre boîte de réception et vos courriers indésirables.
+      </p>
+      
+      <a href="index.html" class="ns-btn--primary">
+          Retourner à la page d'accueil
+      </a>
+    </div>
+  </main>
+  
+<div id="cookie-settings-modal" style="
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.75); 
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+">
+    <div style="
+        background-color: #0a0f0d; 
+        border: 1px solid #124736;
+        border-radius: 12px; 
+        padding: 25px; 
+        max-width: 450px; 
+        width: 90%; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    ">
+        <h2 style="color: #72ffcb; margin-top: 0; border-bottom: 1px solid rgba(114, 255, 203, 0.2); padding-bottom: 10px; font-size: 1.4rem;">
+            Gestion des Cookies
+        </h2>
+        
+        <p style="color: #cde6dc; font-size: 0.95rem;">
+            Nous utilisons des cookies pour assurer le bon fonctionnement du site et analyser son trafic (Google Analytics). Conformément à la Loi 25, vous pouvez choisir d'accepter ou de refuser les cookies d'analyse.
+        </p>
+
+        <div style="margin-top: 20px;">
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
+                    1. Cookies Essentiels (Obligatoires)
+                </h3>
+                <p style="color: #4da786; font-size: 0.85rem; margin: 0;">
+                    Nécessaires au fonctionnement de base du site et à la sécurité. Ne peuvent être désactivés.
+                </p>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
+                    2. Cookies d'Analyse (Optionnels)
+                </h3>
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="analytics-consent" checked style="margin-right: 10px; accent-color: #72ffcb;">
+                    <span style="color: #cde6dc; font-size: 0.9rem;">
+                        Activer Google Analytics (Mesure d'audience)
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div style="margin-top: 25px; text-align: right;">
+            <button onclick="saveCookiePreferences();" style="
+                padding: 10px 18px; 
+                background-color: #72ffcb; 
+                color: #0a0f0d; 
+                border: none; 
+                border-radius: 8px; 
+                cursor: pointer; 
+                font-weight: 700;
+                font-size: 0.9rem;
+            ">
+                Sauvegarder et Fermer
+            </button>
+        </div>
+    </div>
+</div>
+<footer style="
+  border-top:1px solid #124736;
+  background-color:#0a0f0d;
+  padding:1.5rem 1rem;
+  text-align:center;
+  color:#9deacb;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:0.8rem;
+  line-height:1.5;
+">
+    <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
+      © NovaSuite Technologies 2025 — Tous droits réservés
+    </div>
+
+    <div style="margin-top:0.5rem;color:#9deacb;">
+      <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+        Mentions légales
+      </a>
+      •
+      <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+        Politique de confidentialité
+      </a>
+      •
+      <a href="#" onclick="showCookieSettings(event);" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+        Paramètres des cookies
+      </a>
+      •
+      <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
+        contact@novasuite.ca
+      </a>
+    </div>
+
+    <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
+      Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
+    </div>
+  </footer>
+  
+  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
+  <div id="nova-box" class="nova-box" hidden>
+    <div class="nova-head">Nova • Assistant local</div>
+    <div id="nova-log" class="nova-log"></div>
+    <form id="nova-form" class="nova-bar">
+      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
+      <button id="nova-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+
+   <script src="nova.js"></script>
+
+<script>
+// --- FONCTIONS DE GESTION DES COOKIES ---
+function showCookieSettings(event) {
+    if (event) event.preventDefault();
+    const modal = document.getElementById('cookie-settings-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        const consent = localStorage.getItem('analytics_consent');
+        const checkbox = document.getElementById('analytics-consent');
+        if (checkbox) {
+            checkbox.checked = (consent !== 'false');
+        }
+    }
+}
+
+function saveCookiePreferences() {
+    const checkbox = document.getElementById('analytics-consent');
+    const modal = document.getElementById('cookie-settings-modal');
+    const consentValue = checkbox.checked ? 'true' : 'false';
+    localStorage.setItem('analytics_consent', consentValue);
+    location.reload(); // Recharge pour appliquer GTM
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// --- GESTION DU CONSENTEMENT GOOGLE ANALYTICS/GTM ---
+function checkAnalyticsConsent() {
+    let consent = localStorage.getItem('analytics_consent');
+    if (consent === null) {
+        consent = 'true'; 
+    }
+
+    if (consent === 'false') {
+        window['gtag_config_GTM-TH9TZKR4'] = { 'groups': 'analytics_storage' };
+        window.dataLayer.push({
+            'event': 'cookie_consent_update',
+            'analytics_storage': 'denied'
+        });
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied'
+        });
+    } else {
+        window['gtag_config_GTM-TH9TZKR4'] = { 'groups': 'analytics_storage' };
+        window.dataLayer.push({
+            'event': 'cookie_consent_update',
+            'analytics_storage': 'granted'
+        });
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', checkAnalyticsConsent);
+</script>
+
+</body>
+</html>
+
