@@ -166,6 +166,20 @@ frame-src https://www.googletagmanager.com;">
         left: 16px; 
     }
     }
+
+    /* Ajustement du style du badge dans les cards, si utilisé (pour l'exemple) */
+    .card .badge-blue {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #1ea7ff;
+        color: #031425;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    }
   </style>
 
   <script>
@@ -190,7 +204,6 @@ frame-src https://www.googletagmanager.com;">
     <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"/>
     <span>NovaSuite</span>
   </a>
-  <div class="badge">Version v1 stable</div>
   <h1>NovaSuite : Votre succès web avec l'IA 🤖 et la Cybersécurité 🛡️.</h1>
 </header>
 <section class="ns-hero">
@@ -208,7 +221,7 @@ frame-src https://www.googletagmanager.com;">
 </section>
   <div id="formules" style="scroll-margin-top:100px;"></div>
 
-  <main id="formules" class="wrap">
+  <main class="wrap">
     <h2>Nos Formules Détaillées</h2>
     
     <section class="card">
@@ -227,7 +240,7 @@ frame-src https://www.googletagmanager.com;">
 
     <section class="card recommended">
       <h2>Formule Intégration Standard</h2>
-      <div class="badge badge-blue">⭐ Recommandé</div>
+      <div class="badge badge-blue">⭐ Recommandé</div> 
       <p>
         **699 $** par projet<br/>
         Audit complet plus intégration assistée de nos outils IA.
