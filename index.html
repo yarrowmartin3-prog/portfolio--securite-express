@@ -27,7 +27,7 @@ style-src 'self' 'unsafe-inline';
 frame-src https://www.googletagmanager.com;">
 
   <style>
-    /* ===== Styles de la page (Hero et Chat) - Maintenus ===== */
+    /* ===== Styles de la page (Hero et Formules) - Maintenus ===== */
     .ns-hero{position:relative;border-radius:12px;overflow:hidden;margin-top:10px;
              box-shadow:0 6px 25px rgba(0,0,0,.4)}
     .ns-hero::before{
@@ -55,8 +55,10 @@ frame-src https://www.googletagmanager.com;">
       .ns-hero__inner{min-height:460px;padding:16px}
       .ns-btn{min-width:180px;padding:10px 14px}
     }
+    
+    /* Styles du Chat Nova (Z-index 9999) - Positionnement ajusté pour le bandeau */
     .nova-fab{
-      position:fixed; right:16px; bottom:16px; z-index:9999; /* Z-index par défaut du chat */
+      position:fixed; right:16px; bottom:65px; z-index:9999; 
       padding:12px 16px; border-radius:999px; font-weight:800; text-decoration:none;
       background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; border:none;
       box-shadow:0 10px 28px rgba(0,0,0,.35);
@@ -64,7 +66,7 @@ frame-src https://www.googletagmanager.com;">
       cursor:pointer;
     }
     .nova-box{
-      position:fixed; right:16px; bottom:65px; z-index:9998;
+      position:fixed; right:16px; bottom:114px; z-index:9998; 
       width:300px; height:400px; background-color:#1e293b; border-radius:12px;
       box-shadow:0 10px 28px rgba(0,0,0,.5);
       display:none; 
@@ -90,21 +92,21 @@ frame-src https://www.googletagmanager.com;">
       background-color:#1ea7ff; color:#031425; font-weight:bold;
     }
     @media (max-width:600px){
-      .nova-fab{ padding:11px 15px; right:14px; bottom:14px; }
-      .nova-box{ width:90%; height:70%; right:5%; bottom:60px; }
+      .nova-fab{ padding:11px 15px; right:14px; bottom:65px; }
+      .nova-box{ width:90%; height:70%; right:5%; bottom:114px; }
     }
     .wrap + .wrap:last-child{ margin-bottom:76px; }
 
-    /* ===== NOUVEAU STYLE DE BANDEAU DE CONSENTEMENT (CORRECTION Z-INDEX) ===== */
+    /* ===== NOUVEAU STYLE DE BANDEAU DE CONSENTEMENT (Z-INDEX FORCÉ POUR CORRECTION) ===== */
     #cookie-banner {
-      position: fixed; /* TRÈS IMPORTANT */
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      position: fixed !important; /* TRÈS IMPORTANT */
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
       background-color: #0f172a; 
       color: #cde6dc; 
       padding: 15px 20px;
-      z-index: 10002; /* AUGMENTÉ POUR ÊTRE AU-DESSUS DU CHAT (9999) et Modale (10001) */
+      z-index: 99999 !important; /* Z-INDEX EXTRÊMEMENT HAUT pour forcer l'affichage */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -202,39 +204,53 @@ frame-src https://www.googletagmanager.com;">
     
     <section class="card">
       <h2>Formule Audit Express</h2>
-      <p><strong>299 $</strong> par audit<br/>Analyse rapide de votre site, rapport clair et recommandations concrètes.</p>
+      <p>
+        <strong>299 $</strong> par audit<br/>
+        Analyse rapide de votre site, rapport clair et recommandations concrètes.
+      </p>
       <ul id="audit-express-ul">
         <li>Audit de sécurité et performance</li>
         <li>Rapport détaillé avec recommandations</li>
         <li>Support par e‑mail</li>
       </ul>
-      <a href="https://buy.stripe.com/9B6dR9aPM98SeBp8CO2VG00" class="btn-primary" target="_blank" rel="noopener">Demander un audit</a>
+      <a href="https://buy.stripe.com/9B6dR9aPM98SeBp8CO2VG00" class="btn-primary" target="_blank" rel="noopener">Demander un audit (299 $)</a>
     </section>
 
     <section class="card recommended">
       <h2>Formule Intégration Standard</h2>
       <div class="badge badge-blue">⭐ Recommandé</div>
-      <p><strong>699 $</strong> par projet<br/>Audit complet plus intégration assistée de nos outils IA.</p>
+      <p>
+        <strong>699 $</strong> par projet<br/>
+        Audit complet plus intégration assistée de nos outils IA.
+      </p>
       <ul id="integration-standard-ul">
         <li>Audit complet de sécurité et performance</li>
         <li>Intégration de mini‑site IA/Chat Nova</li>
         <li>Recommandations d’optimisation UX/UI</li>
         <li>Support par e‑mail et chat</li>
       </ul>
-      <a href="https://buy.stripe.com/eVqfZh5vsetcdxl7yK2VG01" class="btn-primary" target="_blank" rel="noopener">Commander maintenant</a>
+      <a href="https://buy.stripe.com/eVqfZh5vsetcdxl7yK2VG01" class="btn-primary" target="_blank" rel="noopener">Commander maintenant (699 $)</a>
     </section>
 
     <section class="card">
       <h2>Formule Premium</h2>
-      <p><strong>1299 $</strong> par projet<br/>Solution clé en main avec intégration complète et suivi.</p>
+      <p>
+        <strong>1299 $</strong> par projet<br/>
+        Solution clé en main avec intégration complète et suivi.
+      </p>
       <ul id="formule-premium-ul">
         <li>Audit avancé et intégration IA</li>
         <li>Personnalisation du mini‑site (branding)</li>
         <li>Mises à jour et optimisations mensuelles</li>
         <li>Support premium (e‑mail et chat prioritaire)</li>
       </ul>
-      <a href="https://buy.stripe.com/4gM5kDbTQ0CmbpdaKW2VG02" class="btn-primary" target="_blank" rel="noopener">Commander maintenant</a>
+      <a href="https://buy.stripe.com/4gM5kDbTQ0CmbpdaKW2VG02" class="btn-primary" target="_blank" rel="noopener">Commander maintenant (1299 $)</a>
     </section>
+    
+    <p style="text-align: center; margin-top: 20px; font-size: 0.95rem; color: #9deacb;">
+        *Veuillez noter que le Plan de Surveillance et Maintenance IA mensuel de 399 $/mois sera ajouté à ces formules.
+    </p>
+
   </main>
 
   <div class="wrap" style="text-align:center; margin-top:30px;">
@@ -249,7 +265,7 @@ frame-src https://www.googletagmanager.com;">
     width: 100%; 
     height: 100%; 
     background-color: rgba(0, 0, 0, 0.75); 
-    z-index: 10001; /* Doit être au-dessus du contenu */
+    z-index: 10001; 
     align-items: center;
     justify-content: center;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -274,7 +290,7 @@ frame-src https://www.googletagmanager.com;">
         <div style="margin-top: 20px;">
             <div style="margin-bottom: 15px;">
                 <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    1. Cookies Essentiels (Obligatoires)
+                    1. Témoins Essentiels (Obligatoires)
                 </h3>
                 <p style="color: #4da786; font-size: 0.85rem; margin: 0;">
                     Nécessaires au fonctionnement de base du site et à la sécurité. Ne peuvent être désactivés.
@@ -283,185 +299,4 @@ frame-src https://www.googletagmanager.com;">
             
             <div style="margin-bottom: 15px;">
                 <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    2. Cookies d'Analyse (Optionnels)
-                </h3>
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" id="analytics-consent" checked style="margin-right: 10px; accent-color: #72ffcb;">
-                    <span style="color: #cde6dc; font-size: 0.9rem;">
-                        Activer Google Analytics (Mesure d'audience)
-                    </span>
-                </label>
-            </div>
-        </div>
-
-        <div style="margin-top: 25px; text-align: right;">
-            <button onclick="saveCookiePreferences();" style="
-                padding: 10px 18px; 
-                background-color: #72ffcb; 
-                color: #0a0f0d; 
-                border: none; 
-                border-radius: 8px; 
-                cursor: pointer; 
-                font-weight: 700;
-                font-size: 0.9rem;
-            ">
-                Sauvegarder et Fermer
-            </button>
-        </div>
-    </div>
-</div>
-
-<footer style="
-  border-top:1px solid #124736;
-  background-color:#0a0f0d;
-  padding:1.5rem 1rem;
-  text-align:center;
-  color:#9deacb;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size:0.8rem;
-  line-height:1.5;
-">
-  <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
-    © NovaSuite Technologies 2025 — Tous droits réservés
-  </div>
-
-  <div style="margin-top:0.5rem;color:#9deacb;">
-    <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Mentions légales
-    </a>
-    •
-    <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Politique de confidentialité
-    </a>
-    •
-    <a href="#" onclick="showCookieSettings(event);" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Paramètres des cookies
-    </a>
-    •
-    <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      contact@novasuite.ca
-    </a>
-  </div>
-
-  <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
-    Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
-  </div>
-</footer>
-  
-  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
-  <div id="nova-box" class="nova-box" hidden>
-    <div class="nova-head">Nova • Assistant local</div>
-    <div id="nova-log" class="nova-log"></div>
-    <form id="nova-form" class="nova-bar">
-      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
-      <button id="nova-send" type="submit">Envoyer</button>
-    </form>
-  </div>
-
-   <script src="nova.js"></script>
-
-<div id="cookie-banner" style="display: none;">
-    <p>
-      Nous utilisons des témoins pour l'analyse de notre trafic. 
-      <a href="politique-confidentialite.html" target="_blank">Consultez notre Politique de Confidentialité (Loi 25)</a> pour en savoir plus.
-    </p>
-    <div class="cookie-buttons">
-      <button id="accept-cookies" onclick="acceptAllCookies();">J'accepte</button>
-      <button id="settings-cookies" onclick="showCookieSettings();">Paramètres</button>
-    </div>
-</div>
-
-<script>
-// --- FONCTIONS DE GESTION DES COOKIES ---
-
-// Vérifie le statut du consentement stocké
-function getConsentStatus() {
-    return localStorage.getItem('analytics_consent');
-}
-
-// Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
-function applyConsent(granted) {
-    const status = granted ? 'granted' : 'denied';
-    
-    // 1. Mettre à jour le statut via GTAG
-    gtag('consent', 'update', {
-        'analytics_storage': status
-    });
-    
-    // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
-    window.dataLayer.push({
-        'event': 'cookie_consent_update',
-        'analytics_storage': status
-    });
-}
-
-// Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
-function checkAndShowBanner() {
-    const consent = getConsentStatus();
-    const banner = document.getElementById('cookie-banner');
-
-    if (consent === null) {
-        // Aucune préférence trouvée, affichez le bandeau pour forcer le choix
-        if (banner) {
-            banner.style.display = 'flex';
-        }
-    } else {
-        // Préférence trouvée, appliquez-la (true = granted, false = denied)
-        applyConsent(consent !== 'false');
-    }
-}
-
-// Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
-function acceptAllCookies() {
-    localStorage.setItem('analytics_consent', 'true');
-    applyConsent(true);
-    const banner = document.getElementById('cookie-banner');
-    if (banner) banner.style.display = 'none';
-    
-    // Masquer la modale si elle était ouverte
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-// Fonction pour afficher la modale de réglages
-function showCookieSettings(event) {
-    if (event) event.preventDefault();
-    const modal = document.getElementById('cookie-settings-modal');
-    const banner = document.getElementById('cookie-banner');
-    
-    if (modal) {
-        // Charger la préférence actuelle dans la checkbox de la modale
-        const consent = getConsentStatus();
-        const checkbox = document.getElementById('analytics-consent');
-        if (checkbox) {
-            checkbox.checked = (consent !== 'false');
-        }
-        modal.style.display = 'flex';
-        if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
-    }
-}
-
-// Fonction pour sauvegarder les préférences depuis la modale
-function saveCookiePreferences() {
-    const checkbox = document.getElementById('analytics-consent');
-    const modal = document.getElementById('cookie-settings-modal');
-    const granted = checkbox.checked;
-    
-    const consentValue = granted ? 'true' : 'false';
-    localStorage.setItem('analytics_consent', consentValue);
-    
-    // Applique le nouveau consentement sans recharger
-    applyConsent(granted);
-    
-    if (modal) modal.style.display = 'none';
-
-    // Optionnel: Recharger la page pour garantir que tous les scripts sont bien bloqués/activés (souvent nécessaire pour GTM)
-    // location.reload();
-}
-
-// Déclenchement au chargement du DOM
-document.addEventListener('DOMContentLoaded', checkAndShowBanner);
-</script>
-
-</body>
-</html>
+                    2. Témoins d'Analyse (Optionnels)
