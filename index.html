@@ -27,136 +27,66 @@ style-src 'self' 'unsafe-inline';
 frame-src https://www.googletagmanager.com;">
 
   <style>
-    /* ===== Styles de la page (Hero et Formules) - Maintenus ===== */
-    .ns-hero{position:relative;border-radius:12px;overflow:hidden;margin-top:10px;
-             box-shadow:0 6px 25px rgba(0,0,0,.4)}
-    .ns-hero::before{
-      content:"";position:absolute;inset:0;
-      background-image:url('assets/banner-novasuite.jpg');
-      background-size:cover;background-position:center;
-      filter:brightness(.65)
-    }
-    .ns-hero__inner{
-      position:relative;min-height:380px;
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;padding:20px
-    }
-    .ns-hero h2{margin:0 0 10px;font-size:clamp(1.8rem,3vw,2.4rem);color:#fff;
-                text-shadow:0 2px 8px rgba(0,0,0,.5)}
-    .ns-hero p{max-width:640px;margin:0 0 18px;color:#e2e8f0;
-               text-shadow:0 2px 6px rgba(0,0,0,.6)}
-    .ns-hero__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .ns-btn{display:inline-flex;align-items:center;justify-content:center;
-            padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none}
-    .ns-btn--primary{background:linear-gradient(180deg,#1ea7ff,#1293ee);color:#031425;border:0}
-    .ns-btn--gold{background:linear-gradient(180deg,#ffe08a,#ffc233);color:#3b2a00;border:0}
-    .ns-btn:hover{filter:brightness(1.05)}
-    @media (max-width:700px){
-      .ns-hero__inner{min-height:460px;padding:16px}
-      .ns-btn{min-width:180px;padding:10px 14px}
-    }
+    /* ... Vos autres styles ... */
     
-    /* Styles du Chat Nova (Z-index 9999) - Positionnement ajusté pour le bandeau */
+    /* Styles du Chat Nova */
     .nova-fab{
-      position:fixed; right:16px; bottom:65px; z-index:9999; 
+      position:fixed; 
+      right:16px; /* Position par défaut à droite */
+      bottom:16px; 
+      z-index:9999; 
       padding:12px 16px; border-radius:999px; font-weight:800; text-decoration:none;
       background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; border:none;
       box-shadow:0 10px 28px rgba(0,0,0,.35);
       -webkit-tap-highlight-color: transparent;
       cursor:pointer;
+      transition: right 0.3s ease-in-out, left 0.3s ease-in-out; /* Transition pour le déplacement */
     }
     .nova-box{
-      position:fixed; right:16px; bottom:114px; z-index:9998; 
+      position:fixed; right:16px; bottom:65px; z-index:9998; 
       width:300px; height:400px; background-color:#1e293b; border-radius:12px;
       box-shadow:0 10px 28px rgba(0,0,0,.5);
       display:none; 
       flex-direction:column;
     }
-    .nova-head{
-      padding:10px 15px; background-color:#0f172a; color:#fff;
-      border-top-left-radius:12px; border-top-right-radius:12px; font-weight:bold;
-    }
-    .nova-log{
-      flex-grow:1; padding:15px; overflow-y:auto; color:#fff; font-size:0.9em;
-    }
-    .nova-bar{
-      display:flex; padding:10px; background-color:#0f172a;
-      border-bottom-left-radius:12px; border-bottom-right-radius:12px;
-    }
-    .nova-bar input{
-      flex-grow:1; padding:8px; border:none; border-radius:6px; margin-right:8px;
-      background-color:#334155; color:#fff;
-    }
-    .nova-bar button{
-      padding:8px 12px; border:none; border-radius:6px; cursor:pointer;
-      background-color:#1ea7ff; color:#031425; font-weight:bold;
-    }
-    @media (max-width:600px){
-      .nova-fab{ padding:11px 15px; right:14px; bottom:65px; }
-      .nova-box{ width:90%; height:70%; right:5%; bottom:114px; }
-    }
-    .wrap + .wrap:last-child{ margin-bottom:76px; }
 
-    /* ===== NOUVEAU STYLE DE BANDEAU DE CONSENTEMENT (Z-INDEX FORCÉ POUR CORRECTION) ===== */
+    /* Style qui DÉCALE le chat vers la GAUCHE quand le bandeau est visible */
+    .nova-fab.banner-active {
+        right: auto; 
+        left: 16px; /* Déplacé à gauche */
+    }
+
+    /* Styles du Bandeau de Consentement */
     #cookie-banner {
-      position: fixed !important; /* TRÈS IMPORTANT */
+      position: fixed !important;
       bottom: 0 !important;
       left: 0 !important;
       width: 100% !important;
       background-color: #0f172a; 
       color: #cde6dc; 
       padding: 15px 20px;
-      z-index: 99999 !important; /* Z-INDEX EXTRÊMEMENT HAUT pour forcer l'affichage */
+      z-index: 99999 !important; /* Z-INDEX TRÈS ÉLEVÉ */
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
       border-top: 2px solid #124736;
     }
-    #cookie-banner p {
-      margin: 0;
-      font-size: 0.9rem;
-      flex-grow: 1;
-    }
-    #cookie-banner a {
-      color: #72ffcb;
-      text-decoration: underline;
-      font-weight: 600;
-      margin-right: 15px;
-    }
-    .cookie-buttons {
-      display: flex;
-      gap: 10px;
-    }
+    #cookie-banner p { margin: 0; font-size: 0.9rem; flex-grow: 1; }
+    #cookie-banner a { color: #72ffcb; text-decoration: underline; font-weight: 600; margin-right: 15px; }
+    .cookie-buttons { display: flex; gap: 10px; }
     .cookie-buttons button {
-      padding: 8px 15px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.85rem;
-      transition: background-color 0.2s;
+      padding: 8px 15px; border: none; border-radius: 6px; cursor: pointer;
+      font-weight: 700; font-size: 0.85rem; transition: background-color 0.2s;
     }
-    #accept-cookies {
-      background-color: #72ffcb;
-      color: #0a0f0d;
-    }
-    #settings-cookies {
-      background-color: #124736;
-      color: #72ffcb;
-      border: 1px solid #72ffcb;
-    }
+    #accept-cookies { background-color: #72ffcb; color: #0a0f0d; }
+    #settings-cookies { background-color: #124736; color: #72ffcb; border: 1px solid #72ffcb; }
     @media (max-width: 768px) {
-      #cookie-banner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .cookie-buttons {
-        width: 100%;
-        justify-content: space-between;
-      }
+      #cookie-banner { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .cookie-buttons { width: 100%; justify-content: space-between; }
     }
+
+    /* ... Reste de vos styles ... */
   </style>
 
   <script>
@@ -184,24 +114,7 @@ frame-src https://www.googletagmanager.com;">
   <div class="badge">Version v1 stable</div>
   <h1>NovaSuite : Votre succès web avec l'IA 🤖 et la Cybersécurité 🛡️.</h1>
 </header>
-<section class="ns-hero">
-  <div class="ns-hero__inner">
-    <h2>Audit IA Express & Intégration Nova (LM Studio / Ollama) 🚀</h2>
-    <p>
-      NovaSuite vous fournit des diagnostics de sécurité et de performance clairs, des recommandations concrètes, et l'**intégration assistée** de nos outils d'intelligence artificielle (LM Studio / Ollama) pour donner un avantage compétitif à votre projet web. Choisissez la solution clé en main.
-    </p>
-    <div class="ns-hero__actions">
-      <a href="#formules" class="ns-btn ns-btn--primary">Voir les formules</a>
-      <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener"
-         class="ns-btn ns-btn--gold">☕ Offrir un café à NovaSuite</a>
-    </div>
-  </div>
-</section>
-  <div id="formules" style="scroll-margin-top:100px;"></div>
-
-  <main id="formules" class="wrap">
-    <h2>Nos Formules Détaillées</h2>
-    
+<main id="formules" class="wrap">
     <section class="card">
       <h2>Formule Audit Express</h2>
       <p>
@@ -252,10 +165,6 @@ frame-src https://www.googletagmanager.com;">
     </p>
 
   </main>
-
-  <div class="wrap" style="text-align:center; margin-top:30px;">
-    <a href="https://www.buymeacoffee.com/yarrowmart9" target="_blank" rel="noopener" class="btn-gold">☕ Offrir un café à NovaSuite</a>
-  </div>
   
 <div id="cookie-settings-modal" style="
     display: none; 
@@ -270,99 +179,10 @@ frame-src https://www.googletagmanager.com;">
     justify-content: center;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 ">
-    <div style="
-        background-color: #0a0f0d; 
-        border: 1px solid #124736;
-        border-radius: 12px; 
-        padding: 25px; 
-        max-width: 450px; 
-        width: 90%; 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    ">
-        <h2 style="color: #72ffcb; margin-top: 0; border-bottom: 1px solid rgba(114, 255, 203, 0.2); padding-bottom: 10px; font-size: 1.4rem;">
-            Gestion des Témoins
-        </h2>
-        
-        <p style="color: #cde6dc; font-size: 0.95rem;">
-            Nous utilisons des témoins pour assurer le bon fonctionnement du site et analyser son trafic (Google Analytics). Conformément à la Loi 25, vous pouvez choisir d'accepter ou de refuser les témoins d'analyse.
-        </p>
-
-        <div style="margin-top: 20px;">
-            <div style="margin-bottom: 15px;">
-                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    1. Témoins Essentiels (Obligatoires)
-                </h3>
-                <p style="color: #4da786; font-size: 0.85rem; margin: 0;">
-                    Nécessaires au fonctionnement de base du site et à la sécurité. Ne peuvent être désactivés.
-                </p>
-            </div>
-            
-            <div style="margin-bottom: 15px;">
-                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    2. Témoins d'Analyse (Optionnels)
-                </h3>
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" id="analytics-consent" checked style="margin-right: 10px; accent-color: #72ffcb;">
-                    <span style="color: #cde6dc; font-size: 0.9rem;">
-                        Activer Google Analytics (Mesure d'audience)
-                    </span>
-                </label>
-            </div>
-        </div>
-
-        <div style="margin-top: 25px; text-align: right;">
-            <button onclick="saveCookiePreferences();" style="
-                padding: 10px 18px; 
-                background-color: #72ffcb; 
-                color: #0a0f0d; 
-                border: none; 
-                border-radius: 8px; 
-                cursor: pointer; 
-                font-weight: 700;
-                font-size: 0.9rem;
-            ">
-                Sauvegarder et Fermer
-            </button>
-        </div>
     </div>
-</div>
 
-<footer style="
-  border-top:1px solid #124736;
-  background-color:#0a0f0d;
-  padding:1.5rem 1rem;
-  text-align:center;
-  color:#9deacb;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size:0.8rem;
-  line-height:1.5;
-">
-  <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
-    © NovaSuite Technologies 2025 — Tous droits réservés
-  </div>
-
-  <div style="margin-top:0.5rem;color:#9deacb;">
-    <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Mentions légales
-    </a>
-    •
-    <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Politique de confidentialité
-    </a>
-    •
-    <a href="#" onclick="showCookieSettings(event);" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      Paramètres des témoins
-    </a>
-    •
-    <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-      contact@novasuite.ca
-    </a>
-  </div>
-
-  <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
-    Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
-  </div>
-</footer>
+<footer>
+  </footer>
   
   <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
   <div id="nova-box" class="nova-box" hidden>
@@ -409,21 +229,40 @@ function applyConsent(granted) {
         'event': 'cookie_consent_update',
         'analytics_storage': status
     });
+    
+    // Si le consentement est donné, on remet le chat à droite, sinon on le laisse à gauche.
+    const novaFab = document.getElementById('nova-fab');
+    if (novaFab) {
+        if (granted) {
+            novaFab.classList.remove('banner-active');
+        } else {
+            // Si l'utilisateur refuse ou ferme le bandeau, le chat reste à droite par défaut
+            // On ne fait rien ici pour le cas else car la classe 'banner-active' est gérée par checkAndShowBanner
+        }
+    }
 }
 
-// Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
+// Affiche le bandeau si aucune préférence n'est enregistrée, DÉCALE LE CHAT, ou applique la préférence existante
 function checkAndShowBanner() {
     const consent = getConsentStatus();
     const banner = document.getElementById('cookie-banner');
+    const novaFab = document.getElementById('nova-fab');
 
     if (consent === null) {
-        // Aucune préférence trouvée, affichez le bandeau pour forcer le choix
+        // Aucune préférence trouvée, affichez le bandeau et décalez le chat
         if (banner) {
             banner.style.display = 'flex';
+        }
+        if (novaFab) {
+            novaFab.classList.add('banner-active'); // Ajout de la classe pour décaler le chat à gauche
         }
     } else {
         // Préférence trouvée, appliquez-la (true = granted, false = denied)
         applyConsent(consent !== 'false');
+        // Assurez-vous que le chat est à droite si le bandeau n'est pas là
+        if (novaFab) {
+             novaFab.classList.remove('banner-active');
+        }
     }
 }
 
@@ -454,6 +293,12 @@ function showCookieSettings(event) {
         }
         modal.style.display = 'flex';
         if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
+        
+        // On retire la classe 'banner-active' car le bandeau n'est plus visible
+        const novaFab = document.getElementById('nova-fab');
+        if (novaFab) {
+             novaFab.classList.remove('banner-active');
+        }
     }
 }
 
