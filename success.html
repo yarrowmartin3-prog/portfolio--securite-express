@@ -36,7 +36,8 @@
       box-shadow:0 10px 28px rgba(0,0,0,.35);
       -webkit-tap-highlight-color: transparent;
       cursor:pointer;
-      transition: right 0.3s ease-in-out, left 0.3s ease-in-out; 
+      /* CORRECTION: Suppression de la transition de décalage inutile */
+      transition: opacity 0.3s ease-in-out; 
     }
     .nova-box{
       position:fixed; right:16px; bottom:65px; z-index:9998; 
@@ -65,11 +66,11 @@
       background-color:#1ea7ff; color:#031425; font-weight:bold;
     }
     
-    /* Style qui DÉCALE le chat vers la GAUCHE quand le bandeau est visible */
-    .nova-fab.banner-active {
+    /* CORRECTION: Règle de décalage du chat supprimée */
+    /* .nova-fab.banner-active {
         right: auto; 
-        left: 16px; /* Déplacé à gauche */
-    }
+        left: 16px; 
+    } */
 
     /* ===== STYLE DE BANDEAU DE CONSENTEMENT (LATÉRAL COMPACT) ===== */
     #cookie-banner {
@@ -119,22 +120,26 @@
 
 
     @media (max-width:600px){
-      .nova-fab{ padding:11px 15px; right:14px; bottom:14px; }
+      .nova-fab{ padding:11px 15px; right:16px; bottom:16px; }
       .nova-box{
-        width:90%; height:70%; right:5%; bottom:60px;
+        width:90%; height:70%; right:5%; bottom:65px;
       }
+      /* CORRECTION MOBILE : Bandeau full width en bas */
       #cookie-banner { 
-        width: 90% !important; 
-        right: 5% !important; 
-        left: auto !important; 
+        width: 100% !important; 
+        right: 0 !important; 
+        left: 0 !important; 
+        bottom: 0 !important; /* Fixer au bas de l'écran */
+        border-radius: 12px 12px 0 0; /* Coins arrondis seulement en haut */
       }
       .cookie-buttons {
           justify-content: space-between; 
       }
-      .nova-fab.banner-active {
+      /* CORRECTION: Suppression de la règle de décalage inutile */
+      /* .nova-fab.banner-active {
         right: auto; 
         left: 16px; 
-      }
+      } */
     }
     .wrap + .wrap:last-child{ margin-bottom:76px; }
 
@@ -368,7 +373,9 @@ function getUrlParameter(name) {
 
 function trackConversion() {
     const transactionId = getUrlParameter('transaction_id');
-    const value = parseFloat(getUrlParameter('value'));
+    // Utiliser la valeur 'value' ou 0 pour éviter NaN
+    const valueStr = getUrlParameter('value');
+    const value = valueStr ? parseFloat(valueStr) : 0; 
     const currency = getUrlParameter('currency') || 'CAD';
     const item = getUrlParameter('item') || 'AuditExpress'; // Par défaut
 
@@ -389,7 +396,7 @@ function trackConversion() {
         
         console.log(`Conversion GA envoyée: ${item} (${value} ${currency})`);
     } else {
-         console.log('Conversion non envoyée (manque de paramètres dans l’URL).');
+         console.log('Conversion non envoyée (manque de paramètres dans l’URL ou valeur nulle).');
     }
 }
 
@@ -404,7 +411,8 @@ function getConsentStatus() {
 // Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
 function applyConsent(granted) {
     const status = granted ? 'granted' : 'denied';
-    
+    const novaFab = document.getElementById('nova-fab');
+
     // 1. Mettre à jour le statut via GTAG
     gtag('consent', 'update', {
         'analytics_storage': status
@@ -416,41 +424,38 @@ function applyConsent(granted) {
         'analytics_storage': status
     });
     
-    // Si le consentement est donné, on remet le chat à droite.
-    const novaFab = document.getElementById('nova-fab');
+    // CORRECTION : S'assurer que le chat est visible
     if (novaFab) {
-        novaFab.classList.remove('banner-active');
+        novaFab.style.display = 'block'; 
     }
     
-    // Si le consentement est donné, on tente le suivi de conversion
+    // CORRECTION : Si le consentement est donné, on tente le suivi de conversion
     if (granted) {
         trackConversion();
     }
 }
 
-// Affiche le bandeau si aucune préférence n'est enregistrée, DÉCALE LE CHAT, ou applique la préférence existante
+// Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
 function checkAndShowBanner() {
     const consent = getConsentStatus();
     const banner = document.getElementById('cookie-banner');
     const novaFab = document.getElementById('nova-fab');
 
     if (consent === null) {
-        // Aucune préférence trouvée, affichez le bandeau et décalez le chat
+        // Aucune préférence trouvée, affichez le bandeau et masquez le chat
         if (banner) {
             banner.style.display = 'flex';
         }
         if (novaFab) {
-            novaFab.classList.add('banner-active'); // Décaler le chat à gauche
+            // CORRECTION : Masquer le bouton Nova si le bandeau est visible
+            novaFab.style.display = 'none'; 
         }
-        // Tentative de suivi de conversion si aucune action n'a été faite (par défaut "granted" jusqu'à clic)
-        trackConversion(); 
-
     } else {
         // Préférence trouvée, appliquez-la (true = granted, false = denied)
         applyConsent(consent !== 'false');
-        // Assurez-vous que le chat est à droite si le bandeau n'est pas là
+        // S'assurer que le chat est visible
         if (novaFab) {
-             novaFab.classList.remove('banner-active');
+             novaFab.style.display = 'block';
         }
     }
 }
@@ -462,6 +467,10 @@ function acceptAllCookies() {
     const banner = document.getElementById('cookie-banner');
     if (banner) banner.style.display = 'none';
     
+    // Rendre le chat Nova visible
+    const novaFab = document.getElementById('nova-fab');
+    if (novaFab) novaFab.style.display = 'block'; 
+    
     // Masquer la modale si elle était ouverte
     const modal = document.getElementById('cookie-settings-modal');
     if (modal) modal.style.display = 'none';
@@ -472,19 +481,21 @@ function showCookieSettings(event) {
     if (event) event.preventDefault();
     const modal = document.getElementById('cookie-settings-modal');
     const banner = document.getElementById('cookie-banner');
+    const novaFab = document.getElementById('nova-fab');
     
     if (modal) {
+        // Charger la préférence actuelle dans la checkbox de la modale
         const consent = getConsentStatus();
         const checkbox = document.getElementById('analytics-consent');
         if (checkbox) {
             checkbox.checked = (consent !== 'false');
         }
         modal.style.display = 'flex';
-        if (banner) banner.style.display = 'none'; // Cacher le bandeau
+        if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
         
-        const novaFab = document.getElementById('nova-fab');
+        // CORRECTION : On masque le chat Nova si la modale est ouverte
         if (novaFab) {
-             novaFab.classList.remove('banner-active');
+             novaFab.style.display = 'none';
         }
     }
 }
@@ -498,12 +509,16 @@ function saveCookiePreferences() {
     const consentValue = granted ? 'true' : 'false';
     localStorage.setItem('analytics_consent', consentValue);
     
+    // Applique le nouveau consentement sans recharger
     applyConsent(granted);
     
     if (modal) modal.style.display = 'none';
     
+    // Rendre le bandeau invisible et le chat Nova visible
     const banner = document.getElementById('cookie-banner');
     if (banner) banner.style.display = 'none';
+    const novaFab = document.getElementById('nova-fab');
+    if (novaFab) novaFab.style.display = 'block';
 }
 
 
