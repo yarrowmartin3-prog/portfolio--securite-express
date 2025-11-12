@@ -3,7 +3,7 @@
 <head>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l+'';j.async=true;j.src=
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
   
@@ -12,7 +12,8 @@
   <title>Confirmation de Paiement • NovaSuite</title>
   
   <meta name="description" content="Confirmation de paiement pour votre commande NovaSuite. Votre service est en cours de traitement et le rapport vous sera envoyé par e-mail."/>
-  <meta name="robots" content="noindex, nofollow"/> <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <meta name="robots" content="noindex, nofollow"/> 
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
   <link rel="stylesheet" href="assets/nova.css?v=9999"/>
 
   <meta http-equiv="Content-Security-Policy" content="
@@ -24,16 +25,21 @@
   frame-src https://www.googletagmanager.com;">
 
   <style>
+    /* Styles FLOTTANTS (Chat et Bannière de Consentement) */
     .nova-fab{
-      position:fixed; right:16px; bottom:16px; z-index:9999;
+      position:fixed; 
+      right:16px; 
+      bottom:16px; 
+      z-index:9999; 
       padding:12px 16px; border-radius:999px; font-weight:800; text-decoration:none;
       background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; border:none;
       box-shadow:0 10px 28px rgba(0,0,0,.35);
       -webkit-tap-highlight-color: transparent;
       cursor:pointer;
+      transition: right 0.3s ease-in-out, left 0.3s ease-in-out; 
     }
     .nova-box{
-      position:fixed; right:16px; bottom:65px; z-index:9998;
+      position:fixed; right:16px; bottom:65px; z-index:9998; 
       width:300px; height:400px; background-color:#1e293b; border-radius:12px;
       box-shadow:0 10px 28px rgba(0,0,0,.5);
       display:none; 
@@ -58,11 +64,76 @@
       padding:8px 12px; border:none; border-radius:6px; cursor:pointer;
       background-color:#1ea7ff; color:#031425; font-weight:bold;
     }
+    
+    /* Style qui DÉCALE le chat vers la GAUCHE quand le bandeau est visible */
+    .nova-fab.banner-active {
+        right: auto; 
+        left: 16px; /* Déplacé à gauche */
+    }
+
+    /* ===== STYLE DE BANDEAU DE CONSENTEMENT (LATÉRAL COMPACT) ===== */
+    #cookie-banner {
+      position: fixed !important;
+      bottom: 20px !important; 
+      right: 20px !important; 
+      width: 320px !important; 
+      max-width: 90% !important; 
+      background-color: #0f172a; 
+      color: #cde6dc; 
+      padding: 15px; 
+      z-index: 99999 !important;
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      border: 1px solid #124736;
+      border-radius: 12px; 
+    }
+    #cookie-banner p { 
+      margin: 0 0 10px 0; 
+      font-size: 0.9rem; 
+      flex-grow: 1;
+      padding-right: 0; 
+    }
+    #cookie-banner a { 
+      color: #72ffcb; 
+      text-decoration: underline; 
+      font-weight: 600; 
+      margin-right: 0; 
+      display: block; 
+      margin-bottom: 10px;
+    }
+    .cookie-buttons { 
+      display: flex; 
+      gap: 10px; 
+      width: 100%; 
+      justify-content: flex-end; 
+    }
+    .cookie-buttons button {
+      padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer;
+      font-weight: 700; font-size: 0.85rem; transition: background-color 0.2s;
+      flex-shrink: 0;
+    }
+    #accept-cookies { background-color: #72ffcb; color: #0a0f0d; }
+    #settings-cookies { background-color: #124736; color: #72ffcb; border: 1px solid #72ffcb; }
+
 
     @media (max-width:600px){
       .nova-fab{ padding:11px 15px; right:14px; bottom:14px; }
       .nova-box{
         width:90%; height:70%; right:5%; bottom:60px;
+      }
+      #cookie-banner { 
+        width: 90% !important; 
+        right: 5% !important; 
+        left: auto !important; 
+      }
+      .cookie-buttons {
+          justify-content: space-between; 
+      }
+      .nova-fab.banner-active {
+        right: auto; 
+        left: 16px; 
       }
     }
     .wrap + .wrap:last-child{ margin-bottom:76px; }
@@ -116,6 +187,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-LWHM1MVESP');
+    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500 // Temps d'attente pour le script de consentement
+    });
   </script>
 </head>
 
@@ -159,7 +235,7 @@
     width: 100%; 
     height: 100%; 
     background-color: rgba(0, 0, 0, 0.75); 
-    z-index: 10000;
+    z-index: 10001; 
     align-items: center;
     justify-content: center;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -174,17 +250,17 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     ">
         <h2 style="color: #72ffcb; margin-top: 0; border-bottom: 1px solid rgba(114, 255, 203, 0.2); padding-bottom: 10px; font-size: 1.4rem;">
-            Gestion des Cookies
+            Gestion des Témoins
         </h2>
         
         <p style="color: #cde6dc; font-size: 0.95rem;">
-            Nous utilisons des cookies pour assurer le bon fonctionnement du site et analyser son trafic (Google Analytics). Conformément à la Loi 25, vous pouvez choisir d'accepter ou de refuser les cookies d'analyse.
+            Nous utilisons des témoins pour assurer le bon fonctionnement du site et analyser son trafic (Google Analytics). Conformément à la Loi 25, vous pouvez choisir d'accepter ou de refuser les témoins d'analyse.
         </p>
 
         <div style="margin-top: 20px;">
             <div style="margin-bottom: 15px;">
                 <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    1. Cookies Essentiels (Obligatoires)
+                    1. Témoins Essentiels (Obligatoires)
                 </h3>
                 <p style="color: #4da786; font-size: 0.85rem; margin: 0;">
                     Nécessaires au fonctionnement de base du site et à la sécurité. Ne peuvent être désactivés.
@@ -193,7 +269,7 @@
             
             <div style="margin-bottom: 15px;">
                 <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    2. Cookies d'Analyse (Optionnels)
+                    2. Témoins d'Analyse (Optionnels)
                 </h3>
                 <label style="display: flex; align-items: center; cursor: pointer;">
                     <input type="checkbox" id="analytics-consent" checked style="margin-right: 10px; accent-color: #72ffcb;">
@@ -220,6 +296,7 @@
         </div>
     </div>
 </div>
+
 <footer style="
   border-top:1px solid #124736;
   background-color:#0a0f0d;
@@ -244,7 +321,7 @@
       </a>
       •
       <a href="#" onclick="showCookieSettings(event);" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-        Paramètres des cookies
+        Paramètres des témoins
       </a>
       •
       <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
@@ -267,65 +344,173 @@
     </form>
   </div>
 
-   <script src="nova.js"></script>
+  <script src="nova.js"></script>
+
+<div id="cookie-banner" style="display: none;">
+    <p>
+      Nous utilisons des témoins pour l'analyse de notre trafic. 
+      <a href="politique-confidentialite.html" target="_blank">Consultez notre Politique de Confidentialité (Loi 25)</a> pour en savoir plus.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies" onclick="acceptAllCookies();">J'accepte</button>
+      <button id="settings-cookies" onclick="showCookieSettings();">Paramètres</button>
+    </div>
+</div>
 
 <script>
-// --- FONCTIONS DE GESTION DES COOKIES ---
-function showCookieSettings(event) {
-    if (event) event.preventDefault();
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) {
-        modal.style.display = 'flex';
-        const consent = localStorage.getItem('analytics_consent');
-        const checkbox = document.getElementById('analytics-consent');
-        if (checkbox) {
-            checkbox.checked = (consent !== 'false');
+// --- LOGIQUE DE SUIVI DE CONVERSION ---
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function trackConversion() {
+    const transactionId = getUrlParameter('transaction_id');
+    const value = parseFloat(getUrlParameter('value'));
+    const currency = getUrlParameter('currency') || 'CAD';
+    const item = getUrlParameter('item') || 'AuditExpress'; // Par défaut
+
+    if (transactionId && value > 0) {
+        // Envoi de l'événement d'achat à Google Analytics
+        gtag('event', 'purchase', {
+            transaction_id: transactionId,
+            value: value,
+            currency: currency,
+            items: [{
+                item_id: item.toLowerCase().replace(/\s/g, '_'),
+                item_name: item,
+                price: value,
+                quantity: 1,
+                affiliation: 'NovaSuite Website'
+            }]
+        });
+        
+        console.log(`Conversion GA envoyée: ${item} (${value} ${currency})`);
+    } else {
+         console.log('Conversion non envoyée (manque de paramètres dans l’URL).');
+    }
+}
+
+
+// --- FONCTIONS DE GESTION DES COOKIES (LOGIQUE COMPLÈTE) ---
+
+// Vérifie le statut du consentement stocké
+function getConsentStatus() {
+    return localStorage.getItem('analytics_consent');
+}
+
+// Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
+function applyConsent(granted) {
+    const status = granted ? 'granted' : 'denied';
+    
+    // 1. Mettre à jour le statut via GTAG
+    gtag('consent', 'update', {
+        'analytics_storage': status
+    });
+    
+    // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
+    window.dataLayer.push({
+        'event': 'cookie_consent_update',
+        'analytics_storage': status
+    });
+    
+    // Si le consentement est donné, on remet le chat à droite.
+    const novaFab = document.getElementById('nova-fab');
+    if (novaFab) {
+        novaFab.classList.remove('banner-active');
+    }
+    
+    // Si le consentement est donné, on tente le suivi de conversion
+    if (granted) {
+        trackConversion();
+    }
+}
+
+// Affiche le bandeau si aucune préférence n'est enregistrée, DÉCALE LE CHAT, ou applique la préférence existante
+function checkAndShowBanner() {
+    const consent = getConsentStatus();
+    const banner = document.getElementById('cookie-banner');
+    const novaFab = document.getElementById('nova-fab');
+
+    if (consent === null) {
+        // Aucune préférence trouvée, affichez le bandeau et décalez le chat
+        if (banner) {
+            banner.style.display = 'flex';
+        }
+        if (novaFab) {
+            novaFab.classList.add('banner-active'); // Décaler le chat à gauche
+        }
+        // Tentative de suivi de conversion si aucune action n'a été faite (par défaut "granted" jusqu'à clic)
+        trackConversion(); 
+
+    } else {
+        // Préférence trouvée, appliquez-la (true = granted, false = denied)
+        applyConsent(consent !== 'false');
+        // Assurez-vous que le chat est à droite si le bandeau n'est pas là
+        if (novaFab) {
+             novaFab.classList.remove('banner-active');
         }
     }
 }
 
+// Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
+function acceptAllCookies() {
+    localStorage.setItem('analytics_consent', 'true');
+    applyConsent(true);
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'none';
+    
+    // Masquer la modale si elle était ouverte
+    const modal = document.getElementById('cookie-settings-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Fonction pour afficher la modale de réglages
+function showCookieSettings(event) {
+    if (event) event.preventDefault();
+    const modal = document.getElementById('cookie-settings-modal');
+    const banner = document.getElementById('cookie-banner');
+    
+    if (modal) {
+        const consent = getConsentStatus();
+        const checkbox = document.getElementById('analytics-consent');
+        if (checkbox) {
+            checkbox.checked = (consent !== 'false');
+        }
+        modal.style.display = 'flex';
+        if (banner) banner.style.display = 'none'; // Cacher le bandeau
+        
+        const novaFab = document.getElementById('nova-fab');
+        if (novaFab) {
+             novaFab.classList.remove('banner-active');
+        }
+    }
+}
+
+// Fonction pour sauvegarder les préférences depuis la modale
 function saveCookiePreferences() {
     const checkbox = document.getElementById('analytics-consent');
     const modal = document.getElementById('cookie-settings-modal');
-    const consentValue = checkbox.checked ? 'true' : 'false';
+    const granted = checkbox.checked;
+    
+    const consentValue = granted ? 'true' : 'false';
     localStorage.setItem('analytics_consent', consentValue);
-    location.reload(); // Recharge pour appliquer GTM
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    
+    applyConsent(granted);
+    
+    if (modal) modal.style.display = 'none';
+    
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'none';
 }
 
-// --- GESTION DU CONSENTEMENT GOOGLE ANALYTICS/GTM ---
-function checkAnalyticsConsent() {
-    let consent = localStorage.getItem('analytics_consent');
-    if (consent === null) {
-        consent = 'true'; 
-    }
 
-    if (consent === 'false') {
-        window['gtag_config_GTM-TH9TZKR4'] = { 'groups': 'analytics_storage' };
-        window.dataLayer.push({
-            'event': 'cookie_consent_update',
-            'analytics_storage': 'denied'
-        });
-        gtag('consent', 'update', {
-          'analytics_storage': 'denied'
-        });
-    } else {
-        window['gtag_config_GTM-TH9TZKR4'] = { 'groups': 'analytics_storage' };
-        window.dataLayer.push({
-            'event': 'cookie_consent_update',
-            'analytics_storage': 'granted'
-        });
-        gtag('consent', 'update', {
-          'analytics_storage': 'granted'
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', checkAnalyticsConsent);
+// Déclenchement au chargement du DOM
+document.addEventListener('DOMContentLoaded', checkAndShowBanner);
 </script>
 
 </body>
 </html>
-
