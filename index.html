@@ -185,6 +185,26 @@ frame-src https://www.googletagmanager.com;">
         font-weight: 700;
         box-shadow: 0 2px 4px rgba(0,0,0,.2);
     }
+    /* AJOUT DES STYLES POUR LA SECTION QUI SOMMES NOUS */
+    .about-us-summary{
+      text-align: center; 
+      padding: 40px 20px; 
+      background-color: #0f172a; 
+      border-top: 1px solid #124736;
+      border-bottom: 1px solid #124736;
+      margin-top: 20px;
+    }
+    .about-us-summary h2{
+      color: #72ffcb; 
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    .about-us-summary p{
+      font-size: 1.1em; 
+      max-width: 800px; 
+      margin: 0 auto 15px auto;
+      color: #cde6dc;
+    }
   </style>
 
   <script>
@@ -205,12 +225,14 @@ frame-src https://www.googletagmanager.com;">
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <header class="wrap">
-  <a class="brand" href="/">
-    <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"/>
-    <span>NovaSuite</span>
-  </a>
-  <h1>NovaSuite : Votre succès web avec l'IA 🤖 et la Cybersécurité 🛡️.</h1>
-</header>
+    <a class="brand" href="/">
+      <img class="logo" src="assets/logo-novasuite.png" alt="NovaSuite"/>
+      <span>NovaSuite</span>
+    </a>
+    <h1>NovaSuite : Votre succès web avec l'IA 🤖 et la Cybersécurité 🛡️.
+      <a href="a-propos.html" style="font-size:0.75em; font-weight:normal; margin-left:15px; text-decoration:underline; color:#72ffcb;">Notre Expertise</a>
+    </h1>
+  </header>
 <section class="ns-hero">
   <div class="ns-hero__inner">
     <h2>Audit IA Express & Intégration Nova (LM Studio / Ollama) 🚀</h2>
@@ -224,7 +246,18 @@ frame-src https://www.googletagmanager.com;">
     </div>
   </div>
 </section>
-  <div id="formules" style="scroll-margin-top:100px;"></div>
+
+<section class="about-us-summary wrap">
+    <h2>Qui sommes-nous ?</h2>
+    <p>
+        NovaSuite Technologies est votre partenaire de cybersécurité nouvelle génération. Nous sommes fondés par Yarrow Martin, un expert **Certifié en Piratage Éthique** et formé en **Intelligence Artificielle par Google**.
+    </p>
+    <p>
+        Notre mission : Protéger votre entreprise contre les menaces numériques et assurer la conformité Loi 25 grâce à des solutions automatisées et des audits IA précis.
+    </p>
+    <a href="a-propos.html" class="ns-btn ns-btn--primary" style="background:linear-gradient(180deg,#4da786,#3a8f6f); color:#fff; border:0;">Découvrez notre expertise complète</a>
+</section>
+<div id="formules" style="scroll-margin-top:100px;"></div>
 
   <main class="wrap">
     <h2>Nos Formules Détaillées</h2>
@@ -505,44 +538,43 @@ function showCookieSettings(event) {
     const novaFab = document.getElementById('nova-fab');
     
     if (modal) {
-        // Charger la préférence actuelle dans la checkbox de la modale
-        const consent = getConsentStatus();
+        // Charger la préférence actuelle dans la checkbox
+        const currentConsent = getConsentStatus();
         const checkbox = document.getElementById('analytics-consent');
         if (checkbox) {
-            checkbox.checked = (consent !== 'false');
+            // Si le consentement est 'null' (jamais donné) ou 'true' (accordé), on coche la case par défaut
+            checkbox.checked = (currentConsent === null || currentConsent === 'true');
         }
+
         modal.style.display = 'flex';
-        if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
         
-        // On retire le chat Nova si la modale est ouverte
-        if (novaFab) {
-             novaFab.style.display = 'none';
-        }
+        // Masquer le bandeau de consentement si la modale est ouverte
+        if (banner) banner.style.display = 'none';
+        
+        // Masquer le bouton Nova si la modale est ouverte
+        if (novaFab) novaFab.style.display = 'none';
     }
 }
 
 // Fonction pour sauvegarder les préférences depuis la modale
 function saveCookiePreferences() {
     const checkbox = document.getElementById('analytics-consent');
-    const modal = document.getElementById('cookie-settings-modal');
-    const granted = checkbox.checked;
-    
-    const consentValue = granted ? 'true' : 'false';
-    localStorage.setItem('analytics_consent', consentValue);
-    
-    // Applique le nouveau consentement sans recharger
+    const granted = checkbox ? checkbox.checked : false;
+
+    localStorage.setItem('analytics_consent', granted ? 'true' : 'false');
     applyConsent(granted);
     
+    const modal = document.getElementById('cookie-settings-modal');
     if (modal) modal.style.display = 'none';
     
     // Rendre le chat Nova visible
     const novaFab = document.getElementById('nova-fab');
-    if (novaFab) novaFab.style.display = 'block';
+    if (novaFab) novaFab.style.display = 'block'; 
 }
 
-// Déclenchement au chargement du DOM
+// Exécuter la vérification du consentement au chargement de la page
 document.addEventListener('DOMContentLoaded', checkAndShowBanner);
-</script>
 
+</script>
 </body>
 </html>
