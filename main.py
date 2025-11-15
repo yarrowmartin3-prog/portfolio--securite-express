@@ -37,7 +37,7 @@ app.add_middleware(
 # ***************************************************************
 
 class ChatIn(BaseModel):
-    # ✅ Le front-end doit envoyer 'message'
+    # ✅ Le front-end envoie 'message'
     message: str
     history: List[Dict[str, str]] = []
 
@@ -125,4 +125,5 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
    
     except Exception as e:
         print(f"Erreur OpenAI: {e}")
+        # L'erreur 500 indique presque toujours un problème de facturation OpenAI.
         raise HTTPException(status_code=500, detail=f"Erreur interne de l'IA (vérifiez votre compte OpenAI). Détail: {e}")
