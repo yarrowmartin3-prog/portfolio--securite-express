@@ -14,7 +14,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 SITE_ACCESS_KEY = os.getenv("SITE_ACCESS_KEY", "")
 
 if not OPENAI_API_KEY:
-    # Ceci provoque l'erreur de Runtime (le crash) si la clé manque dans Render
+    # Ceci provoque le crash si la clé manque dans Render, mais c'est la bonne syntaxe.
     raise RuntimeError("OPENAI_API_KEY manquante. Définissez la variable d'environnement sur Render.")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -102,7 +102,7 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
     if SITE_ACCESS_KEY and x_site_key != SITE_ACCESS_KEY:
         raise HTTPException(status_code=401, detail="Unauthorized: Clé d'accès du site invalide.")
    
-    # 🕵️ LIGNE DE DIAGNOSTIC (pour confirmer que le corps de la requête est reçu)
+    # 🕵️ LIGNE DE DIAGNOSTIC
     print(f"REQUÊTE ENTRANTE VALIDE: {body.model_dump_json()}")
     
     system_prompt = generate_strategic_response(body.message)
