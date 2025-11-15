@@ -4,7 +4,6 @@ from typing import List, Dict
 from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
 import os
-import json 
 
 # ***************************************************************
 # 1. CONFIGURATION DES CLÉS (CRITIQUE : os.getenv)
@@ -38,7 +37,7 @@ app.add_middleware(
 # ***************************************************************
 
 class ChatIn(BaseModel):
-    # ✅ IMPORTANT : Le front-end doit envoyer 'message', pas 'question'.
+    # ✅ Le front-end doit envoyer 'message'
     message: str
     history: List[Dict[str, str]] = []
 
@@ -50,10 +49,9 @@ class ChatOut(BaseModel):
 # 4. MODULES STRATÉGIQUES (Logique d'Échecs & RAG)
 # ***************************************************************
 
-# 🧠 RAG (Simule la recherche dans votre base de connaissances propriétaire)
 def retrieve_knowledge(query: str) -> str:
     """
-    Simule la recherche de données propriétaires.
+    Simule la recherche de données propriétaires (RAG).
     """
     knowledge_base = {
         "tarifs": "Audit Express: 399$. Plan Maintenance: 399$/mois. Intégration Standard: 699$.",
@@ -68,7 +66,6 @@ def retrieve_knowledge(query: str) -> str:
     
     return knowledge_base["logique_echecs"]
 
-# ♟️ MODULE DE LOGIQUE D'ÉCHECS (Génère la consigne de vente agressive)
 def generate_strategic_response(user_query: str) -> str:
     """
     Génère la consigne stratégique avec la logique de vente agressive.
@@ -104,7 +101,6 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
     if SITE_ACCESS_KEY and x_site_key != SITE_ACCESS_KEY:
         raise HTTPException(status_code=401, detail="Unauthorized: Clé d'accès du site invalide.")
    
-    # ♟️ Étape 1 : Générer la consigne stratégique avec la logique d'échecs et le RAG
     system_prompt = generate_strategic_response(body.message)
     
     messages = [{"role": "system", "content": system_prompt}]
@@ -129,6 +125,4 @@ def chat(body: ChatIn, x_site_key: str = Header(default="")):
    
     except Exception as e:
         print(f"Erreur OpenAI: {e}")
-        # L'erreur 500 est maintenant presque uniquement un problème de facturation OpenAI.
         raise HTTPException(status_code=500, detail=f"Erreur interne de l'IA (vérifiez votre compte OpenAI). Détail: {e}")
-
