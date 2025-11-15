@@ -450,7 +450,7 @@ frame-src https://www.googletagmanager.com;">
 </div>
 
 <script>
-// --- FONCTIONS DE GESTION DES COOKIES ---
+// --- FONCTIONS DE GESTION DES COOKIES (maintenant complètes) ---
 
 // Vérifie le statut du consentement stocké
 function getConsentStatus() {
@@ -472,7 +472,7 @@ function applyConsent(granted) {
         'analytics_storage': status
     });
     
-    // NOUVEAU : S'assurer que le chat est visible
+    // S'assurer que le chat est visible
     const novaFab = document.getElementById('nova-fab');
     if (novaFab) {
         novaFab.style.display = 'block'; 
@@ -491,7 +491,7 @@ function checkAndShowBanner() {
             banner.style.display = 'flex';
         }
         if (novaFab) {
-             // S'assurer que le bouton est visible, car le bandeau le masque en mobile
+             // S'assurer que le bouton est visible
             novaFab.style.display = 'block'; 
         }
     } else {
