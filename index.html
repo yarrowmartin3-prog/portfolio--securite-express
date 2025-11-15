@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
   
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -13,10 +8,10 @@
   <meta name="description" content="Découvrez NovaSuite : Audit IA Express, Cybersécurité, et Intégration Nova (LM Studio/Ollama) pour votre projet web."/>
   <meta property="og:title" content="NovaSuite • Accueil"/>
   <meta property="og:description" content="La solution clé en main pour l'IA et la sécurité web."/>
-  <meta property="og:image" content="assets/banner-novasuite.webp"/>
+  <meta property="og:image" content="assets/banner-novasuite.webp"/> 
   <meta property="og:url" content="https://novasuite.ca/index.html"/>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.webp"/>
-  <link rel="stylesheet" href="assets/nova.css?v=9999"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.webp"/> 
+  <link rel="stylesheet" href="assets/nova.css?v=20251116"/>
 
 <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
@@ -32,7 +27,8 @@ frame-src https://www.googletagmanager.com;">
              box-shadow:0 6px 25px rgba(0,0,0,.4)}
     .ns-hero::before{
       content:"";position:absolute;inset:0;
-      background-image:url('assets/banner-novasuite.webp');
+      /* CORRECTION: Assurez-vous que le nom du fichier est correct */
+      background-image:url('assets/banner-novasuite.webp'); 
       background-size:cover;background-position:center;
       filter:brightness(.65)
     }
@@ -197,18 +193,7 @@ frame-src https://www.googletagmanager.com;">
     }
   </style>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LWHM1MVESP');
-    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'wait_for_update': 500 // Temps d'attente pour le script de consentement
-    });
-  </script>
-</head>
+  </head>
 
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
@@ -436,7 +421,25 @@ frame-src https://www.googletagmanager.com;">
     </form>
   </div>
 
-   <script src="nova.js"></script>
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
+  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LWHM1MVESP');
+    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500 // Temps d'attente pour le script de consentement
+    });
+  </script>
+
+  <script src="nova.js"></script>
 
 <div id="cookie-banner" style="display: none;">
     <p>
@@ -521,16 +524,14 @@ function showCookieSettings(event) {
 // Sauvegarde les préférences du modal
 function saveCookiePreferences() {
     const checkbox = document.getElementById('analytics-consent');
-    const consent = checkbox.checked ? 'granted' : 'denied';
-    localStorage.setItem('analytics_consent', consent);
+    const consentStatus = checkbox.checked ? 'granted' : 'denied';
+    localStorage.setItem('analytics_consent', consentStatus);
     applyConsent(checkbox.checked);
     document.getElementById('cookie-settings-modal').style.display = 'none';
-    checkAndShowBanner();
 }
 
-// Appelle la vérification au chargement
-checkAndShowBanner();
-
+// Exécute la vérification au chargement
+document.addEventListener('DOMContentLoaded', checkAndShowBanner);
 </script>
 
 </body>
