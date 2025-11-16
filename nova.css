@@ -1,1 +1,382 @@
-:root{--bg-start:#0f1420;--bg-end:#1a2230;--accent:#07a4ff;--accent2:#86f0ff;--text:#e6edf3;--text-dim:#9fb0c2;--cta-start:#0c8bff;--cta-end:#00c4ff;--cta-hover-start:#00c4ff;--cta-hover-end:#0c8bff}html,body{margin:0;padding:0}body{background:linear-gradient(180deg,var(--bg-start),var(--bg-end));color:var(--text);font-family:Inter,Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6;overflow-x:hidden}.wrap{max-width:980px;margin:0 auto;padding:0 16px}.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:transform .3s ease,box-shadow .3s ease}.card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.45)}.card h2{color:var(--accent2);font-size:1.6em;margin-top:0;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:10px}.card ul{list-style:none;padding:0;margin:15px 0 25px 0}.card ul li{padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.05);color:var(--text-dim)}.card ul li::before{content:"✅";margin-right:10px;color:var(--accent)}header{text-align:center;padding:18px 0;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:8px}.brand{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none}.logo{width:36px;height:36px;border-radius:50%;object-fit:contain}.logo{transition:transform .3s ease}.logo:hover{transform:scale(1.05) rotate(2deg)}.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85em;color:var(--text-dim);margin:6px 0}h1{color:var(--accent2)}.lead{color:var(--text-dim);max-width:720px;margin:6px auto 0;line-height:1.7}.hero{position:relative;overflow:hidden;min-height:260px;max-width:1100px;margin:18px auto 12px;border-radius:18px;background:linear-gradient(180deg,rgba(8,12,18,.3),rgba(8,12,18,.78)),url("banner-novasuite.jpg?t=4") center/cover no-repeat;border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 34px rgba(0,0,0,.35)}.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 50% 40%,rgba(0,255,255,.18),transparent 60%)}.hero-inner{padding:28px 22px;text-align:center}.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}@media (max-width:640px){.hero{min-height:220px;border-radius:14px}.hero-cta a{width:100%}}.btn-primary,.btn-secondary,.btn-gold{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:600;text-decoration:none;text-align:center;transition:all .25s ease;margin:10px 6px}.btn-primary{background:linear-gradient(135deg,var(--cta-start),var(--cta-end));color:#fff;border:none;border-radius:12px;padding:12px 22px;font-weight:600;box-shadow:0 8px 20px rgba(12,139,255,.35);transition:all .25s ease}.btn-primary:hover{background:linear-gradient(135deg,var(--cta-hover-start),var(--cta-hover-end));transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,183,255,.55)}.btn-secondary{background:rgba(255,255,255,.06);color:#ffc107;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 10px rgba(255,193,7,.25)}.btn-secondary:hover{background:rgba(255,255,255,.1);color:#ffe58f;transform:translateY(-2px)}.btn-gold{background:linear-gradient(135deg,#ffd24d,#ffae00);color:#121823!important;border:none;padding:12px 22px;border-radius:12px;font-weight:700;box-shadow:0 8px 22px rgba(255,176,0,.35)}.btn-gold:hover{transform:translateY(-2px);filter:brightness(1.06)}.audit-form{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.02);padding:20px;border-radius:15px;max-width:480px;margin:30px auto}input[type="url"],input[type="email"]{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px}input[type="url"]{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" opacity="0.65" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m8-7a7 7 0 0 1 6.468 4H9.75c-.285-1.094-.68-2.02-1.154-2.73C8.277 1.64 8.13 1 8 1M4.75 5H1.532A7.001 7.001 0 0 1 8 1c-.13 0-.277.64-.596 1.27C6.93 3.48 6.535 4.406 6.25 5zM1.05 6h3.56c-.11.64-.17 1.31-.17 2s.06 1.36.17 2H1.05A6.97 6.97 0 0 1 1 8c0-.68.018-1.34.05-2m.482 5H4.75c.285 1.094.68 2.02 1.154 2.73.319.63.466 1.27.596 1.27a7 7 0 0 1-6.468-4M8 15c.13 0 .277-.64.596-1.27.474-.71.869-1.636 1.154-2.73h4.218A7 7 0 0 1 8 15m3.39-4c.11-.64.17-1.31.17-2s-.06-1.36-.17-2h3.56C14.982 6.66 15 7.32 15 8s-.018 1.34-.05 2z"/></svg>');background-repeat:no-repeat;background-position:12px 50%;padding-left:40px}input[type="email"]{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" opacity="0.65" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217L8 9 0 4.217z"/><path d="M0 5.383v6.634A2 2 0 0 0 2 14h12a2 2 0 0 0 2-2V5.383l-7.555 4.72a1 1 0 0 1-1.09 0z"/></svg>');background-repeat:no-repeat;background-position:12px 50%;padding-left:40px}#nova-fab{position:fixed;right:16px;bottom:16px;z-index:2147483647;width:60px;height:60px;line-height:1;border-radius:50%;border:none;cursor:pointer;font-size:.9em;font-weight:600;text-align:center;background:linear-gradient(135deg,var(--cta-start),var(--cta-end));color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.4);transition:all .2s ease}#nova-fab:hover{transform:scale(1.05)}#nova-box{position:fixed;right:16px;bottom:76px;width:min(420px,92vw);height:min(70vh,560px);background:#0f1420;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:2147483647;display:none;flex-direction:column}.nova-head{padding:10px 12px;background:#0c111b;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}.nova-log{flex-grow:1;overflow:auto;padding:12px}.nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420}#nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3}.chat-message{padding:8px 12px;margin-bottom:8px;border-radius:12px;max-width:85%;word-wrap:break-word;font-size:.9rem}.chat-message.user{background-color:var(--accent);color:#fff;margin-left:auto;border-bottom-right-radius:4px}.chat-message.nova{background-color:#333d4a;color:var(--text);margin-right:auto;border-bottom-left-radius:4px}.form-wrap{display:flex;flex-direction:column;gap:20px}.btn-secondary[href^="mailto:"]{background:linear-gradient(135deg,#ffd24d,#ffae00);color:#121823!important;border:none;box-shadow:0 8px 22px rgba(255,176,0,.35);transition:all .25s ease}.btn-secondary[href^="mailto:"]:hover{transform:translateY(-2px);filter:brightness(1.06)}.banner div{flex-wrap:wrap}.banner a.btn-primary,.banner a.btn-gold{flex:1 1 auto;min-width:180px;text-align:center}@media (max-width:700px){.banner div{gap:10px;padding:0 10px}.banner a.btn-primary,.banner a.btn-gold{font-size:.95rem;padding:10px 14px}}.banner{min-height:300px}@media (max-width:700px){.banner{min-height:420px}.banner img{max-height:none}}.banner{position:relative;min-height:420px;overflow:visible}.banner img{width:100%;object-fit:cover;filter:brightness(.65)}.banner div{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;padding:20px;text-align:center}.banner a.btn-primary,.banner a.btn-gold{min-width:160px;text-align:center}@media (max-width:700px){.banner{min-height:480px}.banner a.btn-primary,.banner a.btn-gold{font-size:.95rem;padding:10px 14px}}.card.recommended{position:relative;border:1px solid rgba(0,200,255,.3);box-shadow:0 0 25px rgba(0,160,255,.25),0 0 8px rgba(0,140,255,.15) inset}.badge.badge-blue{position:absolute;top:-10px;right:15px;background:linear-gradient(180deg,#1ea7ff,#1293ee);color:#031425;font-weight:800;font-size:.8em;padding:4px 10px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+:root {
+  --bg-start: #0f1420;
+  --bg-end: #1a2230;
+  --accent: #07a4ff;
+  --accent2: #86f0ff;
+  --text: #e6edf3;
+  --text-dim: #9fb0c2;
+
+  /* CTA unified colours */
+  --cta-start: #0c8bff;
+  --cta-end: #00c4ff;
+  --cta-hover-start: #00c4ff;
+  --cta-hover-end: #0c8bff;
+}
+
+html,body{margin:0;padding:0;}
+body{
+  background:linear-gradient(180deg,var(--bg-start),var(--bg-end));
+  color:var(--text);
+  font-family:Inter,Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px;}
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 18px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+.card h2 {
+  color: var(--accent2);
+  font-size: 1.6em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 25px 0;
+}
+.card ul li {
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+}
+.card ul li::before {
+  content: "✅";
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+header{
+  text-align:center;
+  padding:18px 0;
+  background:rgba(255,255,255,.02);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  margin-bottom:8px;
+}
+.brand{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;}
+.logo{width:36px;height:36px;border-radius:50%;object-fit:contain;}
+.logo {
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85em;color:var(--text-dim);margin:6px 0;}
+h1{color:var(--accent2);}
+.lead{color:var(--text-dim);max-width:720px;margin:6px auto 0;line-height:1.7;}
+
+.hero{
+  position:relative;overflow:hidden;
+  min-height:260px;max-width:1100px;
+  margin:18px auto 12px;border-radius:18px;
+  background:
+    linear-gradient(180deg, rgba(8,12,18,.30), rgba(8,12,18,.78)),
+    url("banner-novasuite.jpg?t=4") center/cover no-repeat;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 34px rgba(0,0,0,.35);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background: radial-gradient(60% 50% at 50% 40%, rgba(0,255,255,.18), transparent 60%);
+}
+.hero-inner{padding:28px 22px;text-align:center;}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+@media (max-width:640px){
+  .hero{min-height:220px;border-radius:14px;}
+  .hero-cta a{width:100%;}
+}
+
+/* Unified buttons */
+.btn-primary,.btn-secondary,.btn-gold{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  font-weight:600;
+  text-decoration:none;
+  text-align:center;
+  transition:all .25s ease;
+  margin:10px 6px;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--cta-start), var(--cta-end));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 22px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(12, 139, 255, 0.35);
+  transition: all 0.25s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--cta-hover-start), var(--cta-hover-end));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 183, 255, 0.55);
+}
+.btn-secondary{
+  background:rgba(255,255,255,.06);
+  color:#ffc107;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 10px rgba(255,193,7,.25);
+}
+.btn-secondary:hover{
+  background:rgba(255,255,255,.1);
+  color:#ffe58f;
+  transform:translateY(-2px);
+}
+.btn-gold {
+    background: linear-gradient(135deg, #ffd24d, #ffae00);
+    color: #121823 !important;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(255,176,0,.35);
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+.btn-gold:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+}
+
+/* Form */
+.audit-form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:rgba(255,255,255,.02);
+  padding:20px;
+  border-radius:15px;
+  max-width:480px;
+  margin:30px auto;
+}
+input[type="url"],input[type="email"]{
+  background:rgba(255,255,255,.08);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;
+  padding:10px;
+}
+input[type="url"]{
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" opacity="0.65" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m8-7a7 7 0 0 1 6.468 4H9.75c-.285-1.094-.68-2.02-1.154-2.73C8.277 1.64 8.13 1 8 1M4.75 5H1.532A7.001 7.001 0 0 1 8 1c-.13 0-.277.64-.596 1.27C6.93 3.48 6.535 4.406 6.25 5zM1.05 6h3.56c-.11.64-.17 1.31-.17 2s.06 1.36.17 2H1.05A6.97 6.97 0 0 1 1 8c0-.68.018-1.34.05-2m.482 5H4.75c.285 1.094.68 2.02 1.154 2.73.319.63.466 1.27.596 1.27a7 7 0 0 1-6.468-4M8 15c.13 0 .277-.64.596-1.27.474-.71.869-1.636 1.154-2.73h4.218A7 7 0 0 1 8 15m3.39-4c.11-.64.17-1.31.17-2s-.06-1.36-.17-2h3.56C14.982 6.66 15 7.32 15 8s-.018 1.34-.05 2z"/></svg>');
+  background-repeat:no-repeat;
+  background-position:12px 50%;
+  padding-left:40px;
+}
+input[type="email"]{
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" opacity="0.65" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217L8 9 0 4.217z"/><path d="M0 5.383v6.634A2 2 0 0 0 2 14h12a2 2 0 0 0 2-2V5.383l-7.555 4.72a1 1 0 0 1-1.09 0z"/></svg>');
+  background-repeat:no-repeat;
+  background-position:12px 50%;
+  padding-left:40px;
+}
+
+/* ================================================= */
+/* CHATBOT & BOUTON FLOTTANT (CORRIGÉ) */
+/* ================================================= */
+
+/* 1. Style du Bouton Flottant (Rond et Bleu) */
+#nova-fab { /* Cible l'ID HTML pour appliquer le style */
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2147483647;
+    
+    /* Propriétés pour le style rond et bleu/CTA */
+    width: 60px; /* Taille pour le rendre rond */
+    height: 60px;
+    line-height: 1; /* Aligne le texte */
+    border-radius: 50%; /* Le rend rond */
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em; /* Taille du texte "Nova" */
+    font-weight: 600;
+    text-align: center;
+    
+    background: linear-gradient(135deg, var(--cta-start), var(--cta-end)); /* BLEU (Utilisation de votre variable --cta) */
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+}
+
+#nova-fab:hover {
+    transform: scale(1.05);
+}
+
+/* 2. Style de la Fenêtre de Chat (#nova-box) */
+#nova-box {
+  position:fixed;
+  right:16px;
+  bottom:76px; /* Doit être au-dessus du bouton */
+  width:min(420px,92vw);
+  height:min(70vh,560px);
+  background:#0f1420;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  z-index:2147483647;
+  
+  /* CRITIQUE : Cache la boîte au chargement, et utilise Flex pour l'empilement interne */
+  display: none; 
+  flex-direction: column;
+}
+.nova-head{padding:10px 12px;background:#0c111b;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;}
+.nova-log{flex-grow: 1; overflow:auto;padding:12px;} /* Ajout de flex-grow: 1 */
+.nova-bar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.12);background:#0f1420;}
+#nova-field{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#101a28;color:#e6edf3;}
+
+/* Messages de chat */
+.chat-message {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+}
+
+.chat-message.user {
+    background-color: var(--accent);
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-message.nova {
+    background-color: #333d4a;
+    color: var(--text);
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+
+/* ================================================= */
+/* CORRECTION D'ESPACEMENT DU FORMULAIRE (form-wrap) */
+/* ================================================= */
+
+.form-wrap {
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+/* Votre code de formulaire ci-dessus assure déjà que les inputs remplissent 100% */
+
+
+/* Harmoniser le bouton "Demander par email" avec le style de soutien */
+.btn-secondary[href^="mailto:"] {
+  background: linear-gradient(135deg,#ffd24d,#ffae00);
+  color:#121823 !important;
+  border:none;
+  box-shadow:0 8px 22px rgba(255,176,0,.35);
+  transition:all .25s ease;
+}
+
+.btn-secondary[href^="mailto:"]:hover {
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+}
+
+/* --- Correction visibilité mobile pour les boutons dans la bannière --- */
+.banner div {
+  flex-wrap: wrap; /* Permet aux boutons de passer à la ligne */
+}
+
+.banner a.btn-primary,
+.banner a.btn-gold {
+  flex: 1 1 auto; /* Chaque bouton peut s’adapter */
+  min-width: 180px; /* Largeur minimale pour garder leur forme */
+  text-align: center; /* Centrage du texte */
+}
+
+@media (max-width: 700px) {
+  .banner div {
+    gap: 10px; /* Réduit l’espace entre les boutons */
+    padding: 0 10px;
+  }
+  .banner a.btn-primary,
+  .banner a.btn-gold {
+    font-size: 0.95rem;
+    padding: 10px 14px; /* Un peu moins de padding sur mobile */
+  }
+}
+/* Correction hauteur mobile bannière */
+.banner {
+  min-height: 300px;
+}
+@media (max-width: 700px) {
+  .banner {
+    min-height: 420px; /* augmente la hauteur pour laisser respirer le texte et les boutons */
+  }
+  .banner img {
+    max-height: none; /* évite le recadrage trop serré */
+  }
+}
+/* --- Visibilité mobile pour le contenu de la bannière --- */
+.banner {
+  position: relative;
+  min-height: 420px;
+  overflow: visible;
+}
+.banner img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+}
+.banner div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.banner a.btn-primary,
+.banner a.btn-gold {
+  min-width: 160px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .banner { min-height: 480px; }
+  .banner a.btn-primary,
+  .banner a.btn-gold {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+}
+/* Carte mise en avant ("Recommandé") */
+.card.recommended {
+  position: relative;
+  border: 1px solid rgba(0,200,255,0.3);
+  box-shadow: 0 0 25px rgba(0,160,255,0.25), 0 0 8px rgba(0,140,255,0.15) inset;
+}
+
+/* Badge bleu */
+.badge.badge-blue {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  background: linear-gradient(180deg, #1ea7ff, #1293ee);
+  color: #031425;
+  font-weight: 800;
+  font-size: 0.8em;
+  padding: 4px 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
