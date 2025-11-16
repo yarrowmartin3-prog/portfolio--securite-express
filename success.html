@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
-  
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Confirmation de Paiement • NovaSuite</title>
@@ -36,7 +30,6 @@
       box-shadow:0 10px 28px rgba(0,0,0,.35);
       -webkit-tap-highlight-color: transparent;
       cursor:pointer;
-      /* CORRECTION: Suppression de la transition de décalage inutile */
       transition: opacity 0.3s ease-in-out; 
     }
     .nova-box{
@@ -66,12 +59,6 @@
       background-color:#1ea7ff; color:#031425; font-weight:bold;
     }
     
-    /* CORRECTION: Règle de décalage du chat supprimée */
-    /* .nova-fab.banner-active {
-        right: auto; 
-        left: 16px; 
-    } */
-
     /* ===== STYLE DE BANDEAU DE CONSENTEMENT (LATÉRAL COMPACT) ===== */
     #cookie-banner {
       position: fixed !important;
@@ -135,11 +122,6 @@
       .cookie-buttons {
           justify-content: space-between; 
       }
-      /* CORRECTION: Suppression de la règle de décalage inutile */
-      /* .nova-fab.banner-active {
-        right: auto; 
-        left: 16px; 
-      } */
     }
     .wrap + .wrap:last-child{ margin-bottom:76px; }
 
@@ -187,17 +169,6 @@
     }
   </style>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LWHM1MVESP');
-    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'wait_for_update': 500 // Temps d'attente pour le script de consentement
-    });
-  </script>
 </head>
 
 <body>
@@ -206,7 +177,7 @@
 
   <header class="wrap">
     <a class="brand" href="/">
-      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite"/>
+      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite" width="90" height="90"/>
       <span>NovaSuite</span>
     </a>
     <h1>Confirmation de Commande</h1>
@@ -348,7 +319,7 @@
     </form>
   </div>
 
-  <script src="nova.js"></script>
+<script src="nova.js"></script>
 
 <div id="cookie-banner" style="display: none;">
     <p>
@@ -361,169 +332,191 @@
     </div>
 </div>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
+
 <script>
-// --- LOGIQUE DE SUIVI DE CONVERSION ---
+    // --- Code de consentement Google Analytics (GA4) pour la vitesse ---
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
+    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500 // Temps d'attente pour le script de consentement
+    });
+    
+    // Configuration de GA4 pour la propriété principale
+    gtag('config', 'G-LWHM1MVESP');
 
-function trackConversion() {
-    const transactionId = getUrlParameter('transaction_id');
-    // Utiliser la valeur 'value' ou 0 pour éviter NaN
-    const valueStr = getUrlParameter('value');
-    const value = valueStr ? parseFloat(valueStr) : 0; 
-    const currency = getUrlParameter('currency') || 'CAD';
-    const item = getUrlParameter('item') || 'AuditExpress'; // Par défaut
+    // --- LOGIQUE DE SUIVI DE CONVERSION ---
 
-    if (transactionId && value > 0) {
-        // Envoi de l'événement d'achat à Google Analytics
-        gtag('event', 'purchase', {
-            transaction_id: transactionId,
-            value: value,
-            currency: currency,
-            items: [{
-                item_id: item.toLowerCase().replace(/\s/g, '_'),
-                item_name: item,
-                price: value,
-                quantity: 1,
-                affiliation: 'NovaSuite Website'
-            }]
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+
+    function trackConversion() {
+        const transactionId = getUrlParameter('transaction_id');
+        // Utiliser la valeur 'value' ou 0 pour éviter NaN
+        const valueStr = getUrlParameter('value');
+        const value = valueStr ? parseFloat(valueStr) : 0; 
+        const currency = getUrlParameter('currency') || 'CAD';
+        const item = getUrlParameter('item') || 'AuditExpress'; // Par défaut
+
+        if (transactionId && value > 0) {
+            // Envoi de l'événement d'achat à Google Analytics
+            gtag('event', 'purchase', {
+                transaction_id: transactionId,
+                value: value,
+                currency: currency,
+                items: [{
+                    item_id: item.toLowerCase().replace(/\s/g, '_'),
+                    item_name: item,
+                    price: value,
+                    quantity: 1,
+                    affiliation: 'NovaSuite Website'
+                }]
+            });
+            
+            console.log(`Conversion GA envoyée: ${item} (${value} ${currency})`);
+        } else {
+             console.log('Conversion non envoyée (manque de paramètres dans l’URL ou valeur nulle).');
+        }
+    }
+
+
+    // --- FONCTIONS DE GESTION DES COOKIES (LOGIQUE COMPLÈTE) ---
+
+    // Vérifie le statut du consentement stocké
+    function getConsentStatus() {
+        return localStorage.getItem('analytics_consent');
+    }
+
+    // Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
+    function applyConsent(granted) {
+        const status = granted ? 'granted' : 'denied';
+        const novaFab = document.getElementById('nova-fab');
+
+        // 1. Mettre à jour le statut via GTAG
+        gtag('consent', 'update', {
+            'analytics_storage': status
         });
         
-        console.log(`Conversion GA envoyée: ${item} (${value} ${currency})`);
-    } else {
-         console.log('Conversion non envoyée (manque de paramètres dans l’URL ou valeur nulle).');
-    }
-}
-
-
-// --- FONCTIONS DE GESTION DES COOKIES (LOGIQUE COMPLÈTE) ---
-
-// Vérifie le statut du consentement stocké
-function getConsentStatus() {
-    return localStorage.getItem('analytics_consent');
-}
-
-// Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
-function applyConsent(granted) {
-    const status = granted ? 'granted' : 'denied';
-    const novaFab = document.getElementById('nova-fab');
-
-    // 1. Mettre à jour le statut via GTAG
-    gtag('consent', 'update', {
-        'analytics_storage': status
-    });
-    
-    // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
-    window.dataLayer.push({
-        'event': 'cookie_consent_update',
-        'analytics_storage': status
-    });
-    
-    // CORRECTION : S'assurer que le chat est visible
-    if (novaFab) {
-        novaFab.style.display = 'block'; 
-    }
-    
-    // CORRECTION : Si le consentement est donné, on tente le suivi de conversion
-    if (granted) {
-        trackConversion();
-    }
-}
-
-// Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
-function checkAndShowBanner() {
-    const consent = getConsentStatus();
-    const banner = document.getElementById('cookie-banner');
-    const novaFab = document.getElementById('nova-fab');
-
-    if (consent === null) {
-        // Aucune préférence trouvée, affichez le bandeau et masquez le chat
-        if (banner) {
-            banner.style.display = 'flex';
-        }
-        if (novaFab) {
-            // CORRECTION : Masquer le bouton Nova si le bandeau est visible
-            novaFab.style.display = 'none'; 
-        }
-    } else {
-        // Préférence trouvée, appliquez-la (true = granted, false = denied)
-        applyConsent(consent !== 'false');
+        // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
+        window.dataLayer.push({
+            'event': 'cookie_consent_update',
+            'analytics_storage': status
+        });
+        
         // S'assurer que le chat est visible
         if (novaFab) {
-             novaFab.style.display = 'block';
+            novaFab.style.display = 'block'; 
         }
-    }
-}
-
-// Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
-function acceptAllCookies() {
-    localStorage.setItem('analytics_consent', 'true');
-    applyConsent(true);
-    const banner = document.getElementById('cookie-banner');
-    if (banner) banner.style.display = 'none';
-    
-    // Rendre le chat Nova visible
-    const novaFab = document.getElementById('nova-fab');
-    if (novaFab) novaFab.style.display = 'block'; 
-    
-    // Masquer la modale si elle était ouverte
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-// Fonction pour afficher la modale de réglages
-function showCookieSettings(event) {
-    if (event) event.preventDefault();
-    const modal = document.getElementById('cookie-settings-modal');
-    const banner = document.getElementById('cookie-banner');
-    const novaFab = document.getElementById('nova-fab');
-    
-    if (modal) {
-        // Charger la préférence actuelle dans la checkbox de la modale
-        const consent = getConsentStatus();
-        const checkbox = document.getElementById('analytics-consent');
-        if (checkbox) {
-            checkbox.checked = (consent !== 'false');
-        }
-        modal.style.display = 'flex';
-        if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
         
-        // CORRECTION : On masque le chat Nova si la modale est ouverte
-        if (novaFab) {
-             novaFab.style.display = 'none';
+        // Si le consentement est donné, on tente le suivi de conversion
+        if (granted) {
+            trackConversion();
         }
     }
-}
 
-// Fonction pour sauvegarder les préférences depuis la modale
-function saveCookiePreferences() {
-    const checkbox = document.getElementById('analytics-consent');
-    const modal = document.getElementById('cookie-settings-modal');
-    const granted = checkbox.checked;
-    
-    const consentValue = granted ? 'true' : 'false';
-    localStorage.setItem('analytics_consent', consentValue);
-    
-    // Applique le nouveau consentement sans recharger
-    applyConsent(granted);
-    
-    if (modal) modal.style.display = 'none';
-    
-    // Rendre le bandeau invisible et le chat Nova visible
-    const banner = document.getElementById('cookie-banner');
-    if (banner) banner.style.display = 'none';
-    const novaFab = document.getElementById('nova-fab');
-    if (novaFab) novaFab.style.display = 'block';
-}
+    // Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
+    function checkAndShowBanner() {
+        const consent = getConsentStatus();
+        const banner = document.getElementById('cookie-banner');
+        const novaFab = document.getElementById('nova-fab');
+
+        if (consent === null) {
+            // Aucune préférence trouvée, affichez le bandeau et masquez le chat
+            if (banner) {
+                banner.style.display = 'flex';
+            }
+            if (novaFab) {
+                // Masquer le bouton Nova si le bandeau est visible
+                novaFab.style.display = 'none'; 
+            }
+        } else {
+            // Préférence trouvée, appliquez-la (true = granted, false = denied)
+            // Note: j'ai corrigé 'true'/'false' en 'granted'/'denied' pour être plus explicite dans l'appel
+            applyConsent(consent === 'granted'); 
+            // S'assurer que le chat est visible
+            if (novaFab) {
+                 novaFab.style.display = 'block';
+            }
+        }
+    }
+
+    // Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
+    function acceptAllCookies() {
+        localStorage.setItem('analytics_consent', 'granted');
+        applyConsent(true);
+        const banner = document.getElementById('cookie-banner');
+        if (banner) banner.style.display = 'none';
+        
+        // Rendre le chat Nova visible
+        const novaFab = document.getElementById('nova-fab');
+        if (novaFab) novaFab.style.display = 'block'; 
+        
+        // Masquer la modale si elle était ouverte
+        const modal = document.getElementById('cookie-settings-modal');
+        if (modal) modal.style.display = 'none';
+    }
+
+    // Fonction pour afficher la modale de réglages
+    function showCookieSettings(event) {
+        if (event) event.preventDefault();
+        const modal = document.getElementById('cookie-settings-modal');
+        const banner = document.getElementById('cookie-banner');
+        const novaFab = document.getElementById('nova-fab');
+        
+        if (modal) {
+            // Charger la préférence actuelle dans la checkbox de la modale
+            const consent = getConsentStatus();
+            const checkbox = document.getElementById('analytics-consent');
+            if (checkbox) {
+                 // Si le consentement est 'granted' OU s'il n'existe pas (null), la case est cochée
+                checkbox.checked = (consent === 'granted' || consent === null);
+            }
+            modal.style.display = 'flex';
+            if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
+            
+            // On masque le chat Nova si la modale est ouverte
+            if (novaFab) {
+                 novaFab.style.display = 'none';
+            }
+        }
+    }
+
+    // Fonction pour sauvegarder les préférences depuis la modale
+    function saveCookiePreferences() {
+        const checkbox = document.getElementById('analytics-consent');
+        const modal = document.getElementById('cookie-settings-modal');
+        const granted = checkbox.checked;
+        
+        const consentValue = granted ? 'granted' : 'denied';
+        localStorage.setItem('analytics_consent', consentValue);
+        
+        // Applique le nouveau consentement sans recharger
+        applyConsent(granted);
+        
+        if (modal) modal.style.display = 'none';
+        
+        // Rendre le bandeau invisible et le chat Nova visible
+        const banner = document.getElementById('cookie-banner');
+        if (banner) banner.style.display = 'none';
+        const novaFab = document.getElementById('nova-fab');
+        if (novaFab) novaFab.style.display = 'block';
+    }
 
 
-// Déclenchement au chargement du DOM
-document.addEventListener('DOMContentLoaded', checkAndShowBanner);
+    // Déclenchement au chargement du DOM
+    document.addEventListener('DOMContentLoaded', checkAndShowBanner);
 </script>
 
 </body>
