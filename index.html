@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-</head>
+    
+    </head>
 <body>
 
     <header>
@@ -21,7 +22,6 @@
     </header>
 
     <main class="wrap">
-
         <section class="hero">
             <div class="hero-inner banner">
                 <span class="badge">Audit Cybersécurité Express</span>
@@ -57,22 +57,25 @@
                 <a href="mailto:contact@novasuite.ca" class="btn-secondary">Demander par email</a>
             </div>
         </section>
-
     </main>
     
+    <footer>
+        <div class="wrap">
+            <p style="text-align: center; font-size: 0.9em; padding: 20px 0;">[Insérez votre code de Footer original ici]</p>
+            </div>
+    </footer>
+
     <div id="nova-box" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="nova-head-title">
         <div class="nova-head"><h3 id="nova-head-title">Nova - IA Sécurité</h3></div>
-        <div class="nova-log" id="nova-log">
-            </div>
+        <div class="nova-log" id="nova-log"></div>
         <form class="nova-bar" id="nova-form">
             <input type="text" id="nova-field" placeholder="Posez une question à Nova..." autocomplete="off">
             <button type="submit" class="btn-primary" style="margin: 0; padding: 10px 15px;">Envoyer</button>
         </form>
     </div>
-    
     <button id="nova-fab" aria-label="Ouvrir le chat Nova IA" aria-expanded="false">Nova</button>
 
-    <div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:var(--bg-start); border-top:1px solid var(--accent); padding:15px; z-index:9999; display:none;">
+    <div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:var(--bg-start); border-top:1px solid rgba(255,255,255,0.2); padding:15px; z-index:9999; display:none;">
         <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
             <p style="margin:0; font-size:0.9em;">Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre <a href="politique-confidentialite.html" style="color:var(--accent2);">Politique de Confidentialité (Loi 25)</a>.</p>
             <button id="accept-cookies" class="btn-primary" style="margin:0; padding:8px 15px; font-weight:700;">J'accepte</button>
@@ -81,31 +84,30 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Logique de Consentement (Loi 25)
             const banner = document.getElementById('cookie-banner');
             const acceptButton = document.getElementById('accept-cookies');
             const consentKey = 'analytics_consent';
 
             if (localStorage.getItem(consentKey) === null) {
-                // Si pas de choix, affiche la bannière
-                banner.style.display = 'block';
+                // Si pas de consentement, la bannière s'affiche.
+                banner.style.display = 'block'; 
             } else if (localStorage.getItem(consentKey) === 'accepted') {
-                // Si accepté, charge GTM immédiatement (au cas où defer-gtm ne l'aurait pas fait)
+                // Si accepté, charge GTM/GA immédiatement
                 if (window.loadGTM) window.loadGTM();
             }
 
             acceptButton.addEventListener('click', function() {
                 localStorage.setItem(consentKey, 'accepted');
                 banner.style.display = 'none';
-                // Charge GTM immédiatement après acceptation
                 if (window.loadGTM) window.loadGTM();
             });
             
-            // Logique de soumission du formulaire principal
+            // Logique de Soumission de Formulaire
             const form = document.getElementById('main-audit-form');
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // Redirection vers la page de confirmation (success.html)
                     const email = form.querySelector('input[type="email"]').value;
                     const url = form.querySelector('input[type="url"]').value;
                     window.location.href = `success.html?url=${encodeURIComponent(url)}&email=${encodeURIComponent(email)}`;
