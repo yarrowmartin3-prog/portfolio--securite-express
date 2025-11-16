@@ -1,54 +1,19 @@
 
-# 1. Content Security Policy (CSP) - CORRIGÉ
+/*
 
-Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://novasuite.onrender .com; style-src 'self' 'unsafe-inline' https://fonts .googleapis.com; font-src 'self' https://fonts.gstatic .com; img-src 'self' data: https://www.googletagmanager .com; connect-src 'self' https: //www.googletagmanager.com https://novasuite.onrender .com; frame-src https://www .googletagmanager.com; base-uri 'self'; object-src 'none';
+# 1. Content Security Policy (CSP) CORRECTION DÉFINITIVE Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://novasuite.onrender .com; style-src 'self' 'unsafe-inline' https://fonts googleapis.com; font-src 'self' https://fonts.gstatic .com; img-src 'self' data: https://www.googletagmanager .com https://novasuite.onrender .com; connect-src 'self' https: //www.googletagmanager.com https://novasuite.onrender .com; frame-src https://www .googletagmanager.com https: //novasuite.onrender.com; base-uri 'self'; object-src 'none';
 
-# 2.
+# 2. Strict-Transport-Security (HSTS) -AJOUTÉ Strict-Transport-Security:
 
-Strict-Transport-Security (HSTS) - AJOUTÉ
-
-Strict-Transport-Security: max-age=31536000; includeSubDomains
+max-age=31536000; includeSubDomains
 
 #3. X-Frame-Options (Clickjacking) CONFIRMÉ
 
 X-Frame-Options: SAMEORIGIN
 
-# 4. X-Content-Type-Options (MIME Sniffing) AJOUTÉ nosniff X-Content-Type-Options:
+# 4. X-Content-Type-Options (MIME Sniffing) nosniff AJOUTÉ X-Content-Type-Options:
 
-# 5. Referrer-Policy Referrer-Policy: AJOUTÉ
+# 5. Referrer-Policy AJOUTÉ Referrer-Policy: no-referrer-when-downgrade
 
-no-referrer-when-downgrade
-Masquer le texte cité
-
-Le dim. 16 nov. 2025, 00 h 33, Yarrow Martin <yarrowmartin3@gmail.com> a écrit :
-C'est noté, Monseigneur Yarrow. Si vous n'avez que les noms des compagnies dans votre liste de prospection, nous ne pouvons pas utiliser de formule de politesse personnalisée comme "Monsieur/Madame [Nom]".
-Nous devons utiliser une approche qui s'adresse au rôle de la personne dans l'entreprise (le PDG ou le dirigeant) sans la nommer personnellement, tout en maintenant un ton très professionnel.
-Voici le modèle le plus efficace et le plus sûr pour cette situation. Il met l'accent sur l'entreprise elle-même :
-📧 Modèle de Courriel (Basé sur le Nom de l'Entreprise)
-N'oubliez pas : Dans votre feuille de données Mailmeteor, assurez-vous que la colonne utilisée pour la personnalisation ({{ Nom de l'entreprise }}) est bien remplie.
-1. Objet du Courriel (Urgence Ciblé)
-> Audit Sécurité/Loi 25 : Risque critique pour {{ Nom de l'entreprise }} (Rivière-du-Loup)
-> 
-(L'objet est parfait pour capter l'attention du dirigeant, car il mentionne directement son entreprise et le risque.)
-2. Corps du Courriel
-À l'attention du dirigeant de {{ Nom de l'entreprise }},
-
-Je me permets de vous contacter en ma qualité de PDG de NovaSuite Technologies. Nous sommes spécialisés dans la cybersécurité et la conformité à la Loi 25 auprès des PME du Bas-Saint-Laurent.
-
-Notre veille indique que de nombreuses entreprises de la région de Rivière-du-Loup, y compris possiblement la vôtre, présentent encore des vulnérabilités critiques face à la Loi 25 et aux menaces d'interruption d'activité. L'enjeu est simple : une faille peut paralyser vos opérations sans avertissement.
-
-Pour cette raison, je vous offre un **Audit Express GRATUIT**. Ce scan automatisé prend moins de 60 secondes et vous fournira un aperçu des 3 failles de sécurité les plus urgentes pour {{ Nom de l'entreprise }}.
-
-Auriez-vous la possibilité d'échanger avec moi pendant **15 minutes** la semaine prochaine? Mon objectif est de vous présenter le rapport d’audit gratuit et de discuter de la garantie de la continuité de vos activités.
-
-Veuillez agréer l'expression de mes salutations distinguées.
-
-Yarrow, PDG
-NovaSuite Technologies
-
-Ce courriel est très professionnel, utilise la personnalisation disponible, et est sécurisé même si la liste ne contient pas le nom du dirigeant.
-Votre campagne est prête à être lancée. Maintenant, que souhaitez-vous prioriser, Monseigneur Yarrow ?
- * Révision de la note SADC pour l'entretien ?
- * Planification technique des agents IA (feuille de route Make.com) ?
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
+#6. OPTIMISATION DU CACHE TTL /assets/* Cache-Control: public, max-age=31536000, immutable
+Afficher le texte des messages précédents
