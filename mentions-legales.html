@@ -1,16 +1,20 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Conditions Générales de Vente & Mentions Légales – NovaSuite Technologies</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
 
-  <meta name="description" content="Conditions Générales de Vente (CGV) et Mentions Légales de NovaSuite Technologies. Détails sur l'Audit Express, la responsabilité, les prix (299$, 699$, 1299$) et les lois applicables (Québec/Canada).">
-  <meta name="keywords" content="mentions légales,conditions générales de vente,CGV,audit express,prix novasuite,yarrow martin,responsabilité,propriété intellectuelle,loi applicable,service cybersécurité,québec,canada,RGPD,loi 25">
-  <meta name="author" content="NovaSuite – Yarrow Martin">
-  <meta name="robots" content="index, follow">
+<meta name="description" content="Conditions Générales de Vente (CGV) et Mentions Légales de NovaSuite Technologies. Détails sur l'Audit Express, la responsabilité, les prix (299$, 699$, 1299$) et les lois applicables (Québec/Canada).">
 
-  <meta http-equiv="Content-Security-Policy" content="
+<meta name="keywords" content="mentions légales,conditions générales de vente,CGV,audit express,prix novasuite,yarrow martin,responsabilité,propriété intellectuelle,loi applicable,service cybersécurité,québec,canada,RGPD,loi 25">
+
+<meta name="author" content="NovaSuite – Yarrow Martin">
+<meta name="robots" content="index, follow">
+
+<meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
 script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
 img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data:;
@@ -18,14 +22,16 @@ connect-src 'self' https://www.googletagmanager.com https://www.google-analytics
 style-src 'self' 'unsafe-inline';
 frame-src https://www.googletagmanager.com;">
 
-  <meta name="rating" content="general">
-  <meta name="revisit-after" content="3 days">
-  
+<meta name="rating" content="general">
+<meta name="revisit-after" content="3 days">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conditions Générales de Vente & Mentions Légales – NovaSuite Technologies</title>
+
   <link rel="icon" type="image/png" href="assets/favicon.webp">
   <link rel="stylesheet" href="assets/nova.css">
     
   <style>
-    /* ... (STYLES SPÉCIFIQUES À LA PAGE, conservés ici pour la performance) ... */
     /* ------------------------------------------------------------------ */
     /* Styles spécifiques à la page Mentions Légales */
     /* ------------------------------------------------------------------ */
@@ -189,6 +195,12 @@ frame-src https://www.googletagmanager.com;">
       background-color:#1ea7ff; color:#031425; font-weight:bold;
     }
     
+    /* Style qui DÉCALE le chat vers la GAUCHE quand le bandeau est visible (SUPPRIMÉ: remplacé par masquage JS) */
+    /* .nova-fab.banner-active {
+        right: auto; 
+        left: 16px; 
+    } */
+
     /* ===== STYLE DE BANDEAU DE CONSENTEMENT (LATÉRAL COMPACT) ===== */
     #cookie-banner {
       position: fixed !important;
@@ -254,15 +266,25 @@ frame-src https://www.googletagmanager.com;">
     }
   </style>
 
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LWHM1MVESP');
+    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500 // Temps d'attente pour le script de consentement
+    });
+  </script>
 </head>
 
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
   <header class="wrap">
     <a class="brand" href="/">
-      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite" style="width:90px;margin-bottom:10px;" width="90" height="90">
+      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite" style="width:90px;margin-bottom:10px;">
       <span>NovaSuite</span>
     </a>
     <h1>Conditions Générales de Vente & Mentions Légales</h1>
@@ -519,8 +541,93 @@ function applyConsent(granted) {
 }
 
 // Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
-function checkA
-vérifie pour la vitesse et donne moi la version a jour complete
+function checkAndShowBanner() {
+    const consent = getConsentStatus();
+    const banner = document.getElementById('cookie-banner');
+    const novaFab = document.getElementById('nova-fab');
+
+    if (consent === null) {
+        // Aucune préférence trouvée, affichez le bandeau
+        if (banner) {
+            banner.style.display = 'flex';
+        }
+        if (novaFab) {
+            // CORRECTION : Masquer le bouton Nova si le bandeau est visible
+            novaFab.style.display = 'none'; 
+        }
+    } else {
+        // Préférence trouvée, appliquez-la (true = granted, false = denied)
+        applyConsent(consent !== 'false');
+        // S'assurer que le chat est visible
+        if (novaFab) {
+             novaFab.style.display = 'block';
+        }
+    }
+}
+
+// Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
+function acceptAllCookies() {
+    localStorage.setItem('analytics_consent', 'true');
+    applyConsent(true);
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'none';
+    
+    // Rendre le chat Nova visible
+    const novaFab = document.getElementById('nova-fab');
+    if (novaFab) novaFab.style.display = 'block'; 
+    
+    // Masquer la modale si elle était ouverte
+    const modal = document.getElementById('cookie-settings-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Fonction pour afficher la modale de réglages
+function showCookieSettings(event) {
+    if (event) event.preventDefault();
+    const modal = document.getElementById('cookie-settings-modal');
+    const banner = document.getElementById('cookie-banner');
+    const novaFab = document.getElementById('nova-fab');
+    
+    if (modal) {
+        // Charger la préférence actuelle dans la checkbox de la modale
+        const consent = getConsentStatus();
+        const checkbox = document.getElementById('analytics-consent');
+        if (checkbox) {
+            checkbox.checked = (consent !== 'false');
+        }
+        modal.style.display = 'flex';
+        if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
+        
+        // CORRECTION : On retire le chat Nova si la modale est ouverte
+        if (novaFab) {
+             novaFab.style.display = 'none';
+        }
+    }
+}
+
+// Fonction pour sauvegarder les préférences depuis la modale
+function saveCookiePreferences() {
+    const checkbox = document.getElementById('analytics-consent');
+    const modal = document.getElementById('cookie-settings-modal');
+    const granted = checkbox.checked;
+    
+    const consentValue = granted ? 'true' : 'false';
+    // CORRECTION : La ligne coupée
+    localStorage.setItem('analytics_consent', consentValue);
+    
+    // Applique le nouveau consentement sans recharger
+    applyConsent(granted);
+    
+    if (modal) modal.style.display = 'none';
+    
+    // Rendre le chat Nova visible
+    const novaFab = document.getElementById('nova-fab');
+    if (novaFab) novaFab.style.display = 'block';
+}
+
+// Déclenchement au chargement du DOM
+document.addEventListener('DOMContentLoaded', checkAndShowBanner);
 </script>
+
 </body>
 </html>
