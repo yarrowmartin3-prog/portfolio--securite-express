@@ -1,523 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Confirmation de Paiement • NovaSuite</title>
-  
-  <meta name="description" content="Confirmation de paiement pour votre commande NovaSuite. Votre service est en cours de traitement et le rapport vous sera envoyé par e-mail."/>
-  <meta name="robots" content="noindex, nofollow"/> 
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.png"/>
-  <link rel="stylesheet" href="assets/nova.css?v=9999"/>
-
-  <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
-  img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data:;
-  connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://novasuite.onrender.com https://region1.google-analytics.com;
-  style-src 'self' 'unsafe-inline';
-  frame-src https://www.googletagmanager.com;">
-
-  <style>
-    /* Styles FLOTTANTS (Chat et Bannière de Consentement) */
-    .nova-fab{
-      position:fixed; 
-      right:16px; 
-      bottom:16px; 
-      z-index:9999; 
-      padding:12px 16px; border-radius:999px; font-weight:800; text-decoration:none;
-      background:linear-gradient(180deg,#1ea7ff,#1293ee); color:#031425; border:none;
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
-      -webkit-tap-highlight-color: transparent;
-      cursor:pointer;
-      transition: opacity 0.3s ease-in-out; 
-    }
-    .nova-box{
-      position:fixed; right:16px; bottom:65px; z-index:9998; 
-      width:300px; height:400px; background-color:#1e293b; border-radius:12px;
-      box-shadow:0 10px 28px rgba(0,0,0,.5);
-      display:none; 
-      flex-direction:column;
-    }
-    .nova-head{
-      padding:10px 15px; background-color:#0f172a; color:#fff;
-      border-top-left-radius:12px; border-top-right-radius:12px; font-weight:bold;
-    }
-    .nova-log{
-      flex-grow:1; padding:15px; overflow-y:auto; color:#fff; font-size:0.9em;
-    }
-    .nova-bar{
-      display:flex; padding:10px; background-color:#0f172a;
-      border-bottom-left-radius:12px; border-bottom-right-radius:12px;
-    }
-    .nova-bar input{
-      flex-grow:1; padding:8px; border:none; border-radius:6px; margin-right:8px;
-      background-color:#334155; color:#fff;
-    }
-    .nova-bar button{
-      padding:8px 12px; border:none; border-radius:6px; cursor:pointer;
-      background-color:#1ea7ff; color:#031425; font-weight:bold;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Reçu - NovaSuite Technologies</title>
+    <link rel="stylesheet" href="nova.css?v=20251116">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
-    /* ===== STYLE DE BANDEAU DE CONSENTEMENT (LATÉRAL COMPACT) ===== */
-    #cookie-banner {
-      position: fixed !important;
-      bottom: 20px !important; 
-      right: 20px !important; 
-      width: 320px !important; 
-      max-width: 90% !important; 
-      background-color: #0f172a; 
-      color: #cde6dc; 
-      padding: 15px; 
-      z-index: 99999 !important;
-      display: flex; 
-      flex-direction: column; 
-      align-items: flex-start;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      border: 1px solid #124736;
-      border-radius: 12px; 
-    }
-    #cookie-banner p { 
-      margin: 0 0 10px 0; 
-      font-size: 0.9rem; 
-      flex-grow: 1;
-      padding-right: 0; 
-    }
-    #cookie-banner a { 
-      color: #72ffcb; 
-      text-decoration: underline; 
-      font-weight: 600; 
-      margin-right: 0; 
-      display: block; 
-      margin-bottom: 10px;
-    }
-    .cookie-buttons { 
-      display: flex; 
-      gap: 10px; 
-      width: 100%; 
-      justify-content: flex-end; 
-    }
-    .cookie-buttons button {
-      padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer;
-      font-weight: 700; font-size: 0.85rem; transition: background-color 0.2s;
-      flex-shrink: 0;
-    }
-    #accept-cookies { background-color: #72ffcb; color: #0a0f0d; }
-    #settings-cookies { background-color: #124736; color: #72ffcb; border: 1px solid #72ffcb; }
-
-
-    @media (max-width:600px){
-      .nova-fab{ padding:11px 15px; right:16px; bottom:16px; }
-      .nova-box{
-        width:90%; height:70%; right:5%; bottom:65px;
-      }
-      /* CORRECTION MOBILE : Bandeau full width en bas */
-      #cookie-banner { 
-        width: 100% !important; 
-        right: 0 !important; 
-        left: 0 !important; 
-        bottom: 0 !important; /* Fixer au bas de l'écran */
-        border-radius: 12px 12px 0 0; /* Coins arrondis seulement en haut */
-      }
-      .cookie-buttons {
-          justify-content: space-between; 
-      }
-    }
-    .wrap + .wrap:last-child{ margin-bottom:76px; }
-
-    /* Styles spécifiques à la page de confirmation */
-    .confirmation-box {
-      max-width: 700px;
-      margin: 50px auto;
-      padding: 40px;
-      text-align: center;
-      background-color: rgba(18,71,54,0.1);
-      border: 1px solid #124736;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-      min-height: 40vh; /* Assure que la boîte soit visible */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .confirmation-box h2 {
-      color: #72ffcb;
-      font-size: 2.2rem;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-weight: 700;
-      border: none;
-      padding: 0;
-    }
-    .confirmation-box p {
-      font-size: 1.1rem;
-      color: #cde6dc;
-      margin-bottom: 1.5rem;
-    }
-    .confirmation-box strong {
-      color: #9deacb;
-    }
-    .ns-btn--primary {
-      display: inline-block;
-      padding: 12px 25px;
-      background:linear-gradient(180deg,#1ea7ff,#1293ee); 
-      color:#031425 !important;
-      border-radius: 8px;
-      font-weight: 800;
-      text-decoration: none;
-      margin-top: 15px;
-    }
-  </style>
-
-</head>
-
+    </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9TZKR4"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <header class="wrap">
-    <a class="brand" href="/">
-      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite" width="90" height="90"/>
-      <span>NovaSuite</span>
-    </a>
-    <h1>Confirmation de Commande</h1>
-  </header>
+    <header>
+        <div class="wrap">
+            <a href="/" class="brand">
+                <img src="/assets/logo-novasuite.webp" alt="NovaSuite Logo" class="logo">
+                <h1>NovaSuite Technologies</h1>
+            </a>
+        </div>
+    </header>
 
-  <main class="wrap">
-    <div class="confirmation-box">
-      <h2>Paiement Réussi ! ✅</h2>
-      <p>
-          Votre commande est bien enregistrée chez NovaSuite. Nous vous remercions pour votre confiance.
-      </p>
-      <p>
-          L'exécution du service est en cours. **Le rapport ou les étapes suivantes vous seront communiqués par e-mail (via Make/Webhook)** dans les prochaines minutes.
-      </p>
-      <p style="font-size: 0.9rem; color: #4da786;">
-          Veuillez vérifier votre boîte de réception et vos courriers indésirables.
-      </p>
-      
-      <a href="index.html" class="ns-btn--primary">
-          Retourner à la page d'accueil
-      </a>
-    </div>
-  </main>
-  
-<div id="cookie-settings-modal" style="
-    display: none; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.75); 
-    z-index: 10001; 
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-">
-    <div style="
-        background-color: #0a0f0d; 
-        border: 1px solid #124736;
-        border-radius: 12px; 
-        padding: 25px; 
-        max-width: 450px; 
-        width: 90%; 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    ">
-        <h2 style="color: #72ffcb; margin-top: 0; border-bottom: 1px solid rgba(114, 255, 203, 0.2); padding-bottom: 10px; font-size: 1.4rem;">
-            Gestion des Témoins
-        </h2>
-        
-        <p style="color: #cde6dc; font-size: 0.95rem;">
-            Nous utilisons des témoins pour assurer le bon fonctionnement du site et analyser son trafic (Google Analytics). Conformément à la Loi 25, vous pouvez choisir d'accepter ou de refuser les témoins d'analyse.
-        </p>
+    <main class="wrap" style="text-align: center; padding-top: 50px;">
 
-        <div style="margin-top: 20px;">
-            <div style="margin-bottom: 15px;">
-                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    1. Témoins Essentiels (Obligatoires)
-                </h3>
-                <p style="color: #4da786; font-size: 0.85rem; margin: 0;">
-                    Nécessaires au fonctionnement de base du site et à la sécurité. Ne peuvent être désactivés.
-                </p>
-            </div>
+        <section class="card" style="max-width: 600px; margin: 40px auto; background: rgba(0, 196, 255, 0.08);">
+            <h2 style="color: var(--accent2);">✅ Votre Audit est Lancé !</h2>
+            <p class="lead">Merci pour votre demande, Monseigneur Yarrow.</p>
+            <p>Nous avons bien reçu l'URL **<span id="display-url" style="color: var(--accent);"></span>**. L'analyse est en cours et un rapport détaillé vous sera envoyé par courriel à **<span id="display-email" style="color: var(--accent);"></span>** dans les prochaines minutes.</p>
             
-            <div style="margin-bottom: 15px;">
-                <h3 style="color: #9deacb; font-size: 1rem; margin-top: 0; margin-bottom: 5px;">
-                    2. Témoins d'Analyse (Optionnels)
-                </h3>
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" id="analytics-consent" checked style="margin-right: 10px; accent-color: #72ffcb;">
-                    <span style="color: #cde6dc; font-size: 0.9rem;">
-                        Activer Google Analytics (Mesure d'audience)
-                    </span>
-                </label>
+            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 25px 0;">
+
+            <h3>Prochaine Étape : Planifiez votre Intégration</h3>
+            <p>Pendant que Nova travaille sur votre rapport, profitez-en pour découvrir nos forfaits. Rappelez-vous, notre **Audit Express** est à **$299** et l'**Intégration Standard** à **$699**.</p>
+            <div class="hero-cta">
+                <a href="mailto:contact@novasuite.ca" class="btn-primary">Contacter un expert</a>
             </div>
-        </div>
+        </section>
 
-        <div style="margin-top: 25px; text-align: right;">
-            <button onclick="saveCookiePreferences();" style="
-                padding: 10px 18px; 
-                background-color: #72ffcb; 
-                color: #0a0f0d; 
-                border: none; 
-                border-radius: 8px; 
-                cursor: pointer; 
-                font-weight: 700;
-                font-size: 0.9rem;
-            ">
-                Sauvegarder et Fermer
-            </button>
-        </div>
-    </div>
-</div>
-
-<footer style="
-  border-top:1px solid #124736;
-  background-color:#0a0f0d;
-  padding:1.5rem 1rem;
-  text-align:center;
-  color:#9deacb;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size:0.8rem;
-  line-height:1.5;
-">
-    <div style="color:#72ffcb;font-weight:600;font-size:0.8rem;">
-      © NovaSuite Technologies 2025 — Tous droits réservés
-    </div>
-
-    <div style="margin-top:0.5rem;color:#9deacb;">
-      <a href="mentions-legales.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-        Mentions légales
-      </a>
-      •
-      <a href="politique-confidentialite.html" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-        Politique de confidentialité
-      </a>
-      •
-      <a href="#" onclick="showCookieSettings(event);" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-        Paramètres des témoins
-      </a>
-      •
-      <a href="mailto:contact@novasuite.ca" style="color:#72ffcb;text-decoration:none;margin:0 .5rem;">
-        contact@novasuite.ca
-      </a>
-    </div>
-
-    <div style="margin-top:0.5rem;color:#4da786;font-size:0.7rem;">
-      Sécurité IA locale • Audit cybersécurité express • Optimisation performance PC / réseau
-    </div>
-  </footer>
-  
-  <button id="nova-fab" class="nova-fab" aria-expanded="false">💬 Nova</button>
-  <div id="nova-box" class="nova-box" hidden>
-    <div class="nova-head">Nova • Assistant local</div>
-    <div id="nova-log" class="nova-log"></div>
-    <form id="nova-form" class="nova-bar">
-      <input id="nova-field" name="q" placeholder="Parlez à Nova" autocomplete="off" />
-      <button id="nova-send" type="submit">Envoyer</button>
-    </form>
-  </div>
-
-<script src="nova.js"></script>
-
-<div id="cookie-banner" style="display: none;">
-    <p>
-      Nous utilisons des témoins pour l'analyse de notre trafic. 
-      <a href="politique-confidentialite.html" target="_blank">Consultez notre Politique de Confidentialité (Loi 25)</a> pour en savoir plus.
-    </p>
-    <div class="cookie-buttons">
-      <button id="accept-cookies" onclick="acceptAllCookies();">J'accepte</button>
-      <button id="settings-cookies" onclick="showCookieSettings();">Paramètres</button>
-    </div>
-</div>
-
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
-
-<script>
-    // --- Code de consentement Google Analytics (GA4) pour la vitesse ---
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'wait_for_update': 500 // Temps d'attente pour le script de consentement
-    });
+    </main>
     
-    // Configuration de GA4 pour la propriété principale
-    gtag('config', 'G-LWHM1MVESP');
+    <div id="nova-box" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="nova-head-title">
+        <div class="nova-head"><h3 id="nova-head-title">Nova - IA Sécurité</h3></div>
+        <div class="nova-log" id="nova-log">
+            </div>
+        <form class="nova-bar" id="nova-form">
+            <input type="text" id="nova-field" placeholder="Posez une question à Nova..." autocomplete="off">
+            <button type="submit" class="btn-primary" style="margin: 0; padding: 10px 15px;">Envoyer</button>
+        </form>
+    </div>
+    <button id="nova-fab" aria-label="Ouvrir le chat Nova IA" aria-expanded="false">Nova</button>
 
-    // --- LOGIQUE DE SUIVI DE CONVERSION ---
+    <div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:var(--bg-start); border-top:1px solid var(--accent); padding:15px; z-index:9999; display:none;">
+        <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <p style="margin:0; font-size:0.9em;">Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre <a href="politique-confidentialite.html" style="color:var(--accent2);">Politique de Confidentialité (Loi 25)</a>.</p>
+            <button id="accept-cookies" class="btn-primary" style="margin:0; padding:8px 15px; font-weight:700;">J'accepte</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Affichage des données (URL et Email) depuis l'URL
+            const params = new URLSearchParams(window.location.search);
+            const url = params.get('url') || 'Non spécifiée';
+            const email = params.get('email') || 'Inconnu';
+            
+            document.getElementById('display-url').textContent = url;
+            document.getElementById('display-email').textContent = email;
+            
+            // 2. LOGIQUE DE CONSENTEMENT (Loi 25)
+            const banner = document.getElementById('cookie-banner');
+            const acceptButton = document.getElementById('accept-cookies');
+            const consentKey = 'analytics_consent';
 
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
+            if (localStorage.getItem(consentKey) === null) {
+                banner.style.display = 'block';
+            } else if (localStorage.getItem(consentKey) === 'accepted') {
+                if (window.loadGTM) window.loadGTM();
+            }
 
-    function trackConversion() {
-        const transactionId = getUrlParameter('transaction_id');
-        // Utiliser la valeur 'value' ou 0 pour éviter NaN
-        const valueStr = getUrlParameter('value');
-        const value = valueStr ? parseFloat(valueStr) : 0; 
-        const currency = getUrlParameter('currency') || 'CAD';
-        const item = getUrlParameter('item') || 'AuditExpress'; // Par défaut
-
-        if (transactionId && value > 0) {
-            // Envoi de l'événement d'achat à Google Analytics
-            gtag('event', 'purchase', {
-                transaction_id: transactionId,
-                value: value,
-                currency: currency,
-                items: [{
-                    item_id: item.toLowerCase().replace(/\s/g, '_'),
-                    item_name: item,
-                    price: value,
-                    quantity: 1,
-                    affiliation: 'NovaSuite Website'
-                }]
+            acceptButton.addEventListener('click', function() {
+                localStorage.setItem(consentKey, 'accepted');
+                banner.style.display = 'none';
+                if (window.loadGTM) window.loadGTM();
             });
             
-            console.log(`Conversion GA envoyée: ${item} (${value} ${currency})`);
-        } else {
-             console.log('Conversion non envoyée (manque de paramètres dans l’URL ou valeur nulle).');
-        }
-    }
-
-
-    // --- FONCTIONS DE GESTION DES COOKIES (LOGIQUE COMPLÈTE) ---
-
-    // Vérifie le statut du consentement stocké
-    function getConsentStatus() {
-        return localStorage.getItem('analytics_consent');
-    }
-
-    // Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
-    function applyConsent(granted) {
-        const status = granted ? 'granted' : 'denied';
-        const novaFab = document.getElementById('nova-fab');
-
-        // 1. Mettre à jour le statut via GTAG
-        gtag('consent', 'update', {
-            'analytics_storage': status
+            // 3. ENVOI DE LA CONVERSION À GTM/GA
+            // Ce code doit se déclencher seulement si le consentement est donné
+            if (localStorage.getItem(consentKey) === 'accepted' && window.dataLayer) {
+                // Si l'utilisateur a consenti, on envoie l'événement de conversion.
+                window.dataLayer.push({
+                    'event': 'conversion_audit_success',
+                    'audit_url': url,
+                    'user_email': email
+                });
+            }
         });
-        
-        // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
-        window.dataLayer.push({
-            'event': 'cookie_consent_update',
-            'analytics_storage': status
-        });
-        
-        // S'assurer que le chat est visible
-        if (novaFab) {
-            novaFab.style.display = 'block'; 
-        }
-        
-        // Si le consentement est donné, on tente le suivi de conversion
-        if (granted) {
-            trackConversion();
-        }
-    }
-
-    // Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
-    function checkAndShowBanner() {
-        const consent = getConsentStatus();
-        const banner = document.getElementById('cookie-banner');
-        const novaFab = document.getElementById('nova-fab');
-
-        if (consent === null) {
-            // Aucune préférence trouvée, affichez le bandeau et masquez le chat
-            if (banner) {
-                banner.style.display = 'flex';
-            }
-            if (novaFab) {
-                // Masquer le bouton Nova si le bandeau est visible
-                novaFab.style.display = 'none'; 
-            }
-        } else {
-            // Préférence trouvée, appliquez-la (true = granted, false = denied)
-            // Note: j'ai corrigé 'true'/'false' en 'granted'/'denied' pour être plus explicite dans l'appel
-            applyConsent(consent === 'granted'); 
-            // S'assurer que le chat est visible
-            if (novaFab) {
-                 novaFab.style.display = 'block';
-            }
-        }
-    }
-
-    // Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
-    function acceptAllCookies() {
-        localStorage.setItem('analytics_consent', 'granted');
-        applyConsent(true);
-        const banner = document.getElementById('cookie-banner');
-        if (banner) banner.style.display = 'none';
-        
-        // Rendre le chat Nova visible
-        const novaFab = document.getElementById('nova-fab');
-        if (novaFab) novaFab.style.display = 'block'; 
-        
-        // Masquer la modale si elle était ouverte
-        const modal = document.getElementById('cookie-settings-modal');
-        if (modal) modal.style.display = 'none';
-    }
-
-    // Fonction pour afficher la modale de réglages
-    function showCookieSettings(event) {
-        if (event) event.preventDefault();
-        const modal = document.getElementById('cookie-settings-modal');
-        const banner = document.getElementById('cookie-banner');
-        const novaFab = document.getElementById('nova-fab');
-        
-        if (modal) {
-            // Charger la préférence actuelle dans la checkbox de la modale
-            const consent = getConsentStatus();
-            const checkbox = document.getElementById('analytics-consent');
-            if (checkbox) {
-                 // Si le consentement est 'granted' OU s'il n'existe pas (null), la case est cochée
-                checkbox.checked = (consent === 'granted' || consent === null);
-            }
-            modal.style.display = 'flex';
-            if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
-            
-            // On masque le chat Nova si la modale est ouverte
-            if (novaFab) {
-                 novaFab.style.display = 'none';
-            }
-        }
-    }
-
-    // Fonction pour sauvegarder les préférences depuis la modale
-    function saveCookiePreferences() {
-        const checkbox = document.getElementById('analytics-consent');
-        const modal = document.getElementById('cookie-settings-modal');
-        const granted = checkbox.checked;
-        
-        const consentValue = granted ? 'granted' : 'denied';
-        localStorage.setItem('analytics_consent', consentValue);
-        
-        // Applique le nouveau consentement sans recharger
-        applyConsent(granted);
-        
-        if (modal) modal.style.display = 'none';
-        
-        // Rendre le bandeau invisible et le chat Nova visible
-        const banner = document.getElementById('cookie-banner');
-        if (banner) banner.style.display = 'none';
-        const novaFab = document.getElementById('nova-fab');
-        if (novaFab) novaFab.style.display = 'block';
-    }
-
-
-    // Déclenchement au chargement du DOM
-    document.addEventListener('DOMContentLoaded', checkAndShowBanner);
-</script>
+    </script>
+    
+    <script src="defer-gtm.js" defer></script> 
+    
+    <script src="nova.js" defer></script> 
 
 </body>
 </html>
