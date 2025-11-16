@@ -1,11 +1,9 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Politique de Confidentialité – NovaSuite Technologies</title>
 
   <meta name="description" content="Politique de confidentialité de NovaSuite Technologies. Détails sur la collecte, l'utilisation et la protection des données personnelles (Loi 25 et RGPD).">
   <meta name="keywords" content="politique de confidentialité,protection des données,Loi 25,RGPD,NovaSuite,cookies,cybersécurité,yarrow martin,québec,canada">
@@ -22,10 +20,7 @@ frame-src https://www.googletagmanager.com;">
 
   <meta name="rating" content="general">
   <meta name="revisit-after" content="3 days">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Politique de Confidentialité – NovaSuite Technologies</title>
-
+  
   <link rel="icon" type="image/png" href="assets/favicon.webp">
   <link rel="stylesheet" href="assets/nova.css">
     
@@ -152,7 +147,6 @@ frame-src https://www.googletagmanager.com;">
     
     /* ------------------------------------------------------------------ */
     /* Styles Flottants (Chat Nova et Bandeau de Consentement) */
-    /* Ces styles sont critiques pour le fonctionnement multi-pages */
     /* ------------------------------------------------------------------ */
     .nova-fab{
       position:fixed; 
@@ -164,7 +158,6 @@ frame-src https://www.googletagmanager.com;">
       box-shadow:0 10px 28px rgba(0,0,0,.35);
       -webkit-tap-highlight-color: transparent;
       cursor:pointer;
-      /* CORRECTION: On utilise la fonction display:none/block au lieu de décaler */
       transition: opacity 0.3s ease-in-out; 
     }
     .nova-box{
@@ -194,12 +187,6 @@ frame-src https://www.googletagmanager.com;">
       background-color:#1ea7ff; color:#031425; font-weight:bold;
     }
     
-    /* CORRECTION: Règle de décalage supprimée */
-    /* .nova-fab.banner-active {
-        right: auto; 
-        left: 16px; 
-    } */
-
     /* ===== STYLE DE BANDEAU DE CONSENTEMENT (LATÉRAL COMPACT) ===== */
     #cookie-banner {
       position: fixed !important;
@@ -261,25 +248,8 @@ frame-src https://www.googletagmanager.com;">
       .cookie-buttons {
           justify-content: space-between; 
       }
-      /* CORRECTION: Suppression de la règle de décalage inutile */
-      /* .nova-fab.banner-active {
-        right: auto; 
-        left: 16px; 
-      } */
     }
   </style>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LWHM1MVESP');
-    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'wait_for_update': 500 // Temps d'attente pour le script de consentement
-    });
-  </script>
 </head>
 
 <body>
@@ -287,7 +257,7 @@ frame-src https://www.googletagmanager.com;">
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="wrap">
     <a class="brand" href="/">
-      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite" style="width:90px;margin-bottom:10px;">
+      <img class="logo" src="assets/logo-novasuite.webp" alt="NovaSuite" style="width:90px;margin-bottom:10px;" width="90" height="90">
       <span>NovaSuite</span>
     </a>
     <h1>Politique de Confidentialité</h1>
@@ -500,123 +470,134 @@ frame-src https://www.googletagmanager.com;">
     </div>
 </div>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TH9TZKR4');</script>
+
 <script>
-// --- FONCTIONS DE GESTION DES COOKIES (Garantit la persistance multi-pages) ---
+    // --- Code de consentement Google Analytics (GA4) pour la vitesse ---
+    // Chargement asynchrone de la librairie GA4
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TH9TZKR4');
 
-// Vérifie le statut du consentement stocké
-function getConsentStatus() {
-    return localStorage.getItem('analytics_consent');
-}
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-// Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
-function applyConsent(granted) {
-    const status = granted ? 'granted' : 'denied';
-    
-    // 1. Mettre à jour le statut via GTAG
-    gtag('consent', 'update', {
-        'analytics_storage': status
+    // Définir le consentement par défaut au REFUS pour le stockage analytique (Loi 25)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500 // Temps d'attente pour le script de consentement
     });
     
-    // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
-    window.dataLayer.push({
-        'event': 'cookie_consent_update',
-        'analytics_storage': status
-    });
-    
-    // NOUVEAU : S'assurer que le chat est visible
-    const novaFab = document.getElementById('nova-fab');
-    if (novaFab) {
-        novaFab.style.display = 'block'; 
+    // Configuration de GA4 pour la propriété principale
+    gtag('config', 'G-LWHM1MVESP');
+
+    // --- FONCTIONS DE GESTION DES COOKIES (Complétées) ---
+
+    // Vérifie le statut du consentement stocké
+    function getConsentStatus() {
+        return localStorage.getItem('analytics_consent');
     }
-}
 
-// Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
-function checkAndShowBanner() {
-    const consent = getConsentStatus();
-    const banner = document.getElementById('cookie-banner');
-    const novaFab = document.getElementById('nova-fab');
-
-    if (consent === null) {
-        // Aucune préférence trouvée, affichez le bandeau
-        if (banner) {
-            banner.style.display = 'flex';
-        }
-        if (novaFab) {
-            // CORRECTION : Masquer le bouton Nova si le bandeau est visible
-            novaFab.style.display = 'none'; 
-        }
-    } else {
-        // Préférence trouvée, appliquez-la (true = granted, false = denied)
-        applyConsent(consent !== 'false');
+    // Fonction pour mettre à jour l'état de consentement de Google Analytics/GTM
+    function applyConsent(granted) {
+        const status = granted ? 'granted' : 'denied';
+        
+        // 1. Mettre à jour le statut via GTAG
+        gtag('consent', 'update', {
+            'analytics_storage': status
+        });
+        
+        // 2. Mettre à jour la couche de données pour GTM (pour les balises tierces)
+        window.dataLayer.push({
+            'event': 'cookie_consent_update',
+            'analytics_storage': status
+        });
+        
         // S'assurer que le chat est visible
+        const novaFab = document.getElementById('nova-fab');
         if (novaFab) {
-             novaFab.style.display = 'block';
+            novaFab.style.display = 'block'; 
         }
     }
-}
 
-// Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
-function acceptAllCookies() {
-    localStorage.setItem('analytics_consent', 'true');
-    applyConsent(true);
-    const banner = document.getElementById('cookie-banner');
-    if (banner) banner.style.display = 'none';
-    
-    // Rendre le chat Nova visible
-    const novaFab = document.getElementById('nova-fab');
-    if (novaFab) novaFab.style.display = 'block'; 
-    
-    // Masquer la modale si elle était ouverte
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-// Fonction pour afficher la modale de réglages
-function showCookieSettings(event) {
-    if (event) event.preventDefault();
-    const modal = document.getElementById('cookie-settings-modal');
-    const banner = document.getElementById('cookie-banner');
-    const novaFab = document.getElementById('nova-fab');
-    
-    if (modal) {
-        // Charger la préférence actuelle dans la checkbox de la modale
+    // Affiche le bandeau si aucune préférence n'est enregistrée, ou applique la préférence existante
+    function checkAndShowBanner() {
         const consent = getConsentStatus();
+        const banner = document.getElementById('cookie-banner');
+        const novaFab = document.getElementById('nova-fab');
+
+        if (consent === null) {
+            // Aucune préférence trouvée, affichez le bandeau
+            if (banner) {
+                banner.style.display = 'flex';
+            }
+            if (novaFab) {
+                // Masquer le bouton Nova si le bandeau est visible
+                novaFab.style.display = 'none'; 
+            }
+        } else {
+            // Préférence trouvée, appliquez-la (true = granted, false = denied)
+            applyConsent(consent === 'granted');
+            // S'assurer que le chat est visible
+            if (novaFab) {
+                 novaFab.style.display = 'block';
+            }
+        }
+    }
+
+    // Fonction appelée quand l'utilisateur accepte tout depuis le bandeau
+    function acceptAllCookies() {
+        localStorage.setItem('analytics_consent', 'granted');
+        applyConsent(true);
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.style.display = 'none';
+        }
+        hideCookieSettings();
+    }
+
+    // Appelé par le bouton "Paramètres" et le lien du footer
+    function showCookieSettings(event) {
+        if (event) {
+            event.preventDefault();
+        }
+        document.getElementById('cookie-banner').style.display = 'none';
+        document.getElementById('cookie-settings-modal').style.display = 'flex';
+        
+        // Mettre à jour la case à cocher selon la préférence existante ou par défaut (refus)
+        const currentConsent = getConsentStatus();
         const checkbox = document.getElementById('analytics-consent');
         if (checkbox) {
-            checkbox.checked = (consent !== 'false');
-        }
-        modal.style.display = 'flex';
-        if (banner) banner.style.display = 'none'; // Cacher le bandeau si on ouvre la modale
-        
-        // CORRECTION : On masque le chat Nova si la modale est ouverte
-        if (novaFab) {
-             novaFab.style.display = 'none';
+            // Si le consentement est 'granted' OU s'il n'existe pas (null), la case est cochée
+            checkbox.checked = (currentConsent === 'granted' || currentConsent === null); 
         }
     }
-}
 
-// Fonction pour sauvegarder les préférences depuis la modale
-function saveCookiePreferences() {
-    const checkbox = document.getElementById('analytics-consent');
-    const modal = document.getElementById('cookie-settings-modal');
-    const granted = checkbox.checked;
-    
-    const consentValue = granted ? 'true' : 'false';
-    localStorage.setItem('analytics_consent', consentValue);
-    
-    // Applique le nouveau consentement sans recharger
-    applyConsent(granted);
-    
-    if (modal) modal.style.display = 'none';
-    
-    // Rendre le chat Nova visible
-    const novaFab = document.getElementById('nova-fab');
-    if (novaFab) novaFab.style.display = 'block';
-}
+    // Appelé par "Sauvegarder et Fermer" dans le modal
+    function saveCookiePreferences() {
+        const checkbox = document.getElementById('analytics-consent');
+        const granted = checkbox ? checkbox.checked : false;
+        
+        localStorage.setItem('analytics_consent', granted ? 'granted' : 'denied');
+        applyConsent(granted);
+        hideCookieSettings();
+    }
 
-// Déclenchement au chargement du DOM
-document.addEventListener('DOMContentLoaded', checkAndShowBanner);
+    // Cache le modal et le bandeau
+    function hideCookieSettings() {
+        document.getElementById('cookie-settings-modal').style.display = 'none';
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    // Initialisation au chargement de la page
+    document.addEventListener('DOMContentLoaded', checkAndShowBanner);
 </script>
-
 </body>
 </html>
