@@ -110,6 +110,14 @@
   </script>
   
   <script defer src="https://novasuite.onrender.com/nova.js"></script>
-
+<script>
+    // Cette fonction temporaire empêche une erreur de console
+    // et déplace l'utilisateur en haut de page.
+    function showCookieSettings(event) {
+        event.preventDefault(); // Empêche l'action par défaut du lien (#)
+        window.scrollTo(0, 0); // Fait défiler jusqu'au haut de la page
+        alert("La plateforme de gestion des témoins est en cours de déploiement pour la conformité Loi 25. Merci de votre patience.");
+    }
+</script>
 </body>
 </html>
